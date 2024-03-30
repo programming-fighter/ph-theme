@@ -23,7 +23,6 @@ const TestimonialFive = ({ testimonials }: any) => {
             <div className="flex flex-wrap -m-6">
               <Slider>
                 {testimonials.map((single: any) => {
-                  console.log(single, "single");
                   return (
                     <SwiperSlide key={single.id}>
                       <div className="p-4 w-full">

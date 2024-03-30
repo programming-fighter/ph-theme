@@ -7,7 +7,6 @@ import Card11 from "../(card)/card11";
 import Arrowbetween from "@/app/utils/arrow-between";
 
 const BestSellerSeven = ({ best_sell_product }: any) => {
-  console.log(best_sell_product);
   const prev = "best_seller_Prev";
   const next = "best_seller_Next";
 

@@ -6,7 +6,6 @@ import React from "react";
 import { IoSearchCircleOutline } from "react-icons/io5";
 
 const Card41 = ({ item }: any) => {
-  console.log(item, "item from card41");
   return (
     <div>
       <div className="relative overflow-hidden group">

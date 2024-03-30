@@ -36,7 +36,6 @@ export default async function Home() {
     feature_product,
     testimonials,
   } = res.data;
-  console.log(design.testimonial, "design 1");
 
   return (
     <div
