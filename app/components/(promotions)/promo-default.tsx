@@ -20,7 +20,6 @@ interface Props {
 }
 
 const DefaultPromo = ({ banner }: Props) => {
-  console.log(banner, "banner");
   return (
     <div className="bg-white py-8">
       <div className="container">

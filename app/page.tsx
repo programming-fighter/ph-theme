@@ -10,7 +10,12 @@ import BestSellerProduct from "@/components/best-seller-product";
 import FeatureProduct from "@/components/feature-product";
 import Testimonial from "@/components/testimonial";
 
-const navigation = [
+interface Navigation {
+  name: string;
+  href: string;
+}
+
+const navigation: Navigation[] = [
   { name: "Product", href: "/" },
   { name: "Features", href: "/" },
   { name: "Marketplace", href: "/" },
@@ -24,8 +29,41 @@ export default async function Home() {
       name: "siam.localhost:3000",
     }
   );
+
+  const { layout, design } = res.data;
+
+  return (
+    <div
+      className={`${
+        design?.template_id === "34" ? "bg-thirty-one" : "bg-white"
+      }`}
+    >
+      {layout &&
+        layout.map((item: any, index: number) => (
+          <GetComponent data={res.data} key={index} component={item} />
+        ))}
+    </div>
+  );
+}
+
+interface GetComponentProps {
+  component:
+    | "header"
+    | "hero_slider"
+    | "feature_category"
+    | "banner"
+    | "product"
+    | "feature_product"
+    | "banner_bottom"
+    | "best_seller_product"
+    | "new_arrival"
+    | "testimonial"
+    | "footer";
+  data: any;
+}
+
+const GetComponent = ({ component, data }: GetComponentProps) => {
   const {
-    design,
     headerSetting,
     menu,
     slider,
@@ -35,28 +73,34 @@ export default async function Home() {
     best_sell_product,
     feature_product,
     testimonials,
-  } = res.data;
+  } = data;
 
-  return (
-    <div
-      className={`${
-        design?.template_id === "34" ? "bg-thirty-one" : "bg-white"
-      }`}
-    >
-      <Header
-        headerSetting={headerSetting}
-        menu={menu}
-        navigation={navigation}
-      />
-      <Hero slider={slider} />
-      <FeaturedCategory category={category} />
-      <Promo banner={banner} />
-      <PromoBottom banner={banner} />
-      <Product product={product} />
-      <NewArrival product={product} />
-      <BestSellerProduct best_sell_product={best_sell_product} />
-      <FeatureProduct feature_product={feature_product} />
-      <Testimonial testimonials={testimonials} />
-    </div>
-  );
-}
+  switch (component) {
+    case "header":
+      return (
+        <Header
+          headerSetting={headerSetting}
+          menu={menu}
+          navigation={navigation}
+        />
+      );
+    case "hero_slider":
+      return <Hero slider={slider} />;
+    case "feature_category":
+      return <FeaturedCategory category={category} />;
+    case "banner":
+      return <Promo banner={banner} />;
+    case "banner_bottom":
+      return <PromoBottom banner={banner} />;
+    case "product":
+      return <Product product={product} />;
+    case "new_arrival":
+      return <NewArrival product={product} />;
+    case "best_seller_product":
+      return <BestSellerProduct best_sell_product={best_sell_product} />;
+    case "feature_product":
+      return <FeatureProduct feature_product={feature_product} />;
+    case "testimonial":
+      return <Testimonial testimonials={testimonials} />;
+  }
+};
