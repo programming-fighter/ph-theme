@@ -15,6 +15,22 @@ interface Navigation {
   href: string;
 }
 
+interface GetComponentProps {
+  component:
+    | "header"
+    | "hero_slider"
+    | "feature_category"
+    | "banner"
+    | "product"
+    | "feature_product"
+    | "banner_bottom"
+    | "best_seller_product"
+    | "new_arrival"
+    | "testimonial"
+    | "footer";
+  data: any;
+}
+
 const navigation: Navigation[] = [
   { name: "Product", href: "/" },
   { name: "Features", href: "/" },
@@ -44,22 +60,6 @@ export default async function Home() {
         ))}
     </div>
   );
-}
-
-interface GetComponentProps {
-  component:
-    | "header"
-    | "hero_slider"
-    | "feature_category"
-    | "banner"
-    | "product"
-    | "feature_product"
-    | "banner_bottom"
-    | "best_seller_product"
-    | "new_arrival"
-    | "testimonial"
-    | "footer";
-  data: any;
 }
 
 const GetComponent = ({ component, data }: GetComponentProps) => {
