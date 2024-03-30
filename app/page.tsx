@@ -21,9 +21,18 @@ export default async function Home() {
       name: "siam.localhost:3000",
     }
   );
-  const { design, headerSetting, menu, slider, category, banner, product } =
-    res.data;
-  console.log(design, "design");
+  const {
+    design,
+    headerSetting,
+    menu,
+    slider,
+    category,
+    banner,
+    product,
+    new_arrival,
+  } = res.data;
+  console.log(design, "design 1");
+  console.log(design.new_arrival, "design");
   return (
     <div
       className={`${
@@ -40,7 +49,7 @@ export default async function Home() {
       <Promo banner={banner} />
       <PromoBottom banner={banner} />
       <Product product={product} />
-      <NewArrival />
+      <NewArrival product={product} />
     </div>
   );
 }

@@ -1,6 +1,10 @@
+"use client";
 import React from "react";
 import Arrow from "@/app/utils/arrow";
 import SectionHeadingFive from "@/app/components//section-heading-five";
+import DefaultSlider from "@/app/components/default-slider";
+import { SwiperSlide } from "swiper/react";
+import Card41 from "@/app/components/(card)/card41";
 
 const NewArrivalProductFive = ({ product }: any) => {
   const prev1 = "best_seller_Prev1";
@@ -16,6 +20,48 @@ const NewArrivalProductFive = ({ product }: any) => {
         <div className="pt-14 hidden sm:block">
           <Arrow prevEl={prev1} nextEl={next1}></Arrow>
         </div>
+      </div>
+
+      <div className="">
+        <DefaultSlider
+          prevEl={prev1}
+          nextEl={next1}
+          breakpoints={{
+            350: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            480: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+            1440: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+            },
+            1920: {
+              slidesPerView: 5,
+              spaceBetween: 20,
+            },
+          }}
+        >
+          {product?.slice(0, 10).map((item: any) => {
+            console.log(item, "item");
+            return (
+              <SwiperSlide key={item?.id}>
+                <Card41 item={item} />
+              </SwiperSlide>
+            );
+          })}
+        </DefaultSlider>
       </div>
     </div>
   );
