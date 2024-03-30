@@ -8,6 +8,7 @@ import Product from "@/app/components/product";
 import NewArrival from "@/app/components/new-arrival";
 import BestSellerProduct from "@/app/components/best-seller-product";
 import FeatureProduct from "./components/feature_product";
+import Testimonial from "./components/testimonial";
 
 const navigation = [
   { name: "Product", href: "/" },
@@ -33,8 +34,9 @@ export default async function Home() {
     product,
     best_sell_product,
     feature_product,
+    testimonials,
   } = res.data;
-  console.log(design, "design 1");
+  console.log(design.testimonial, "design 1");
 
   return (
     <div
@@ -55,6 +57,7 @@ export default async function Home() {
       <NewArrival product={product} />
       <BestSellerProduct best_sell_product={best_sell_product} />
       <FeatureProduct feature_product={feature_product} />
+      <Testimonial testimonials={testimonials} />
     </div>
   );
 }
