@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import SectionHeadingSeven from "../(section-heading)/section-heading-seven";
+import SectionHeadingSeven from "@/components/(section-heading)/section-heading-seven";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { ImQuotesLeft } from "react-icons/im";

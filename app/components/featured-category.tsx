@@ -1,11 +1,8 @@
-import DefaultFeaturedCategor from '@/app/components/(featured-category)/featured-default'
-import React from 'react'
+import DefaultFeaturedCategor from "@/components/(featured-category)/featured-default";
+import React from "react";
 
-const FeaturedCategory = ({category}: any) => {
-  
-  return (
-    <DefaultFeaturedCategor category={category} />
-  )
-}
+const FeaturedCategory = ({ category }: any) => {
+  return <DefaultFeaturedCategor category={category} />;
+};
 
-export default FeaturedCategory
+export default FeaturedCategory;

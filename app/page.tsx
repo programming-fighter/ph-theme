@@ -1,14 +1,14 @@
 import axios from "axios";
-import Header from "@/app/components/header";
-import Hero from "@/app/components/hero";
-import FeaturedCategory from "@/app/components/featured-category";
-import Promo from "@/app/components/promo";
-import PromoBottom from "@/app/components/promo-bottom";
-import Product from "@/app/components/product";
-import NewArrival from "@/app/components/new-arrival";
-import BestSellerProduct from "@/app/components/best-seller-product";
-import FeatureProduct from "./components/feature_product";
-import Testimonial from "./components/testimonial";
+import Header from "@/components/header";
+import Hero from "@/components/hero";
+import FeaturedCategory from "@/components/featured-category";
+import Promo from "@/components/promo";
+import PromoBottom from "@/components/promo-bottom";
+import Product from "@/components/product";
+import NewArrival from "@/components/new-arrival";
+import BestSellerProduct from "@/components/best-seller-product";
+import FeatureProduct from "@/components/feature-product";
+import Testimonial from "@/components/testimonial";
 
 const navigation = [
   { name: "Product", href: "/" },

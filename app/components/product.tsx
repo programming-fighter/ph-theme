@@ -1,7 +1,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 const DynamicDefaultProduct = dynamic(
-  () => import("@/app/components/(product)/product-default"),
+  () => import("@/components/(product)/product-default"),
   {
     ssr: false,
     loading: DefaultProduct,

@@ -1,16 +1,16 @@
 "use client";
 import React from "react";
-import featureProduct from "@/public/assets/img/featureProduct.png";
-import SectionHeadingFive from "../(section-heading)/section-heading-five";
-import Arrow from "@/app/utils/arrow";
-import GridSliderTwo from "../(slider)/grid-slider/grid-slider-two";
+import featureProduct from "@/assets/img/featureProduct.png";
+import SectionHeadingFive from "@/components/(section-heading)/section-heading-five";
+import Arrow from "@/utils/arrow";
+import GridSliderTwo from "@/components/(slider)/grid-slider/grid-slider-two";
 import { SwiperSlide } from "swiper/react";
-import Card57 from "../(card)/card57";
+import Card57 from "@/components/(card)/card57";
 
 const FeatureProductFive = ({ feature_product }: any) => {
   const prev1 = "feature_product_prev";
   const next1 = "feature_product_next";
-  console.log(featureProduct);
+
   return (
     <div
       style={{

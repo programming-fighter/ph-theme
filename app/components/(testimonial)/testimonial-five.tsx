@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import SliderFive from "../(slider)/slider-five";
+import SliderFive from "@/components/(slider)/slider-five";
 import { SwiperSlide } from "swiper/react";
 import { testimonialImg } from "@/app/site-settings/siteUrl";
 import Slider from "../(slider)/slider";

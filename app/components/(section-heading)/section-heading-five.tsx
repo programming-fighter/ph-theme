@@ -1,6 +1,11 @@
 import React from "react";
 
-const SectionHeadingFive = ({ title, subtitle }: any) => {
+interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const SectionHeadingFive = ({ title, subtitle }: Props) => {
   return (
     <div className="space-y-2 mb-3">
       <h3 className="text-2xl font-semibold">{title}</h3>
