@@ -6,6 +6,7 @@ import Promo from "@/app/components/promo";
 import PromoBottom from "@/app/components/promo-bottom";
 import Product from "@/app/components/product";
 import NewArrival from "@/app/components/new-arrival";
+import BestSellerProduct from "@/app/components/best-seller-product";
 
 const navigation = [
   { name: "Product", href: "/" },
@@ -29,10 +30,10 @@ export default async function Home() {
     category,
     banner,
     product,
-    new_arrival,
+    best_sell_product,
   } = res.data;
-  console.log(design, "design 1");
-  console.log(design.new_arrival, "design");
+  console.log(best_sell_product, "design 1");
+
   return (
     <div
       className={`${
@@ -50,6 +51,7 @@ export default async function Home() {
       <PromoBottom banner={banner} />
       <Product product={product} />
       <NewArrival product={product} />
+      <BestSellerProduct best_sell_product={best_sell_product} />
     </div>
   );
 }

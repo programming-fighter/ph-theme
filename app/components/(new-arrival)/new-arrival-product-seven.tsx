@@ -1,5 +1,5 @@
 import React from "react";
-import SectionHeadingSeven from "@/app/components/section-heading-seven";
+import SectionHeadingSeven from "@/app/components/(section-heading)/section-heading-seven";
 import Card14 from "../(card)/card14";
 
 const NewArrivalProductSeven = ({ product }: any) => {
