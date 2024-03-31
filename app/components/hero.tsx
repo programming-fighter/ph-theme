@@ -18,9 +18,24 @@ import {
   SIXTEEN,
   TEN,
   THIRTEEN,
+  THIRTY,
+  THIRTY_EIGHT,
+  THIRTY_FIVE,
+  THIRTY_FOUR,
+  THIRTY_NINE,
+  THIRTY_ONE,
+  THIRTY_SEVEN,
+  THIRTY_SIX,
+  THIRTY_THREE,
   TWELVE,
   TWENTY,
+  TWENTY_EIGHT,
+  TWENTY_FIVE,
+  TWENTY_FOUR,
+  TWENTY_NINE,
   TWENTY_ONE,
+  TWENTY_SEVEN,
+  TWENTY_SIX,
   TWENTY_THREE,
   TWENTY_TWO,
 } from "../consts";
@@ -39,6 +54,21 @@ import HeroNineteen from "./(hero)/hero-nineteen";
 import HeroTwentyOne from "./(hero)/hero-tweenty";
 import HeroTwentyTwo from "./(hero)/hero-tweent-two";
 import HeroTwentyThree from "./(hero)/hero-twenty-three";
+import HeroTwentyFour from "./(hero)/hero-twenty-four";
+import HeroTwentyFive from "./(hero)/hero-twenty-five";
+import HeroTwentySix from "./(hero)/hero-twenty-six";
+import HeroTwentySeven from "./(hero)/hero-twenty-seven";
+import HeroTwentyEight from "./(hero)/hero-twenty-eight";
+import HeroTwentyNine from "./(hero)/hero-twenty-nine";
+import HeroThirty from "./(hero)/hero-thrity";
+import HeroThirtyOne from "./(hero)/hero-thirty-one";
+import HeroThirtyThree from "./(hero)/hero-thirty-three";
+import HeroThirtyFour from "./(hero)/hero-thirty-four";
+import HeroThirtyFive from "./(hero)/hero-thirty-five";
+import HeroThirtySix from "./(hero)/hero-thirty-six";
+import HeroThirtySeven from "./(hero)/hero-thirty-seven";
+import HeroThirtyEight from "./(hero)/hero-thirty-eight";
+import HeroThirtyNine from "./(hero)/hero-thirty-nine";
 
 const DynamicHeroDefault = dynamic(
   () => import("@/components/(hero)/hero-default"),
@@ -84,6 +114,48 @@ const Hero = ({ slider, theme, design }: any) => {
       )}
       {theme === TWENTY_THREE && (
         <HeroTwentyThree slider={slider} design={design} />
+      )}
+      {theme === TWENTY_FOUR && (
+        <HeroTwentyFour slider={slider} design={design} />
+      )}
+      {theme === TWENTY_FIVE && (
+        <HeroTwentyFive slider={slider} design={design} />
+      )}
+      {theme === TWENTY_SIX && (
+        <HeroTwentySix slider={slider} design={design} />
+      )}
+      {theme === TWENTY_SEVEN && (
+        <HeroTwentySeven slider={slider} design={design} />
+      )}
+      {theme === TWENTY_EIGHT && (
+        <HeroTwentyEight slider={slider} design={design} />
+      )}
+      {theme === TWENTY_NINE && (
+        <HeroTwentyNine slider={slider} design={design} />
+      )}
+      {theme === THIRTY && <HeroThirty slider={slider} design={design} />}
+      {theme === THIRTY_ONE && (
+        <HeroThirtyOne slider={slider} design={design} />
+      )}
+      {/* no thirty two */}
+      {theme === THIRTY_THREE && (
+        <HeroThirtyThree slider={slider} design={design} />
+      )}
+      {theme === THIRTY_FOUR && (
+        <HeroThirtyFour slider={slider} design={design} />
+      )}
+      {theme === THIRTY_FIVE && <HeroThirtyFive slider={slider} />}
+      {theme === THIRTY_SIX && (
+        <HeroThirtySix slider={slider} design={design} />
+      )}
+      {theme === THIRTY_SEVEN && (
+        <HeroThirtySeven slider={slider} design={design} />
+      )}
+      {theme === THIRTY_EIGHT && (
+        <HeroThirtyEight slider={slider} design={design} />
+      )}
+        {theme === THIRTY_NINE && (
+        <HeroThirtyNine slider={slider} design={design} />
       )}
       {theme === "default" && <DynamicHeroDefault slider={slider} />}
     </>
