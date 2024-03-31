@@ -19,6 +19,10 @@ import {
   TEN,
   THIRTEEN,
   TWELVE,
+  TWENTY,
+  TWENTY_ONE,
+  TWENTY_THREE,
+  TWENTY_TWO,
 } from "../consts";
 import HeroSeven from "./(hero)/hero-seven";
 import HeroEight from "./(hero)/hero-eight";
@@ -32,6 +36,9 @@ import HeroSixteen from "./(hero)/hero-sixteen";
 import HeroSeventeen from "./(hero)/hero-seventeen";
 import HeroEighteen from "./(hero)/hero-eighteen";
 import HeroNineteen from "./(hero)/hero-nineteen";
+import HeroTwentyOne from "./(hero)/hero-tweenty";
+import HeroTwentyTwo from "./(hero)/hero-tweent-two";
+import HeroTwentyThree from "./(hero)/hero-twenty-three";
 
 const DynamicHeroDefault = dynamic(
   () => import("@/components/(hero)/hero-default"),
@@ -47,7 +54,7 @@ const DynamicHeroOne = dynamic(() => import("@/components/(hero)/hero-one"), {
 });
 
 const Hero = ({ slider, theme, design }: any) => {
-  console.log(slider, "slider");
+  console.log(design, "slider");
   return (
     <>
       {theme === "one" && <DynamicHeroOne slider={slider} />}
@@ -68,6 +75,16 @@ const Hero = ({ slider, theme, design }: any) => {
       {theme === SEVENTEEN && <HeroSeventeen slider={slider} design={design} />}
       {theme === EIGHTEEN && <HeroEighteen slider={slider} />}
       {theme === NINETEEN && <HeroNineteen slider={slider} design={design} />}
+      {theme === TWENTY && <HeroTwentyOne slider={slider} design={design} />}
+      {theme === TWENTY_ONE && (
+        <HeroTwentyOne slider={slider} design={design} />
+      )}
+      {theme === TWENTY_TWO && (
+        <HeroTwentyTwo slider={slider} design={design} />
+      )}
+      {theme === TWENTY_THREE && (
+        <HeroTwentyThree slider={slider} design={design} />
+      )}
       {theme === "default" && <DynamicHeroDefault slider={slider} />}
     </>
   );
