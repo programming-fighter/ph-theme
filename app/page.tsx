@@ -9,6 +9,7 @@ import NewArrival from "@/components/new-arrival";
 import BestSellerProduct from "@/components/best-seller-product";
 import FeatureProduct from "@/components/feature-product";
 import Testimonial from "@/components/testimonial";
+import { usePathname } from "next/navigation";
 
 interface Navigation {
   name: string;
@@ -73,6 +74,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     best_sell_product,
     feature_product,
     testimonials,
+    design,
   } = data;
 
   switch (component) {
@@ -85,7 +87,9 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
         />
       );
     case "hero_slider":
-      return <Hero slider={slider} />;
+      return (
+        <Hero slider={slider} theme={design?.hero_slider} design={design} />
+      );
     case "feature_category":
       return <FeaturedCategory category={category} />;
     case "banner":
