@@ -6,11 +6,32 @@ import HeroThree from "@/components/(hero)/hero-three";
 import HeroFour from "./(hero)/hero-four";
 import HeroFive from "./(hero)/hero-five";
 import HeroSix from "./(hero)/hero-six";
-import { EIGHT, NINE, SEVEN, TEN } from "../consts";
+import {
+  EIGHT,
+  EIGHTEEN,
+  ELEVEN,
+  FOURTEEN,
+  NINE,
+  NINETEEN,
+  SEVEN,
+  SEVENTEEN,
+  SIXTEEN,
+  TEN,
+  THIRTEEN,
+  TWELVE,
+} from "../consts";
 import HeroSeven from "./(hero)/hero-seven";
 import HeroEight from "./(hero)/hero-eight";
 import HeroNine from "./(hero)/hero-nine";
 import HeroTen from "./(hero)/hero-ten";
+import HeroEleven from "./(hero)/hero-eleven";
+import HeroTwelve from "./(hero)/hero-twelve";
+import HeroThirteen from "./(hero)/hero-thirteen";
+import HeroFourteen from "./(hero)/hero-fourteen";
+import HeroSixteen from "./(hero)/hero-sixteen";
+import HeroSeventeen from "./(hero)/hero-seventeen";
+import HeroEighteen from "./(hero)/hero-eighteen";
+import HeroNineteen from "./(hero)/hero-nineteen";
 
 const DynamicHeroDefault = dynamic(
   () => import("@/components/(hero)/hero-default"),
@@ -39,6 +60,14 @@ const Hero = ({ slider, theme, design }: any) => {
       {theme === EIGHT && <HeroEight slider={slider} />}
       {theme === NINE && <HeroNine slider={slider} design={design} />}
       {theme === TEN && <HeroTen slider={slider} design={design} />}
+      {theme === ELEVEN && <HeroEleven slider={slider} design={design} />}
+      {theme === TWELVE && <HeroTwelve slider={slider} design={design} />}
+      {theme === THIRTEEN && <HeroThirteen slider={slider} />}
+      {theme === FOURTEEN && <HeroFourteen slider={slider} design={design} />}
+      {theme === SIXTEEN && <HeroSixteen slider={slider} design={design} />}
+      {theme === SEVENTEEN && <HeroSeventeen slider={slider} design={design} />}
+      {theme === EIGHTEEN && <HeroEighteen slider={slider} />}
+      {theme === NINETEEN && <HeroNineteen slider={slider} design={design} />}
       {theme === "default" && <DynamicHeroDefault slider={slider} />}
     </>
   );
