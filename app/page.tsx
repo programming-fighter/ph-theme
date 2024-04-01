@@ -76,6 +76,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     testimonials,
     design,
   } = data;
+  console.log(design.feature_category);
 
   switch (component) {
     case "header":
@@ -91,7 +92,13 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
         <Hero slider={slider} theme={design?.hero_slider} design={design} />
       );
     case "feature_category":
-      return <FeaturedCategory category={category} />;
+      return (
+        <FeaturedCategory
+          theme={design?.feature_category}
+          category={category}
+          design={design}
+        />
+      );
     case "banner":
       return <Promo banner={banner} />;
     case "banner_bottom":

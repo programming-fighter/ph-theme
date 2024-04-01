@@ -1,11 +1,41 @@
-import dynamic from "next/dynamic";
 import HeroDefault from "@/components/(hero)/hero-default";
+import HeroEight from "@/components/(hero)/hero-eight";
+import HeroEighteen from "@/components/(hero)/hero-eighteen";
+import HeroEleven from "@/components/(hero)/hero-eleven";
+import HeroFive from "@/components/(hero)/hero-five";
+import HeroFour from "@/components/(hero)/hero-four";
+import HeroFourteen from "@/components/(hero)/hero-fourteen";
+import HeroNine from "@/components/(hero)/hero-nine";
+import HeroNineteen from "@/components/(hero)/hero-nineteen";
 import HeroOne from "@/components/(hero)/hero-one";
-import HeroTwo from "@/components/(hero)/hero-two";
+import HeroSeven from "@/components/(hero)/hero-seven";
+import HeroSeventeen from "@/components/(hero)/hero-seventeen";
+import HeroSix from "@/components/(hero)/hero-six";
+import HeroSixteen from "@/components/(hero)/hero-sixteen";
+import HeroTen from "@/components/(hero)/hero-ten";
+import HeroThirteen from "@/components/(hero)/hero-thirteen";
+import HeroThirtyEight from "@/components/(hero)/hero-thirty-eight";
+import HeroThirtyFive from "@/components/(hero)/hero-thirty-five";
+import HeroThirtyFour from "@/components/(hero)/hero-thirty-four";
+import HeroThirtyNine from "@/components/(hero)/hero-thirty-nine";
+import HeroThirtyOne from "@/components/(hero)/hero-thirty-one";
+import HeroThirtySeven from "@/components/(hero)/hero-thirty-seven";
+import HeroThirtySix from "@/components/(hero)/hero-thirty-six";
+import HeroThirtyThree from "@/components/(hero)/hero-thirty-three";
 import HeroThree from "@/components/(hero)/hero-three";
-import HeroFour from "./(hero)/hero-four";
-import HeroFive from "./(hero)/hero-five";
-import HeroSix from "./(hero)/hero-six";
+import HeroThirty from "@/components/(hero)/hero-thrity";
+import HeroTwentyTwo from "@/components/(hero)/hero-tweent-two";
+import HeroTwentyOne from "@/components/(hero)/hero-tweenty";
+import HeroTwelve from "@/components/(hero)/hero-twelve";
+import HeroTwentyEight from "@/components/(hero)/hero-twenty-eight";
+import HeroTwentyFive from "@/components/(hero)/hero-twenty-five";
+import HeroTwentyFour from "@/components/(hero)/hero-twenty-four";
+import HeroTwentyNine from "@/components/(hero)/hero-twenty-nine";
+import HeroTwentySeven from "@/components/(hero)/hero-twenty-seven";
+import HeroTwentySix from "@/components/(hero)/hero-twenty-six";
+import HeroTwentyThree from "@/components/(hero)/hero-twenty-three";
+import HeroTwo from "@/components/(hero)/hero-two";
+import dynamic from "next/dynamic";
 import {
   EIGHT,
   EIGHTEEN,
@@ -38,37 +68,7 @@ import {
   TWENTY_SIX,
   TWENTY_THREE,
   TWENTY_TWO,
-} from "../consts";
-import HeroSeven from "./(hero)/hero-seven";
-import HeroEight from "./(hero)/hero-eight";
-import HeroNine from "./(hero)/hero-nine";
-import HeroTen from "./(hero)/hero-ten";
-import HeroEleven from "./(hero)/hero-eleven";
-import HeroTwelve from "./(hero)/hero-twelve";
-import HeroThirteen from "./(hero)/hero-thirteen";
-import HeroFourteen from "./(hero)/hero-fourteen";
-import HeroSixteen from "./(hero)/hero-sixteen";
-import HeroSeventeen from "./(hero)/hero-seventeen";
-import HeroEighteen from "./(hero)/hero-eighteen";
-import HeroNineteen from "./(hero)/hero-nineteen";
-import HeroTwentyOne from "./(hero)/hero-tweenty";
-import HeroTwentyTwo from "./(hero)/hero-tweent-two";
-import HeroTwentyThree from "./(hero)/hero-twenty-three";
-import HeroTwentyFour from "./(hero)/hero-twenty-four";
-import HeroTwentyFive from "./(hero)/hero-twenty-five";
-import HeroTwentySix from "./(hero)/hero-twenty-six";
-import HeroTwentySeven from "./(hero)/hero-twenty-seven";
-import HeroTwentyEight from "./(hero)/hero-twenty-eight";
-import HeroTwentyNine from "./(hero)/hero-twenty-nine";
-import HeroThirty from "./(hero)/hero-thrity";
-import HeroThirtyOne from "./(hero)/hero-thirty-one";
-import HeroThirtyThree from "./(hero)/hero-thirty-three";
-import HeroThirtyFour from "./(hero)/hero-thirty-four";
-import HeroThirtyFive from "./(hero)/hero-thirty-five";
-import HeroThirtySix from "./(hero)/hero-thirty-six";
-import HeroThirtySeven from "./(hero)/hero-thirty-seven";
-import HeroThirtyEight from "./(hero)/hero-thirty-eight";
-import HeroThirtyNine from "./(hero)/hero-thirty-nine";
+} from "@/app/consts";
 
 const DynamicHeroDefault = dynamic(
   () => import("@/components/(hero)/hero-default"),
@@ -84,7 +84,6 @@ const DynamicHeroOne = dynamic(() => import("@/components/(hero)/hero-one"), {
 });
 
 const Hero = ({ slider, theme, design }: any) => {
-  console.log(design, "slider");
   return (
     <>
       {theme === "one" && <DynamicHeroOne slider={slider} />}
@@ -154,7 +153,7 @@ const Hero = ({ slider, theme, design }: any) => {
       {theme === THIRTY_EIGHT && (
         <HeroThirtyEight slider={slider} design={design} />
       )}
-        {theme === THIRTY_NINE && (
+      {theme === THIRTY_NINE && (
         <HeroThirtyNine slider={slider} design={design} />
       )}
       {theme === "default" && <DynamicHeroDefault slider={slider} />}

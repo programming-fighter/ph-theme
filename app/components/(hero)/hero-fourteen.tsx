@@ -22,7 +22,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { sliderImg } from "@/app/site-settings/siteUrl";
 
 const HeroFourteen = ({ slider, design }: any) => {
-  console.log(design, "d");
   let menu = [""];
 
   const nextEl = "hero-slider-next";
