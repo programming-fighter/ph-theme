@@ -75,8 +75,9 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     feature_product,
     testimonials,
     design,
+    store_id,
   } = data;
-  console.log(design.feature_category);
+  console.log(store_id, "store_id");
 
   switch (component) {
     case "header":
@@ -97,6 +98,8 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           theme={design?.feature_category}
           category={category}
           design={design}
+          product={product}
+          store_id={data.store_id}
         />
       );
     case "banner":
