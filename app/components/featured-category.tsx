@@ -1,10 +1,14 @@
 "use client";
+import dynamic from "next/dynamic";
 import DefaultFeaturedCategory from "@/components/(featured-category)/featured-default";
 import FeaturedOne from "./(featured-category)/featuredcat-one";
 import FeaturedTwo from "./(featured-category)/featuredcat-two";
 import FeaturedThree from "./(featured-category)/featuredcat-three";
 import FeaturedFour from "./(featured-category)/featuredcat-four";
-
+import FeaturedSix from "./(featured-category)/featuredcat-six";
+// const DynamicFeaturedSix = dynamic(
+//   () => import("./(featured-category)/featuredcat-six")
+// );
 const FeaturedCategory = ({
   theme,
   category,
@@ -26,6 +30,7 @@ const FeaturedCategory = ({
         />
       )}
       {theme === "four" && <FeaturedFour category={category} design={design} />}
+      {theme === "six" && <FeaturedSix design={design} category={category} />}
     </>
   );
 };
