@@ -3,6 +3,7 @@ import DefaultFeaturedCategory from "@/components/(featured-category)/featured-d
 import FeaturedOne from "./(featured-category)/featuredcat-one";
 import FeaturedTwo from "./(featured-category)/featuredcat-two";
 import FeaturedThree from "./(featured-category)/featuredcat-three";
+import FeaturedFour from "./(featured-category)/featuredcat-four";
 
 const FeaturedCategory = ({
   theme,
@@ -11,7 +12,6 @@ const FeaturedCategory = ({
   store_id,
   product,
 }: any) => {
-  console.log(theme, "theme from featured category");
   return (
     <>
       {theme === "default" && <DefaultFeaturedCategory category={category} />}
@@ -25,6 +25,7 @@ const FeaturedCategory = ({
           product={product}
         />
       )}
+      {theme === "four" && <FeaturedFour category={category} design={design} />}
     </>
   );
 };
