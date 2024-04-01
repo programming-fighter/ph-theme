@@ -13,6 +13,7 @@ const FeaturedSeventeen = ({ category }: any) => {
   return (
     <div className=''>
       <div className='relative z-0 md:max-h-[500px] overflow-hidden'>
+        {/* yet to implement */}
         {/* <ParallaxProvider>
           <ParallaxBanner className='aspect-[2/1] bg-[#ff7380] w-full'>
             <ParallaxBannerLayer
