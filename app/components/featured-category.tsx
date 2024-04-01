@@ -10,8 +10,9 @@ import FeaturedSeven from "./(featured-category)/featuredcat-seven";
 import FeaturedEight from "./(featured-category)/featurecat-eight";
 import FeaturedEleven from "./(featured-category)/featuredcat-eleven";
 import FeaturedTwelve from "./(featured-category)/featuredcat-twelve";
-import { TWELVE } from "../consts";
+import { SEVENTEEN, TWELVE } from "../consts";
 import FeaturedSixteen from "./(featured-category)/featuredcat-sixteen";
+import FeaturedSeventeen from "./(featured-category)/featuredcat-seventeen";
 // const DynamicFeaturedSix = dynamic(
 //   () => import("./(featured-category)/featuredcat-six")
 // );
@@ -54,6 +55,9 @@ const FeaturedCategory = ({
 
       {theme === "sixteen" && (
         <FeaturedSixteen category={category} design={design} />
+      )}
+      {theme === SEVENTEEN && (
+        <FeaturedSeventeen category={category} design={design} />
       )}
     </>
   );

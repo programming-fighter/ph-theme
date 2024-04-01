@@ -77,7 +77,6 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     design,
     store_id,
   } = data;
-  console.log(store_id, "store_id");
 
   switch (component) {
     case "header":

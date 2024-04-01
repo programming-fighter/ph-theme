@@ -45,7 +45,6 @@ const Card24 = ({ item, design, store_id }: any) => {
     color:${design?.text_color};
 }
 `;
-  // console.log(item)
 
   return (
     <>
@@ -104,7 +103,7 @@ const Card24 = ({ item, design, store_id }: any) => {
                 <Rate rating={item?.rating} />
                 <div className='flex gap-4 xl:gap-4 md:gap-4 lg:gap-4'>
                   <div className='text-base font-semibold'>
-                    <Taka />{" "}
+                    <Taka />
                     {/* {camp?.status === "active" ? campPrice : productGetPrice} */}
                   </div>
                   {/* <div className='line-through text-gray-400'>
