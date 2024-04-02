@@ -18,6 +18,7 @@ import {
   THIRTY,
   THIRTY_EIGHT,
   THIRTY_FIVE,
+  THIRTY_NINE,
   THIRTY_ONE,
   THIRTY_SEVEN,
   THIRTY_SIX,
@@ -48,6 +49,7 @@ import FeaturedThirtyFive from "./(featured-category)/featuredcat-thirtyfive";
 import FeaturedThirtySix from "./(featured-category)/featuredcat-thirtysix";
 import FeaturedThirtySeven from "./(featured-category)/featuredcat-thirtyseven";
 import FeaturedThirtyEight from "./(featured-category)/featuredcat-thirtyeight";
+import FeaturedThirtyNine from "./(featured-category)/featuredcat-thirtynine";
 
 const FeaturedCategory = ({
   theme,
@@ -134,6 +136,9 @@ const FeaturedCategory = ({
       )}
       {theme === THIRTY_EIGHT && (
         <FeaturedThirtyEight category={category} design={design} />
+      )}
+      {theme === THIRTY_NINE && (
+        <FeaturedThirtyNine category={category} design={design} />
       )}
     </>
   );
