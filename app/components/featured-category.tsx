@@ -50,6 +50,7 @@ import FeaturedThirtySix from "./(featured-category)/featuredcat-thirtysix";
 import FeaturedThirtySeven from "./(featured-category)/featuredcat-thirtyseven";
 import FeaturedThirtyEight from "./(featured-category)/featuredcat-thirtyeight";
 import FeaturedThirtyNine from "./(featured-category)/featuredcat-thirtynine";
+import FeaturedForty from "./(featured-category)/featured-forty";
 
 const FeaturedCategory = ({
   theme,
@@ -140,6 +141,7 @@ const FeaturedCategory = ({
       {theme === THIRTY_NINE && (
         <FeaturedThirtyNine category={category} design={design} />
       )}
+      {theme === "forty" && <FeaturedForty category={category} />}
     </>
   );
 };
