@@ -20,7 +20,7 @@ export default FeaturedTwenty;
 
 const Card = ({ item }: any) => {
   return (
-    <>
+    <div>
       <Link href={"/category/" + item.id}>
         <div className=''>
           <div className=' h-full overflow-hidden '>
@@ -38,6 +38,6 @@ const Card = ({ item }: any) => {
           </div>
         </div>
       </Link>
-    </>
+    </div>
   );
 };
