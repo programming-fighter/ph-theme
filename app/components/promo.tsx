@@ -14,9 +14,16 @@ import {
   ELEVEN,
   FOURTEEN,
   NINE,
+  NINETEEN,
   SIXTEEN,
   THIRTEEN,
   TWELVE,
+  TWENTY,
+  TWENTY_FIVE,
+  TWENTY_FOUR,
+  TWENTY_ONE,
+  TWENTY_THREE,
+  TWENTY_TWO,
 } from "../consts";
 import PromoEight from "./(promotions)/promo-eight";
 import PromoNine from "./(promotions)/promo-nine";
@@ -26,8 +33,15 @@ import PromoThirteen from "./(promotions)/promo-thirteen";
 import PromoFourteen from "./(promotions)/promo-fourteen";
 import PromoSixteen from "./(promotions)/promo-sixteen";
 import PromoEighteen from "./(promotions)/promo-eighteen";
+import PromoNineteen from "./(promotions)/promo-nineteen";
+import PromoTwenty from "./(promotions)/promo-twenty";
+import PromoTwentyOne from "./(promotions)/promo-tweentyone";
+import PromoTwentyTwo from "./(promotions)/promo-twentytwo";
+import PromoTwentyThree from "./(promotions)/promo-twentythree";
+import PromoTwentyFour from "./(promotions)/promo-twentyfour";
+import PromoTwentyFive from "./(promotions)/promo-twentyfive";
 
-const Promo = ({ banner, theme, design }: any) => {
+const Promo = ({ banner, theme, design, store_id }: any) => {
   return (
     <>
       {theme === "default" && <DefaultPromo banner={banner} />}
@@ -47,6 +61,15 @@ const Promo = ({ banner, theme, design }: any) => {
       {theme === FOURTEEN && <PromoFourteen banner={banner} />}
       {theme === SIXTEEN && <PromoSixteen banner={banner} />}
       {theme === EIGHTEEN && <PromoEighteen banner={banner} />}
+      {theme === NINETEEN && <PromoNineteen banner={banner} />}
+      {theme === TWENTY && <PromoTwenty banner={banner} />}
+      {theme === TWENTY_ONE && <PromoTwentyOne banner={banner} />}
+      {theme === TWENTY_TWO && <PromoTwentyTwo banner={banner} />}
+      {theme === TWENTY_THREE && <PromoTwentyThree banner={banner} />}
+      {theme === TWENTY_FOUR && <PromoTwentyFour banner={banner} />}
+      {theme === TWENTY_FIVE && (
+        <PromoTwentyFive store_id={store_id} banner={banner} />
+      )}
     </>
   );
 };

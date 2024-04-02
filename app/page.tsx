@@ -9,7 +9,6 @@ import NewArrival from "@/components/new-arrival";
 import BestSellerProduct from "@/components/best-seller-product";
 import FeatureProduct from "@/components/feature-product";
 import Testimonial from "@/components/testimonial";
-import { usePathname } from "next/navigation";
 
 interface Navigation {
   name: string;
@@ -98,11 +97,18 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           category={category}
           design={design}
           product={product}
-          store_id={data.store_id}
+          store_id={store_id}
         />
       );
     case "banner":
-      return <Promo design={design} theme={design?.banner} banner={banner} />;
+      return (
+        <Promo
+          design={design}
+          store_id={store_id}
+          theme={design?.banner}
+          banner={banner}
+        />
+      );
     case "banner_bottom":
       return <PromoBottom banner={banner} />;
     case "product":
