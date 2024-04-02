@@ -16,8 +16,10 @@ import {
   SEVENTEEN,
   TWELVE,
   TWENTY,
+  TWENTY_EIGHT,
   TWENTY_FIVE,
   TWENTY_ONE,
+  TWENTY_SEVEN,
   TWENTY_THREE,
 } from "../consts";
 import FeaturedSixteen from "./(featured-category)/featuredcat-sixteen";
@@ -28,6 +30,9 @@ import FeaturedTwenty from "./(featured-category)/featuredcat-twenty";
 import FeaturedTwentyOne from "./(featured-category)/featuredcat-twentyone";
 import FeaturedTwentyThree from "./(featured-category)/featuredcat-twentythree";
 import FeaturedTwentyFive from "./(featured-category)/featuredcat-twentyfive";
+import FeaturedTwentySix from "./(featured-category)/featuredcat-twentysix";
+import FeaturedTwentySeven from "./(featured-category)/featuredcat-twentyseven";
+import FeaturedTwentyEight from "./(featured-category)/featuredcat-twenty-eight";
 
 const FeaturedCategory = ({
   theme,
@@ -81,6 +86,16 @@ const FeaturedCategory = ({
       {theme === TWENTY_THREE && <FeaturedTwentyThree category={category} />}
       {theme === TWENTY_FIVE && (
         <FeaturedTwentyFive category={category} design={design} />
+      )}
+      {theme === TWENTY_SEVEN && (
+        <FeaturedTwentySeven
+          category={category}
+          product={product}
+          design={design}
+        />
+      )}
+      {theme === TWENTY_EIGHT && (
+        <FeaturedTwentyEight category={category} design={design} />
       )}
     </>
   );
