@@ -10,11 +10,12 @@ import FeaturedSeven from "./(featured-category)/featuredcat-seven";
 import FeaturedEight from "./(featured-category)/featurecat-eight";
 import FeaturedEleven from "./(featured-category)/featuredcat-eleven";
 import FeaturedTwelve from "./(featured-category)/featuredcat-twelve";
-import { EIGHTEEN, NINETEEN, SEVENTEEN, TWELVE } from "../consts";
+import { EIGHTEEN, NINETEEN, SEVENTEEN, TWELVE, TWENTY } from "../consts";
 import FeaturedSixteen from "./(featured-category)/featuredcat-sixteen";
 import FeaturedSeventeen from "./(featured-category)/featuredcat-seventeen";
 import FeaturedEighteen from "./(featured-category)/featuredcat-eighteen";
 import FeaturedNineteen from "./(featured-category)/featuredcat-nineteen";
+import FeaturedTwenty from "./(featured-category)/featuredcat-twenty";
 
 const FeaturedCategory = ({
   theme,
@@ -63,6 +64,7 @@ const FeaturedCategory = ({
         <FeaturedEighteen category={category} design={design} />
       )}
       {theme === NINETEEN && <FeaturedNineteen category={category} />}
+      {theme === TWENTY && <FeaturedTwenty category={category} />}
     </>
   );
 };
