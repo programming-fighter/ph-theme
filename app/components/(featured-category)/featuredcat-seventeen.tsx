@@ -1,11 +1,17 @@
 "use client";
 import image from "../(featured-category)/seventeen-bg-img/show_divider_1_104x62.webp";
 import img2 from "../(featured-category)/seventeen-bg-img/border.webp";
+import img1 from "../(featured-category)/seventeen-bg-img/icon_wrapper_bg_1.webp";
 import "./featuredcat-seventeen.css";
 import Link from "next/link";
 import { catImg, iconImg } from "@/app/site-settings/siteUrl";
 import SectionHeadingSeventeen from "../(section-heading)/section-heading-seventeen";
 import Image from "next/image";
+import {
+  ParallaxBanner,
+  ParallaxBannerLayer,
+  ParallaxProvider,
+} from "react-scroll-parallax";
 
 const FeaturedSeventeen = ({ category }: any) => {
   const cat = category.filter((item: any) => item?.cat !== null);
@@ -14,7 +20,7 @@ const FeaturedSeventeen = ({ category }: any) => {
     <div className=''>
       <div className='relative z-0 md:max-h-[500px] overflow-hidden'>
         {/* yet to implement */}
-        {/* <ParallaxProvider>
+        <ParallaxProvider>
           <ParallaxBanner className='aspect-[2/1] bg-[#ff7380] w-full'>
             <ParallaxBannerLayer
               image={img1}
@@ -26,7 +32,7 @@ const FeaturedSeventeen = ({ category }: any) => {
               }}
             />
           </ParallaxBanner>
-        </ParallaxProvider> */}
+        </ParallaxProvider>
 
         <div className='absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-[1] grid grid-cols-3 justify-between items-center sm:container px-5 xl:px-80 mx-auto'>
           {category?.slice(0, 3).map((cat: any) => (
