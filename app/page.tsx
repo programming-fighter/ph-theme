@@ -102,7 +102,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
         />
       );
     case "banner":
-      return <Promo banner={banner} />;
+      return <Promo theme={design?.banner} banner={banner} />;
     case "banner_bottom":
       return <PromoBottom banner={banner} />;
     case "product":
