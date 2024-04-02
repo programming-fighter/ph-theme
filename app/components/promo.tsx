@@ -17,10 +17,16 @@ import {
   NINETEEN,
   SIXTEEN,
   THIRTEEN,
+  THIRTY,
+  THIRTY_FOUR,
+  THIRTY_ONE,
+  THIRTY_THREE,
   TWELVE,
   TWENTY,
+  TWENTY_EIGHT,
   TWENTY_FIVE,
   TWENTY_FOUR,
+  TWENTY_NINE,
   TWENTY_ONE,
   TWENTY_SEVEN,
   TWENTY_SIX,
@@ -44,6 +50,12 @@ import PromoTwentyFour from "./(promotions)/promo-twentyfour";
 import PromoTwentyFive from "./(promotions)/promo-twentyfive";
 import PromoTwentySix from "./(promotions)/promo-twentysix";
 import PromoTwentySeven from "./(promotions)/promo-twentyseven";
+import PromoTwentyEight from "./(promotions)/promo-twenty-eight";
+import PromoTwentyNine from "./(promotions)/promo-twentynine";
+import PromoThirty from "./(promotions)/promo-thirty";
+import PromoThirtyOne from "./(promotions)/promo-thirtyone";
+import PromoThirtyThree from "./(promotions)/promo-thirtythree";
+import PromoThirtyFour from "./(promotions)/promo-thirtyfour";
 
 const Promo = ({ banner, theme, design, store_id }: any) => {
   return (
@@ -76,6 +88,12 @@ const Promo = ({ banner, theme, design, store_id }: any) => {
       )}
       {theme === TWENTY_SIX && <PromoTwentySix banner={banner} />}
       {theme === TWENTY_SEVEN && <PromoTwentySeven banner={banner} />}
+      {theme === TWENTY_EIGHT && <PromoTwentyEight banner={banner} />}
+      {theme === TWENTY_NINE && <PromoTwentyNine banner={banner} />}
+      {theme === THIRTY && <PromoThirty banner={banner} />}
+      {theme === THIRTY_ONE && <PromoThirtyOne banner={banner} />}
+      {theme === THIRTY_THREE && <PromoThirtyThree banner={banner} />}
+      {theme === THIRTY_FOUR && <PromoThirtyFour banner={banner} />}
     </>
   );
 };
