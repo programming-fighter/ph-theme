@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Link from "next/link";
 import { catImg } from "@/app/site-settings/siteUrl";
-import ScrollTrigger from "react-scroll-trigger";
+import "./featuredcat-thirtynine";
 
 const FeaturedThirtyNine = ({ category, design }: any) => {
   const [animate, setAnimate] = useState(false);
@@ -28,19 +28,16 @@ const FeaturedThirtyNine = ({ category, design }: any) => {
     <div className=''>
       <div className='sm:container px-5 sm:py-10 py-5 relative'>
         <style>{styleCss}</style>
-        <>
-          <ScrollTrigger onEnter={() => setAnimate(true)}>
-            <div
-              className={`${
-                animate ? "translate-y-0" : "translate-y-[200px]"
-              } duration-1000 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-5 justify-center rounded-md`}
-            >
-              {category?.map((item: any, id: number) => (
-                <Card key={id} item={item} />
-              ))}
-            </div>
-          </ScrollTrigger>
-        </>
+
+        <div
+          className={`${
+            animate ? "translate-y-0" : "translate-y-[200px]"
+          } duration-1000 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-5 justify-center rounded-md`}
+        >
+          {category?.map((item: any, id: number) => (
+            <Card key={id} item={item} />
+          ))}
+        </div>
       </div>
     </div>
   );
