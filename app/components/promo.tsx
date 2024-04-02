@@ -8,11 +8,24 @@ import PromoFive from "./(promotions)/promo-five";
 import PromoSix from "./(promotions)/promo-six";
 import PromoSeven from "./(promotions)/promo-seven";
 import PromoTen from "./(promotions)/promo-ten";
-import { EIGHT, ELEVEN, NINE, TWELVE } from "../consts";
+import {
+  EIGHT,
+  EIGHTEEN,
+  ELEVEN,
+  FOURTEEN,
+  NINE,
+  SIXTEEN,
+  THIRTEEN,
+  TWELVE,
+} from "../consts";
 import PromoEight from "./(promotions)/promo-eight";
 import PromoNine from "./(promotions)/promo-nine";
 import PromoEleven from "./(promotions)/promo-eleven";
 import PromoTwelve from "./(promotions)/promo-twelve";
+import PromoThirteen from "./(promotions)/promo-thirteen";
+import PromoFourteen from "./(promotions)/promo-fourteen";
+import PromoSixteen from "./(promotions)/promo-sixteen";
+import PromoEighteen from "./(promotions)/promo-eighteen";
 
 const Promo = ({ banner, theme, design }: any) => {
   return (
@@ -30,6 +43,10 @@ const Promo = ({ banner, theme, design }: any) => {
       {theme === "ten" && <PromoTen banner={banner} />}
       {theme === ELEVEN && <PromoEleven design={design} banner={banner} />}
       {theme === TWELVE && <PromoTwelve banner={banner} />}
+      {theme === THIRTEEN && <PromoThirteen banner={banner} />}
+      {theme === FOURTEEN && <PromoFourteen banner={banner} />}
+      {theme === SIXTEEN && <PromoSixteen banner={banner} />}
+      {theme === EIGHTEEN && <PromoEighteen banner={banner} />}
     </>
   );
 };
