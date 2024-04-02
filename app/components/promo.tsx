@@ -22,6 +22,8 @@ import {
   TWENTY_FIVE,
   TWENTY_FOUR,
   TWENTY_ONE,
+  TWENTY_SEVEN,
+  TWENTY_SIX,
   TWENTY_THREE,
   TWENTY_TWO,
 } from "../consts";
@@ -40,6 +42,8 @@ import PromoTwentyTwo from "./(promotions)/promo-twentytwo";
 import PromoTwentyThree from "./(promotions)/promo-twentythree";
 import PromoTwentyFour from "./(promotions)/promo-twentyfour";
 import PromoTwentyFive from "./(promotions)/promo-twentyfive";
+import PromoTwentySix from "./(promotions)/promo-twentysix";
+import PromoTwentySeven from "./(promotions)/promo-twentyseven";
 
 const Promo = ({ banner, theme, design, store_id }: any) => {
   return (
@@ -70,6 +74,8 @@ const Promo = ({ banner, theme, design, store_id }: any) => {
       {theme === TWENTY_FIVE && (
         <PromoTwentyFive store_id={store_id} banner={banner} />
       )}
+      {theme === TWENTY_SIX && <PromoTwentySix banner={banner} />}
+      {theme === TWENTY_SEVEN && <PromoTwentySeven banner={banner} />}
     </>
   );
 };
