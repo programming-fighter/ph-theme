@@ -12,9 +12,10 @@ import NewArrivalProductSeven from "@/components/(new-arrival)/new-arrival-produ
 import NewArrivalProductFive from "./(new-arrival)/new-arrival-product-five";
 import NewArrivalProductSix from "./(new-arrival)/new-arrival-product-six";
 import NewArrivalProductsEight from "./(new-arrival)/new-arrival-product-eight";
-import { NINE, TEN } from "../consts";
+import { NINE, TEN, TWELVE } from "../consts";
 import NewArrivalProductNine from "./(new-arrival)/new-arrival-product-nine";
 import NewArrivalProductTen from "./(new-arrival)/new-arrival-product-ten";
+import NewArrivalProductTwelve from "./(new-arrival)/new-arrival-product-twelve";
 
 const NewArrival = ({ product, theme, design, store_id, category }: any) => {
   console.log(theme, "new arrival");
@@ -44,6 +45,13 @@ const NewArrival = ({ product, theme, design, store_id, category }: any) => {
       {theme === TEN && (
         <NewArrivalProductTen
           category={category}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === TWELVE && (
+        <NewArrivalProductTwelve
+          product={product}
           design={design}
           store_id={store_id}
         />
