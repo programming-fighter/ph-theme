@@ -8,8 +8,8 @@ const FeaturedTwenty = ({ category }: any) => {
     <div className='sm:container px-5 sm:py-10 py-5 relative group'>
       <SectionHeadingEighteen title={"Featured Categories"} subtitle={""} />
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-        {category.slice(0, 3).map((productData: any) => (
-          <Card item={productData} />
+        {category.slice(0, 3).map((productData: any, index: number) => (
+          <Card key={index} item={productData} />
         ))}
       </div>
     </div>

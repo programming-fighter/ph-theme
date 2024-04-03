@@ -112,7 +112,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     case "banner_bottom":
       return <PromoBottom banner={banner} />;
     case "product":
-      return <Product product={product} />;
+      return <Product theme={design?.product} product={product} />;
     case "new_arrival":
       return <NewArrival product={product} />;
     case "best_seller_product":

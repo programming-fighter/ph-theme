@@ -8,8 +8,13 @@ const PromoThree = ({ banner }: any) => {
   return (
     <div className='sm:py-10 py-5 sm:container px-5 xl:-mt-24'>
       <div className='grid xl:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-6 '>
-        {banner.slice(0, 3).map((ban: any) => (
-          <a href={ban?.link} target='_blank' rel='noopener noreferrer'>
+        {banner.slice(0, 3).map((ban: any, index: any) => (
+          <a
+            href={ban?.link}
+            target='_blank'
+            key={index}
+            rel='noopener noreferrer'
+          >
             <div
               key={ban.id}
               className='relative overflow-hidden shine-three shine-three-one'

@@ -54,8 +54,8 @@ const FeaturedTwentySeven = ({ category, design, product }: any) => {
         </div>
 
         <div className='bg-white flex flex-wrap justify-around lg:rounded-full rounded-md py-2 shadow-2xl xl:mx-40 mx-0 px-5 mb-14'>
-          {category?.slice(0, 5).map((item: any) => (
-            <div className='' key={item?.id}>
+          {category?.slice(0, 5).map((item: any, index: number) => (
+            <div className='' key={index}>
               <FeatureCatSix item={item} setCatId={setCatId} catId={catId} />
             </div>
           ))}
@@ -65,7 +65,7 @@ const FeaturedTwentySeven = ({ category, design, product }: any) => {
           {result?.cat !== null ? (
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
               {result?.cat?.map((sub: any, id: any) => (
-                <Link href={`/category/${sub.id}`}>
+                <Link key={sub.id} href={`/category/${sub.id}`}>
                   <div className='bg-white h-72 mt-5 rounded-xl relative'>
                     <p className='text-2xl font-medium pt-40 pl-5'>
                       {sub?.name}

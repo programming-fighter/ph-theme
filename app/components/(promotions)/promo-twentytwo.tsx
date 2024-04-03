@@ -6,8 +6,8 @@ import { bannerImg } from "@/app/site-settings/siteUrl";
 const PromoTwentyTwo = ({ banner }: any) => {
   return (
     <div className='sm:container px-5 sm:py-10 py-5'>
-      {banner.slice(0, 1).map((item: any) => (
-        <div className='relative group mt-5'>
+      {banner.slice(0, 1).map((item: any, index: number) => (
+        <div className='relative group mt-5' key={index}>
           <img
             className='h-auto w-[100%]'
             src={bannerImg + item.image}
@@ -33,8 +33,8 @@ const PromoTwentyTwo = ({ banner }: any) => {
           </div>
         </div>
       ))}
-      {banner.slice(1, 2).map((item: any) => (
-        <div className='relative group mt-5'>
+      {banner.slice(1, 2).map((item: any, index: number) => (
+        <div className='relative group mt-5' key={index}>
           <img
             className='h-auto w-[100%]'
             src={bannerImg + item.image}
