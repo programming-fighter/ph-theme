@@ -88,7 +88,7 @@ const NewArrivalProductNine = ({ product, design }: any) => {
           }}
           className='mySwiper'
         >
-          {product.map((productData: any) => (
+          {product?.map((productData: any) => (
             <SwiperSlide key={productData.id}>
               <Card item={productData} />
             </SwiperSlide>

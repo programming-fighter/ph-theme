@@ -121,6 +121,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           theme={design?.new_arrival}
           design={design}
           store_id={store_id}
+          category={category}
         />
       );
     case "best_seller_product":

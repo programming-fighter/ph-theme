@@ -12,10 +12,11 @@ import NewArrivalProductSeven from "@/components/(new-arrival)/new-arrival-produ
 import NewArrivalProductFive from "./(new-arrival)/new-arrival-product-five";
 import NewArrivalProductSix from "./(new-arrival)/new-arrival-product-six";
 import NewArrivalProductsEight from "./(new-arrival)/new-arrival-product-eight";
-import { NINE } from "../consts";
+import { NINE, TEN } from "../consts";
 import NewArrivalProductNine from "./(new-arrival)/new-arrival-product-nine";
+import NewArrivalProductTen from "./(new-arrival)/new-arrival-product-ten";
 
-const NewArrival = ({ product, theme, design, store_id }: any) => {
+const NewArrival = ({ product, theme, design, store_id, category }: any) => {
   console.log(theme, "new arrival");
   return (
     <>
@@ -39,6 +40,13 @@ const NewArrival = ({ product, theme, design, store_id }: any) => {
       )}
       {theme === NINE && (
         <NewArrivalProductNineDynamic product={product} design={design} />
+      )}
+      {theme === TEN && (
+        <NewArrivalProductTen
+          category={category}
+          design={design}
+          store_id={store_id}
+        />
       )}
     </>
   );
