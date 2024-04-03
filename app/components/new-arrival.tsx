@@ -1,9 +1,19 @@
 import React from "react";
+import dynamic from "next/dynamic";
+const NewArrivalProductNineDynamic = dynamic(
+  () => import("@/components/(new-arrival)/new-arrival-product-nine"),
+  {
+    ssr: false,
+    loading: NewArrivalProductNine,
+  }
+);
 
 import NewArrivalProductSeven from "@/components/(new-arrival)/new-arrival-product-seven";
 import NewArrivalProductFive from "./(new-arrival)/new-arrival-product-five";
 import NewArrivalProductSix from "./(new-arrival)/new-arrival-product-six";
 import NewArrivalProductsEight from "./(new-arrival)/new-arrival-product-eight";
+import { NINE } from "../consts";
+import NewArrivalProductNine from "./(new-arrival)/new-arrival-product-nine";
 
 const NewArrival = ({ product, theme, design, store_id }: any) => {
   console.log(theme, "new arrival");
@@ -26,6 +36,9 @@ const NewArrival = ({ product, theme, design, store_id }: any) => {
       )}
       {theme === "eight" && (
         <NewArrivalProductsEight product={product} design={design} />
+      )}
+      {theme === NINE && (
+        <NewArrivalProductNineDynamic product={product} design={design} />
       )}
     </>
   );
