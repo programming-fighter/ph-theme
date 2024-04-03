@@ -3,6 +3,7 @@ import React from "react";
 import NewArrivalProductSeven from "@/components/(new-arrival)/new-arrival-product-seven";
 import NewArrivalProductFive from "./(new-arrival)/new-arrival-product-five";
 import NewArrivalProductSix from "./(new-arrival)/new-arrival-product-six";
+import NewArrivalProductsEight from "./(new-arrival)/new-arrival-product-eight";
 
 const NewArrival = ({ product, theme, design, store_id }: any) => {
   console.log(theme, "new arrival");
@@ -20,7 +21,12 @@ const NewArrival = ({ product, theme, design, store_id }: any) => {
           store_id={store_id}
         />
       )}
-      {theme === "seven" && <NewArrivalProductSeven product={product} />}
+      {theme === "seven" && (
+        <NewArrivalProductSeven product={product} store_id={store_id} />
+      )}
+      {theme === "eight" && (
+        <NewArrivalProductsEight product={product} design={design} />
+      )}
     </>
   );
 };
