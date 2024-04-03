@@ -16,6 +16,8 @@ import { NINE, TEN, TWELVE } from "../consts";
 import NewArrivalProductNine from "./(new-arrival)/new-arrival-product-nine";
 import NewArrivalProductTen from "./(new-arrival)/new-arrival-product-ten";
 import NewArrivalProductTwelve from "./(new-arrival)/new-arrival-product-twelve";
+import NewArrivalProductThirteen from "./(new-arrival)/new-arrival-product-thirteen";
+import NewArrivalProductThirteeen from "./(new-arrival)/new-arrival-product-thirteen";
 
 const NewArrival = ({ product, theme, design, store_id, category }: any) => {
   console.log(theme, "new arrival");
@@ -51,6 +53,13 @@ const NewArrival = ({ product, theme, design, store_id, category }: any) => {
       )}
       {theme === TWELVE && (
         <NewArrivalProductTwelve
+          product={product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === "thirteen" && (
+        <NewArrivalProductThirteeen
           product={product}
           design={design}
           store_id={store_id}
