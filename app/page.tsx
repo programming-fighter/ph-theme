@@ -47,6 +47,7 @@ export default async function Home() {
   );
 
   const { layout, design } = res.data;
+  console.log(res.data);
 
   return (
     <div
@@ -114,7 +115,14 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     case "product":
       return <Product theme={design?.product} product={product} />;
     case "new_arrival":
-      return <NewArrival product={product} />;
+      return (
+        <NewArrival
+          product={product}
+          theme={design?.new_arrival}
+          design={design}
+          store_id={store_id}
+        />
+      );
     case "best_seller_product":
       return <BestSellerProduct best_sell_product={best_sell_product} />;
     case "feature_product":
