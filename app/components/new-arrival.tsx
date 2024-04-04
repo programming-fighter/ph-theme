@@ -8,7 +8,15 @@ const NewArrivalProductNineDynamic = dynamic(
 );
 
 import NewArrivalProductSeven from "@/components/(new-arrival)/new-arrival-product-seven";
-import { FOURTEEN, NINE, SEVENTEEN, TEN, TWELVE, TWENTY_TWO } from "../consts";
+import {
+  FOURTEEN,
+  NINE,
+  SEVENTEEN,
+  TEN,
+  TWELVE,
+  TWENTY_THREE,
+  TWENTY_TWO,
+} from "../consts";
 import NewArrivalProductsEight from "./(new-arrival)/new-arrival-product-eight";
 import NewArrivalProductFive from "./(new-arrival)/new-arrival-product-five";
 import NewArrivalProductFourteen from "./(new-arrival)/new-arrival-product-fourteen";
@@ -19,6 +27,7 @@ import NewArrivalProductTen from "./(new-arrival)/new-arrival-product-ten";
 import NewArrivalProductThirteeen from "./(new-arrival)/new-arrival-product-thirteen";
 import NewArrivalProductTwelve from "./(new-arrival)/new-arrival-product-twelve";
 import NewArrivalProductTwentyTwo from "./(new-arrival)/new-arrival-product-twentytwo";
+import NewArrivalProductTwentyThree from "./(new-arrival)/new-arrival-product-twentythree";
 
 const NewArrival = ({ product, theme, design, store_id, category }: any) => {
   console.log(theme, "new arrival");
@@ -82,6 +91,14 @@ const NewArrival = ({ product, theme, design, store_id, category }: any) => {
       )}
       {theme === TWENTY_TWO && (
         <NewArrivalProductTwentyTwo product={product} store_id={store_id} />
+      )}
+
+      {theme === TWENTY_THREE && (
+        <NewArrivalProductTwentyThree
+          product={product}
+          store_id={store_id}
+          design={design}
+        />
       )}
     </>
   );
