@@ -1,4 +1,3 @@
-import React from "react";
 import dynamic from "next/dynamic";
 const NewArrivalProductNineDynamic = dynamic(
   () => import("@/components/(new-arrival)/new-arrival-product-nine"),
@@ -9,16 +8,16 @@ const NewArrivalProductNineDynamic = dynamic(
 );
 
 import NewArrivalProductSeven from "@/components/(new-arrival)/new-arrival-product-seven";
-import NewArrivalProductFive from "./(new-arrival)/new-arrival-product-five";
-import NewArrivalProductSix from "./(new-arrival)/new-arrival-product-six";
+import { FOURTEEN, NINE, SEVENTEEN, TEN, TWELVE } from "../consts";
 import NewArrivalProductsEight from "./(new-arrival)/new-arrival-product-eight";
-import { FOURTEEN, NINE, TEN, TWELVE } from "../consts";
-import NewArrivalProductNine from "./(new-arrival)/new-arrival-product-nine";
-import NewArrivalProductTen from "./(new-arrival)/new-arrival-product-ten";
-import NewArrivalProductTwelve from "./(new-arrival)/new-arrival-product-twelve";
-import NewArrivalProductThirteen from "./(new-arrival)/new-arrival-product-thirteen";
-import NewArrivalProductThirteeen from "./(new-arrival)/new-arrival-product-thirteen";
+import NewArrivalProductFive from "./(new-arrival)/new-arrival-product-five";
 import NewArrivalProductFourteen from "./(new-arrival)/new-arrival-product-fourteen";
+import NewArrivalProductNine from "./(new-arrival)/new-arrival-product-nine";
+import NewArrivalProductSeventeen from "./(new-arrival)/new-arrival-product-seventeen";
+import NewArrivalProductSix from "./(new-arrival)/new-arrival-product-six";
+import NewArrivalProductTen from "./(new-arrival)/new-arrival-product-ten";
+import NewArrivalProductThirteeen from "./(new-arrival)/new-arrival-product-thirteen";
+import NewArrivalProductTwelve from "./(new-arrival)/new-arrival-product-twelve";
 
 const NewArrival = ({ product, theme, design, store_id, category }: any) => {
   console.log(theme, "new arrival");
@@ -68,6 +67,13 @@ const NewArrival = ({ product, theme, design, store_id, category }: any) => {
       )}
       {theme === FOURTEEN && (
         <NewArrivalProductFourteen
+          product={product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === SEVENTEEN && (
+        <NewArrivalProductSeventeen
           product={product}
           design={design}
           store_id={store_id}
