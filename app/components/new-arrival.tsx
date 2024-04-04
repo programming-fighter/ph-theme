@@ -13,6 +13,7 @@ import {
   NINE,
   SEVENTEEN,
   TEN,
+  THIRTY_FOUR,
   THIRTY_ONE,
   TWELVE,
   TWENTY_NINE,
@@ -34,6 +35,7 @@ import NewArrivalProductTwentyThree from "./(new-arrival)/new-arrival-product-tw
 import NewArrivalProductTwentySeven from "./(new-arrival)/new-arrival-product-twentyseven";
 import NewArrivalProductTwentyNine from "./(new-arrival)/new-arrival-product-twentynine";
 import NewArrivalProductThirtyOne from "./(new-arrival)/new-arrival-product-thirtyone";
+import NewArrivalProductThirtyFour from "./(new-arrival)/new-arrival-product-thirty-four";
 
 const NewArrival = ({ product, theme, design, store_id, category }: any) => {
   console.log(theme, "new arrival");
@@ -123,6 +125,13 @@ const NewArrival = ({ product, theme, design, store_id, category }: any) => {
 
       {theme === THIRTY_ONE && (
         <NewArrivalProductThirtyOne
+          product={product}
+          store_id={store_id}
+          design={design}
+        />
+      )}
+      {theme === THIRTY_FOUR && (
+        <NewArrivalProductThirtyFour
           product={product}
           store_id={store_id}
           design={design}
