@@ -17,17 +17,17 @@ interface Navigation {
 
 interface GetComponentProps {
   component:
-    | "header"
-    | "hero_slider"
-    | "feature_category"
-    | "banner"
-    | "product"
-    | "feature_product"
-    | "banner_bottom"
-    | "best_seller_product"
-    | "new_arrival"
-    | "testimonial"
-    | "footer";
+  | "header"
+  | "hero_slider"
+  | "feature_category"
+  | "banner"
+  | "product"
+  | "feature_product"
+  | "banner_bottom"
+  | "best_seller_product"
+  | "new_arrival"
+  | "testimonial"
+  | "footer";
   data: any;
 }
 
@@ -51,9 +51,8 @@ export default async function Home() {
 
   return (
     <div
-      className={`${
-        design?.template_id === "34" ? "bg-thirty-one" : "bg-white"
-      }`}
+      className={`${design?.template_id === "34" ? "bg-thirty-one" : "bg-white"
+        }`}
     >
       {layout &&
         layout.map((item: any, index: number) => (
@@ -113,7 +112,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     case "banner_bottom":
       return <PromoBottom banner={banner} />;
     case "product":
-      return <Product theme={design?.product} product={product} />;
+      return <Product theme={design?.product} design={design} store_id={store_id} product={product} best_sell_product={best_sell_product} feature_product={feature_product} />;
     case "new_arrival":
       return (
         <NewArrival
