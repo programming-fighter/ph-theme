@@ -13,6 +13,7 @@ import ProductOne from "./(product)/product-one";
 import ProductTwo from "./(product)/product-two";
 import ProductThree from "./(product)/product-three";
 import ProductFour from "./(product)/product-four";
+import ProductFive from "./(product)/product-five";
 
 const Product = ({
   product,
@@ -50,6 +51,9 @@ const Product = ({
       )}
       {theme === "four" && (
         <ProductFour store_id={store_id} design={design} product={product} />
+      )}
+      {theme === "five" && (
+        <ProductFive store_id={store_id} design={design} product={product} />
       )}
     </>
   );
