@@ -11,6 +11,7 @@ const DynamicDefaultProduct = dynamic(
 import DefaultProduct from "@/app/components/(product)/product-default";
 import ProductOne from "./(product)/product-one";
 import ProductTwo from "./(product)/product-two";
+import ProductThree from "./(product)/product-three";
 
 const Product = ({
   product,
@@ -42,6 +43,9 @@ const Product = ({
           store_id={store_id}
           design={design}
         />
+      )}
+      {theme === "three" && (
+        <ProductThree store_id={store_id} design={design} product={product} />
       )}
     </>
   );
