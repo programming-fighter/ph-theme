@@ -7,7 +7,7 @@ import ProductCardOne from '../(card)/product-card/product-card-one';
 const btn = [
     { text: "Featured" }, { text: "Popular" }, { text: "New Added" }
 ]
-const ProductOne = ({ product, best_sell_product, feature_product, store_id, design }: any) => {
+const ProductOne = ({ product, best_seller_product, feature_product, store_id, design }: any) => {
     console.log(product, 'product')
     const [active, setActive] = useState('Featured')
     return (
@@ -31,7 +31,7 @@ const ProductOne = ({ product, best_sell_product, feature_product, store_id, des
                         ))
                     }
                     {active === 'Popular' &&
-                        best_sell_product?.slice(0, 8).map((item: any) => (
+                        best_seller_product?.slice(0, 8).map((item: any) => (
                             <ProductCardOne item={item} store_id={store_id} key={item?.id} />
                         ))
                     }
