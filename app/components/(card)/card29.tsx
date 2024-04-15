@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import { getPrice } from "@/app/utils/get-price";
@@ -148,25 +148,25 @@ const Card29 = ({ item, design, store_id }: any) => {
 
   return (
     <div>
-      <div className='group relative overflow-hidden'>
+      <div className="group relative overflow-hidden">
         {/* out of stock  */}
         {item?.quantity === "0" && (
-          <div className='absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[2]'>
-            <p className='bg-red-600 text-white px-2 py-1 w-max absolute right-0'>
+          <div className="absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[2]">
+            <p className="bg-red-600 text-white px-2 py-1 w-max absolute right-0">
               Sold Out
             </p>
           </div>
         )}
         <style>{styleCss}</style>
-        <div className='relative overflow-hidden'>
+        <div className="relative overflow-hidden">
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
             <img
               src={productImg + item.image[id]}
-              alt=''
-              className='h-auto min-w-full'
+              alt=""
+              className="h-auto min-w-full"
             />
           </Link>
-          <div className='flex flex-col gap-y-1 absolute right-3 group-hover:bottom-12 -bottom-5  group-hover:opacity-100 opacity-0 duration-500'>
+          <div className="flex flex-col gap-y-1 absolute right-3 group-hover:bottom-12 -bottom-5  group-hover:opacity-100 opacity-0 duration-500">
             {item?.image?.map((data: any, index: number) => (
               <div key={index}>
                 {item.image.length > 1 ? (
@@ -184,16 +184,16 @@ const Card29 = ({ item, design, store_id }: any) => {
           </div>
           <div
             onClick={() => setView(!view)}
-            className='w-full lg:cursor-pointer bg-white searchHover py-3 flex justify-center absolute group-hover:bottom-0 -bottom-16 duration-500'
+            className="w-full lg:cursor-pointer bg-white searchHover py-3 flex justify-center absolute group-hover:bottom-0 -bottom-16 duration-500"
           >
-            <BiSearch className='text-2xl text-center' />
+            <BiSearch className="text-2xl text-center" />
           </div>
           {camp?.status !== "active" &&
           (item.discount_type === "no_discount" ||
             item.discount_price === "0.00") ? (
             ""
           ) : (
-            <div className='absolute sm:text-xs text-[10px] px-1 sm:px-2 sm:py-1 py-0 bg-color text-white top-2 right-2 '>
+            <div className="absolute sm:text-xs text-[10px] px-1 sm:px-2 sm:py-1 py-0 bg-color text-white top-2 right-2 ">
               <p>
                 {item.discount_type === "fixed" ? "BDT" : ""}{" "}
                 {Math.trunc(item.discount_price)}{" "}
@@ -203,22 +203,22 @@ const Card29 = ({ item, design, store_id }: any) => {
           )}
         </div>
 
-        <div className='text-gray-700 sm:text-base text-sm font-bold p-2 pt-4 '>
+        <div className="text-gray-700 sm:text-base text-sm font-bold p-2 pt-4 ">
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
             {" "}
-            <h1 className='text-hover capitalize whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]'>
+            <h1 className="text-hover capitalize whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]">
               {item?.name}
             </h1>{" "}
           </Link>
         </div>
 
-        <div className='text-gray-600 font-semibold flex sm:flex-row flex-col sm:items-center sm:gap-2 w-full px-2 pb-5 '>
-          <p className='text-color text-sm'>
+        <div className="text-gray-600 font-semibold flex sm:flex-row flex-col sm:items-center sm:gap-2 w-full px-2 pb-5 ">
+          <p className="text-color text-sm">
             <BDT
               price={camp?.status === "active" ? campPrice : productGetPrice}
             />
           </p>
-          <h1 className='line-through text-xs '>
+          <h1 className="line-through text-xs ">
             {camp?.status !== "active" &&
             (item.discount_type === "no_discount" ||
               item.discount_price === "0.00") ? (
@@ -234,9 +234,9 @@ const Card29 = ({ item, design, store_id }: any) => {
 
         <div
           //   onClick={add_cart_item}
-          className='px-2 lg:cursor-pointer text-xs gap-1 w-full absolute group-hover:bottom-4 -bottom-12 duration-500 bg-white z-[1]'
+          className="px-2 lg:cursor-pointer text-xs gap-1 w-full absolute group-hover:bottom-4 -bottom-12 duration-500 bg-white z-[1]"
         >
-          <p className=' font-medium border-b-2 px-2 py-1 w-max cart-color'>
+          <p className=" font-medium border-b-2 px-2 py-1 w-max cart-color">
             ADD IN CART
           </p>
         </div>

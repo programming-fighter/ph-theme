@@ -22,6 +22,7 @@ import ProductFour from "./(product)/product-four";
 import ProductFive from "./(product)/product-five";
 import ProductTwenty from "./(product)/product-twenty";
 import ProductEleven from "./(product)/product-eleven";
+import ProductFourteen from "./(product)/product-fourteen";
 
 const Product = ({
   product,
@@ -75,6 +76,13 @@ const Product = ({
           design={design}
           best_sell_product={best_sell_product}
           feature_product={feature_product}
+        />
+      )}
+      {theme === "fourteen" && (
+        <ProductFourteen
+          category={category}
+          design={design}
+          store_id={store_id}
         />
       )}
     </>
