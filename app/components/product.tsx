@@ -12,6 +12,7 @@ import DefaultProduct from "@/app/components/(product)/product-default";
 import ProductOne from "./(product)/product-one";
 import ProductTwo from "./(product)/product-two";
 import ProductThree from "./(product)/product-three";
+import ProductFour from "./(product)/product-four";
 
 const Product = ({
   product,
@@ -46,6 +47,9 @@ const Product = ({
       )}
       {theme === "three" && (
         <ProductThree store_id={store_id} design={design} product={product} />
+      )}
+      {theme === "four" && (
+        <ProductFour store_id={store_id} design={design} product={product} />
       )}
     </>
   );
