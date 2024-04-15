@@ -10,12 +10,39 @@ const DynamicDefaultProduct = dynamic(
 
 import DefaultProduct from "@/app/components/(product)/product-default";
 import ProductOne from "./(product)/product-one";
+import ProductTwo from "./(product)/product-two";
 
-const Product = ({ product, best_sell_product, feature_product, store_id, design, theme }: any) => {
+const Product = ({
+  product,
+  best_sell_product,
+  feature_product,
+  store_id,
+  design,
+  theme,
+  category,
+}: any) => {
   return (
     <>
       {theme === "default" && <DynamicDefaultProduct product={product} />}
-      {theme === "one" && <ProductOne product={product} best_seller_product={best_sell_product} feature_product={feature_product} store_id={store_id} design={design} />}
+      {theme === "one" && (
+        <ProductOne
+          product={product}
+          best_seller_product={best_sell_product}
+          feature_product={feature_product}
+          store_id={store_id}
+          design={design}
+        />
+      )}
+      {theme === "two" && (
+        <ProductTwo
+          category={category}
+          product={product}
+          best_seller_product={best_sell_product}
+          feature_product={feature_product}
+          store_id={store_id}
+          design={design}
+        />
+      )}
     </>
   );
 };
