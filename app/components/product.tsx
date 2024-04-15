@@ -7,6 +7,12 @@ const DynamicDefaultProduct = dynamic(
     loading: DefaultProduct,
   }
 );
+const DynamicProductEleven = dynamic(
+  () => import("@/components/(product)/product-eleven"),
+  {
+    ssr: false,
+  }
+);
 
 import DefaultProduct from "@/app/components/(product)/product-default";
 import ProductOne from "./(product)/product-one";
@@ -15,6 +21,7 @@ import ProductThree from "./(product)/product-three";
 import ProductFour from "./(product)/product-four";
 import ProductFive from "./(product)/product-five";
 import ProductTwenty from "./(product)/product-twenty";
+import ProductEleven from "./(product)/product-eleven";
 
 const Product = ({
   product,
@@ -58,6 +65,17 @@ const Product = ({
       )}
       {theme === "seven" && (
         <ProductTwenty category={category} design={design} />
+      )}
+      {theme === "ten" && (
+        <ProductFive store_id={store_id} design={design} product={product} />
+      )}
+      {theme === "eleven" && (
+        <DynamicProductEleven
+          product={product}
+          design={design}
+          best_sell_product={best_sell_product}
+          feature_product={feature_product}
+        />
       )}
     </>
   );
