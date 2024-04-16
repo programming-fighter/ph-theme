@@ -25,6 +25,7 @@ const BestSellerProduct = ({
           store_id={store_id}
         />
       )}
+      {theme === "six" && <BestSellerSix />}
       {/* <BestSellerSeven best_sell_product={best_sell_product} />; */}
     </>
   );
