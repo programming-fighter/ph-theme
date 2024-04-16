@@ -78,6 +78,8 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     store_id,
   } = data;
 
+  console.log(category, "c");
+
   switch (component) {
     case "header":
       return (
@@ -122,6 +124,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           best_sell_product={best_sell_product}
           feature_product={feature_product}
           category={category}
+          headerSetting={headerSetting}
         />
       );
     case "new_arrival":

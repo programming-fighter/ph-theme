@@ -27,6 +27,7 @@ import { NINETEEN, SEVENTEEN, SIXTEEN, TWENTY } from "../consts";
 import ProductSixteen from "./(product)/product-sixteen";
 import ProductSeventeen from "./(product)/product-seventeen";
 import ProductNineteen from "./(product)/product-nineteen";
+import ProductTwentyOne from "./(product)/product-twentyone";
 
 const Product = ({
   product,
@@ -36,7 +37,9 @@ const Product = ({
   design,
   theme,
   category,
+  headerSetting,
 }: any) => {
+  console.log(category, "cc");
   return (
     <>
       {theme === "default" && <DynamicDefaultProduct product={product} />}
@@ -103,7 +106,16 @@ const Product = ({
         <ProductNineteen product={product} store_id={store_id} />
       )}
       {theme === TWENTY && (
-        <ProductTwenty category={category} design={design} />
+        <ProductTwenty product={product} category={category} design={design} />
+      )}
+      {theme === "twentyone" && (
+        <ProductTwentyOne
+          design={design}
+          store_id={store_id}
+          headerSetting={headerSetting}
+          product={product}
+          category={category}
+        />
       )}
     </>
   );
