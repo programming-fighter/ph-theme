@@ -157,6 +157,13 @@ const Product = ({
           store_id={store_id}
         />
       )}
+      {theme === "thirtyone" && (
+        <ProductThirty
+          category={category}
+          design={design}
+          store_id={store_id}
+        />
+      )}
     </>
   );
 };
