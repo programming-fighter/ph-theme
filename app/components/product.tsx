@@ -29,6 +29,7 @@ import ProductSeventeen from "./(product)/product-seventeen";
 import ProductNineteen from "./(product)/product-nineteen";
 import ProductTwentyOne from "./(product)/product-twentyone";
 import ProductTwentyFour from "./(product)/product-twentyfour";
+import ProductTwentySeven from "./(product)/product-twentyseven";
 
 const Product = ({
   product,
@@ -123,6 +124,13 @@ const Product = ({
           store_id={store_id}
           design={design}
           category={category}
+        />
+      )}
+      {theme === "twentyseven" && (
+        <ProductTwentySeven
+          category={category}
+          design={design}
+          store_id={store_id}
         />
       )}
     </>
