@@ -12,7 +12,6 @@ const ProductOne = ({
   store_id,
   design,
 }: any) => {
-  console.log(product, "product");
   const [active, setActive] = useState("Featured");
   return (
     <div className="sm:container px-5 sm:py-10 py-5">

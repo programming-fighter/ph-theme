@@ -42,16 +42,15 @@ const NewArrivalProductTen = ({ category, design, store_id }: any) => {
   }
 
     `;
-  console.log(products, "products");
   return (
-    <div className='sm:container px-5 sm:py-10 py-5'>
+    <div className="sm:container px-5 sm:py-10 py-5">
       <style>{styleCss}</style>
       <SectionHeadingTen
         title={"New Arrivals"}
         subtitle={"New arrival products to our weekly lineup"}
       />
 
-      <div className='flex gap-5 text-lg justify-center pb-8 lg:cursor-pointer uppercase'>
+      <div className="flex gap-5 text-lg justify-center pb-8 lg:cursor-pointer uppercase">
         {category?.slice(0, 3).map((item: any, index: any) => (
           <div key={item.id}>
             <h1
@@ -68,7 +67,7 @@ const NewArrivalProductTen = ({ category, design, store_id }: any) => {
       </div>
 
       {products?.data?.length > 0 ? (
-        <div className='grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-3 gap-4'>
+        <div className="grid grid-cols-2 xl:grid-cols-5 lg:grid-cols-3 md:grid-cols-3 gap-4">
           {products?.data?.slice(0, 10).map((productData: any) => {
             return (
               <Card15
@@ -81,7 +80,7 @@ const NewArrivalProductTen = ({ category, design, store_id }: any) => {
           })}
         </div>
       ) : (
-        <div className='text-red-500 text-center py-10 text-xl'>
+        <div className="text-red-500 text-center py-10 text-xl">
           No Products Available
         </div>
       )}

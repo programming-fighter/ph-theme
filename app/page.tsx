@@ -47,7 +47,6 @@ export default async function Home() {
   );
 
   const { layout, design } = res.data;
-  console.log(res.data);
 
   return (
     <div
@@ -77,8 +76,6 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     design,
     store_id,
   } = data;
-
-  console.log(category, "c");
 
   switch (component) {
     case "header":

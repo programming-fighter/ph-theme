@@ -48,7 +48,6 @@ import NewArrivalProductThirtyEight from "./(new-arrival)/new-arrival-product-th
 import NewArrivalProductThirtyNine from "./(new-arrival)/new-arrival-product-thirtynine";
 
 const NewArrival = ({ product, theme, design, store_id, category }: any) => {
-  console.log(theme, "new arrival");
   return (
     <>
       {theme === "default" && <NewArrivalProductFive product={product} />}

@@ -25,7 +25,6 @@ const Card7 = ({ item, design, store_id }: any) => {
     item.discount_price,
     item.discount_type
   );
-  console.log(productGetPrice, "productGetPrice");
 
   const campPrice = getPrice(
     productGetPrice,
@@ -157,14 +156,14 @@ const Card7 = ({ item, design, store_id }: any) => {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ ease: "easeOut", duration: 1 }}
-        className='bg-white relative rounded-lg'
+        className="bg-white relative rounded-lg"
         style={{ width: "100%" }}
       >
         {/* out of stock  */}
         {item?.quantity === "0" && (
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <div className='absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[1]'>
-              <p className='bg-red-600 text-white px-2 py-1 w-max absolute right-0'>
+            <div className="absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[1]">
+              <p className="bg-red-600 text-white px-2 py-1 w-max absolute right-0">
                 Sold Out
               </p>
             </div>
@@ -172,33 +171,33 @@ const Card7 = ({ item, design, store_id }: any) => {
         )}
 
         <style>{card7CustomStyle}</style>
-        <div className='w-full card7Hover block relative rounded overflow-hidden'>
+        <div className="w-full card7Hover block relative rounded overflow-hidden">
           <img
-            className='min-w-full h-auto'
+            className="min-w-full h-auto"
             src={productImg + item?.image[0]}
-            alt=''
+            alt=""
           />
-          <div className='w-full absolute -bottom-5 mx-auto px-1 quick7 font-normal text-md pb-2 text-black text-md bg-gray-600 items-center'>
-            <div className='flex justify-between'>
+          <div className="w-full absolute -bottom-5 mx-auto px-1 quick7 font-normal text-md pb-2 text-black text-md bg-gray-600 items-center">
+            <div className="flex justify-between">
               <div
-                className='testShoppingBagDiv7 lg:cursor-pointer'
+                className="testShoppingBagDiv7 lg:cursor-pointer"
                 onClick={() => add_cart_item(item)}
               >
-                <ShoppingBagIcon className='card7SearchIcon' />
+                <ShoppingBagIcon className="card7SearchIcon" />
               </div>
               <div
-                className='testDiv7 lg:cursor-pointer'
+                className="testDiv7 lg:cursor-pointer"
                 onClick={() => setOpen(!open)}
               >
-                <IoSearchCircleOutline className='card7SearchIcon' />
+                <IoSearchCircleOutline className="card7SearchIcon" />
               </div>
             </div>
           </div>
         </div>
 
-        <Link href={"/product/" + item?.id + "/" + item?.slug} className='p-5'>
+        <Link href={"/product/" + item?.id + "/" + item?.slug} className="p-5">
           <h5
-            className='mb-3 menu-hover font-six font-base text-lg sm:text-base text-gray-500 dark:text-gray-300'
+            className="mb-3 menu-hover font-six font-base text-lg sm:text-base text-gray-500 dark:text-gray-300"
             style={{
               height: "20px",
               overflow: "hidden",
@@ -209,7 +208,7 @@ const Card7 = ({ item, design, store_id }: any) => {
           >
             {item?.name.charAt(0).toUpperCase() + item?.name.slice(1)}
           </h5>
-          <div className='font-six font-bold text-gray-700 text-sm flex items-center gap-2'>
+          <div className="font-six font-bold text-gray-700 text-sm flex items-center gap-2">
             <Taka
               tk={camp?.status === "active" ? campPrice : productGetPrice}
             />
@@ -218,7 +217,7 @@ const Card7 = ({ item, design, store_id }: any) => {
               item.discount_price === "0.00") ? (
               " "
             ) : (
-              <p className='line-through text-xs'>
+              <p className="line-through text-xs">
                 {" "}
                 <BDT price={item.regular_price} />
               </p>
