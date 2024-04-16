@@ -186,56 +186,56 @@ const Card60 = ({ item, design, store_id }: any) => {
   //   };
 
   return (
-    <div className='group overlay-group relative px-2 border rounded-xl shadow-xl'>
+    <div className="group overlay-group relative px-2 border rounded-xl shadow-xl">
       {/* out of stock  */}
       {item?.quantity === "0" && (
         <Link href={"/product/" + item?.id + "/" + item?.slug}>
-          <div className='absolute rounded-xl top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[3]'>
-            <p className='bg-red-600 text-white px-2 py-1 w-max absolute left-0'>
+          <div className="absolute rounded-xl top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[3]">
+            <p className="bg-red-600 text-white px-2 py-1 w-max absolute left-0">
               Sold Out
             </p>
           </div>
         </Link>
       )}
-      <div className=''>
+      <div className="">
         <style>{styleCss}</style>
-        <div className='relative overflow-hidden'>
-          <div className='relative overflow-hidden w-full h-full sm:p-5 p-1 border-b'>
+        <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden w-full h-full sm:p-5 p-1 border-b">
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
               {/* <img src={productImg + item.image[0]} alt="" className='sm:h-full h-auto w-auto mx-auto' /> */}
               <img
                 src={productImg + item.image[0]}
-                alt=''
-                className='h-auto min-w-full object-center object-cover group-hover:hidden block hover:scale-105 transform transition duration-700 ease-in-out'
+                alt=""
+                className="h-auto min-w-full object-center object-cover group-hover:hidden block hover:scale-105 transform transition duration-700 ease-in-out"
               />
               <img
                 src={productImg + secondImg}
-                alt=''
-                className='h-auto min-w-full object-center object-cover group-hover:block hidden hover:scale-105 transform transition duration-500'
+                alt=""
+                className="h-auto min-w-full object-center object-cover group-hover:block hidden hover:scale-105 transform transition duration-500"
               />
             </Link>
           </div>
 
-          <div className='flex flex-col gap-2 pb-3'>
+          <div className="flex flex-col gap-2 pb-3">
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
-              <div className='font-medium flex justify-between items-center flex-wrap'>
-                <h1 className='text-gray-700 text-hover capitalize truncate'>
+              <div className="font-medium flex justify-between items-center flex-wrap">
+                <h1 className="text-gray-700 text-hover capitalize truncate">
                   {item?.name}
                 </h1>
               </div>
             </Link>
-            <div className='flex items-center gap-2'>
+            <div className="flex items-center gap-2">
               {camp?.status !== "active" &&
               (item.discount_type === "no_discount" ||
                 item.discount_price === "0.00") ? (
                 ""
               ) : (
-                <p className='line-through text-xs text-color-thirty'>
+                <p className="line-through text-xs text-color-thirty">
                   {" "}
                   <BDT price={Math.trunc(item.regular_price)} />
                 </p>
               )}
-              <p className='text-sm py-1 rounded-lg text-[#83C341] font-bold'>
+              <p className="text-sm py-1 rounded-lg text-[#83C341] font-bold">
                 <BDT
                   price={
                     camp?.status === "active" ? campPrice : productGetPrice
@@ -246,26 +246,26 @@ const Card60 = ({ item, design, store_id }: any) => {
 
             {item?.variant.length !== 0 ? (
               <Link href={"/product/" + item?.id + "/" + item?.slug}>
-                <div className='flex py-2 searchHover duration-500 bg-color justify-center gap-1 items-center relative rounded-md z-[1] lg:cursor-pointer font-bold '>
-                  <HiOutlineDocumentText className='text-lg' />
-                  <p className='text-sm'>View Details</p>
+                <div className="flex py-2 searchHover duration-500 bg-color justify-center gap-1 items-center relative rounded-md z-[1] lg:cursor-pointer font-bold ">
+                  <HiOutlineDocumentText className="text-lg" />
+                  <p className="text-sm">View Details</p>
                 </div>
               </Link>
             ) : (
               <div>
                 <div
                   //   onClick={add_cart_item}
-                  className='flex py-2 searchHover duration-500 bg-color justify-center gap-1 items-center relative rounded-md z-[1] lg:cursor-pointer font-bold '
+                  className="flex py-2 searchHover duration-500 bg-color justify-center gap-1 items-center relative rounded-md z-[1] lg:cursor-pointer font-bold "
                 >
-                  <AiOutlineShoppingCart className='text-lg' />
-                  <p className='text-sm'>Add to Cart</p>
+                  <AiOutlineShoppingCart className="text-lg" />
+                  <p className="text-sm">Add to Cart</p>
                 </div>
                 <div
                   //   onClick={buy_now}
-                  className='flex py-2 mt-2 searchHover duration-500 bg-color justify-center gap-1 items-center relative rounded-md z-[1] lg:cursor-pointer font-bold '
+                  className="flex py-2 mt-2 searchHover duration-500 bg-color justify-center gap-1 items-center relative rounded-md z-[1] lg:cursor-pointer font-bold "
                 >
-                  <AiOutlineShoppingCart className='text-lg' />
-                  <p className='text-sm'>Buy Now</p>
+                  <AiOutlineShoppingCart className="text-lg" />
+                  <p className="text-sm">Buy Now</p>
                 </div>
               </div>
             )}
