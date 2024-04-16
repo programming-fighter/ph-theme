@@ -13,6 +13,12 @@ const DynamicProductEleven = dynamic(
     ssr: false,
   }
 );
+const DynamicProductThirtyThree = dynamic(
+  () => import("@/components/(product)/product-thirtythree"),
+  {
+    ssr: false,
+  }
+);
 
 import DefaultProduct from "@/app/components/(product)/product-default";
 import ProductOne from "./(product)/product-one";
@@ -33,6 +39,7 @@ import ProductTwentySeven from "./(product)/product-twentyseven";
 import ProductTwentyNine from "./(product)/product-twentynine";
 import ProductThirty from "./(product)/product-thirty";
 import ProductTwentySix from "./(product)/product-twentysix";
+import ProductThirtyThree from "./(product)/product-thirtythree";
 
 const Product = ({
   product,
@@ -162,6 +169,14 @@ const Product = ({
           category={category}
           design={design}
           store_id={store_id}
+        />
+      )}
+      {theme === "thirtythree" && (
+        <DynamicProductThirtyThree
+          product={product}
+          design={design}
+          best_sell_product={best_sell_product}
+          feature_product={feature_product}
         />
       )}
     </>
