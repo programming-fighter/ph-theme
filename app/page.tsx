@@ -135,7 +135,14 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
         />
       );
     case "best_seller_product":
-      return <BestSellerProduct best_sell_product={best_sell_product} />;
+      return (
+        <BestSellerProduct
+          theme={design?.best_sell_product}
+          best_sell_product={best_sell_product}
+          design={design}
+          store_id={store_id}
+        />
+      );
     case "feature_product":
       return <FeatureProduct feature_product={feature_product} />;
     case "testimonial":
