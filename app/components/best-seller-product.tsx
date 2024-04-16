@@ -18,6 +18,13 @@ const BestSellerProduct = ({
           store_id={store_id}
         />
       )}
+      {theme === "five" && (
+        <BestSellerFive
+          best_sell_product={best_sell_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
       {/* <BestSellerSeven best_sell_product={best_sell_product} />; */}
     </>
   );
