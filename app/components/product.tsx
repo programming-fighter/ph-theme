@@ -23,7 +23,7 @@ import ProductFive from "./(product)/product-five";
 import ProductTwenty from "./(product)/product-twenty";
 import ProductEleven from "./(product)/product-eleven";
 import ProductFourteen from "./(product)/product-fourteen";
-import { NINETEEN, SEVENTEEN, SIXTEEN, TWENTY } from "../consts";
+import { NINETEEN, SEVENTEEN, SIXTEEN, THIRTY, TWENTY } from "../consts";
 import ProductSixteen from "./(product)/product-sixteen";
 import ProductSeventeen from "./(product)/product-seventeen";
 import ProductNineteen from "./(product)/product-nineteen";
@@ -31,6 +31,7 @@ import ProductTwentyOne from "./(product)/product-twentyone";
 import ProductTwentyFour from "./(product)/product-twentyfour";
 import ProductTwentySeven from "./(product)/product-twentyseven";
 import ProductTwentyNine from "./(product)/product-twentynine";
+import ProductThirty from "./(product)/product-thirty";
 
 const Product = ({
   product,
@@ -136,6 +137,13 @@ const Product = ({
       )}
       {theme === "twentynine" && (
         <ProductTwentyNine
+          category={category}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === THIRTY && (
+        <ProductThirty
           category={category}
           design={design}
           store_id={store_id}
