@@ -23,8 +23,9 @@ import ProductFive from "./(product)/product-five";
 import ProductTwenty from "./(product)/product-twenty";
 import ProductEleven from "./(product)/product-eleven";
 import ProductFourteen from "./(product)/product-fourteen";
-import { SIXTEEN } from "../consts";
+import { SEVENTEEN, SIXTEEN } from "../consts";
 import ProductSixteen from "./(product)/product-sixteen";
+import ProductSeventeen from "./(product)/product-seventeen";
 
 const Product = ({
   product,
@@ -89,6 +90,13 @@ const Product = ({
       )}
       {theme === SIXTEEN && (
         <ProductSixteen product={product} design={design} store_id={store_id} />
+      )}
+      {theme === SEVENTEEN && (
+        <ProductSeventeen
+          product={product}
+          design={design}
+          store_id={store_id}
+        />
       )}
     </>
   );
