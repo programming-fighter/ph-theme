@@ -176,6 +176,13 @@ const BestSellerProduct = ({
           store_id={store_id}
         />
       )}
+      {theme === "thirtyone" && (
+        <BestSellerThirty
+          best_sell_product={best_sell_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
     </>
   );
 };
