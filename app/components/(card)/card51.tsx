@@ -169,30 +169,30 @@ const Card51 = ({ item, design, store_id }: any) => {
   };
 
   return (
-    <div className=''>
-      <div className='group relative'>
+    <div className="">
+      <div className="group relative">
         <style>{styleCss}</style>
 
-        <div className='relative overflow-hidden w-full image-div rounded-2xl'>
+        <div className="relative overflow-hidden w-full image-div rounded-2xl">
           <img
             src={productImg + item.image[id]}
-            alt=''
-            className='h-auto min-w-full hover:scale-110 transform transition duration-[2000ms] ease-linear'
+            alt=""
+            className="h-auto min-w-full hover:scale-110 transform transition duration-[2000ms] ease-linear"
           />
 
-          <div className='flex flex-wrap justify-around text-sm w-full lg:absolute lg:group-hover:bottom-2 lg:-bottom-20 lg:opacity-0 lg:group-hover:opacity-100 duration-500 z-[1] mt-2 lg:mt-0'>
+          <div className="flex flex-wrap justify-around text-sm w-full lg:absolute lg:group-hover:bottom-2 lg:-bottom-20 lg:opacity-0 lg:group-hover:opacity-100 duration-500 z-[1] mt-2 lg:mt-0">
             <div
               onClick={add_cart_item}
-              className='bg-black text-white px-2 py-1 rounded-full flex gap-1 items-center lg:cursor-pointer'
+              className="bg-black text-white px-2 py-1 rounded-full flex gap-1 items-center lg:cursor-pointer"
             >
               <FaCartPlus />
-              <p className=''>
+              <p className="">
                 {store_id === 1187 ? "অর্ডার করুন" : "Add to Cart"}
               </p>
             </div>
             <div
               onClick={() => setView(!view)}
-              className='bg-white text-black px-2 py-1 rounded-full flex gap-1 items-center lg:cursor-pointer'
+              className="bg-white text-black px-2 py-1 rounded-full flex gap-1 items-center lg:cursor-pointer"
             >
               <TbLiveView />
               <p>Quick View</p>
@@ -200,8 +200,8 @@ const Card51 = ({ item, design, store_id }: any) => {
           </div>
         </div>
 
-        <div className='flex flex-col gap-2 px-4 py-3'>
-          <div className='flex flex-wrap gap-x-3'>
+        <div className="flex flex-col gap-2 px-4 py-3">
+          <div className="flex flex-wrap gap-x-3">
             {item?.image?.map((data: any, index: number) => (
               <div key={index}>
                 {item.image.length > 1 ? (
@@ -219,25 +219,25 @@ const Card51 = ({ item, design, store_id }: any) => {
               </div>
             ))}
           </div>
-          <div className='text-gray-800 text-lg font-bold'>
+          <div className="text-gray-800 text-lg font-bold">
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
               {" "}
-              <h1 className='text-hover capitalize whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]'>
+              <h1 className="text-hover capitalize whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]">
                 {item?.name}
               </h1>{" "}
             </Link>
           </div>
 
-          <div className='text-gray-600 font-semibold flex justify-between items-center gap-2 w-full '>
-            <div className='flex items-center gap-2'>
-              <p className='text-color-price text-sm px-2 py-1 rounded-lg'>
+          <div className="text-gray-600 font-semibold flex justify-between items-center gap-2 w-full ">
+            <div className="flex items-center gap-2">
+              <p className="text-color-price text-sm px-2 py-1 rounded-lg">
                 <BDT
                   price={
                     camp?.status === "active" ? campPrice : productGetPrice
                   }
                 />
               </p>
-              <h1 className='line-through text-xs '>
+              <h1 className="line-through text-xs ">
                 {camp?.status !== "active" &&
                 (item.discount_type === "no_discount" ||
                   item.discount_price === "0.00") ? (
