@@ -2,6 +2,7 @@ import React from "react";
 import BestSellerSeven from "@/components/(best-seller)/best-seller-seven";
 import BestSellerFive from "./(best-seller)/best-seller-five";
 import BestSellerSix from "./(best-seller)/best-seller-six";
+import BestSellerEight from "./(best-seller)/best-seller-eight";
 
 const BestSellerProduct = ({
   best_sell_product,
@@ -32,7 +33,9 @@ const BestSellerProduct = ({
       {theme === "seven" && (
         <BestSellerSeven best_sell_product={best_sell_product} />
       )}
-      {/* <BestSellerSeven  />; */}
+      {theme === "eight" && (
+        <BestSellerEight store_id={store_id} product={product} />
+      )}
     </>
   );
 };
