@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import "./best-seller-six.css";
@@ -8,7 +9,9 @@ import SectionHeadingSix from "../(section-heading)/section-heading-six";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Taka from "@/app/utils/taka";
 import ArrowSquare from "@/app/utils/arrow-square";
-const BestSellerSix = ({ product, design, makeid, store_id }: any) => {
+import GridSliderFive from "../(slider)/grid-slider/grid-slider-five";
+import Card7 from "../(card)/card7";
+const BestSellerSix = ({ product, design, store_id }: any) => {
   const [open, setOpen] = useState(false);
   // const dispatch = useDispatch();
 
@@ -153,9 +156,9 @@ const BestSellerSix = ({ product, design, makeid, store_id }: any) => {
             </div>
             {/* start here */}
             <GridSliderFive prevEl={prev} nextEl={next}>
-              {product?.map((item) => (
-                <SwiperSlide className="swiperjs-slide" key={item?.id} w>
-                  <Card7 item={item} />
+              {product?.map((item: any) => (
+                <SwiperSlide className="swiperjs-slide" key={item?.id}>
+                  <Card7 item={item} design={design} store_id={store_id} />
                 </SwiperSlide>
               ))}
             </GridSliderFive>

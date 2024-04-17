@@ -141,6 +141,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           best_sell_product={best_sell_product}
           design={design}
           store_id={store_id}
+          product={product}
         />
       );
     case "feature_product":
