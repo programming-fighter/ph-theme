@@ -29,7 +29,10 @@ const BestSellerProduct = ({
       {theme === "six" && (
         <BestSellerSix product={product} design={design} store_id={store_id} />
       )}
-      {/* <BestSellerSeven best_sell_product={best_sell_product} />; */}
+      {theme === "seven" && (
+        <BestSellerSeven best_sell_product={best_sell_product} />
+      )}
+      {/* <BestSellerSeven  />; */}
     </>
   );
 };
