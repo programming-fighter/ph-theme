@@ -22,6 +22,15 @@ import PromoBottomTwentyTwo from "./(promotions-bottom)/promo-bottom-twentytwo";
 import PromoBottomTwentyThree from "./(promotions-bottom)/promo-bottom-twentythree";
 import PromoBottomTwentyFour from "./(promotions-bottom)/promo-bottom-twentyfour";
 import PromoBottomTwentySix from "./(promotions-bottom)/promo-bottom-twentysix";
+import PromoBottomTwentySeven from "./(promotions-bottom)/promo-bottom-twentyseven";
+import PromoBottomTwentyEight from "./(promotions-bottom)/promo-bottom-twentyeight";
+import PromoBottomThirty from "./(promotions-bottom)/promo-bottom-thirty";
+import PromoBottomThirtyOne from "./(promotions-bottom)/promo-bottom-thirtyone";
+import PromoBottomThirtyThree from "./(promotions-bottom)/promo-bottom-thirtythree";
+import PromoBottomThirtyFour from "./(promotions-bottom)/promo-bottom-thirtyfour";
+import PromoBottomThirtyFive from "./(promotions-bottom)/promo-bottom-thirtyfive";
+import PromoBottomThirtySix from "./(promotions-bottom)/promo-bottom-thirtysix";
+import PromoBottomThirtySeven from "./(promotions-bottom)/promo-bottom-thirtyseven";
 
 const PromoBottom = ({ banner, theme, brand }: any) => {
   return (
@@ -50,6 +59,19 @@ const PromoBottom = ({ banner, theme, brand }: any) => {
       {theme === "twentysix" && (
         <PromoBottomTwentySix banner={banner} brand={brand} />
       )}
+      {theme === "twentyseven" && <PromoBottomTwentySeven banner={banner} />}
+      {theme === "twentyeight" && <PromoBottomTwentyEight banner={banner} />}
+
+      {theme === "twentynine" && <PromoBottomTwentySeven banner={banner} />}
+      {theme === "thirty" && <PromoBottomThirty banner={banner} />}
+      {theme === "thirtyone" && <PromoBottomThirtyOne banner={banner} />}
+      {theme === "thirtytwo" && <PromoBottomThirtyOne banner={banner} />}
+      {theme === "thirtythree" && <PromoBottomThirtyThree banner={banner} />}
+      {theme === "thirtyfour" && <PromoBottomThirtyFour banner={banner} />}
+      {theme === "thirtyfive" && <PromoBottomThirtyFive banner={banner} />}
+      {theme === "thirtysix" && <PromoBottomThirtySix banner={banner} />}
+      {theme === "thirtyseven" && <PromoBottomThirtySeven banner={banner} />}
+      {theme === "thirtynine" && <PromoBottomThirtySeven banner={banner} />}
     </>
   );
 
