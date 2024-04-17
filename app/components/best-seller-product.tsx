@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import BestSellerSeven from "@/components/(best-seller)/best-seller-seven";
 import BestSellerFive from "./(best-seller)/best-seller-five";
@@ -6,6 +7,7 @@ import BestSellerEight from "./(best-seller)/best-seller-eight";
 import BestSellerNine from "./(best-seller)/best-seller-nine";
 import BestSellerTen from "./(best-seller)/best-seller-ten";
 import BestSellerThirteen from "./(best-seller)/best-seller-thirteen";
+import BestSellerSixteen from "./(best-seller)/best-seller-sixteen";
 
 const BestSellerProduct = ({
   best_sell_product,
@@ -70,6 +72,13 @@ const BestSellerProduct = ({
       {theme === "thirteen" && (
         <BestSellerThirteen
           best_sell_product={best_sell_product}
+          store_id={store_id}
+        />
+      )}
+      {theme === "sixteen" && (
+        <BestSellerSixteen
+          best_sell_product={best_sell_product}
+          design={design}
           store_id={store_id}
         />
       )}
