@@ -75,7 +75,9 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     testimonials,
     design,
     store_id,
+    brand,
   } = data;
+  console.log(brand, "brand");
 
   switch (component) {
     case "header":
@@ -110,7 +112,13 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
         />
       );
     case "banner_bottom":
-      return <PromoBottom banner={banner} />;
+      return (
+        <PromoBottom
+          theme={design?.banner_bottom}
+          banner={banner}
+          brand={brand}
+        />
+      );
     case "product":
       return (
         <Product
