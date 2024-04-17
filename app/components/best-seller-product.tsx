@@ -26,6 +26,7 @@ import BestSellerThirtyFive from "./(best-seller)/best-seller-thirtyfive";
 import BestSellerThirtySix from "./(best-seller)/best-seller-thirtysix";
 import BestSellerThirtySeven from "./(best-seller)/best-seller-thirtyseven";
 import BestSellerThirtyEight from "./(best-seller)/best-seller-thirtyeight";
+import BestSellerThirtyNine from "./(best-seller)/best-seller-thritynine";
 
 const BestSellerProduct = ({
   best_sell_product,
@@ -228,6 +229,13 @@ const BestSellerProduct = ({
       )}
       {theme === "thirtyeight" && (
         <BestSellerThirtyEight
+          best_sell_product={best_sell_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === "thirtynine" && (
+        <BestSellerThirtyNine
           best_sell_product={best_sell_product}
           design={design}
           store_id={store_id}
