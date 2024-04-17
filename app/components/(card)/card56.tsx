@@ -118,7 +118,7 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
           );
           if (res?.discount_amount === null) {
             cartItem = {
-              cartId: makeid(100),
+              cartId: uuidv4(),
               price: itemRegularPrice,
               color: null,
               size: null,
@@ -129,7 +129,7 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
             };
           } else {
             cartItem = {
-              cartId: makeid(100),
+              cartId: uuidv4(),
               price: campaignPrice,
               color: null,
               size: null,
@@ -141,7 +141,7 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
           }
         } else {
           cartItem = {
-            cartId: makeid(100),
+            cartId: uuidv4(),
             price: price,
             color: null,
             size: null,
