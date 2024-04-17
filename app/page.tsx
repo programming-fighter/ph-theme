@@ -142,6 +142,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           design={design}
           store_id={store_id}
           product={product}
+          banner={banner}
         />
       );
     case "feature_product":
