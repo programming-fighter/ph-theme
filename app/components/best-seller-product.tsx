@@ -52,6 +52,20 @@ const BestSellerProduct = ({
           store_id={store_id}
         />
       )}
+      {theme === "eleven" && (
+        <BestSellerTen
+          best_sell_product={best_sell_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === "twelve" && (
+        <BestSellerTen
+          best_sell_product={best_sell_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
     </>
   );
 };
