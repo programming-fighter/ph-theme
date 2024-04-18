@@ -13,6 +13,9 @@ const FeatureProduct = ({ feature_product, theme, design, store_id }: any) => {
           store_id={store_id}
         />
       )}
+      {theme === "five" && (
+        <FeatureProductFive feature_product={feature_product} />
+      )}
     </>
   );
 };
