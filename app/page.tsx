@@ -160,6 +160,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           feature_product={feature_product}
           design={design}
           store_id={store_id}
+          product={product}
         />
       );
     case "testimonial":
