@@ -154,7 +154,14 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
         />
       );
     case "feature_product":
-      return <FeatureProduct feature_product={feature_product} />;
+      return (
+        <FeatureProduct
+          theme={design?.feature_product}
+          feature_product={feature_product}
+          design={design}
+          store_id={store_id}
+        />
+      );
     case "testimonial":
       return <Testimonial testimonials={testimonials} />;
   }
