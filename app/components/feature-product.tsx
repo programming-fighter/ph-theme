@@ -24,6 +24,7 @@ import FeatureProductTwentyNine from "./(feature-product)/feature-product-twenty
 import FeatureProductThirty from "./(feature-product)/feature-product-thirty";
 import FeatureProductThirtyThree from "./(feature-product)/feature-product-thirtythree";
 import FeatureProductThirtyFour from "./(feature-product)/feature-product-thirtyfour";
+import FeatureProductThirtyFive from "./(feature-product)/feature-product-thirtyfive";
 
 const FeatureProduct = ({
   feature_product,
@@ -31,6 +32,7 @@ const FeatureProduct = ({
   design,
   store_id,
   product,
+  banner,
 }: any) => {
   console.log(design, "d");
   return (
@@ -191,6 +193,14 @@ const FeatureProduct = ({
       )}
       {theme === "thirtyfour" && (
         <FeatureProductThirtyFour
+          feature_product={feature_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === "thirtyfive" && (
+        <FeatureProductThirtyFive
+          banner={banner}
           feature_product={feature_product}
           design={design}
           store_id={store_id}
