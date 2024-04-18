@@ -86,8 +86,6 @@ const FeatureProductNine = ({ feature_product, design }: any) => {
             nextEl: `.${nextEl}`,
           }}
           className="mySwiper"
-          prevEl={prevEl}
-          nextEl={nextEl}
         >
           {feature_product?.slice(0, 10).map((productData: any) => (
             <SwiperSlide key={productData.id}>
