@@ -16,6 +16,7 @@ const Testimonial = ({ testimonials, theme, design }: any) => {
       {theme === "four" && (
         <TestimonialFour testimonials={testimonials} design={design} />
       )}
+      {theme === "five" && <TestimonialFive testimonials={testimonials} />}
     </>
   );
 };
