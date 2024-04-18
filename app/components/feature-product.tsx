@@ -5,6 +5,7 @@ import FeatureProductSix from "./(feature-product)/feature-product-six";
 import FeatureProductSeven from "./(feature-product)/feature-product-seven";
 import FeatureProductNine from "./(feature-product)/feature-product-nine";
 import FeatureProductEight from "./(feature-product)/feature-product-eight";
+import FeatureProductTwelve from "./(feature-product)/feature-product-twelve";
 
 const FeatureProduct = ({
   feature_product,
@@ -43,6 +44,12 @@ const FeatureProduct = ({
           feature_product={feature_product}
           design={design}
           store_id={store_id}
+        />
+      )}
+      {theme === "twelve" && (
+        <FeatureProductTwelve
+          feature_product={feature_product}
+          design={design}
         />
       )}
     </>
