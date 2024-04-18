@@ -9,6 +9,7 @@ import FeatureProductTwelve from "./(feature-product)/feature-product-twelve";
 import FeatureProductThirteen from "./(feature-product)/feature-product-thirteen";
 import FeatureProductSixteen from "./(feature-product)/featuer-product-sixteen";
 import FeatureProductSeventeen from "./(feature-product)/feature-product-seventeen";
+import FeatureProductEighteen from "./(feature-product)/feature-product-eighteen";
 
 const FeatureProduct = ({
   feature_product,
@@ -71,6 +72,13 @@ const FeatureProduct = ({
 
       {theme === "seventeen" && (
         <FeatureProductSeventeen
+          feature_product={feature_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === "eighteen" && (
+        <FeatureProductEighteen
           feature_product={feature_product}
           design={design}
           store_id={store_id}
