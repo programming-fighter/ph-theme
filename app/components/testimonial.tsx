@@ -4,6 +4,7 @@ import TestimonialOne from "./(testimonial)/testimonial-one";
 import TestimonialTwo from "./(testimonial)/testimonial-two";
 import TestimonialFour from "./(testimonial)/testimonial-four";
 import TestimonialSeven from "./(testimonial)/testimonial-seven";
+import TestimonialTwelve from "./(testimonial)/testimonial-twelve";
 
 const Testimonial = ({ testimonials, theme, design }: any) => {
   console.log(theme, "t");
@@ -20,6 +21,11 @@ const Testimonial = ({ testimonials, theme, design }: any) => {
       )}
       {theme === "five" && <TestimonialFive testimonials={testimonials} />}
       {theme === "six" && <TestimonialSeven testimonials={testimonials} />}
+      {theme === "seven" && <TestimonialFive testimonials={testimonials} />}
+      {theme === "eight" && <TestimonialFive testimonials={testimonials} />}
+      {theme === "nine" && (
+        <TestimonialTwelve testimonials={testimonials} design={design} />
+      )}
     </>
   );
 };
