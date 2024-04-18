@@ -7,10 +7,11 @@ import FeatureProductNine from "./(feature-product)/feature-product-nine";
 import FeatureProductEight from "./(feature-product)/feature-product-eight";
 import FeatureProductTwelve from "./(feature-product)/feature-product-twelve";
 import FeatureProductThirteen from "./(feature-product)/feature-product-thirteen";
-import FeatureProductSixteen from "./(feature-product)/featuer-product-sixteen";
+import FeatureProductSixteen from "./(feature-product)/feature-product-sixteen";
 import FeatureProductSeventeen from "./(feature-product)/feature-product-seventeen";
 import FeatureProductEighteen from "./(feature-product)/feature-product-eighteen";
 import FeatureProductNineteen from "./(feature-product)/feature-product-nineteen";
+import FeatureProductTwenty from "./(feature-product)/feature-product-twenty";
 
 const FeatureProduct = ({
   feature_product,
@@ -87,6 +88,13 @@ const FeatureProduct = ({
       )}
       {theme === "nineteen" && (
         <FeatureProductNineteen
+          feature_product={feature_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === "twenty" && (
+        <FeatureProductTwenty
           feature_product={feature_product}
           design={design}
           store_id={store_id}
