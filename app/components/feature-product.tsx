@@ -2,6 +2,7 @@ import React from "react";
 import FeatureProductFive from "@/components/(feature-product)/feature-product-five";
 import FeatureProductFour from "./(feature-product)/feature-product-four";
 import FeatureProductSix from "./(feature-product)/feature-product-six";
+import FeatureProductSeven from "./(feature-product)/feature-product-seven";
 
 const FeatureProduct = ({
   feature_product,
@@ -25,6 +26,12 @@ const FeatureProduct = ({
       )}
       {theme === "six" && (
         <FeatureProductSix product={product} store_id={store_id} />
+      )}
+      {theme === "seven" && (
+        <FeatureProductSeven
+          store_id={store_id}
+          feature_product={feature_product}
+        />
       )}
     </>
   );
