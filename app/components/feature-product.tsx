@@ -3,6 +3,7 @@ import FeatureProductFive from "@/components/(feature-product)/feature-product-f
 import FeatureProductFour from "./(feature-product)/feature-product-four";
 import FeatureProductSix from "./(feature-product)/feature-product-six";
 import FeatureProductSeven from "./(feature-product)/feature-product-seven";
+import FeatureProductNine from "./(feature-product)/feature-product-nine";
 
 const FeatureProduct = ({
   feature_product,
@@ -32,6 +33,9 @@ const FeatureProduct = ({
           store_id={store_id}
           feature_product={feature_product}
         />
+      )}
+      {theme === "nine" && (
+        <FeatureProductNine feature_product={feature_product} design={design} />
       )}
     </>
   );
