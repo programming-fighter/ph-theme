@@ -173,6 +173,13 @@ const FeatureProduct = ({
           store_id={store_id}
         />
       )}
+      {theme === "thirtyone" && (
+        <FeatureProductThirty
+          feature_product={feature_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
     </>
   );
 };
