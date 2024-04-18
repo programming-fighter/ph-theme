@@ -25,6 +25,7 @@ import FeatureProductThirty from "./(feature-product)/feature-product-thirty";
 import FeatureProductThirtyThree from "./(feature-product)/feature-product-thirtythree";
 import FeatureProductThirtyFour from "./(feature-product)/feature-product-thirtyfour";
 import FeatureProductThirtyFive from "./(feature-product)/feature-product-thirtyfive";
+import FeatureProductThirtySix from "./(feature-product)/feature-product-thirtysix";
 
 const FeatureProduct = ({
   feature_product,
@@ -201,6 +202,13 @@ const FeatureProduct = ({
       {theme === "thirtyfive" && (
         <FeatureProductThirtyFive
           banner={banner}
+          feature_product={feature_product}
+          design={design}
+          store_id={store_id}
+        />
+      )}
+      {theme === "thirtysix" && (
+        <FeatureProductThirtySix
           feature_product={feature_product}
           design={design}
           store_id={store_id}
