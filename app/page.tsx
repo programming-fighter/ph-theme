@@ -77,7 +77,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     store_id,
     brand,
   } = data;
-  console.log(brand, "brand");
+  console.log(testimonials, "test");
 
   switch (component) {
     case "header":
@@ -165,6 +165,12 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
         />
       );
     case "testimonial":
-      return <Testimonial testimonials={testimonials} />;
+      return (
+        <Testimonial
+          testimonials={testimonials}
+          theme={design?.testimonial}
+          design={design}
+        />
+      );
   }
 };
