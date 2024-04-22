@@ -9,6 +9,8 @@ import FooterFive from "./(footers)/footer-five";
 import FooterSix from "./(footers)/footer-six";
 import FooterSeven from "./(footers)/footer-seven";
 import FooterEight from "./(footers)/footer-eight";
+import FooterNine from "./(footers)/footer-nine";
+import FooterEleven from "./(footers)/footer-eleven";
 const DynamicFooterDefault = dynamic(
   () => import("@/components/(footers)/footer-default"),
   {
@@ -17,6 +19,13 @@ const DynamicFooterDefault = dynamic(
 );
 const DynamicFooterFive = dynamic(
   () => import("@/components/(footers)/footer-five"),
+  {
+    ssr: false,
+  }
+);
+
+const DynamicFooterNine = dynamic(
+  () => import("@/components/(footers)/footer-nine"),
   {
     ssr: false,
   }
@@ -108,15 +117,43 @@ const Footer = ({
           menu={menu}
         />
       )}
-      {/*   headerSetting,
-  menu,
-  category,
-  page,
-  store_id, */}
 
       {theme === "eight" && (
         <FooterEight
           category={category}
+          page={page}
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
+        />
+      )}
+
+      {theme === "nine" && (
+        <DynamicFooterNine
+          category={category}
+          design={design}
+          page={page}
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
+        />
+      )}
+
+      {theme === "ten" && (
+        <DynamicFooterNine
+          category={category}
+          design={design}
+          page={page}
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
+        />
+      )}
+
+      {theme === "eleven" && (
+        <FooterEleven
+          category={category}
+          design={design}
           page={page}
           headerSetting={headerSetting}
           store_id={store_id}
