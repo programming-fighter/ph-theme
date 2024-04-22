@@ -8,6 +8,7 @@ import FooterFour from "./(footers)/footer-four";
 import FooterFive from "./(footers)/footer-five";
 import FooterSix from "./(footers)/footer-six";
 import FooterSeven from "./(footers)/footer-seven";
+import FooterEight from "./(footers)/footer-eight";
 const DynamicFooterDefault = dynamic(
   () => import("@/components/(footers)/footer-default"),
   {
@@ -101,6 +102,21 @@ const Footer = ({
         <FooterSeven
           category={category}
           design={design}
+          page={page}
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
+        />
+      )}
+      {/*   headerSetting,
+  menu,
+  category,
+  page,
+  store_id, */}
+
+      {theme === "eight" && (
+        <FooterEight
+          category={category}
           page={page}
           headerSetting={headerSetting}
           store_id={store_id}
