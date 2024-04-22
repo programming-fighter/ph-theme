@@ -23,23 +23,25 @@ import { iconImg } from "@/app/site-settings/siteUrl";
 import ArrowSeventeen from "@/app/utils/arrow-seventeen";
 import SliderSeventeenSingleSlide from "../(slider)/slider-seventeen-single";
 import Card33 from "../(card)/card33";
+import Image from "next/image";
 
 const ProductSeventeen = ({ category, design, store_id }: any) => {
   const [active, setActive] = useState(0);
   const [products, setProducts] = useState([]);
   const [id, setId] = useState(0);
+  console.log(category, "c");
 
   useEffect(() => {
     async function handleCategory() {
       try {
         const response: any = await axios.post(
-          process.env.API_URL + `getcatproducts`,
+          "https://admin.ebitans.com/api/v1/" + `getcatproducts`,
           {
             id: category[id].id,
           }
         );
         if (!response?.error) {
-          setProducts(response?.data?.data);
+          setProducts(response?.data?.data?.data);
         } // the API response object
         else {
           setProducts([]);
@@ -77,7 +79,7 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
           <SectionHeadingSeventeen text={"Layer cakes"} />
         </div>
         <div className="flex justify-center pt-2 pb-10">
-          <img src={image} alt="" />
+          <Image src={image} alt="" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 ">
@@ -87,9 +89,9 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
                 {active === index && (
                   <div className="h-4 w-4 bg-white lg:block hidden border-t-2 border-r-2 border-[#78D6F0] rotate-45 absolute top-1/2 -translate-y-1/2 -right-[9px]"></div>
                 )}
-                <div className={`lg:w-max lg:h-full`}>
+                <div className={`lg:w-max lg:h-full `}>
                   <div
-                    className={`relative lg:cursor-pointer p-2 rounded-full ${
+                    className={`relative lg:cursor-pointer p-2 rounded-full h-full ${
                       active === index ? "bg-[#78D6F0]" : ""
                     }`}
                     onClick={() => {
@@ -98,22 +100,21 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
                     }}
                   >
                     {index === 0 && (
-                      <img src={img2} alt="" className="max-h-[100px] w-auto" />
+                      <Image
+                        src={img2}
+                        alt=""
+                        className="w-full h-full rounded-full"
+                      />
                     )}
-                    {index === 1 && (
-                      <img src={img3} alt="" className="max-h-[100px] w-auto" />
-                    )}
-                    {index === 2 && (
-                      <img src={img4} alt="" className="max-h-[100px] w-auto" />
-                    )}
-                    {index === 3 && (
-                      <img src={img5} alt="" className="max-h-[100px] w-auto" />
-                    )}
-                    <img
+                    {index === 1 && <Image src={img3} alt="" className="" />}
+                    {index === 2 && <Image src={img4} alt="" className="" />}
+                    {index === 3 && <Image src={img5} alt="" className="" />}
+                    {/* <Image
                       src={iconImg + data.icon}
                       alt=""
+                      width={10}
                       className="max-h-[50px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
-                    />
+                    /> */}
                   </div>
                   {/* <img src={iconImg + data?.icon} className='h-[60px] w-[60px] ' alt='' /> */}
                 </div>

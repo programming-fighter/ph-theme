@@ -14,55 +14,43 @@ const ProductOne = ({
 }: any) => {
   const [active, setActive] = useState("Featured");
   return (
-    <div className="sm:container px-5 sm:py-10 py-5">
-      <div className="mx-auto">
-        <div className="flex justify-between items-center mb-7 ">
-          <div className="flex justify-center sm:justify-start flex-wrap gap-2">
-            {btn?.map((i) => (
-              <Button1
-                setActive={setActive}
-                text={i.text}
-                active={active}
-                key={i.text}
-                design={design}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg2:grid-cols-4 xl2:grid-cols-5 xl:grid-cols-6 xl3:grid-cols-7 gap-5">
-          {active === "New Added" &&
-            product
-              ?.slice(0, 8)
-              .map((item: any) => (
-                <ProductCardOne
-                  store_id={store_id}
-                  item={item}
-                  key={item?.id}
-                />
-              ))}
-          {active === "Featured" &&
-            feature_product
-              ?.slice(0, 8)
-              .map((item: any) => (
-                <ProductCardOne
-                  item={item}
-                  store_id={store_id}
-                  key={item?.id}
-                />
-              ))}
-          {active === "Popular" &&
-            best_seller_product
-              ?.slice(0, 8)
-              .map((item: any) => (
-                <ProductCardOne
-                  item={item}
-                  store_id={store_id}
-                  key={item?.id}
-                />
-              ))}
+    <div className="sm:container px-5 sm:py-10 py-5 mx-auto">
+      {/* <div className="mx-auto"> */}
+      <div className="flex justify-between items-center mb-7 ">
+        <div className="flex justify-center sm:justify-start flex-wrap gap-2">
+          {btn?.map((i) => (
+            <Button1
+              setActive={setActive}
+              text={i.text}
+              active={active}
+              key={i.text}
+              design={design}
+            />
+          ))}
         </div>
       </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg2:grid-cols-4 xl2:grid-cols-5 xl:grid-cols-6 xl3:grid-cols-7 gap-5">
+        {active === "New Added" &&
+          product
+            ?.slice(0, 8)
+            .map((item: any) => (
+              <ProductCardOne store_id={store_id} item={item} key={item?.id} />
+            ))}
+        {active === "Featured" &&
+          feature_product
+            ?.slice(0, 8)
+            .map((item: any) => (
+              <ProductCardOne item={item} store_id={store_id} key={item?.id} />
+            ))}
+        {active === "Popular" &&
+          best_seller_product
+            ?.slice(0, 8)
+            .map((item: any) => (
+              <ProductCardOne item={item} store_id={store_id} key={item?.id} />
+            ))}
+      </div>
+      {/* </div> */}
     </div>
   );
 };

@@ -39,7 +39,7 @@ const ProductTwo = ({ category, design, store_id }: any) => {
     `;
 
   return (
-    <div className="sm:container px-5 sm:py-10 py-5">
+    <div className="sm:container px-5 sm:py-10 py-5 mx-auto">
       <style>{styleCss}</style>
       <div className="">
         <SectionHeadingTen

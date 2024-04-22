@@ -32,7 +32,7 @@ const ProductSixteen = ({ product, design, store_id }: any) => {
     `;
 
   return (
-    <div className="sm:container px-5 sm:py-10 py-5 relative arrow-hov">
+    <div className="sm:container px-5 sm:py-10 py-5 relative arrow-hov mx-auto">
       <style>{styleCss}</style>
       <SectionHeadingSixteen title={"New Products"} subtitle={""} />
       <div className="relative z-[2]">

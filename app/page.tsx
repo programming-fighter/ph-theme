@@ -52,7 +52,7 @@ export default async function Home() {
     <div
       className={`${
         design?.template_id === "34" ? "bg-thirty-one" : "bg-white"
-      }`}
+      } mx-auto`}
     >
       {layout &&
         layout.map((item: any, index: number) => (

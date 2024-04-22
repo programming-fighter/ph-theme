@@ -38,7 +38,7 @@ const ProductEleven = ({
     `;
 
   return (
-    <div className="sm:container px-5 sm:py-10 py-5">
+    <div className="sm:container px-5 sm:py-10 py-5 mx-auto">
       <style>{styleCss}</style>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg2:grid-cols-3 gap-10 ">
         <div>

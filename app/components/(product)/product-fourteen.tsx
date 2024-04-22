@@ -51,7 +51,7 @@ const ProductFourteen = ({ category, design, store_id }: any) => {
     `;
 
   return (
-    <div className="bg-white sm:container px-5 sm:py-10 py-5">
+    <div className="bg-white sm:container px-5 sm:py-10 py-5 mx-auto">
       <style>{styleCss}</style>
       <div className="bg-white">
         <SectionHeadingSixteen title={"Products"} subtitle={""} />

@@ -8,7 +8,7 @@ const ProductFour = ({ product, design, store_id }: any) => {
   }
   return (
     <div className="bg-gray-50 sm:py-10 py-5">
-      <div className="sm:container px-5 ">
+      <div className="sm:container px-5 mx-auto">
         <div className="py-6">
           <SectionHeading text={"Products"} design={design} />
         </div>

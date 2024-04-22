@@ -7,8 +7,8 @@ const ProductFive = ({ product, store_id }: any) => {
     return;
   }
   return (
-    <div className="shadow-lg py-5 sm:py-10 rounded-sm bg-white">
-      <div className="container px-5">
+    <div className="shadow-lg py-5 sm:py-10 rounded-sm bg-white ">
+      <div className="container px-5 mx-auto">
         <SectionHeadingFive
           title={"Recently Added"}
           subtitle={"Our products to weekly line up"}

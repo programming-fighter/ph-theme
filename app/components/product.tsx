@@ -118,6 +118,7 @@ const Product = ({
           product={product}
           design={design}
           store_id={store_id}
+          category={category}
         />
       )}
       {theme === NINETEEN && (

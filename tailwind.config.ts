@@ -13,6 +13,29 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        Rampart: ["Raleway", "cursive"],
+      },
+      height: {
+        "128": "35rem",
+        "132": "43rem",
+      },
+      width: {
+        "128": "35rem",
+        "132": "43rem",
+      },
+    },
+    screens: {
+      sm: "480px",
+      md: "768px",
+      lg: "976px",
+      lg2: "1024px",
+      xl2: "1280px",
+      xl: "1440px",
+      xl3: "1800px",
+    },
+    container: {
+      center: true,
     },
   },
   plugins: [],

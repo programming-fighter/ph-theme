@@ -16,13 +16,13 @@ const ProductTwenty = ({ category, design }: any) => {
     async function handleCategory() {
       try {
         const response: any = await axios.post(
-          process.env.API_URL + `getcatproducts`,
+          "https://admin.ebitans.com/api/v1/" + `getcatproducts`,
           {
             id: category[id].id,
           }
         );
         if (!response?.error) {
-          setProducts(response?.data?.data);
+          setProducts(response?.data?.data?.data);
         } // the API response object
         else {
           setProducts([]);
@@ -43,7 +43,7 @@ const ProductTwenty = ({ category, design }: any) => {
  `;
 
   return (
-    <div className="sm:container px-5 sm:py-10 py-5 w-full">
+    <div className="sm:container px-5 sm:py-10 py-5 w-full mx-auto">
       <style>{styleCss}</style>
 
       <div>
