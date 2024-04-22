@@ -9,7 +9,6 @@ import TestimonialTwentySeven from "./(testimonial)/testimonial-twentyseven";
 import TestimonialThirtyFive from "./(testimonial)/testimonial-thirtyfive";
 
 const Testimonial = ({ testimonials, theme, design }: any) => {
-  console.log(theme, "t");
   return (
     <>
       {theme === "default" && <TestimonialThree testimonials={testimonials} />}

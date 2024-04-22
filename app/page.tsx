@@ -9,6 +9,7 @@ import NewArrival from "@/components/new-arrival";
 import BestSellerProduct from "@/components/best-seller-product";
 import FeatureProduct from "@/components/feature-product";
 import Testimonial from "@/components/testimonial";
+import Footer from "./components/footer";
 
 interface Navigation {
   name: string;
@@ -46,7 +47,9 @@ export default async function Home() {
     }
   );
 
-  const { layout, design } = res.data;
+  console.log(res.data, "res");
+
+  const { layout, design, page, menu } = res.data;
 
   return (
     <div
@@ -64,7 +67,7 @@ export default async function Home() {
 
 const GetComponent = ({ component, data }: GetComponentProps) => {
   const {
-    headerSetting,
+    headersetting,
     menu,
     slider,
     category,
@@ -76,16 +79,17 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
     design,
     store_id,
     brand,
+    page,
   } = data;
-  console.log(testimonials, "test");
 
   switch (component) {
     case "header":
       return (
         <Header
-          headerSetting={headerSetting}
+          headerSetting={headersetting}
           menu={menu}
           navigation={navigation}
+          theme={design?.header}
         />
       );
     case "hero_slider":
@@ -129,7 +133,7 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           best_sell_product={best_sell_product}
           feature_product={feature_product}
           category={category}
-          headerSetting={headerSetting}
+          headerSetting={headersetting}
         />
       );
     case "new_arrival":
@@ -170,6 +174,18 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           testimonials={testimonials}
           theme={design?.testimonial}
           design={design}
+        />
+      );
+    case "footer":
+      return (
+        <Footer
+          theme={design?.footer}
+          headerSetting={headersetting}
+          category={category}
+          design={design}
+          store_id={store_id}
+          menu={menu}
+          page={page}
         />
       );
   }

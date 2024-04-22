@@ -1,12 +1,14 @@
 import HeaderDefault from "@/components/(headers)/header-default";
 
-const Header = ({ headerSetting, menu, navigation }: any) => {
+const Header = ({ theme, headerSetting, menu, navigation }: any) => {
   return (
-    <HeaderDefault
-      headerSetting={headerSetting}
-      menu={menu}
-      navigation={navigation}
-    />
+    <>
+      <HeaderDefault
+        headerSetting={headerSetting}
+        menu={menu}
+        navigation={navigation}
+      />
+    </>
   );
 };
 

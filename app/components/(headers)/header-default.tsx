@@ -2,6 +2,7 @@
 import { imgUrl } from "@/app/site-settings/siteUrl";
 import { Popover, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 
@@ -19,7 +20,7 @@ const HeaderDefault = ({ headerSetting, menu, navigation }: any) => {
                 <div className="">
                   <Link href="/">
                     {headerSetting?.logo ? (
-                      <img
+                      <Image
                         className="h-auto hidden lg:block w-48 text-white"
                         src={imgUrl + headerSetting?.logo}
                         alt="logo"

@@ -1,5 +1,5 @@
 "use client";
-import dynamic from "next/dynamic";
+
 import DefaultFeaturedCategory from "@/components/(featured-category)/featured-default";
 import FeaturedOne from "./(featured-category)/featuredcat-one";
 import FeaturedTwo from "./(featured-category)/featuredcat-two";

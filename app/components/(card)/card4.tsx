@@ -12,8 +12,6 @@ const Card4 = ({ item, design, store_id, makeid }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-  // console.log(camp, "v");
-
   // const dispatch = useDispatch();
 
   const styleCss = `
