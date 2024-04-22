@@ -5,8 +5,15 @@ import FooterOne from "./(footers)/footer-one";
 import FooterTwo from "./(footers)/footer-two";
 import FooterThree from "./(footers)/footer-three";
 import FooterFour from "./(footers)/footer-four";
+import FooterFive from "./(footers)/footer-five";
 const DynamicFooterDefault = dynamic(
   () => import("@/components/(footers)/footer-default"),
+  {
+    ssr: false,
+  }
+);
+const DynamicFooterFive = dynamic(
+  () => import("@/components/(footers)/footer-five"),
   {
     ssr: false,
   }
@@ -59,6 +66,17 @@ const Footer = ({
       )}
       {theme === "four" && (
         <FooterFour
+          page={page}
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
+        />
+      )}
+
+      {theme === "five" && (
+        <DynamicFooterFive
+          category={category}
+          design={design}
           page={page}
           headerSetting={headerSetting}
           store_id={store_id}
