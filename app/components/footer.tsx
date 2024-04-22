@@ -2,6 +2,7 @@ import React from "react";
 import FooterDefault from "./(footers)/footer-default";
 import dynamic from "next/dynamic";
 import FooterOne from "./(footers)/footer-one";
+import FooterTwo from "./(footers)/footer-two";
 const DynamicFooterDefault = dynamic(
   () => import("@/components/(footers)/footer-default"),
   {
@@ -35,6 +36,14 @@ const Footer = ({
           store_id={store_id}
           menu={menu}
           page={page}
+        />
+      )}
+
+      {theme === "two" && (
+        <FooterTwo
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
         />
       )}
     </>
