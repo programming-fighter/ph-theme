@@ -7,7 +7,6 @@ import {
   AiOutlineWhatsApp,
 } from "react-icons/ai";
 import { RiInstagramLine } from "react-icons/ri";
-
 import { BsHeadset } from "react-icons/bs";
 import { SiMinutemailer } from "react-icons/si";
 import { motion } from "framer-motion";
@@ -111,7 +110,7 @@ const FooterEleven = ({
         </div>
 
         <div className="col-span-2 xl:col-span-1 md:col-span-6 lg:col-span-1 lg:hidden">
-          <Accordion name={"Categories"} categoryMenu={category} cls />
+          <Accordion name={"Categories"} categoryMenu={category} cls={cls} />
         </div>
 
         <div className="hidden lg:block col-span-2 xl:col-span-1 md:col-span-6 lg:col-span-1  ">

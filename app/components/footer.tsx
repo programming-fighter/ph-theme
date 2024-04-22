@@ -11,6 +11,11 @@ import FooterSeven from "./(footers)/footer-seven";
 import FooterEight from "./(footers)/footer-eight";
 import FooterNine from "./(footers)/footer-nine";
 import FooterEleven from "./(footers)/footer-eleven";
+import FooterTwelve from "./(footers)/footer-twelve";
+import { FOURTEEN, SIXTEEN, THIRTEEN } from "../consts";
+import FooterThirteen from "./(footers)/footer-thirteen";
+import FooterFourteen from "./(footers)/footer-fourteen";
+import FooterSixteen from "./(footers)/footer-sixteen";
 const DynamicFooterDefault = dynamic(
   () => import("@/components/(footers)/footer-default"),
   {
@@ -26,6 +31,12 @@ const DynamicFooterFive = dynamic(
 
 const DynamicFooterNine = dynamic(
   () => import("@/components/(footers)/footer-nine"),
+  {
+    ssr: false,
+  }
+);
+const DynamicFooterTwelve = dynamic(
+  () => import("@/components/(footers)/footer-twelve"),
   {
     ssr: false,
   }
@@ -158,6 +169,48 @@ const Footer = ({
           headerSetting={headerSetting}
           store_id={store_id}
           menu={menu}
+        />
+      )}
+
+      {theme === "twelve" && (
+        <DynamicFooterTwelve
+          category={category}
+          design={design}
+          page={page}
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
+        />
+      )}
+
+      {theme === THIRTEEN && (
+        <FooterThirteen
+          category={category}
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
+        />
+      )}
+
+      {theme === FOURTEEN && (
+        <FooterFourteen
+          design={design}
+          category={category}
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
+          page={page}
+        />
+      )}
+
+      {theme === SIXTEEN && (
+        <FooterSixteen
+          design={design}
+          category={category}
+          headerSetting={headerSetting}
+          store_id={store_id}
+          menu={menu}
+          page={page}
         />
       )}
     </>
