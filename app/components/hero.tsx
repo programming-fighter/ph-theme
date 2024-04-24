@@ -80,10 +80,10 @@ const DynamicHeroDefault = dynamic(
 
 const DynamicHeroOne = dynamic(() => import("@/components/(hero)/hero-one"), {
   ssr: false,
-  loading: () => <HeroOne />,
 });
 
 const Hero = ({ slider, theme, design }: any) => {
+  console.log("slider theme", theme);
   return (
     <>
       {theme === "one" && <DynamicHeroOne slider={slider} />}

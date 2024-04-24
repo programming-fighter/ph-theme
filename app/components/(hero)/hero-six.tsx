@@ -73,23 +73,24 @@ const HeroSix = ({ slider, design }: any) => {
         
     }
     `;
+  console.log(slider, "slider");
   return (
-    <div className='group z-0 relative bg-white sm:container px-5'>
+    <div className="group z-0 relative bg-white sm:container px-5">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-five'></div>
+        <div className="swiper-pagination-five"></div>
       </div>
 
-      <div className=' gap-2  md:group-hover:flex hidden'>
+      <div className=" gap-2  md:group-hover:flex hidden">
         <div
           className={`${prevEl} bg-gray-500 arrow-hover text-white transition-all lg:cursor-pointer duration-500  ease-linear absolute left-10 top-[50%] -translate-y-1/2 z-10  `}
         >
-          <ChevronLeftIcon className='h-8 text-2xl font-serif font-bold' />
+          <ChevronLeftIcon className="h-8 text-2xl font-serif font-bold" />
         </div>
         <div
           className={`${nextEl} bg-gray-500 arrow-hover  text-white transition-all lg:cursor-pointer duration-500  ease-linear absolute right-10 top-[50%] -translate-y-1/2 z-10 `}
         >
-          <ChevronRightIcon className='h-8 text-2xl font-serif font-bold' />
+          <ChevronRightIcon className="h-8 text-2xl font-serif font-bold" />
         </div>
       </div>
 
@@ -98,37 +99,37 @@ const HeroSix = ({ slider, design }: any) => {
           prevEl: `.${prevEl}`,
           nextEl: `.${nextEl}`,
         }}
-        loop={true}
+        loop={false}
         spaceBetween={30}
         pagination={pagination}
         autoplay={{
           delay: 5000,
         }}
         modules={[Pagination, Autoplay, Navigation, Controller]}
-        className='mySwiper relative'
+        className="mySwiper relative"
       >
         {slider?.map((s: any) => (
           <SwiperSlide key={s.id}>
-            <div className='absolute top-1/2 -translate-y-1/2 left-[10%] max-w-[50%]'>
-              <div style={{ color: s?.color }} className=''>
-                <h1 className='xl:text-4xl md:text-[24px] text-[14px] font-seven mb-1 md:mb-3 font-bold'>
+            <div className="absolute top-1/2 -translate-y-1/2 left-[10%] max-w-[50%]">
+              <div style={{ color: s?.color }} className="">
+                <h1 className="xl:text-4xl md:text-[24px] text-[14px] font-seven mb-1 md:mb-3 font-bold">
                   {s?.title}
                 </h1>
-                <p className='md:text-base text-xs font-seven'>{s?.subtitle}</p>
+                <p className="md:text-base text-xs font-seven">{s?.subtitle}</p>
               </div>
               {s?.link && (
-                <a href={s?.link} target='_blank' rel='noopener noreferrer'>
-                  <h1 className='md:mt-10 mt-3 lg:px-5 px-2 lg:py-2 py-1 bg-black text-white font-seven lg:text-lg text-xs rounded-md w-max'>
+                <a href={s?.link} target="_blank" rel="noopener noreferrer">
+                  <h1 className="md:mt-10 mt-3 lg:px-5 px-2 lg:py-2 py-1 bg-black text-white font-seven lg:text-lg text-xs rounded-md w-max">
                     Go To Collection{" "}
-                    <BsArrowRight className='inline lg:ml-3 ml-1 lg:text-2xl text-sm ' />
+                    <BsArrowRight className="inline lg:ml-3 ml-1 lg:text-2xl text-sm " />
                   </h1>
                 </a>
               )}
             </div>
             <img
-              className='h-auto min-w-full'
+              className="h-auto min-w-full"
               src={sliderImg + s.image}
-              alt=''
+              alt=""
             />
           </SwiperSlide>
         ))}

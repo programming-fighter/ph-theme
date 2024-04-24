@@ -46,13 +46,13 @@ const HeroTwo = ({ slider, design }: any) => {
       `;
 
   return (
-    <div className='group z-0 relative w-full'>
+    <div className="group z-0 relative w-full">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-two'></div>
+        <div className="swiper-pagination-two"></div>
       </div>
       <Swiper
-        loop={true}
+        loop={false}
         pagination={pagination}
         autoplay={{
           delay: 3000,
@@ -62,33 +62,33 @@ const HeroTwo = ({ slider, design }: any) => {
       >
         {slider?.map((item: any) => (
           <SwiperSlide key={item.id}>
-            <div className=''>
+            <div className="">
               <div
                 style={{ color: item?.color }}
-                className='absolute top-1/2 -translate-y-1/2 font-thin md:max-w-sm max-w-[275px] xl:left-48 lg:left-32 md:left-[120px] left-5'
+                className="absolute top-1/2 -translate-y-1/2 font-thin md:max-w-sm max-w-[275px] xl:left-48 lg:left-32 md:left-[120px] left-5"
               >
                 <h1 className={`md:text-xl text-sm`}>{item?.subtitle}</h1>
-                <p className='xl:text-4xl md:text-[28px] text-[20px] leading-none font-medium mt-3'>
+                <p className="xl:text-4xl md:text-[28px] text-[20px] leading-none font-medium mt-3">
                   {item?.title}
                 </p>
                 {item?.link && (
                   <a
                     href={item?.link}
-                    target='_blank'
-                    rel='noopener noreferrer'
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <div className='flex lg:px-5 px-2 lg:py-2 py-1 mt-3 text-black lg:text-lg text-xs shop-link w-max lg:cursor-pointer bg-transparent border-black border duration-500 items-center space-x-1'>
-                      <BsPlusLg className='lg:text-sm ' />
-                      <h1 className=''>SHOP NOW</h1>
+                    <div className="flex lg:px-5 px-2 lg:py-2 py-1 mt-3 text-black lg:text-lg text-xs shop-link w-max lg:cursor-pointer bg-transparent border-black border duration-500 items-center space-x-1">
+                      <BsPlusLg className="lg:text-sm " />
+                      <h1 className="">SHOP NOW</h1>
                     </div>
                   </a>
                 )}
               </div>
             </div>
             <img
-              className='h-auto min-w-full'
+              className="h-auto min-w-full"
               src={sliderImg + item.image}
-              alt=''
+              alt=""
             />
           </SwiperSlide>
         ))}

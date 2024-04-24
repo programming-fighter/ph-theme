@@ -10,8 +10,10 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 import { BsPlusLg } from "react-icons/bs";
 import { sliderImg } from "@/app/site-settings/siteUrl";
+import "./hero-nine.css";
 
 const HeroNine = ({ slider, design }: any) => {
+  console.log({ slider });
   let menu = [""];
 
   const nextEl = "hero-slider-next";
@@ -52,22 +54,22 @@ const HeroNine = ({ slider, design }: any) => {
   
     `;
   return (
-    <div className='group z-0 relative'>
+    <div className="group z-0 relative">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-nine'></div>
+        <div className="swiper-pagination-nine"></div>
       </div>
 
-      <div className='md:group-hover:flex hidden'>
+      <div className="md:group-hover:flex hidden">
         <div
           className={`${prevEl} bg-gray-500 hover:bg-black text-white transition-all duration-500  ease-linear absolute left-10 top-1/2 -translate-y-1/2 z-[2] `}
         >
-          <ChevronLeftIcon className='h-8 text-2xl font-serif font-bold' />
+          <ChevronLeftIcon className="h-8 text-2xl font-serif font-bold" />
         </div>
         <div
           className={`${nextEl} bg-gray-500 hover:bg-black text-white transition-all duration-500  ease-linear absolute right-10 top-1/2 -translate-y-1/2 z-[2] `}
         >
-          <ChevronRightIcon className='h-8 text-2xl font-serif font-bold' />
+          <ChevronRightIcon className="h-8 text-2xl font-serif font-bold" />
         </div>
       </div>
 
@@ -83,35 +85,38 @@ const HeroNine = ({ slider, design }: any) => {
           delay: 5000,
         }}
         modules={[Pagination, Autoplay, Navigation, Controller]}
-        className='mySwiper relative'
+        className="mySwiper relative"
       >
-        {slider?.map((s: any) => (
-          <SwiperSlide key={s.id}>
-            <div className=''>
-              <div
-                style={{ color: s?.color }}
-                className='font-twelve pr-[50%] absolute xl:top-48 lg:top-24 md:top-20 top-5 xl:left-[400px] lg:left-32 md:left-[120px] left-[60px]'
-              >
-                <h1 className='xl:text-4xl md:text-[28px] text-[22px] mb-2 font-medium'>
-                  {s?.title}
-                </h1>
-                <p className='md:text-xl text-sm leading-none mb-5'>
-                  {s?.subtitle}
-                </p>
-                {s?.link && (
-                  <a href={s?.link} target='_blank' rel='noopener noreferrer'>
-                    <div className='flex font-twelve lg:px-5 px-2 lg:py-2 py-1 text-black lg:text-lg text-xs shop-link w-max lg:cursor-pointer bg-transparent border-black border duration-500 items-center space-x-1'>
-                      <BsPlusLg className='lg:text-sm ' />
-                      <h1 className=''>SHOP NOW</h1>
-                    </div>
-                  </a>
-                )}
+        {slider?.map((s: any) => {
+          console.log("slider", s);
+          return (
+            <SwiperSlide key={s.id}>
+              <div className="">
+                <div
+                  style={{ color: s?.color }}
+                  className="font-twelve pr-[50%] absolute xl:top-48 lg:top-24 md:top-20 top-5 xl:left-[400px] lg:left-32 md:left-[120px] left-[60px]"
+                >
+                  <h1 className="xl:text-4xl md:text-[28px] text-[22px] mb-2 font-medium">
+                    {s?.title}
+                  </h1>
+                  <p className="md:text-xl text-sm leading-none mb-5">
+                    {s?.subtitle}
+                  </p>
+                  {s?.link && (
+                    <a href={s?.link} target="_blank" rel="noopener noreferrer">
+                      <div className="flex font-twelve lg:px-5 px-2 lg:py-2 py-1 text-black lg:text-lg text-xs shop-link w-max lg:cursor-pointer bg-transparent border-black border duration-500 items-center space-x-1">
+                        <BsPlusLg className="lg:text-sm " />
+                        <h1 className="">SHOP NOW</h1>
+                      </div>
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
 
-            <img className='h-auto w-full' src={sliderImg + s.image} alt='' />
-          </SwiperSlide>
-        ))}
+              <img className="h-auto w-full" src={sliderImg + s.image} alt="" />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );

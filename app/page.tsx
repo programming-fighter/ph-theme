@@ -47,6 +47,8 @@ export default async function Home() {
     }
   );
 
+  console.log("server");
+
   const { layout, design, page, menu } = res.data;
 
   return (

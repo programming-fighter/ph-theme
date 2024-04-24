@@ -37,10 +37,10 @@ const HeroSeven = ({ slider, design }: any) => {
       `;
 
   return (
-    <div className='group z-0 mt-3 relative sm:container px-5 bg-white w-full'>
+    <div className="group z-0 mt-3 relative sm:container px-5 bg-white w-full">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-seven hidden sm:block'></div>
+        <div className="swiper-pagination-seven hidden sm:block"></div>
       </div>
       <Swiper
         loop={true}
@@ -54,27 +54,27 @@ const HeroSeven = ({ slider, design }: any) => {
       >
         {slider?.map((s: any) => (
           <SwiperSlide key={s.id}>
-            <div className='absolute top-1/2 -translate-y-1/2 left-5 sm:left-[10%] max-w-[50%] xl:max-w-[40%]'>
-              <div style={{ color: s?.color }} className=''>
-                <h1 className='xl:text-4xl md:text-[24px] text-[14px] font-seven mb-1 md:mb-3 font-bold'>
+            <div className="absolute top-1/2 -translate-y-1/2 left-5 sm:left-[10%] max-w-[50%] xl:max-w-[40%]">
+              <div style={{ color: s?.color }} className="">
+                <h1 className="xl:text-4xl md:text-[24px] text-[14px] font-seven mb-1 md:mb-3 font-bold">
                   {s?.title}
                 </h1>
-                <p className='md:text-base text-xs font-seven'>{s?.subtitle}</p>
+                <p className="md:text-base text-xs font-seven">{s?.subtitle}</p>
               </div>
               {s?.link && (
-                <a href={s?.link} target='_blank' rel='noopener noreferrer'>
-                  <h1 className='md:mt-10 mt-3 lg:px-5 px-2 lg:py-2 py-1 bg-black text-white font-seven lg:text-lg text-xs rounded-md w-max'>
+                <a href={s?.link} target="_blank" rel="noopener noreferrer">
+                  <h1 className="md:mt-10 mt-3 lg:px-5 px-2 lg:py-2 py-1 bg-black text-white font-seven lg:text-lg text-xs rounded-md w-max">
                     Go To Collection{" "}
-                    <BsArrowRight className='inline lg:ml-3 ml-1 lg:text-2xl text-sm ' />
+                    <BsArrowRight className="inline lg:ml-3 ml-1 lg:text-2xl text-sm " />
                   </h1>
                 </a>
               )}
             </div>
 
             <img
-              className='rounded-lg h-auto min-w-full'
+              className="rounded-lg h-auto min-w-full"
               src={sliderImg + s.image}
-              alt=''
+              alt=""
             />
           </SwiperSlide>
         ))}
