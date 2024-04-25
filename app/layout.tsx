@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "./hooks/theme-provider";
+import { Provider } from "react-redux";
+import store, { persistor } from "@/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,11 +19,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log("children");
   return (
     <html lang="en">
       <body className={`${inter.className} lg2`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+              {children}
+            </PersistGate>
+          </Provider>
+        </ThemeProvider>
       </body>
     </html>
   );

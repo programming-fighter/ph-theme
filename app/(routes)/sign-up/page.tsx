@@ -10,12 +10,8 @@ const Signup = async () => {
       name: "siam.localhost:3000",
     }
   );
-
-  console.log("server");
-
   const { design } = res.data;
 
-  console.log("design", design);
   return <Register theme={design?.login_page} />;
 };
 

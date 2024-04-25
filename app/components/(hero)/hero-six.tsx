@@ -1,31 +1,24 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation, Controller } from "swiper/modules";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-
 import { BsArrowRight } from "react-icons/bs";
 import { sliderImg } from "@/app/site-settings/siteUrl";
 
 const HeroSix = ({ slider, design }: any) => {
   const nextEl = "hero-slider-next";
   const prevEl = "hero-slider-prev";
-
   let menu = [""];
-
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
-
   const pagination = {
     el: ".swiper-pagination-five",
     clickable: true,
     bulletElement: `swiper-pagination-bullet`,
-
     renderBullet: function (index: any, className: any) {
       return '<span class="' + className + '">' + menu + "</span>";
     },
@@ -63,8 +56,7 @@ const HeroSix = ({ slider, design }: any) => {
     }
     .arrow-hover {
         border: 1px solid ${bgColor};
-        color: ${bgColor};
-        
+        color: ${bgColor};      
     }
     .arrow-hover:hover {
         background: ${bgColor};
@@ -73,14 +65,12 @@ const HeroSix = ({ slider, design }: any) => {
         
     }
     `;
-  console.log(slider, "slider");
   return (
     <div className="group z-0 relative bg-white sm:container px-5">
       <style>{styleCss}</style>
       <div>
         <div className="swiper-pagination-five"></div>
       </div>
-
       <div className=" gap-2  md:group-hover:flex hidden">
         <div
           className={`${prevEl} bg-gray-500 arrow-hover text-white transition-all lg:cursor-pointer duration-500  ease-linear absolute left-10 top-[50%] -translate-y-1/2 z-10  `}
@@ -93,7 +83,6 @@ const HeroSix = ({ slider, design }: any) => {
           <ChevronRightIcon className="h-8 text-2xl font-serif font-bold" />
         </div>
       </div>
-
       <Swiper
         navigation={{
           prevEl: `.${prevEl}`,

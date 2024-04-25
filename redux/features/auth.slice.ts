@@ -1,0 +1,49 @@
+"use client";
+import authService from "@/app/utils/http/axios/auth.service";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+const user = JSON.parse(localStorage.getItem("user") as any);
+
+export const signUp = createAsyncThunk(
+  "auth/userinfo",
+  async ({ store_id, phone }: any, thunkAPI) => {
+    try {
+      const response = await authService.signUp(store_id, phone);
+      //   thunkAPI.dispatch(setMessage(response.data.message));
+      // console.log('res',response.data);
+      return response.data;
+    } catch (error: any) {
+      // const message =
+      //   (error.response &&
+      //     error.response.data &&
+      //     error.response.data.message) ||
+      //   error.message ||
+      //   error.toString();
+      //   thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+const initialState = user
+  ? { isLoggedIn: true, user, success: "" }
+  : { isLoggedIn: false, user: null, success: "" };
+const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(signUp.fulfilled, (state, action) => {
+      state.isLoggedIn = false;
+      state.user = action.payload;
+    });
+    builder.addCase(signUp.rejected, (state, action) => {
+      state.isLoggedIn = false;
+      state.success = "";
+      state.user = null;
+    });
+  },
+});
+
+const { reducer } = authSlice;
+export default reducer;
