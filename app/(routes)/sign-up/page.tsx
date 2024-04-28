@@ -12,8 +12,6 @@ const Signup = async () => {
   );
   const { design } = res.data;
 
-  console.log(process.env.NEXT_PUBLIC_REACT_APP_BASE_URL);
-
   return <Register theme={design?.login_page} />;
 };
 

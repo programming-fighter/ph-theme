@@ -7,7 +7,6 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { verify } from "@/redux/features/auth.slice";
 // import useTheme from '../../../../hooks/useTheme';
-
 // import { token } from '../../../../services/AxiosInstance';
 
 const VerifyOtpOne = () => {
