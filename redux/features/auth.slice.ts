@@ -2,7 +2,12 @@
 import authService from "@/app/utils/http/axios/auth.service";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const user = JSON.parse(localStorage.getItem("user") as any);
+let user;
+if (typeof window !== "undefined") {
+  user = JSON.parse(localStorage.getItem("user") as any);
+}
+
+// const user = JSON.parse(localStorage.getItem("user") as any);
 
 export const signUp = createAsyncThunk(
   "auth/userinfo",
