@@ -25,6 +25,29 @@ export const signUp = createAsyncThunk(
   }
 );
 
+export const verify = createAsyncThunk(
+  "auth/users/checkotp",
+  async ({ otp, token }: any, thunkAPI) => {
+    console.log("otp", otp, token);
+    try {
+      const response = await authService.verify_phone(otp, token);
+
+      // thunkAPI.dispatch(setMessage(response.data.error));
+      return response.data;
+    } catch (error) {
+      // console.log('res',error);
+      // const message =
+      //   (error.response &&
+      //     error.response.data &&
+      //     error.response.data.message) ||
+      //   error.message ||
+      //   error.toString();
+      // thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const initialState = user
   ? { isLoggedIn: true, user, success: "" }
   : { isLoggedIn: false, user: null, success: "" };
@@ -38,6 +61,20 @@ const authSlice = createSlice({
       state.user = action.payload;
     });
     builder.addCase(signUp.rejected, (state, action) => {
+      state.isLoggedIn = false;
+      state.success = "";
+      state.user = null;
+    });
+    builder.addCase(verify.fulfilled, (state, action) => {
+      if (action.payload.verify) {
+        state.isLoggedIn = true;
+        state.user = action.payload;
+      } else {
+        state.isLoggedIn = false;
+        state.user = action.payload;
+      }
+    });
+    builder.addCase(verify.rejected, (state, action) => {
       state.isLoggedIn = false;
       state.success = "";
       state.user = null;

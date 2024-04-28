@@ -7,8 +7,13 @@ const signUp = (store_id: any, phone: any) => {
   });
 };
 
+const verify_phone = (otp: any, token: any) => {
+  return axiosInstance.post("users/checkotp", { otp, token });
+};
+
 const authService = {
   signUp,
+  verify_phone,
 };
 
 export default authService;
