@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 let user;
 if (typeof window !== "undefined") {
-  user = JSON.parse(localStorage.getItem("user") as any);
+  user = JSON.parse(localStorage.getItem("user")!);
 }
 
 // const user = JSON.parse(localStorage.getItem("user") as any);
@@ -26,6 +26,29 @@ export const signUp = createAsyncThunk(
       //   error.toString();
       //   thunkAPI.dispatch(setMessage(message));
       return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const login = createAsyncThunk(
+  "auth/login",
+  async ({ store_id, phone, password, tokenData }: any, thunkAPI) => {
+    if (tokenData) {
+      return tokenData;
+    } else {
+      try {
+        const data = await authService.login(store_id, phone, password);
+        return data;
+      } catch (error) {
+        // const message =
+        //   (error.response &&
+        //     error.response.data &&
+        //     error.response.data.message) ||
+        //   error.message ||
+        //   error.toString();
+        // thunkAPI.dispatch(setMessage(message));
+        return thunkAPI.rejectWithValue(error);
+      }
     }
   }
 );
@@ -82,6 +105,19 @@ const authSlice = createSlice({
     builder.addCase(verify.rejected, (state, action) => {
       state.isLoggedIn = false;
       state.success = "";
+      state.user = null;
+    });
+    builder.addCase(login.fulfilled, (state, action) => {
+      if (action.payload.verify) {
+        state.isLoggedIn = true;
+        state.user = action.payload;
+      } else {
+        state.isLoggedIn = false;
+        state.user = action.payload;
+      }
+    });
+    builder.addCase(login.rejected, (state, action) => {
+      state.isLoggedIn = false;
       state.user = null;
     });
   },
