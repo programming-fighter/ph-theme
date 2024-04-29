@@ -1,19 +1,18 @@
 "use client";
-import React, { useState } from "react";
-
-import { mobile, location, userIcon, logoutIcon } from "@/assets/svg";
+import useTheme from "@/app/hooks/use-theme";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { mobile, location, logoutIcon, userIcon } from "@/assets/svg";
 import Link from "next/link";
 
-// import { primaryColor } from '../../../constant';
-
-const HeaderTop = ({ headerSetting, design }: any) => {
-  // const { isLoggedIn } = useSelector((state) => state.auth);
-  // const dispatch = useDispatch();
+const HeaderTop = () => {
+  const { isLoggedIn } = useSelector((state: any) => state.auth);
+  const dispatch = useDispatch();
   // const logOut = () => {
   //   dispatch(logout());
   // };
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const { headerSetting, design } = useTheme();
   const { phone, address } = headerSetting;
 
   return (
@@ -34,6 +33,7 @@ const HeaderTop = ({ headerSetting, design }: any) => {
           {isLoggedIn ? (
             <div
               className="lg:cursor-pointer"
+
               // onClick={() => logOut()}
             >
               <HeaderTopMenu icon={logoutIcon} doc={"Logout"} />

@@ -3,7 +3,7 @@ class Request {
   async get(url: any) {
     return axiosInstance.get(url).then((res) => res.data);
   }
-  async post(url: any, body: any) {
+  async post(url: any, body?: any) {
     return axiosInstance.post(url, body).then((res) => res.data);
   }
   async update(url: any, body: any) {

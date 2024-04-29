@@ -1,23 +1,24 @@
+"use client";
 import React, { Fragment, useState } from "react";
-import { SearchIcon } from "@heroicons/react/outline";
-import useTheme from "../../../../hooks/useTheme";
-import { imgUrl, profileImg } from "../../../../siteSettings/siteUrl";
 import { Menu, Transition } from "@headlessui/react";
-import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../../../redux/slices/auth";
-import { XIcon } from "@heroicons/react/solid";
-import SearchBox from "./SearchBox";
+
 import { motion } from "framer-motion";
+import useTheme from "@/app/hooks/use-theme";
+import Link from "next/link";
+import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { IoSearchCircleOutline } from "react-icons/io5";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import SearchBox from "./searchbox";
 
 const HeaderDown = () => {
   const { headerSetting, userData } = useTheme();
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state: any) => state.auth);
 
   const dispatch = useDispatch();
-  const logOut = () => {
-    dispatch(logout());
-  };
+  // const logOut = () => {
+  //   dispatch(logout());
+  // };
   return (
     <div>
       <div className=" sm:container px-5 mx-auto my-1">
@@ -26,8 +27,7 @@ const HeaderDown = () => {
           <div className="col-span-1 hidden md:flex justify-center justify-self-center items-center ">
             <div className="w-full h-full">
               {headerSetting?.logo !== null ? (
-                <Link to="/">
-                  {" "}
+                <Link href="/">
                   <img
                     src={imgUrl + headerSetting?.logo}
                     alt=""
@@ -35,11 +35,11 @@ const HeaderDown = () => {
                   />
                 </Link>
               ) : (
-                <NavLink to="/">
+                <Link href="/">
                   <p className="text-xl uppercase">
                     {headerSetting?.website_name}
                   </p>
-                </NavLink>
+                </Link>
               )}
             </div>
           </div>
@@ -76,32 +76,32 @@ const HeaderDown = () => {
                   <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10 flex flex-col">
                     <Menu.Item>
                       {({ active }) => (
-                        <NavLink
-                          to="/profile"
+                        <Link
+                          href="/profile"
                           className={
                             "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
                           }
                         >
                           Your Profile
-                        </NavLink>
+                        </Link>
                       )}
                     </Menu.Item>
                     <Menu.Item>
                       {({ active }) => (
-                        <NavLink
-                          to="/profile/order"
+                        <Link
+                          href="/profile/order"
                           className={
                             "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
                           }
                         >
                           Order
-                        </NavLink>
+                        </Link>
                       )}
                     </Menu.Item>
                     <Menu.Item>
                       {({ active }) => (
                         <p
-                          onClick={() => logOut()}
+                          // onClick={() => logOut()}
                           className={
                             "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700"
                           }
@@ -125,7 +125,7 @@ export default HeaderDown;
 
 export const Search = () => {
   const [show, setshow] = useState(false);
-  const [text, setText] = useState(null);
+  const [text, setText] = useState<any>(null);
 
   return (
     <>
@@ -153,8 +153,8 @@ export const Search = () => {
               className={`mt-1 focus:outline-0 focus:ring-0 focus:border-0 block w-full shadow-sm text-xs sm:text-sm border-gray-300 rounded-md border py-1 sm:py-3 pl-10 placeholder:text-gray-500 bg-gray-50`}
             />
 
-            <SearchIcon className="w-5 h-5 sm:w-6 sm:h-6 absolute left-1 sm:left-2 top-1 sm:top-4 bottom-0 font-semibold text-xs lg:cursor-pointer" />
-            <XIcon
+            <IoSearchCircleOutline className="w-5 h-5 sm:w-6 sm:h-6 absolute left-1 sm:left-2 top-1 sm:top-4 bottom-0 font-semibold text-xs lg:cursor-pointer" />
+            <XMarkIcon
               onClick={() => {
                 setText("");
                 setshow(!show);
@@ -166,7 +166,7 @@ export const Search = () => {
         {text && <SearchBox search={text} setSearch={setText} />}
       </div>
       {!show && (
-        <SearchIcon
+        <IoSearchCircleOutline
           onClick={() => setshow(!show)}
           className="h-5 w-5 sm:h-7 sm:w-7 lg:cursor-pointer"
         />
