@@ -9,6 +9,7 @@ import HeaderSeven from "./(headers)/header-seven/header-seven";
 import HeaderEight from "./(headers)/header-eight/header-eight";
 import HeaderNine from "./(headers)/header-nine/header-nine";
 import HeaderTen from "./(headers)/header-ten/header-ten";
+import HeaderEleven from "./(headers)/header-eleven/header-eleven";
 
 const Header = ({ theme, headerSetting, menu, navigation }: any) => {
   return (
@@ -18,7 +19,7 @@ const Header = ({ theme, headerSetting, menu, navigation }: any) => {
         menu={menu}
         navigation={navigation}
       /> */}
-      <HeaderTen />
+      <HeaderEleven />
     </>
   );
 };
