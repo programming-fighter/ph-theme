@@ -5,6 +5,7 @@ import HeaderThree from "./(headers)/header-three/header-three";
 import HeaderFour from "./(headers)/header-four/header-four";
 import HeaderFive from "./(headers)/header-five/header-five";
 import HeaderSix from "./(headers)/header-six/header-six";
+import HeaderSeven from "./(headers)/header-seven/header-seven";
 
 const Header = ({ theme, headerSetting, menu, navigation }: any) => {
   return (
@@ -14,7 +15,7 @@ const Header = ({ theme, headerSetting, menu, navigation }: any) => {
         menu={menu}
         navigation={navigation}
       /> */}
-      <HeaderSix />
+      <HeaderSeven />
     </>
   );
 };
