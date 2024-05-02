@@ -41,15 +41,49 @@ import HeaderForty from "./(headers)/header-forty/header-forty";
 
 // test
 
-const Header = ({ theme, headerSetting, menu, navigation }: any) => {
+const Header = ({ theme }: any) => {
   return (
     <>
-      {/* <HeaderDefault
-        headerSetting={headerSetting}
-        menu={menu}
-        navigation={navigation}
-      /> */}
-      <HeaderForty />
+      {theme === "default" && <HeaderDefault />}
+      {theme === "one" && <HeaderOne />}
+      {theme === "two" && <HeaderTwo />}
+      {theme === "three" && <HeaderThree />}
+      {theme === "four" && <HeaderFour />}
+      {theme === "five" && <HeaderFive />}
+      {theme === "six" && <HeaderSix />}
+      {theme === "seven" && <HeaderSeven />}
+      {theme === "eight" && <HeaderEight />}
+      {theme === "nine" && <HeaderNine />}
+      {theme === "ten" && <HeaderTen />}
+      {theme === "eleven" && <HeaderEleven />}
+      {theme === "twelve" && <HeaderTwelve />}
+      {theme === "thirteen" && <HeaderThirteen />}
+      {theme === "fourteen" && <HeaderFourteen />}
+      {theme === "fifteen" && <HeaderFifteen />}
+      {theme === "sixteen" && <HeaderSixteen />}
+      {theme === "seventeen" && <HeaderSeventeen />}
+      {theme === "eighteen" && <HeaderEighteen />}
+      {theme === "nineteen" && <HeaderNineteen />}
+      {theme === "twenty" && <HeaderTwenty />}
+      {theme === "twentyone" && <HeaderTwentyOne />}
+      {theme === "twentytwo" && <HeaderTwentyTwo />}
+      {theme === "twentythree" && <HeaderTwentyThree />}
+      {theme === "twentyfour" && <HeaderTwentyFour />}
+      {theme === "twentyfive" && <HeaderTwentyFive />}
+      {theme === "twentysix" && <HeaderTwentySix />}
+      {theme === "twentyseven" && <HeaderTwentySeven />}
+      {theme === "twentyeight" && <HeaderTwentyEight />}
+      {theme === "twentynine" && <HeaderTwentyNine />}
+      {theme === "thirty" && <HeaderThirty />}
+      {theme === "thirtyone" && <HeaderThirtyOne />}
+      {theme === "thirtythree" && <HeaderThirtyThree />}
+      {theme === "thirtyfour" && <HeaderThirtyFour />}
+      {theme === "thirtyfive" && <HeaderThirtyFive />}
+      {theme === "thirtysix" && <HeaderThirtySix />}
+      {theme === "thirtyseven" && <HeaderThirtySeven />}
+      {theme === "thirtyeight" && <HeaderThirtyEight />}
+      {theme === "thirtynine" && <HeaderThirtyNine />}
+      {theme === "forty" && <HeaderForty />}
     </>
   );
 };
