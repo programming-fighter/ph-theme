@@ -11,8 +11,7 @@ const SideMenu = ({ setOpen }: any) => {
 
   const styleCss = `
     .text-hover:hover {
-      color: ${design?.header_color};
-      
+      color: ${design?.header_color}; 
     }
   
   }
