@@ -18,6 +18,7 @@ import HeaderSixteen from "./(headers)/header-sixteen/header-sixteen";
 import HeaderSeventeen from "./(headers)/header-seventeen/header-seventeen";
 import HeaderEighteen from "./(headers)/header-eighteen/header-eighteen";
 import HeaderNineteen from "./(headers)/header-nineteen/header-nineteen";
+import HeaderTwenty from "./(headers)/header-twenty/header-twenty";
 
 // test
 
@@ -29,7 +30,7 @@ const Header = ({ theme, headerSetting, menu, navigation }: any) => {
         menu={menu}
         navigation={navigation}
       /> */}
-      <HeaderNineteen />
+      <HeaderTwenty />
     </>
   );
 };
