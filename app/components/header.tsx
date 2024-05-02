@@ -20,6 +20,7 @@ import HeaderEighteen from "./(headers)/header-eighteen/header-eighteen";
 import HeaderNineteen from "./(headers)/header-nineteen/header-nineteen";
 import HeaderTwenty from "./(headers)/header-twenty/header-twenty";
 import HeaderTwentyOne from "./(headers)/header-twentyone/header-twentyone";
+import HeaderTwentyTwo from "./(headers)/header-twentytwo/header-twentytwo";
 
 // test
 
@@ -31,7 +32,7 @@ const Header = ({ theme, headerSetting, menu, navigation }: any) => {
         menu={menu}
         navigation={navigation}
       /> */}
-      <HeaderTwentyOne />
+      <HeaderTwentyTwo />
     </>
   );
 };
