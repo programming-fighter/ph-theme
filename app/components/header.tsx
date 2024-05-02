@@ -28,6 +28,8 @@ import HeaderTwentySix from "./(headers)/header-twentysix/header-twentysix";
 import HeaderTwentySeven from "./(headers)/header-twentyseven/header-twentyseven";
 import HeaderTwentyEight from "./(headers)/header-twentyeight/header-twentyeight";
 import HeaderTwentyNine from "./(headers)/header-twentynine/header-twentynine";
+import HeaderThirty from "./(headers)/header-thirty/header-thirty";
+import HeaderThirtyOne from "./(headers)/header-thirtyone/header-thirtyone";
 
 // test
 
@@ -39,7 +41,7 @@ const Header = ({ theme, headerSetting, menu, navigation }: any) => {
         menu={menu}
         navigation={navigation}
       /> */}
-      <HeaderTwentyNine />
+      <HeaderThirtyOne />
     </>
   );
 };
