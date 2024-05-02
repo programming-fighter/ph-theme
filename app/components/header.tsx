@@ -34,6 +34,8 @@ import HeaderThirtyThree from "./(headers)/header-thirtythree/header-thirtythree
 import HeaderThirtyFour from "./(headers)/header-thirtyfour/header-thirtyfour";
 import HeaderThirtyFive from "./(headers)/header-thirtyfive/header-thirtyfive";
 import HeaderThirtySix from "./(headers)/header-thirtysix/header-thirtysix";
+import HeaderThirtyEight from "./(headers)/header-thirtyeight/header-thirtyeight";
+import HeaderThirtySeven from "./(headers)/header-thirtyseven/header-thirtyseven";
 
 // test
 
@@ -45,7 +47,7 @@ const Header = ({ theme, headerSetting, menu, navigation }: any) => {
         menu={menu}
         navigation={navigation}
       /> */}
-      <HeaderThirtySix />
+      <HeaderThirtySeven />
     </>
   );
 };
