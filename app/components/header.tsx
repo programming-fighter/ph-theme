@@ -16,6 +16,7 @@ import HeaderFourteen from "./(headers)/header-fourteen/header-fourteen";
 import HeaderFifteen from "./(headers)/header-fifteen/header-fifteen";
 import HeaderSixteen from "./(headers)/header-sixteen/header-sixteen";
 import HeaderSeventeen from "./(headers)/header-seventeen/header-seventeen";
+import HeaderEighteen from "./(headers)/header-eighteen/header-eighteen";
 
 // test
 
@@ -27,7 +28,7 @@ const Header = ({ theme, headerSetting, menu, navigation }: any) => {
         menu={menu}
         navigation={navigation}
       /> */}
-      <HeaderSeventeen />
+      <HeaderEighteen />
     </>
   );
 };
