@@ -1,7 +1,6 @@
 "use client";
 import React, { Fragment, useEffect, useState } from "react";
 import { CgMenuLeft, CgShoppingBag } from "react-icons/cg";
-
 import { useDispatch, useSelector } from "react-redux";
 import { BsSearch } from "react-icons/bs";
 import { Menu, Transition } from "@headlessui/react";
@@ -17,7 +16,6 @@ import SideMenu from "../header-three/side-menu";
 const HeaderSeven = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state: any) => state.auth);
-
   const { headerSetting, userData, design } = useTheme();
   const [open, setOpen] = useState(false);
   const [searchTxt, setSearch] = useState("");
@@ -43,7 +41,7 @@ const HeaderSeven = () => {
     setSearch("");
   };
 
-  // const cartList = useSelector((state) => state.cart.cartList);
+  const cartList = useSelector((state: any) => state.cart.cartList);
 
   // CSS START FROM HERE
 
@@ -268,12 +266,12 @@ const HeaderSeven = () => {
                 className="lg:cursor-pointer"
               >
                 <CgShoppingBag className="text-3xl font-thin" />
-                {/* <p
+                <p
                   style={{ background: design?.text_color, color: bgColor }}
                   className=" text-sm absolute top-0 -right-2 rounded-full w-fit px-1.5 h-fit"
                 >
                   {cartList.length}
-                </p> */}
+                </p>
               </div>
             </div>
           </div>

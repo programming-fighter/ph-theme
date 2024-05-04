@@ -1,5 +1,5 @@
-/* eslint-disable no-cond-assign */
-/* eslint-disable jsx-a11y/no-redundant-roles */
+"use client";
+
 import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Dialog, Transition } from "@headlessui/react";
@@ -13,6 +13,7 @@ import {
 import useTheme from "@/app/hooks/use-theme";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
+import { decrementQty, incrementQty } from "@/redux/features/product.slice";
 
 const CartPopUpThree = () => {
   const { design } = useTheme();
@@ -113,11 +114,13 @@ export const Drawer = ({ open, setOpen, children }: any) => {
 
 const ShoppingCart = ({ setOpen }: any) => {
   const cartList = useSelector((state: any) => state.cart.cartList);
-  const priceList = cartList?.map((p: any) => p.qty * p.price);
+  const priceList = cartList?.map((p: any) => Number(p.qty) * Number(p.price));
   const total = priceList.reduce(
     (previousValue: any, currentValue: any) => previousValue + currentValue,
     0
   );
+
+  console.log(cartList, "cartList");
 
   const { design } = useTheme();
 
@@ -256,7 +259,7 @@ const SingleCartProduct = ({ product, setOpen }: any) => {
             >
               <div
                 onClick={() => {
-                  // dispatch(decrementQty(product?.cartId));
+                  dispatch(decrementQty(product?.cartId));
                   deleteBtn();
                 }}
                 className="hover:bg-gray-800 hover:rounded-md lg:cursor-pointer py-2 h-full w-8 flex justify-center items-center"
@@ -271,7 +274,7 @@ const SingleCartProduct = ({ product, setOpen }: any) => {
               </div>
               <div
                 onClick={() => {
-                  // dispatch(incrementQty(product?.cartId));
+                  dispatch(incrementQty(product?.cartId));
                   addCartBtn();
                 }}
                 className="hover:bg-gray-800 hover:rounded-md lg:cursor-pointer py-2 h-full w-8 flex justify-center items-center"
@@ -297,7 +300,7 @@ const SingleCartProduct = ({ product, setOpen }: any) => {
           <div className="hover:bg-gray-800 hover:rounded-md py-2 h-full w-8 flex justify-center items-center">
             <MinusIcon
               color={design?.text_color}
-              // onClick={() => dispatch(decrementQty(product?.cartId))}
+              onClick={() => dispatch(decrementQty(product?.cartId))}
               width={15}
             />
           </div>
@@ -310,7 +313,7 @@ const SingleCartProduct = ({ product, setOpen }: any) => {
           <div className="hover:bg-gray-800 hover:rounded-md py-2 h-full w-8 flex justify-center items-center">
             <PlusIcon
               color={`${design?.text_color}`}
-              // onClick={() => dispatch(incrementQty(product?.cartId))}
+              onClick={() => dispatch(incrementQty(product?.cartId))}
               width={15}
             />
           </div>

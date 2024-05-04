@@ -3,15 +3,17 @@ import { productImg } from "@/app/site-settings/siteUrl";
 import { getPrice } from "@/app/utils/get-price";
 import { getCampaign } from "@/app/utils/http/get-campaign";
 import Taka from "@/app/utils/taka";
+import { addToCartList } from "@/redux/features/product.slice";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
 const Card44 = ({ item, design, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
@@ -71,6 +73,7 @@ const Card44 = ({ item, design, store_id }: any) => {
     item.discount_price,
     item.discount_type
   );
+
   const filterOfferProduct = (item: any) => {
     let cartItem = {};
     let productDetails = {
@@ -83,9 +86,12 @@ const Card44 = ({ item, design, store_id }: any) => {
     // });
 
     axios
-      .post(process.env.API_URL + "get/offer/product", productDetails)
+      .post(
+        process.env.NEXT_PUBLIC_REACT_APP_BASE_URL + "get/offer/product",
+        productDetails
+      )
       .then((res: any) => {
-        if (!res?.error) {
+        if (!res?.data?.error) {
           let itemRegularPrice = getPrice(
             item?.regular_price,
             item?.discount_price,
@@ -132,7 +138,8 @@ const Card44 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
