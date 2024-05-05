@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 // import { token } from "../services/AxiosInstance";
 // import { isMobile, isTablet, isBrowser } from "react-device-detect";
 import axios from "axios";
+import httpReq from "../utils/http/axios/http.service";
 // import httpReq from "../services/http.service";
 // import {
 //   getFromLocalStorage,
@@ -101,64 +102,66 @@ const useData = () => {
   //   }
   // }, [store_id]);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const data = await httpReq.post("modules", { store_id: store_id });
-  //       setSocial(data?.data?.QuickLogin);
-  //       setModule(data?.data?.modules);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const data = await httpReq.post("modules", { store_id: store_id });
 
-  //       const webAnalytics = data?.data?.modules?.find(
-  //         (item) => item?.modulus_id === 3
-  //       );
+        console.log(data, "module data");
+        setSocial(data?.data?.QuickLogin);
+        setModule(data?.data?.modules);
 
-  //       if (webAnalytics?.status === "1") {
-  //         navigator.geolocation.getCurrentPosition((position) => {
-  //           fetchAddress(position.coords.latitude, position.coords.longitude);
-  //         });
-  //       }
+        const webAnalytics = data?.data?.modules?.find(
+          (item: any) => item?.modulus_id === 3
+        );
 
-  //       if (webAnalytics?.status === "1") {
-  //         await fetchAddress();
-  //       }
-  //       if (webAnalytics?.status === "1") {
-  //         await getData();
-  //       }
-  //     } catch (error) {
-  //       // setError(error)
-  //       console.log(error, "error");
-  //     }
-  //   }
-  //   fetchData();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [store_id]);
+        if (webAnalytics?.status === "1") {
+          navigator.geolocation.getCurrentPosition((position) => {
+            fetchAddress(position.coords.latitude, position.coords.longitude);
+          });
+        }
+
+        if (webAnalytics?.status === "1") {
+          await fetchAddress(0, 0);
+        }
+        if (webAnalytics?.status === "1") {
+          await getData();
+        }
+      } catch (error) {
+        // setError(error)
+        console.log(error, "error");
+      }
+    }
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [store_id]);
 
   // geo location
-  // const fetchAddress = async (lat, lng) => {
-  //   if (lat) {
-  //     const response = await fetch(
-  //       `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${
-  //         lat ? lat : latitude
-  //       }&lon=${lng ? lng : longitude}`
-  //     );
-  //     const data = await response.json();
-  //     setAddress(data.display_name);
-  //   }
-  // };
+  const fetchAddress = async (lat: any, lng: any) => {
+    if (lat) {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${
+          lat ? lat : latitude
+        }&lon=${lng ? lng : longitude}`
+      );
+      const data = await response.json();
+      setAddress(data.display_name);
+    }
+  };
 
   // get ip address
-  // const getData = async () => {
-  //   const res = await axios.get("https://ipapi.co/json/");
-  //   console.log(res.data, "datata");
-  //   setIP(res.data.ip);
-  //   setState(res?.data?.region);
-  //   setPostal(res?.data?.postal);
-  //   setLatitude(res?.data?.latitude);
-  //   setLongitude(res?.data?.longitude);
-  //   setCountry_name(res?.data?.country_name);
-  //   setCountry_code(res?.data?.country_code);
-  //   setCity(res?.data?.city);
-  // };
+  const getData = async () => {
+    const res = await axios.get("https://ipapi.co/json/");
+    console.log(res.data, "datata");
+    setIP(res.data.ip);
+    setState(res?.data?.region);
+    setPostal(res?.data?.postal);
+    setLatitude(res?.data?.latitude);
+    setLongitude(res?.data?.longitude);
+    setCountry_name(res?.data?.country_name);
+    setCountry_code(res?.data?.country_code);
+    setCity(res?.data?.city);
+  };
 
   // user info
   // const url = window.location.href;
