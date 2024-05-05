@@ -54,7 +54,7 @@ const useData = () => {
   const [social, setSocial] = useState(null);
   const [module, setModule] = useState(null);
   const [orderPlaced, setOrderPlaced] = useState(false);
-  const [bookingData, setBookingData] = useState(null);
+  const [bookingData, setBookingData] = useState<any>(null);
   const [pseCat, setPseCat] = useState("");
   const [searchPse, setSearchPse] = useState("");
   const [designData, setDesignData] = useState(null);
@@ -84,30 +84,29 @@ const useData = () => {
   // const webAnalytics = module?.find(item => item?.modulus_id === 3)
   // booiking api
 
-  // useEffect(() => {
-  //   async function fetchBookingData() {
-  //     try {
-  //       const data = await axios.post(
-  //         "https://admin.ebitans.com/api/v1/booking-from",
-  //         { store_id: store_id, modulus_id: 108 }
-  //       );
-  //       setBookingData(data?.data);
-  //     } catch (error) {
-  //       // setError(error)
-  //       console.log(error, "error");
-  //     }
-  //   }
-  //   if (store_id) {
-  //     fetchBookingData();
-  //   }
-  // }, [store_id]);
+  useEffect(() => {
+    async function fetchBookingData() {
+      try {
+        const data = await axios.post(
+          "https://admin.ebitans.com/api/v1/booking-from",
+          { store_id: store_id, modulus_id: 108 }
+        );
+        setBookingData(data?.data);
+      } catch (error) {
+        // setError(error)
+        console.log(error, "error");
+      }
+    }
+    if (store_id) {
+      fetchBookingData();
+    }
+  }, [store_id]);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const data = await httpReq.post("modules", { store_id: store_id });
 
-        console.log(data, "module data");
         setSocial(data?.data?.QuickLogin);
         setModule(data?.data?.modules);
 

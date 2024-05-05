@@ -245,8 +245,13 @@ const Product = ({
         setHasMore(false);
         setLoad(false);
 
-        if (!shop_load && page !== 1) {
-          setProducts([...products, ...data?.data]);
+        if (
+          !shop_load &&
+          page !== 1 &&
+          data?.data &&
+          Array.isArray(data.data)
+        ) {
+          setProducts([...products, ...data.data]);
         } else {
           setProducts([]);
           setPaginate(null);
@@ -262,6 +267,7 @@ const Product = ({
           } else {
             setProducts([...products, ...data?.data]);
           }
+
           setPage(page + 1);
         } else {
           setProducts(data?.data);
