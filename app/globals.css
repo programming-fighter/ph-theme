@@ -12,7 +12,6 @@ body {
   overflow-x: hidden;
   /* max-width: 1920px; */
   margin: 0 auto;
-  
 }
 
 /* Theme thirty one classes  */
@@ -141,4 +140,8 @@ body {
     transform: translateX(12px);
     visibility: visible;
   }
+}
+
+.swiper-wrapper {
+  display: flex;
 }
