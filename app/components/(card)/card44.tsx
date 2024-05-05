@@ -9,6 +9,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/twenty/details";
 
 const Card44 = ({ item, design, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
@@ -219,9 +221,9 @@ const Card44 = ({ item, design, store_id }: any) => {
           </div>
         </div>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };
