@@ -10,8 +10,6 @@ const CategorySeven = ({ openMenu }: any) => {
 
   // const [isHovering, setIsHovering] = useState(false);
 
-  console.log(category, "category");
-
   return (
     <nav>
       <ul

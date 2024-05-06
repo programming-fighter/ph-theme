@@ -10,22 +10,25 @@ import httpReq from "../utils/http/axios/http.service";
 //   saveToLocalStorage,
 // } from "../services/utils/localStorage";
 
-let token = "";
-if (typeof window !== "undefined") {
-  token = JSON.parse(localStorage.getItem("persist:root")!)?.auth
-    ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
-        ?.token
-    : null;
-}
+// if (typeof window !== "undefined") {
+let token = JSON.parse(localStorage.getItem("persist:root")!)?.auth
+  ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
+      ?.token
+  : null;
+// }
 
-let v: any = "";
+console.log(token, "token");
 
-if (typeof window !== "undefined") {
-  v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
-    ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
-        ?.v
-    : null;
-}
+// let v: any = "";
+
+// if (typeof window !== "undefined") {
+let v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
+  ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
+      ?.verify
+  : null;
+// }
+
+console.log(v, "v");
 
 // export const v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
 //   ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
@@ -75,6 +78,11 @@ const useData = () => {
   const [pseCat, setPseCat] = useState("");
   const [searchPse, setSearchPse] = useState("");
   const [designData, setDesignData] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+    }
+  }, []);
 
   // useEffect(() => {
   //   const designDataColor = {
@@ -321,10 +329,6 @@ const useData = () => {
     //     name: "siam.localhost:3000",
     //   }
     // );
-    if (token && v?.verify) {
-      const user = await httpReq.get("getuser");
-      setUser(user);
-    }
 
     const res = await axios.post(
       "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
@@ -354,6 +358,12 @@ const useData = () => {
       brand,
       productByFirstCategory,
     } = res?.data;
+
+    if (token && v?.verify) {
+      const user = await httpReq.get("getuser");
+      console.log({ user });
+      setUser(user);
+    }
 
     // set state with the result
     setHeaderSetting(headersetting);
@@ -396,6 +406,8 @@ const useData = () => {
     }
     return result;
   };
+
+  console.log({ userData });
 
   return {
     userData,

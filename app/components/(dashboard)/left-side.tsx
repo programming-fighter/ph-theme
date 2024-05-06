@@ -6,6 +6,8 @@ import React from "react";
 const LeftSide = () => {
   const { userData } = useTheme();
 
+  console.log(userData, "userData");
+
   return (
     <>
       <div className="mt-5 md:mt-0 md:col-span-1">
