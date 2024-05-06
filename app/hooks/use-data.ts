@@ -18,9 +18,18 @@ if (typeof window !== "undefined") {
     : null;
 }
 
-export const v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
-  ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
-  : null;
+let v: any = "";
+
+if (typeof window !== "undefined") {
+  v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
+    ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
+        ?.v
+    : null;
+}
+
+// export const v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
+//   ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
+//   : null;
 
 const useData = () => {
   const [layout, setLayout] = useState([]);

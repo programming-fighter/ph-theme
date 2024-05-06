@@ -77,24 +77,24 @@ const ProductThirtyNine = ({ category, design, store_id }: any) => {
         </div>
 
         {products?.length > 0 ? (
-          <ScrollTrigger onEnter={() => setAnimate(true)}>
-            <div
-              className={`${
-                animate ? "translate-y-0" : "translate-y-[200px]"
-              } duration-1000 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1 sm:gap-4 justify-center`}
-            >
-              {products?.slice(0, 12).map((productData: any) => (
-                <div key={productData.id}>
-                  <Card67
-                    item={productData}
-                    design={design}
-                    store_id={store_id}
-                  />
-                </div>
-              ))}
-            </div>
-          </ScrollTrigger>
+          // <ScrollTrigger onEnter={() => setAnimate(true)}>
+          <div
+            className={`${
+              animate ? "translate-y-0" : "translate-y-[200px]"
+            } duration-1000 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1 sm:gap-4 justify-center`}
+          >
+            {products?.slice(0, 12).map((productData: any) => (
+              <div key={productData.id}>
+                <Card67
+                  item={productData}
+                  design={design}
+                  store_id={store_id}
+                />
+              </div>
+            ))}
+          </div>
         ) : (
+          // </ScrollTrigger>
           <div className="text-red-500 text-center py-10 text-xl">
             No Products Available
           </div>

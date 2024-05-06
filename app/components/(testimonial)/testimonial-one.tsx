@@ -21,6 +21,7 @@ const TestimonialOne = ({ testimonials }: any) => {
 
         <div className="relative z-[1]">
           <CarouselProvider
+            naturalSlideHeight={600}
             naturalSlideWidth={100}
             isIntrinsicHeight={true}
             totalSlides={testimonials.length}
@@ -34,8 +35,8 @@ const TestimonialOne = ({ testimonials }: any) => {
               What our customers are saying
             </h1>
             <Slider>
-              {testimonials?.map((review: any, index: any) => (
-                <Slide key={index}>
+              {testimonials?.map((review: any, idx: any) => (
+                <Slide key={idx} index={idx}>
                   <div className="flex">
                     <div className="mt-14 md:flex w-full">
                       <div className="relative lg:w-1/2 sm:w-96 xl:h-96 h-80">
