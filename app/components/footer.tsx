@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import FooterDefault from "./(footers)/footer-default";
 import dynamic from "next/dynamic";
@@ -60,6 +61,7 @@ import FooterThirtyFive from "./(footers)/footer-thirtyfive";
 import FooterThirtySix from "./(footers)/footer-thirtysix";
 import FooterThirtySeven from "./(footers)/footer-thirtyseven";
 import FooterForty from "./(footers)/footer-forty";
+import useTheme from "../hooks/use-theme";
 const DynamicFooterDefault = dynamic(
   () => import("@/components/(footers)/footer-default"),
   {
@@ -106,25 +108,18 @@ const DynamicFooterForty = dynamic(
   }
 );
 
-const Footer = ({
-  theme,
-  headerSetting,
-  category,
-  design,
-  store_id,
-  menu,
-  page,
-}: any) => {
+const Footer = () => {
+  const { headerSetting, category, design, store_id, menu, page } = useTheme();
   return (
     <>
-      {theme === "default" && (
+      {design?.footer === "default" && (
         <DynamicFooterDefault
           headerSetting={headerSetting}
           category={category}
         />
       )}
 
-      {theme === "one" && (
+      {design?.footer === "one" && (
         <FooterOne
           headerSetting={headerSetting}
           category={category}
@@ -135,7 +130,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "two" && (
+      {design?.footer === "two" && (
         <FooterTwo
           headerSetting={headerSetting}
           store_id={store_id}
@@ -143,7 +138,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "three" && (
+      {design?.footer === "three" && (
         <FooterThree
           category={category}
           headerSetting={headerSetting}
@@ -151,7 +146,7 @@ const Footer = ({
           menu={menu}
         />
       )}
-      {theme === "four" && (
+      {design?.footer === "four" && (
         <FooterFour
           page={page}
           headerSetting={headerSetting}
@@ -160,7 +155,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "five" && (
+      {design?.footer === "five" && (
         <DynamicFooterFive
           category={category}
           design={design}
@@ -171,7 +166,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "six" && (
+      {design?.footer === "six" && (
         <FooterSix
           category={category}
           design={design}
@@ -182,7 +177,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "seven" && (
+      {design?.footer === "seven" && (
         <FooterSeven
           category={category}
           design={design}
@@ -193,7 +188,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "eight" && (
+      {design?.footer === "eight" && (
         <FooterEight
           category={category}
           page={page}
@@ -203,7 +198,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "nine" && (
+      {design?.footer === "nine" && (
         <DynamicFooterNine
           category={category}
           design={design}
@@ -214,7 +209,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "ten" && (
+      {design?.footer === "ten" && (
         <DynamicFooterNine
           category={category}
           design={design}
@@ -225,7 +220,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "eleven" && (
+      {design?.footer === "eleven" && (
         <FooterEleven
           category={category}
           design={design}
@@ -236,7 +231,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "twelve" && (
+      {design?.footer === "twelve" && (
         <DynamicFooterTwelve
           category={category}
           design={design}
@@ -247,7 +242,7 @@ const Footer = ({
         />
       )}
 
-      {theme === THIRTEEN && (
+      {design?.footer === THIRTEEN && (
         <FooterThirteen
           category={category}
           headerSetting={headerSetting}
@@ -256,7 +251,7 @@ const Footer = ({
         />
       )}
 
-      {theme === FOURTEEN && (
+      {design?.footer === FOURTEEN && (
         <FooterFourteen
           design={design}
           category={category}
@@ -267,7 +262,7 @@ const Footer = ({
         />
       )}
 
-      {theme === SIXTEEN && (
+      {design?.footer === SIXTEEN && (
         <FooterSixteen
           design={design}
           category={category}
@@ -277,7 +272,7 @@ const Footer = ({
           page={page}
         />
       )}
-      {theme === SEVENTEEN && (
+      {design?.footer === SEVENTEEN && (
         <FooterSeventeen
           design={design}
           category={category}
@@ -287,7 +282,7 @@ const Footer = ({
           page={page}
         />
       )}
-      {theme === EIGHTEEN && (
+      {design?.footer === EIGHTEEN && (
         <FooterEighteen
           design={design}
           category={category}
@@ -297,7 +292,7 @@ const Footer = ({
           page={page}
         />
       )}
-      {theme === NINETEEN && (
+      {design?.footer === NINETEEN && (
         <FooterNineteen
           design={design}
           category={category}
@@ -308,7 +303,7 @@ const Footer = ({
         />
       )}
 
-      {theme === TWENTY && (
+      {design?.footer === TWENTY && (
         <FooterTwenty
           design={design}
           category={category}
@@ -319,7 +314,7 @@ const Footer = ({
         />
       )}
 
-      {theme === TWENTY_ONE && (
+      {design?.footer === TWENTY_ONE && (
         <FooterTwentyOne
           design={design}
           category={category}
@@ -329,7 +324,7 @@ const Footer = ({
           page={page}
         />
       )}
-      {theme === TWENTY_TWO && (
+      {design?.footer === TWENTY_TWO && (
         <FooterTwentyTwo
           design={design}
           category={category}
@@ -339,7 +334,7 @@ const Footer = ({
           page={page}
         />
       )}
-      {theme === TWENTY_THREE && (
+      {design?.footer === TWENTY_THREE && (
         <FooterTwentyThree
           design={design}
           category={category}
@@ -350,7 +345,7 @@ const Footer = ({
         />
       )}
 
-      {theme === TWENTY_FOUR && (
+      {design?.footer === TWENTY_FOUR && (
         <DynamicFooterTwentyFour
           design={design}
           category={category}
@@ -361,7 +356,7 @@ const Footer = ({
         />
       )}
 
-      {theme === TWENTY_FIVE && (
+      {design?.footer === TWENTY_FIVE && (
         <FooterTwentyFive
           design={design}
           category={category}
@@ -371,7 +366,7 @@ const Footer = ({
           page={page}
         />
       )}
-      {theme === TWENTY_SIX && (
+      {design?.footer === TWENTY_SIX && (
         <FooterTwentySix
           design={design}
           category={category}
@@ -381,13 +376,13 @@ const Footer = ({
           page={page}
         />
       )}
-      {theme === TWENTY_SEVEN && (
+      {design?.footer === TWENTY_SEVEN && (
         <FooterTwentySeven headerSetting={headerSetting} />
       )}
-      {theme === TWENTY_EIGHT && (
+      {design?.footer === TWENTY_EIGHT && (
         <FooterTwentySeven headerSetting={headerSetting} />
       )}
-      {theme === TWENTY_NINE && (
+      {design?.footer === TWENTY_NINE && (
         <FooterTwentyNine
           design={design}
           category={category}
@@ -398,7 +393,7 @@ const Footer = ({
         />
       )}
 
-      {theme === THIRTY && (
+      {design?.footer === THIRTY && (
         <FooterThirty
           design={design}
           category={category}
@@ -409,7 +404,7 @@ const Footer = ({
         />
       )}
 
-      {theme === THIRTY_ONE && (
+      {design?.footer === THIRTY_ONE && (
         <FooterThirty
           design={design}
           category={category}
@@ -420,7 +415,7 @@ const Footer = ({
         />
       )}
 
-      {theme === THIRTY_THREE && (
+      {design?.footer === THIRTY_THREE && (
         <FooterThirty
           design={design}
           category={category}
@@ -431,7 +426,7 @@ const Footer = ({
         />
       )}
 
-      {theme === THIRTY_FOUR && (
+      {design?.footer === THIRTY_FOUR && (
         <FooterThirtyFour
           design={design}
           category={category}
@@ -442,7 +437,7 @@ const Footer = ({
         />
       )}
 
-      {theme === THIRTY_FIVE && (
+      {design?.footer === THIRTY_FIVE && (
         <FooterThirtyFive
           design={design}
           category={category}
@@ -453,7 +448,7 @@ const Footer = ({
         />
       )}
 
-      {theme === THIRTY_SIX && (
+      {design?.footer === THIRTY_SIX && (
         <FooterThirtySix
           design={design}
           category={category}
@@ -463,7 +458,7 @@ const Footer = ({
           page={page}
         />
       )}
-      {theme === THIRTY_SEVEN && (
+      {design?.footer === THIRTY_SEVEN && (
         <FooterThirtySeven
           design={design}
           category={category}
@@ -474,7 +469,7 @@ const Footer = ({
         />
       )}
 
-      {theme === THIRTY_EIGHT && (
+      {design?.footer === THIRTY_EIGHT && (
         <DynamicFooterThirtyEight
           design={design}
           category={category}
@@ -485,7 +480,7 @@ const Footer = ({
         />
       )}
 
-      {theme === THIRTY_NINE && (
+      {design?.footer === THIRTY_NINE && (
         <DynamicFooterThirtyEight
           design={design}
           category={category}
@@ -496,7 +491,7 @@ const Footer = ({
         />
       )}
 
-      {theme === "forty" && (
+      {design?.footer === "forty" && (
         <DynamicFooterForty
           design={design}
           category={category}

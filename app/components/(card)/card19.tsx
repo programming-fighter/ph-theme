@@ -95,7 +95,6 @@ const Card19 = ({ item, design, store_id }: any) => {
       });
   };
   const addBtn = (item: any) => {
-    // console.log(item)
     if (item?.variant.length !== 0) {
       setOpen(!open);
     } else {

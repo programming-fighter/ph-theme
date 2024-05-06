@@ -1,3 +1,4 @@
+"use client";
 import HeaderDefault from "@/components/(headers)/header-default";
 import HeaderOne from "./(headers)/header-one/header-one";
 import HeaderTwo from "./(headers)/header-two/header-two";
@@ -38,52 +39,54 @@ import HeaderThirtyEight from "./(headers)/header-thirtyeight/header-thirtyeight
 import HeaderThirtySeven from "./(headers)/header-thirtyseven/header-thirtyseven";
 import HeaderThirtyNine from "./(headers)/header-thirtynine/header-thirtynine";
 import HeaderForty from "./(headers)/header-forty/header-forty";
+import useTheme from "../hooks/use-theme";
 
 // test
 
-const Header = ({ theme }: any) => {
+const Header = () => {
+  const { design } = useTheme();
   return (
     <>
-      {theme === "default" && <HeaderDefault />}
-      {theme === "one" && <HeaderOne />}
-      {theme === "two" && <HeaderTwo />}
-      {theme === "three" && <HeaderThree />}
-      {theme === "four" && <HeaderFour />}
-      {theme === "five" && <HeaderFive />}
-      {theme === "six" && <HeaderSix />}
-      {theme === "seven" && <HeaderSeven />}
-      {theme === "eight" && <HeaderEight />}
-      {theme === "nine" && <HeaderNine />}
-      {theme === "ten" && <HeaderTen />}
-      {theme === "eleven" && <HeaderEleven />}
-      {theme === "twelve" && <HeaderTwelve />}
-      {theme === "thirteen" && <HeaderThirteen />}
-      {theme === "fourteen" && <HeaderFourteen />}
-      {theme === "fifteen" && <HeaderFifteen />}
-      {theme === "sixteen" && <HeaderSixteen />}
-      {theme === "seventeen" && <HeaderSeventeen />}
-      {theme === "eighteen" && <HeaderEighteen />}
-      {theme === "nineteen" && <HeaderNineteen />}
-      {theme === "twenty" && <HeaderTwenty />}
-      {theme === "twentyone" && <HeaderTwentyOne />}
-      {theme === "twentytwo" && <HeaderTwentyTwo />}
-      {theme === "twentythree" && <HeaderTwentyThree />}
-      {theme === "twentyfour" && <HeaderTwentyFour />}
-      {theme === "twentyfive" && <HeaderTwentyFive />}
-      {theme === "twentysix" && <HeaderTwentySix />}
-      {theme === "twentyseven" && <HeaderTwentySeven />}
-      {theme === "twentyeight" && <HeaderTwentyEight />}
-      {theme === "twentynine" && <HeaderTwentyNine />}
-      {theme === "thirty" && <HeaderThirty />}
-      {theme === "thirtyone" && <HeaderThirtyOne />}
-      {theme === "thirtythree" && <HeaderThirtyThree />}
-      {theme === "thirtyfour" && <HeaderThirtyFour />}
-      {theme === "thirtyfive" && <HeaderThirtyFive />}
-      {theme === "thirtysix" && <HeaderThirtySix />}
-      {theme === "thirtyseven" && <HeaderThirtySeven />}
-      {theme === "thirtyeight" && <HeaderThirtyEight />}
-      {theme === "thirtynine" && <HeaderThirtyNine />}
-      {theme === "forty" && <HeaderForty />}
+      {design?.header === "default" && <HeaderDefault />}
+      {design?.header === "one" && <HeaderOne />}
+      {design?.header === "two" && <HeaderTwo />}
+      {design?.header === "three" && <HeaderThree />}
+      {design?.header === "four" && <HeaderFour />}
+      {design?.header === "five" && <HeaderFive />}
+      {design?.header === "six" && <HeaderSix />}
+      {design?.header === "seven" && <HeaderSeven />}
+      {design?.header === "eight" && <HeaderEight />}
+      {design?.header === "nine" && <HeaderNine />}
+      {design?.header === "ten" && <HeaderTen />}
+      {design?.header === "eleven" && <HeaderEleven />}
+      {design?.header === "twelve" && <HeaderTwelve />}
+      {design?.header === "thirteen" && <HeaderThirteen />}
+      {design?.header === "fourteen" && <HeaderFourteen />}
+      {design?.header === "fifteen" && <HeaderFifteen />}
+      {design?.header === "sixteen" && <HeaderSixteen />}
+      {design?.header === "seventeen" && <HeaderSeventeen />}
+      {design?.header === "eighteen" && <HeaderEighteen />}
+      {design?.header === "nineteen" && <HeaderNineteen />}
+      {design?.header === "twenty" && <HeaderTwenty />}
+      {design?.header === "twentyone" && <HeaderTwentyOne />}
+      {design?.header === "twentytwo" && <HeaderTwentyTwo />}
+      {design?.header === "twentythree" && <HeaderTwentyThree />}
+      {design?.header === "twentyfour" && <HeaderTwentyFour />}
+      {design?.header === "twentyfive" && <HeaderTwentyFive />}
+      {design?.header === "twentysix" && <HeaderTwentySix />}
+      {design?.header === "twentyseven" && <HeaderTwentySeven />}
+      {design?.header === "twentyeight" && <HeaderTwentyEight />}
+      {design?.header === "twentynine" && <HeaderTwentyNine />}
+      {design?.header === "thirty" && <HeaderThirty />}
+      {design?.header === "thirtyone" && <HeaderThirtyOne />}
+      {design?.header === "thirtythree" && <HeaderThirtyThree />}
+      {design?.header === "thirtyfour" && <HeaderThirtyFour />}
+      {design?.header === "thirtyfive" && <HeaderThirtyFive />}
+      {design?.header === "thirtysix" && <HeaderThirtySix />}
+      {design?.header === "thirtyseven" && <HeaderThirtySeven />}
+      {design?.header === "thirtyeight" && <HeaderThirtyEight />}
+      {design?.header === "thirtynine" && <HeaderThirtyNine />}
+      {design?.header === "forty" && <HeaderForty />}
     </>
   );
 };

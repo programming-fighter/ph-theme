@@ -22,8 +22,6 @@ const LoginOne = () => {
 
   const { user } = useSelector((state: any) => state.auth);
 
-  console.log(user, "userLogin");
-
   // useEffect(() => {
   //   dispatch(clearMessage());
   // }, [dispatch]);

@@ -23,7 +23,6 @@ import Taka from "@/app/utils/taka";
 import { getPrice } from "@/app/utils/get-price";
 
 const NewArrivalProductNine = ({ product, design }: any) => {
-  console.log(design, "na-9");
   const prevEl = "new-product-prev";
   const nextEl = "new-product-next";
 
@@ -39,21 +38,21 @@ const NewArrivalProductNine = ({ product, design }: any) => {
     `;
 
   return (
-    <div className='bg-white sm:container px-5 sm:py-10 py-5'>
-      <div className='relative group'>
+    <div className="bg-white sm:container px-5 sm:py-10 py-5">
+      <div className="relative group">
         <style>{styleCss}</style>
         <SectionHeadingNine title={"New Arrivals"} subtitle={""} />
-        <div className='relative'>
-          <div className=' gap-2 hidden group-hover:block lg:cursor-pointer '>
+        <div className="relative">
+          <div className=" gap-2 hidden group-hover:block lg:cursor-pointer ">
             <div
               className={`${prevEl} bg-gray-400 text-white  rounded-full transition-all duration-500  ease-linear absolute -left-4 top-10 z-[2] `}
             >
-              <ChevronLeftIcon className='h-8 text-2xl font-serif font-bold' />
+              <ChevronLeftIcon className="h-8 text-2xl font-serif font-bold" />
             </div>
             <div
               className={`${nextEl} bg-gray-400 text-white rounded-full transition-all duration-500  ease-linear absolute -right-4 top-10 z-[2] `}
             >
-              <ChevronRightIcon className='h-8 text-2xl font-serif font-bold' />
+              <ChevronRightIcon className="h-8 text-2xl font-serif font-bold" />
             </div>
           </div>
         </div>
@@ -86,7 +85,7 @@ const NewArrivalProductNine = ({ product, design }: any) => {
             prevEl: `.${prevEl}`,
             nextEl: `.${nextEl}`,
           }}
-          className='mySwiper'
+          className="mySwiper"
         >
           {product?.map((productData: any) => (
             <SwiperSlide key={productData.id}>
@@ -112,36 +111,36 @@ const Card = ({ item }: any) => {
   return (
     <>
       <Link href={"/product/" + item?.id + "/" + item?.slug}>
-        <div className='flex xl:space-x-5 lg:space-x-3 space-x-2 h-28 mb-10 relative'>
+        <div className="flex xl:space-x-5 lg:space-x-3 space-x-2 h-28 mb-10 relative">
           {/* out of stock  */}
           {item?.quantity === "0" && (
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
-              <div className='absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[1]'>
-                <p className='bg-red-600 text-white px-2 py-1 w-max absolute right-0'>
+              <div className="absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[1]">
+                <p className="bg-red-600 text-white px-2 py-1 w-max absolute right-0">
                   Sold Out
                 </p>
               </div>
             </Link>
           )}
-          <div className='' onClick={() => setOpen(!open)}>
+          <div className="" onClick={() => setOpen(!open)}>
             <img
               src={productImg + item.image[0]}
-              alt='Mountain'
-              className='h-28 w-28'
+              alt="Mountain"
+              className="h-28 w-28"
             />
           </div>
-          <div className=' flex flex-col justify-between'>
+          <div className=" flex flex-col justify-between">
             <div>
-              <h6 className='text-base capitalize font-semibold font-twelve text-gray-500'>
+              <h6 className="text-base capitalize font-semibold font-twelve text-gray-500">
                 {" "}
                 {item.name.slice(0, 18)}
                 {item.name.length > 18 && "..."}
               </h6>
             </div>
-            <div className='text-gray-600 text-lg font-semibold'>
+            <div className="text-gray-600 text-lg font-semibold">
               <Taka /> {productGetPrice}
             </div>
-            <div className='bg-gray-700 text-white px-3 text-sm py-1 w-max'>
+            <div className="bg-gray-700 text-white px-3 text-sm py-1 w-max">
               <p>NEW</p>
             </div>
           </div>

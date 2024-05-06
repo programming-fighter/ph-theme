@@ -41,7 +41,6 @@ const Card46 = ({ item, store_id }: any) => {
     handleCampaign();
   }, [item, store_id]);
 
-  //   console.log('store',store_id,item?.id)
   const filterOfferProduct = (item: any) => {
     let cartItem = {};
     let productDetails = {
@@ -120,66 +119,66 @@ const Card46 = ({ item, store_id }: any) => {
 
   return (
     <>
-      <div className='group flex flex-col justify-between overflow-hidden relative'>
+      <div className="group flex flex-col justify-between overflow-hidden relative">
         {/* out of stock  */}
         {item?.quantity === "0" && (
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <div className='absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[3]'>
-              <p className='bg-red-600 text-white px-2 py-1 w-max absolute left-0'>
+            <div className="absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[3]">
+              <p className="bg-red-600 text-white px-2 py-1 w-max absolute left-0">
                 Sold Out
               </p>
             </div>
           </Link>
         )}
         {item?.image && (
-          <div className='relative overflow-hidden'>
+          <div className="relative overflow-hidden">
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
-              <div className='flex-1'>
+              <div className="flex-1">
                 <img
                   src={productImg + item?.image[0]}
-                  className='h-auto min-w-full'
-                  alt=''
+                  className="h-auto min-w-full"
+                  alt=""
                 />
               </div>
             </Link>
-            <div className='bg-black text-white absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-10 group-hover:translate-y-0 transition-all duration-500 ease-linear flex divide-x-2 divide-white lg:cursor-pointer'>
+            <div className="bg-black text-white absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-10 group-hover:translate-y-0 transition-all duration-500 ease-linear flex divide-x-2 divide-white lg:cursor-pointer">
               <div
-                className='h-full grow flex items-center justify-center  transition-all duration-200 ease-linear'
+                className="h-full grow flex items-center justify-center  transition-all duration-200 ease-linear"
                 onClick={() => setView(!view)}
               >
-                <p className='px-3 py-1 md:test-sm text-xs sm:text-sm'>
+                <p className="px-3 py-1 md:test-sm text-xs sm:text-sm">
                   quick look
                 </p>
               </div>
             </div>
           </div>
         )}
-        <div className='p-[10px] bg-white h-[70px] flex justify-between items-center'>
+        <div className="p-[10px] bg-white h-[70px] flex justify-between items-center">
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <h2 className='text-md capitalize lg:text-sm font-bold whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px] px-2'>
+            <h2 className="text-md capitalize lg:text-sm font-bold whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px] px-2">
               {item?.name}
             </h2>
           </Link>
-          <div className='flex justify-between items-center'>
+          <div className="flex justify-between items-center">
             <div
               //   onClick={add_cart_item}
-              className='lg:cursor-pointer group-hover:opacity-100 opacity-0 -translate-x-20 group-hover:translate-x-0 duration-700 flex items-start justify-between text-sm'
+              className="lg:cursor-pointer group-hover:opacity-100 opacity-0 -translate-x-20 group-hover:translate-x-0 duration-700 flex items-start justify-between text-sm"
             >
-              <p>Add to cart </p> <AiOutlineArrowRight className='ml-2 mt-1' />
+              <p>Add to cart </p> <AiOutlineArrowRight className="ml-2 mt-1" />
             </div>
 
-            <div className='flex group-hover:opacity-0 opacity-100 translate-x-0 group-hover:translate-x-20 duration-700 group-hover:hidden'>
+            <div className="flex group-hover:opacity-0 opacity-100 translate-x-0 group-hover:translate-x-20 duration-700 group-hover:hidden">
               {camp?.status !== "active" &&
               (item.discount_type === "no_discount" ||
                 item.discount_price === "0.00") ? (
                 " "
               ) : (
-                <p className='line-through text-sm font-semibold mr-3 '>
+                <p className="line-through text-sm font-semibold mr-3 ">
                   {" "}
                   <Taka price={item.regular_price} /> {item.regular_price}
                 </p>
               )}
-              <p className=' text-sm font-semibold '>
+              <p className=" text-sm font-semibold ">
                 <Taka
                   tk={camp?.status === "active" ? campPrice : productGetPrice}
                 />

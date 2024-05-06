@@ -6,6 +6,8 @@ import ThemeProvider from "./hooks/theme-provider";
 import { Provider } from "react-redux";
 import store, { persistor } from "@/redux/store";
 import { PersistGate } from "redux-persist/integration/react";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +27,9 @@ export default function RootLayout({
         <ThemeProvider>
           <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
+              <Header />
               {children}
+              <Footer />
             </PersistGate>
           </Provider>
         </ThemeProvider>

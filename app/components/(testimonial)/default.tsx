@@ -23,7 +23,6 @@ const TestimonialThree = ({ testimonials, design }: any) => {
     }
     `;
 
-  console.log("t", testimonials);
   return (
     <section className="bg-white dark:bg-gray-900">
       <style>{styleCss}</style>

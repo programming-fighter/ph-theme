@@ -9,8 +9,6 @@ const NewArrivalProductTen = ({ category, design, store_id }: any) => {
   const [products, setProducts] = useState<any>([]);
   const [id, setId] = useState(0);
 
-  console.log(category);
-
   useEffect(() => {
     async function handleCategory() {
       try {

@@ -19,7 +19,6 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
 
-  // console.log(item?.quantity, "item?.quantity")
   // const [id, setId] = useState(0)
   const [view, setView] = useState(false);
 

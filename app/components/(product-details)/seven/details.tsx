@@ -55,11 +55,9 @@ const Details = ({ data, children, open, setOpen }: any) => {
         data
       );
       const res = await httpReq.post("product-details", data);
-      console.log(res, "res");
 
       const response = await getCampaignProduct(product, store_id);
 
-      console.log("response", response);
       if (!response?.error) {
         setCamp(response);
       } else {
@@ -308,8 +306,6 @@ const Details = ({ data, children, open, setOpen }: any) => {
 
   const buttonSeven =
     "font-bold text-white bg-gray-600 rounded-md w-60 text-center py-3 font-seven lg:cursor-pointer";
-
-  console.log({ variant });
 
   return (
     <div className="pt-5 pb-20 bg-white">

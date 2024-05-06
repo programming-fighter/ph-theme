@@ -29,7 +29,6 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
   const [active, setActive] = useState(0);
   const [products, setProducts] = useState([]);
   const [id, setId] = useState(0);
-  console.log(category, "c");
 
   useEffect(() => {
     async function handleCategory() {

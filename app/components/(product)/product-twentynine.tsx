@@ -6,7 +6,6 @@ import { useState } from "react";
 import Card53 from "../(card)/card53";
 
 const ProductTwentyNine = ({ category, design, store_id }: any) => {
-  console.log(category, "c");
   const [active, setActive] = useState(0);
   const [products, setProducts] = useState([]);
   const [id, setId] = useState(0);
@@ -20,7 +19,6 @@ const ProductTwentyNine = ({ category, design, store_id }: any) => {
             id: category[id].id,
           }
         );
-        console.log(response, "res");
         if (!response?.error) {
           setProducts(response?.data?.data?.data);
         } // the API response object

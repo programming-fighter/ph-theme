@@ -81,15 +81,15 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
   } = data;
 
   switch (component) {
-    case "header":
-      return (
-        <Header
-          headerSetting={headersetting}
-          menu={menu}
-          navigation={navigation}
-          theme={design?.header}
-        />
-      );
+    // case "header":
+    //   return (
+    //     <Header
+    //       headerSetting={headersetting}
+    //       menu={menu}
+    //       navigation={navigation}
+    //       theme={design?.header}
+    //     />
+    //   );
     case "hero_slider":
       return (
         <Hero slider={slider} theme={design?.hero_slider} design={design} />
@@ -174,17 +174,17 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           design={design}
         />
       );
-    case "footer":
-      return (
-        <Footer
-          theme={design?.footer}
-          headerSetting={headersetting}
-          category={category}
-          design={design}
-          store_id={store_id}
-          menu={menu}
-          page={page}
-        />
-      );
+    // case "footer":
+    //   return (
+    //     <Footer
+    //       theme={design?.footer}
+    //       headerSetting={headersetting}
+    //       category={category}
+    //       design={design}
+    //       store_id={store_id}
+    //       menu={menu}
+    //       page={page}
+    //     />
+    //   );
   }
 };

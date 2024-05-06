@@ -191,7 +191,6 @@ const Product = ({
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(null);
   const { category, subcategory } = useTheme();
-  // console.log(products,'product');
   useEffect(() => {
     setLoad(true);
     fetchData();
@@ -239,9 +238,7 @@ const Product = ({
         { id: dataId }
       );
 
-      console.log(data, "data");
       if (error) {
-        // console.log("hdfshsd");
         setHasMore(false);
         setLoad(false);
 

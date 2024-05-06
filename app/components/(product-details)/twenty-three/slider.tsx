@@ -14,7 +14,6 @@ import ImageZoom from "../image-zoom";
 import { productImg } from "@/app/site-settings/siteUrl";
 
 export const HSlider = ({ product, colorid, setColorid, vrcolor }: any) => {
-  console.log(colorid, "color id");
   const { design } = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);

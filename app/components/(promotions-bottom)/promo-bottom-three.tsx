@@ -2,7 +2,6 @@ import { bannerImg } from "@/app/site-settings/siteUrl";
 import React from "react";
 
 const PromoBottomThree = ({ banner }: any) => {
-  console.log(banner, "b");
   return (
     <>
       {banner[3] && (

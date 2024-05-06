@@ -13,7 +13,6 @@ import { sliderImg } from "@/app/site-settings/siteUrl";
 import "./hero-nine.css";
 
 const HeroNine = ({ slider, design }: any) => {
-  console.log({ slider });
   let menu = [""];
 
   const nextEl = "hero-slider-next";
@@ -88,7 +87,6 @@ const HeroNine = ({ slider, design }: any) => {
         className="mySwiper relative"
       >
         {slider?.map((s: any) => {
-          console.log("slider", s);
           return (
             <SwiperSlide key={s.id}>
               <div className="">

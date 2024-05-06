@@ -8,7 +8,6 @@ const Category: React.FC = () => {
   const { design } = useTheme();
   const { id } = useParams();
 
-  console.log(design?.shop_page, "category");
   return <CategorySeven data={id} />;
 };
 

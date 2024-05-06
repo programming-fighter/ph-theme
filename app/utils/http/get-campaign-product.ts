@@ -7,7 +7,6 @@ export const getCampaignProduct = async (product: any, store_id: any) => {
       store_id,
     };
 
-    console.log(offerData, "offerData");
 
     try {
       const response = await httpReq.post("get/offer/product", offerData);

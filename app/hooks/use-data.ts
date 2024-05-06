@@ -10,9 +10,17 @@ import httpReq from "../utils/http/axios/http.service";
 //   saveToLocalStorage,
 // } from "../services/utils/localStorage";
 
-// export const v = JSON.parse(localStorage.getItem("persist:root"))?.auth
-//   ? JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.auth)?.user
-//   : null;
+let token = "";
+if (typeof window !== "undefined") {
+  token = JSON.parse(localStorage.getItem("persist:root")!)?.auth
+    ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
+        ?.token
+    : null;
+}
+
+export const v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
+  ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
+  : null;
 
 const useData = () => {
   const [layout, setLayout] = useState([]);
@@ -151,7 +159,6 @@ const useData = () => {
   // get ip address
   const getData = async () => {
     const res = await axios.get("https://ipapi.co/json/");
-    console.log(res.data, "datata");
     setIP(res.data.ip);
     setState(res?.data?.region);
     setPostal(res?.data?.postal);
@@ -305,10 +312,10 @@ const useData = () => {
     //     name: "siam.localhost:3000",
     //   }
     // );
-    // if (token && v?.verify) {
-    //   const user = await httpReq.get("getuser");
-    //   setUser(user);
-    // }
+    if (token && v?.verify) {
+      const user = await httpReq.get("getuser");
+      setUser(user);
+    }
 
     const res = await axios.post(
       "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
@@ -370,20 +377,20 @@ const useData = () => {
       .catch(console.error);
   }, [fetchHeader]);
 
-  // const makeid = (length) => {
-  //   var result = "";
-  //   var characters =
-  //     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  //   var charactersLength = characters.length;
-  //   for (var i = 0; i < length; i++) {
-  //     result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  //   }
-  //   return result;
-  // };
+  const makeid = (length: any) => {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
 
   return {
     userData,
-    // makeid,
+    makeid,
     setLoading,
     loading,
     store_id,

@@ -8,7 +8,6 @@ import LoginTwentyOne from "./(sign-in)/signin-twentyone";
 import LoginTwentyNine from "./(sign-in)/signin-twentynine";
 
 const Signin = ({ theme }: any) => {
-  console.log({ theme });
   return (
     <>
       {theme === "default" && <LoginOne />}
