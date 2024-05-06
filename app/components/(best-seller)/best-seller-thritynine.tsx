@@ -2,7 +2,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 
-import ScrollTrigger from "react-scroll-trigger";
 import DefaultSlider from "../(slider)/default-slider";
 import { SwiperSlide } from "swiper/react";
 import Card67 from "../(card)/card67";
@@ -35,48 +34,46 @@ const BestSellerThirtyNine = ({ best_sell_product, design, store_id }: any) => {
           </div>
         </div>
 
-        <ScrollTrigger onEnter={() => setAnimate(true)}>
-          <DefaultSlider
-            prevEl={prevEl}
-            nextEl={nextEl}
-            loop={true}
-            paginationType={"fraction"}
-            breakpoints={{
-              320: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              480: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-              },
-              1440: {
-                slidesPerView: 5.35,
-                spaceBetween: 20,
-              },
-            }}
-          >
-            {best_sell_product?.slice(0, 10).map((item: any) => (
-              <SwiperSlide key={item?.id}>
-                <div
-                  className={`${
-                    animate ? "translate-y-0" : "translate-y-[200px]"
-                  } duration-1000 pb-10 `}
-                >
-                  <Card67 item={item} design={design} store_id={store_id} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </DefaultSlider>
-        </ScrollTrigger>
+        <DefaultSlider
+          prevEl={prevEl}
+          nextEl={nextEl}
+          loop={true}
+          paginationType={"fraction"}
+          breakpoints={{
+            320: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            480: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            1440: {
+              slidesPerView: 5.35,
+              spaceBetween: 20,
+            },
+          }}
+        >
+          {best_sell_product?.slice(0, 10).map((item: any) => (
+            <SwiperSlide key={item?.id}>
+              <div
+                className={`${
+                  animate ? "translate-y-0" : "translate-y-[200px]"
+                } duration-1000 pb-10 `}
+              >
+                <Card67 item={item} design={design} store_id={store_id} />
+              </div>
+            </SwiperSlide>
+          ))}
+        </DefaultSlider>
       </div>
     </div>
   );
