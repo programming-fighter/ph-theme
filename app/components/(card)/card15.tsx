@@ -11,6 +11,7 @@ import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Rate from "@/app/utils/rate";
 import Taka from "@/app/utils/taka";
+import { toast } from "react-toastify";
 
 const Card15 = ({ item, design, store_id }: any) => {
   const [open, setOpen] = useState(false);
@@ -63,10 +64,10 @@ const Card15 = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
     axios
       .post(
         "https://admin.ebitans.com/api/v1/" + "get/offer/product",
@@ -144,60 +145,60 @@ const Card15 = ({ item, design, store_id }: any) => {
         }}
         onMouseEnter={() => setHoverCard(true)}
         onMouseLeave={() => setHoverCard(false)}
-        className='rounded overflow-hidden shadow-sm group border border-transparent relative'
+        className="rounded overflow-hidden shadow-sm group border border-transparent relative"
       >
         {/* out of stock  */}
         {item?.quantity === "0" && (
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <div className='absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-[1]'>
-              <p className='bg-red-600 text-white px-2 py-1 w-max'>
+            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 z-[1]">
+              <p className="bg-red-600 text-white px-2 py-1 w-max">
                 Out of Stock
               </p>
             </div>
           </Link>
         )}
 
-        <div className='absolute top-2 left-2 text-white bg-black rounded-sm px-2 text-xs py-1'>
+        <div className="absolute top-2 left-2 text-white bg-black rounded-sm px-2 text-xs py-1">
           <p>{camp ? "OFFER" : "NEW"}</p>
         </div>
-        <div className='relative'>
+        <div className="relative">
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
             <img
-              className='min-w-full h-auto'
+              className="min-w-full h-auto"
               src={productImg + item?.image[0]}
               alt={item?.name}
             />
           </Link>
           <div
-            className=' absolute searchHover top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-white group-hover:flex justify-center items-center h-10 w-10 rounded-full transition-all ease-in-out delay-550 hover:-translate-y-10 lg:cursor-pointer group-hover:scale-110  duration-1000 hidden'
+            className=" absolute searchHover top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] bg-white group-hover:flex justify-center items-center h-10 w-10 rounded-full transition-all ease-in-out delay-550 hover:-translate-y-10 lg:cursor-pointer group-hover:scale-110  duration-1000 hidden"
             onClick={() => setOpen(!open)}
           >
-            <AiOutlineSearch className='text-xl' />
+            <AiOutlineSearch className="text-xl" />
           </div>
         </div>
 
-        <div className='py-6 px-3 space-y-2 flex justify-center flex-col items-center'>
+        <div className="py-6 px-3 space-y-2 flex justify-center flex-col items-center">
           <Link href={"/category/" + item?.category_id}>
-            <p className='text-sm font-light antialiased mb-2'>
+            <p className="text-sm font-light antialiased mb-2">
               {item?.category}
             </p>
           </Link>
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <h3 className='text-sm text-gray-800 font-bold antialiased whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]'>
+            <h3 className="text-sm text-gray-800 font-bold antialiased whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]">
               {item?.name}
             </h3>
           </Link>
 
-          <div className='flex gap-x-1'>
+          <div className="flex gap-x-1">
             <div>
               <Rate rating={item?.rating} />
             </div>
-            <div className='text-gray-500 sm:text-sm text-xs'>
+            <div className="text-gray-500 sm:text-sm text-xs">
               ({item?.number_rating})
             </div>
           </div>
 
-          <div className='text-base antialiased group-hover:hidden flex items-center gap-2'>
+          <div className="text-base antialiased group-hover:hidden flex items-center gap-2">
             <Taka
               tk={camp?.status === "active" ? campPrice : productGetPrice}
             />
@@ -206,14 +207,14 @@ const Card15 = ({ item, design, store_id }: any) => {
               item.discount_price === "0.00") ? (
               " "
             ) : (
-              <p className='text-sm line-through'>
+              <p className="text-sm line-through">
                 {" "}
                 <Taka tk={Math.trunc(item.regular_price)} />
               </p>
             )}
           </div>
           <div
-            className='transition-all text-hover ease-in-out delay-500 hover:-translate-y-1 group-hover:scale-110 duration-1000 lg:cursor-pointer hidden group-hover:block text-xs font-semibold underline'
+            className="transition-all text-hover ease-in-out delay-500 hover:-translate-y-1 group-hover:scale-110 duration-1000 lg:cursor-pointer hidden group-hover:block text-xs font-semibold underline"
             onClick={add_cart_item}
           >
             ADD TO CART

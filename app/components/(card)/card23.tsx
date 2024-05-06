@@ -15,6 +15,7 @@ import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { IoSearchCircleOutline } from "react-icons/io5";
 import Rate from "@/app/utils/rate";
 import BDT from "@/app/utils/bdt";
+import { toast } from "react-toastify";
 
 const Card23 = ({ item, design, store_id }: any) => {
   const [open, setOpen] = useState(false);
@@ -87,9 +88,9 @@ const Card23 = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    // });
+    toast("Added to Cart", {
+      type: "success",
+    });
     axios
       .post(process.env.API_URL + "get/offer/product", productDetails)
       .then((res: any) => {

@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { HiOutlineDocumentText } from "react-icons/hi";
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
 const Card60 = ({ item, design, store_id }: any) => {
@@ -106,10 +107,10 @@ const Card60 = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

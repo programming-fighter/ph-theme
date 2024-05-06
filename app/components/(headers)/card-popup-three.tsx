@@ -14,6 +14,7 @@ import useTheme from "@/app/hooks/use-theme";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { decrementQty, incrementQty } from "@/redux/features/product.slice";
+import { ToastContainer, toast } from "react-toastify";
 
 const CartPopUpThree = () => {
   const { design } = useTheme();
@@ -58,6 +59,7 @@ const CartPopUpThree = () => {
         </div>
       </div>
       <BottomCart open={open} setOpen={setOpen} />
+      <ToastContainer />
     </>
   );
 };
@@ -181,18 +183,18 @@ const SingleCartProduct = ({ product, setOpen }: any) => {
 
   const { design } = useTheme();
   const deleteBtn = () => {
-    // toast("Remove from cart this item", {
-    //   type: "warning",
-    //   autoClose: 1000,
-    // });
+    toast("Remove from cart this item", {
+      type: "warning",
+      autoClose: 1000,
+    });
     setOpen(true);
   };
 
   const addCartBtn = () => {
-    // toast("Successfully you have to added cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Successfully you have to added cart", {
+      type: "success",
+      autoClose: 1000,
+    });
   };
   // console.log(product, 'product');
   return (

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import Taka from "@/app/utils/taka";
+import { toast } from "react-toastify";
 
 const ProductCardOne = ({ item, store_id }: any) => {
   const router = useRouter();
@@ -63,9 +64,10 @@ const ProductCardOne = ({ item, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //     type: 'success', autoClose: 1000,
-    // })
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
     axios
       .post(
         "https://admin.ebitans.com/api/v1/" + "get/offer/product",

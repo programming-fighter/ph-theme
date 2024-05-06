@@ -7,6 +7,7 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const Card4 = ({ item, design, store_id, makeid }: any) => {
   const [open, setOpen] = useState(false);
@@ -61,10 +62,10 @@ const Card4 = ({ item, design, store_id, makeid }: any) => {
       store_id,
     };
 
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

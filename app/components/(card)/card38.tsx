@@ -7,6 +7,7 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IoIosEye } from "react-icons/io";
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 // import Details from '../../layouts/productDetails/fourteen/Details';
 
@@ -74,10 +75,10 @@ const Card38 = ({ item, design, makeid, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

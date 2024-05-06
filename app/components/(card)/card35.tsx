@@ -8,6 +8,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import { AiOutlineSearch } from "react-icons/ai";
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
 const Card35 = ({ item, design, store_id }: any) => {
@@ -49,10 +50,10 @@ const Card35 = ({ item, design, store_id }: any) => {
       store_id,
     };
 
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

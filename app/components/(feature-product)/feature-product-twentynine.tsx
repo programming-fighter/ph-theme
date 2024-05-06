@@ -11,6 +11,7 @@ import { productImg } from "@/app/site-settings/siteUrl";
 import Rate from "@/app/utils/rate";
 import BDT from "@/app/utils/bdt";
 import { FaCartPlus } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const FeatureProductTwentyNine = ({
   feature_product,
@@ -50,10 +51,10 @@ const FeatureProductTwentyNine = ({
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

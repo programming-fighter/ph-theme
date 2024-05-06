@@ -9,6 +9,7 @@ import axios from "axios";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Taka from "@/app/utils/taka";
+import { toast } from "react-toastify";
 
 const Card22 = ({ item, design, makeid, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
@@ -75,9 +76,9 @@ const Card22 = ({ item, design, makeid, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    // });
+    toast("Added to Cart", {
+      type: "success",
+    });
 
     axios
       .post(

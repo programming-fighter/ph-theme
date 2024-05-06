@@ -8,6 +8,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
+import { toast } from "react-toastify";
 
 const Card59 = ({ item, design, makeid, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
@@ -102,10 +103,10 @@ const Card59 = ({ item, design, makeid, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

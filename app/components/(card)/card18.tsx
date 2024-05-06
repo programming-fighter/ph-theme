@@ -10,6 +10,7 @@ import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import Rate from "@/app/utils/rate";
+import { toast } from "react-toastify";
 
 const Card18 = ({ item, store_id }: any) => {
   const [open, setOpen] = useState(false);
@@ -47,10 +48,10 @@ const Card18 = ({ item, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios.post("get/offer/product", productDetails).then((res: any) => {
       if (!res?.error) {
@@ -100,56 +101,56 @@ const Card18 = ({ item, store_id }: any) => {
   //   };
 
   return (
-    <div className='shadow-lg group flex flex-col justify-between relative'>
+    <div className="shadow-lg group flex flex-col justify-between relative">
       {/* out of stock  */}
       {item?.quantity === "0" && (
-        <div className='absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[1]'>
-          <p className='bg-red-600 text-white px-2 py-1 w-max absolute right-0'>
+        <div className="absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[1]">
+          <p className="bg-red-600 text-white px-2 py-1 w-max absolute right-0">
             Sold Out
           </p>
         </div>
       )}
       {item?.image && (
-        <div className=' w-full h-full relative overflow-hidden'>
+        <div className=" w-full h-full relative overflow-hidden">
           <div
-            className='h-10 w-[75px] absolute top-4 left-0 bg-black flex justify-center items-center -rotate-90'
+            className="h-10 w-[75px] absolute top-4 left-0 bg-black flex justify-center items-center -rotate-90"
             style={{
               clipPath:
                 "polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 15% 50%, 0% 0%)",
             }}
           >
-            <p className='font-semibold text-xl text-white pl-1'>New</p>
+            <p className="font-semibold text-xl text-white pl-1">New</p>
           </div>
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <div className='flex-1'>
+            <div className="flex-1">
               <img
                 src={productImg + item?.image[0]}
                 className={"h-auto min-w-full"}
-                alt=''
+                alt=""
               />
             </div>
           </Link>
-          <div className='bg-gray-200 h-[40px] w-full absolute bottom-0 left-0 right-0 translate-y-10 group-hover:translate-y-0 transition-all duration-500 ease-linear flex divide-x-2 divide-white lg:cursor-pointer'>
+          <div className="bg-gray-200 h-[40px] w-full absolute bottom-0 left-0 right-0 translate-y-10 group-hover:translate-y-0 transition-all duration-500 ease-linear flex divide-x-2 divide-white lg:cursor-pointer">
             <div
               //   onClick={add_cart_item}
-              className='h-full w-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-200 ease-linear'
+              className="h-full w-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-200 ease-linear"
             >
-              <ShoppingBagIcon className='h-6 w-6' />
+              <ShoppingBagIcon className="h-6 w-6" />
             </div>
             <div
               //   onClick={add_cart_item}
-              className='h-full grow flex items-center justify-center hover:bg-gray-100  transition-all duration-200 ease-linear'
+              className="h-full grow flex items-center justify-center hover:bg-gray-100  transition-all duration-200 ease-linear"
             >
-              <p className='uppercase px-1 text-xs sm:text-sm '>Add To Cart</p>
+              <p className="uppercase px-1 text-xs sm:text-sm ">Add To Cart</p>
             </div>
             <div
               onClick={() => setOpen(!open)}
-              className='h-full w-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-200 ease-linear'
+              className="h-full w-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-200 ease-linear"
             >
-              <PlusIcon className='h-6 w-6' />
+              <PlusIcon className="h-6 w-6" />
             </div>
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
-              <div className='h-full w-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-200 ease-linear '>
+              <div className="h-full w-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-200 ease-linear ">
                 {/* <ViewGridIcon className='h-6 w-6' /> */}
               </div>
             </Link>
@@ -158,13 +159,13 @@ const Card18 = ({ item, store_id }: any) => {
       )}
       <Link href={"/product/" + item?.id + "/" + item?.slug}>
         {" "}
-        <div className='p-[10px] bg-[#f1f1f1] h-[90px] w-full'>
-          <h2 className='text-md capitalize lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]'>
+        <div className="p-[10px] bg-[#f1f1f1] h-[90px] w-full">
+          <h2 className="text-md capitalize lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]">
             {item?.name}
           </h2>
-          <div className='flex justify-between items-center flex-wrap'>
-            <div className='flex items-center gap-2'>
-              <p className='text-[#0f8ea1] font-semibold'>
+          <div className="flex justify-between items-center flex-wrap">
+            <div className="flex items-center gap-2">
+              <p className="text-[#0f8ea1] font-semibold">
                 <BDT
                   price={
                     camp?.status === "active" ? campPrice : productGetPrice
@@ -176,17 +177,17 @@ const Card18 = ({ item, store_id }: any) => {
                 item.discount_price === "0.00") ? (
                 " "
               ) : (
-                <p className='line-through text-sm'>
+                <p className="line-through text-sm">
                   {" "}
                   <BDT price={Math.trunc(item.regular_price)} />
                 </p>
               )}
             </div>
-            <div className='flex gap-x-1 pt-2'>
+            <div className="flex gap-x-1 pt-2">
               <div>
                 <Rate rating={item?.rating} />
               </div>
-              <div className='text-gray-500 sm:text-sm text-xs'>
+              <div className="text-gray-500 sm:text-sm text-xs">
                 ({item?.number_rating})
               </div>
             </div>

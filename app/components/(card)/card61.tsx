@@ -6,6 +6,7 @@ import { getCampaign } from "@/app/utils/http/get-campaign";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
 const Card61 = ({ item, design, store_id }: any) => {
@@ -77,10 +78,10 @@ const Card61 = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Bag", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Bag", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

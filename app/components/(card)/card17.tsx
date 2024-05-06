@@ -12,6 +12,7 @@ import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import Rate from "@/app/utils/rate";
+import { toast } from "react-toastify";
 
 const Card17 = ({ item, design, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
@@ -63,10 +64,10 @@ const Card17 = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios.post("get/offer/product", productDetails).then((res: any) => {
       if (!res?.error) {
@@ -124,13 +125,13 @@ const Card17 = ({ item, design, store_id }: any) => {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ ease: "easeOut", duration: 1 }}
-        className='rounded overflow-hidden shadow-sm group relative border border-transparent'
+        className="rounded overflow-hidden shadow-sm group relative border border-transparent"
       >
         {/* out of stock  */}
         {item?.quantity === "0" && (
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <div className='absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[1]'>
-              <p className='bg-red-600 text-white px-2 py-1 w-max absolute right-0'>
+            <div className="absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[1]">
+              <p className="bg-red-600 text-white px-2 py-1 w-max absolute right-0">
                 Sold Out
               </p>
             </div>
@@ -138,26 +139,26 @@ const Card17 = ({ item, design, store_id }: any) => {
         )}
         <style>{styleCss}</style>
 
-        <div className='relative'>
+        <div className="relative">
           <img
-            className='min-w-full h-auto'
+            className="min-w-full h-auto"
             src={productImg + item?.image[0]}
-            alt='Mountain'
+            alt="Mountain"
           />
           <div
-            className='search-hover absolute bottom-3 lg:cursor-pointer right-3 h-12 w-12 bg-white  rounded-full duration-5000 hidden group-hover:block'
+            className="search-hover absolute bottom-3 lg:cursor-pointer right-3 h-12 w-12 bg-white  rounded-full duration-5000 hidden group-hover:block"
             onClick={() => setView(!view)}
           >
-            <AiOutlineSearch className='text-xl mt-4 ml-[14px]' />
+            <AiOutlineSearch className="text-xl mt-4 ml-[14px]" />
           </div>
         </div>
-        <div className='lg:py-6 py-2 px-3 space-y-2'>
+        <div className="lg:py-6 py-2 px-3 space-y-2">
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <h3 className='capitalize cart font-sans text-sm font-bold antialiased font-twelve text-gray-400 whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]'>
+            <h3 className="capitalize cart font-sans text-sm font-bold antialiased font-twelve text-gray-400 whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]">
               {item?.name}
             </h3>
           </Link>
-          <div className='font-twelve text-sm text-gray-600 antialiased mb-2 group-hover:opacity-0 flex items-center gap-2'>
+          <div className="font-twelve text-sm text-gray-600 antialiased mb-2 group-hover:opacity-0 flex items-center gap-2">
             <BDT
               price={camp?.status === "active" ? campPrice : productGetPrice}
             />
@@ -166,24 +167,24 @@ const Card17 = ({ item, design, store_id }: any) => {
               item.discount_price === "0.00") ? (
               " "
             ) : (
-              <p className='line-through text-sm'>
+              <p className="line-through text-sm">
                 {" "}
                 <BDT price={item.regular_price} />
               </p>
             )}
           </div>
         </div>
-        <div className='font-twelve duration-5000 cart lg:absolute bottom-3 lg:opacity-0 group-hover:opacity-100 duration-500 flex justify-between items-center w-full px-3 flex-wrap gap-y-2'>
+        <div className="font-twelve duration-5000 cart lg:absolute bottom-3 lg:opacity-0 group-hover:opacity-100 duration-500 flex justify-between items-center w-full px-3 flex-wrap gap-y-2">
           <div
             // onClick={add_cart_item}
-            className='flex gap-1 items-center  border-b-2 border-black lg:cursor-pointer'
+            className="flex gap-1 items-center  border-b-2 border-black lg:cursor-pointer"
           >
-            <BsPlusLg className='text-xs ' />
-            <p className='text-sm font-twelve font-medium'>
+            <BsPlusLg className="text-xs " />
+            <p className="text-sm font-twelve font-medium">
               {store_id === 2680 ? "Order Now" : "Add To Cart"}
             </p>
           </div>
-          <Rate rating={item?.rating} className='font-twelve' />
+          <Rate rating={item?.rating} className="font-twelve" />
         </div>
       </motion.div>
       {/* <QuikView open={view} setOpen={setView}>

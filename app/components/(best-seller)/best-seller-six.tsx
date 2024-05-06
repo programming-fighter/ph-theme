@@ -11,6 +11,7 @@ import Taka from "@/app/utils/taka";
 import ArrowSquare from "@/app/utils/arrow-square";
 import GridSliderFive from "../(slider)/grid-slider/grid-slider-five";
 import Card7 from "../(card)/card7";
+import { toast } from "react-toastify";
 const BestSellerSix = ({ product, design, store_id }: any) => {
   const [open, setOpen] = useState(false);
   // const dispatch = useDispatch();
@@ -30,10 +31,10 @@ const BestSellerSix = ({ product, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

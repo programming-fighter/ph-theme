@@ -4,6 +4,7 @@ import { getCampaign } from "@/app/utils/http/get-campaign";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
 const Card25 = ({ item, design, store_id }: any) => {
@@ -66,10 +67,10 @@ const Card25 = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(process.env.API_URL + "get/offer/product", productDetails)

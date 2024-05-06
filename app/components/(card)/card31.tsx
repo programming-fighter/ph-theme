@@ -10,6 +10,7 @@ import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { AiOutlineSearch } from "react-icons/ai";
 import Rate from "@/app/utils/rate";
+import { toast } from "react-toastify";
 const Card31 = ({ item, design, store_id, makeid }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
@@ -46,10 +47,10 @@ const Card31 = ({ item, design, store_id, makeid }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

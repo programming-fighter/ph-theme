@@ -1,6 +1,7 @@
 import httpReq from "@/app/utils/http/axios/http.service";
 import React, { useRef } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const NewsletterFour = ({ design, store_id }: any) => {
   const emailRef = useRef<any>(null);
@@ -16,14 +17,16 @@ const NewsletterFour = ({ design, store_id }: any) => {
           email: email,
         });
         if (data?.error) {
-          // toast("Your email has already been taken", {
-          //   type: "error",
-          //   autoClose: 1000,
+          toast("Your email has already been taken", {
+            type: "error",
+            autoClose: 1000,
+          });
         } else {
-          // toast("Successfully Subscribe to Our Newsletter", {
-          //   type: "success",
-          //   autoClose: 1000,
-          // });
+          toast("Successfully Subscribe to Our Newsletter", {
+            type: "success",
+            autoClose: 1000,
+          });
+
           emailRef.current.value = "";
         }
       } catch (error) {

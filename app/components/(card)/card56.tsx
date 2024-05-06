@@ -9,6 +9,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BsEye } from "react-icons/bs";
 import { MdAddShoppingCart } from "react-icons/md";
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
 const Card56 = ({ item, design, makeid, store_id }: any) => {
@@ -93,10 +94,10 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

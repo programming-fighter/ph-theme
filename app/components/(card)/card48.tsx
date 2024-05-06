@@ -8,6 +8,7 @@ import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import Taka from "@/app/utils/taka";
+import { toast } from "react-toastify";
 
 const Card48 = ({ item, store_id }: any) => {
   const [view, setView] = useState(false);
@@ -47,10 +48,10 @@ const Card48 = ({ item, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

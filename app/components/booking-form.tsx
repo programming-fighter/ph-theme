@@ -172,7 +172,7 @@ const BookingForm = ({
                     router.push("/login");
                   }
                   if (verify) {
-                    // toast(verify, { type: 'success' })
+                    toast(verify, { type: "success" });
                     // window.location.replace("/profile");
                     setOrderPlaced(true);
                     router.push("/thank-you");

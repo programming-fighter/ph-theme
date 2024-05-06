@@ -11,6 +11,7 @@ import FeatureProduct from "@/components/feature-product";
 import Testimonial from "@/components/testimonial";
 import Footer from "./components/footer";
 
+
 interface Navigation {
   name: string;
   href: string;
@@ -50,16 +51,18 @@ export default async function Home() {
   const { layout, design, page, menu } = res.data;
 
   return (
-    <div
-      className={`${
-        design?.template_id === "34" ? "bg-thirty-one" : "bg-white"
-      } mx-auto`}
-    >
-      {layout &&
-        layout.map((item: any, index: number) => (
-          <GetComponent data={res.data} key={index} component={item} />
-        ))}
-    </div>
+    <>
+      <div
+        className={`${
+          design?.template_id === "34" ? "bg-thirty-one" : "bg-white"
+        } mx-auto`}
+      >
+        {layout &&
+          layout.map((item: any, index: number) => (
+            <GetComponent data={res.data} key={index} component={item} />
+          ))}
+      </div>
+    </>
   );
 }
 

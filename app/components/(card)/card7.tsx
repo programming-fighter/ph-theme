@@ -12,6 +12,7 @@ import { productImg } from "@/app/site-settings/siteUrl";
 import { IoSearchCircleOutline } from "react-icons/io5";
 import Taka from "@/app/utils/taka";
 import BDT from "@/app/utils/bdt";
+import { toast } from "react-toastify";
 
 const Card7 = ({ item, design, store_id }: any) => {
   const [open, setOpen] = useState(false);
@@ -86,10 +87,10 @@ const Card7 = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios.post("get/offer/product", productDetails).then((res: any) => {
       if (!res?.error) {

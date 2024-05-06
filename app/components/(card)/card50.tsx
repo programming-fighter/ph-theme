@@ -12,6 +12,7 @@ import {
   PlusIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
+import { toast } from "react-toastify";
 
 const Card50 = ({ item, store_id, design }: any) => {
   const [open, setOpen] = useState(false);
@@ -217,10 +218,10 @@ const AddToCart = ({
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

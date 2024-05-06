@@ -10,6 +10,7 @@ import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Rate from "@/app/utils/rate";
 import Taka from "@/app/utils/taka";
+import { toast } from "react-toastify";
 
 const Card5 = ({ item, store_id }: any) => {
   const [open, setOpen] = useState(false);
@@ -48,10 +49,10 @@ const Card5 = ({ item, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(process.env.API_URL + "get/offer/product", productDetails)

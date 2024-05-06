@@ -8,6 +8,7 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
 const Card45 = ({ item, design, store_id, headerSetting }: any) => {
@@ -81,10 +82,10 @@ const Card45 = ({ item, design, store_id, headerSetting }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(process.env.API_URL + "get/offer/product", productDetails)

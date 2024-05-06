@@ -9,6 +9,7 @@ import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import Rate from "@/app/utils/rate";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 
 const Card58 = ({ item, design, store_id }: any) => {
   const router = useRouter();
@@ -100,10 +101,10 @@ const Card58 = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(

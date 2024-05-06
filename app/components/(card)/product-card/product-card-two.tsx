@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
+import { toast } from "react-toastify";
 // import CardModal from './CardModal';
 
 const ProductCardTwo = ({ item, design, store_id }: any) => {
@@ -62,10 +63,10 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-    // toast("Added to Cart", {
-    //   type: "success",
-    //   autoClose: 1000,
-    // });
+    toast("Added to Cart", {
+      type: "success",
+      autoClose: 1000,
+    });
 
     axios
       .post(process.env.API_URL + "get/offer/product", productDetails)
