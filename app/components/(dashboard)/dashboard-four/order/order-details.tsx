@@ -1,31 +1,32 @@
-import { PhoneIcon } from "@heroicons/react/outline";
+"use client";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
-import useTheme from "../../../../../hooks/useTheme";
-import httpReq from "../../../../../services/http.service";
-import { productImg, profileImg } from "../../../../../siteSettings/siteUrl";
-import DataLoader from "../../../../components/Loader/DataLoader";
-import { Taka } from "../../../../components/utils";
-import GiveReview from "./Review";
-import PaymentAgain from "../../components/PaymentAgain";
-import OrderStatus from "../../components/OrderStatus";
-import BookingInformation from "../../components/BookingInformation";
-
 import { FaCopy } from "react-icons/fa";
-import "../../dashboardSeven/OrderDetailsSeven.css";
+import "../../dashboard-seven/order-details-seven.css";
+import useTheme from "@/app/hooks/use-theme";
+import { useParams } from "next/navigation";
+import httpReq from "@/app/utils/http/axios/http.service";
+import Taka from "@/app/utils/taka";
+import { productImg, profileImg } from "@/app/site-settings/siteUrl";
+import { PhoneIcon } from "@heroicons/react/24/outline";
+import DataLoader from "@/app/components/(loader)/data-loader";
+import BookingInformation from "../../booking-information";
+import PaymentAgain from "../../payment-again";
+import OrderStatus from "../../order-status";
+import Link from "next/link";
+import GiveReview from "./review";
 // import Countdown from 'react-countdown';
 
 const OrderDetails = () => {
   const [call, setCall] = useState(false);
-  const [order, setOrder] = useState({});
+  const [order, setOrder] = useState<any>({});
   const [transaction, setTransaction] = useState({});
   // const [pay, setPay] = useState('show')
   const [orderItem, setOrderItem] = useState([]);
   const [productLink, setProductLink] = useState(null);
   const [booking, setBooking] = useState({});
   const [copied, setCopied] = useState(false);
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state: any) => state.auth);
   const { userData, design } = useTheme();
   const { order_id } = useParams();
 
@@ -50,20 +51,6 @@ const OrderDetails = () => {
       // make sure to catch any error
       .catch(console.error);
   }, [order_id, call]);
-
-  // const order_create_time = new Date(order?.created_at).getTime()
-
-  // // Renderer callback with condition
-  // const renderer = ({ hours, minutes, seconds, completed }) => {
-  //     if (completed) {
-  //         // Render a completed state
-  //         setPay('hide')
-  //         return
-  //     } else {
-  //         // Render a countdown
-  //         return <span>{hours}:{minutes}:{seconds}</span>;
-  //     }
-  // };
 
   return (
     <div
@@ -91,7 +78,7 @@ const OrderDetails = () => {
             <p className="text-lg md:text-xl font-semibold leading-6 xl:leading-5 ">
               Customer’s Cart
             </p>
-            {orderItem?.map((item) => (
+            {orderItem?.map((item: any) => (
               <SingleItem
                 key={item.id}
                 item={item}
@@ -158,27 +145,6 @@ const OrderDetails = () => {
                 </p>
               </div>
             </div>
-            {/* <div className="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 space-y-6   ">
-                            <h3 className="text-xl font-semibold leading-5 ">Shipping</h3>
-                            <div className="flex justify-between items-start w-full">
-                                <div className="flex justify-center items-center space-x-4">
-                                    <div className="w-8 h-8">
-                                        <img className="w-full h-full" alt="logo" src="https://i.ibb.co/L8KSdNQ/image-3.png" />
-                                    </div>
-                                    <div className="flex flex-col justify-start items-center">
-                                        <p className="text-lg leading-6 font-semibold ">
-                                            DPD Delivery
-                                            <br />
-                                            <span className="font-normal">Delivery with 24 Hours</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <p className="text-lg font-semibold leading-6 ">$8.00</p>
-                            </div>
-                            <div className="w-full flex justify-center items-center">
-                                <button className="hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white">View Carrier Details</button>
-                            </div>
-                        </div> */}
           </div>
         </div>
         <div
@@ -311,10 +277,10 @@ const SingleItem = ({
   productLink,
   copied,
   setCopied,
-}) => {
+}: any) => {
   const [open, setOpen] = useState(false);
   const { store_id } = useTheme();
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState<any>({});
 
   useEffect(() => {
     // declare the async data fetching function
@@ -339,7 +305,7 @@ const SingleItem = ({
 
     if (copyText !== null) {
       copyText.querySelector("button")?.addEventListener("click", function () {
-        let input = copyText.querySelector("input.text");
+        let input: any = copyText.querySelector("input.text");
 
         let value = input.value;
 
@@ -382,9 +348,9 @@ const SingleItem = ({
           <div className="border-b border-gray-200  flex-col flex justify-between items-start w-full  pb-8 space-y-4 md:space-y-0">
             <div className="w-full flex flex-col justify-start items-start space-y-8">
               <h3 className="text-xl xl:text-2xl font-semibold leading-6  capitalize">
-                <NavLink to={"/product/" + product?.id + "/" + product?.slug}>
+                <Link href={"/product/" + product?.id + "/" + product?.slug}>
                   {product?.name}
-                </NavLink>
+                </Link>
               </h3>
               <div className="flex justify-start items-start flex-col space-y-2">
                 {item?.color ? (
@@ -444,68 +410,6 @@ const SingleItem = ({
             {(order?.status === "Payment Success" ||
               order?.status === "Delivered") &&
             orderItem[0]?.product_link ? (
-              // <div className="w-full max-w-sm py-2">
-              //   <div className="flex items-center">
-              //     <span className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg dark:bg-gray-600 dark:text-white dark:border-gray-600">
-              //       URL
-              //     </span>
-              //     <div className="relative w-full">
-              //       <input
-              //         id="website-url"
-              //         type="text"
-              //         aria-describedby="helper-text-explanation"
-              //         className="bg-gray-50 border border-e-0 border-gray-300 text-gray-500 dark:text-gray-400 text-sm border-s-0 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              //         value={productLink}
-              //         readonly
-              //         disabled
-              //       />
-              //     </div>
-              //     <CopyToClipboard
-              //       text={productLink}
-              //       onCopy={() => setCopied(true)}
-              //     >
-              //       <button
-              //         data-tooltip-id="my-tooltip"
-              //         data-tooltip-content={copied ? "Copied" : "Copy Url"}
-              //         className="flex-shrink-0 z-10 inline-flex items-center py-3 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-e-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 border border-blue-700 dark:border-blue-600 hover:border-blue-800 dark:hover:border-blue-700"
-              //         type="button"
-              //       >
-              //         <span id="default-icon">
-              //           <svg
-              //             className="w-4 h-4"
-              //             aria-hidden="true"
-              //             xmlns="http://www.w3.org/2000/svg"
-              //             fill="currentColor"
-              //             viewBox="0 0 18 20"
-              //           >
-              //             <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
-              //           </svg>
-              //         </span>
-              //         <span
-              //           id="success-icon"
-              //           className="hidden inline-flex items-center"
-              //         >
-              //           <svg
-              //             className="w-4 h-4"
-              //             aria-hidden="true"
-              //             xmlns="http://www.w3.org/2000/svg"
-              //             fill="none"
-              //             viewBox="0 0 16 12"
-              //           >
-              //             <path
-              //               stroke="currentColor"
-              //               stroke-linecap="round"
-              //               stroke-linejoin="round"
-              //               stroke-width="2"
-              //               d="M1 5.917 5.724 10.5 15 1.5"
-              //             />
-              //           </svg>
-              //         </span>
-              //       </button>
-              //     </CopyToClipboard>
-              //     <ReactTooltip id="my-tooltip" />
-              //   </div>
-              // </div>
               <div className="copy-text w-full">
                 <input
                   type="text"

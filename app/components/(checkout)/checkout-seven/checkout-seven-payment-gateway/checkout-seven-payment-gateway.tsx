@@ -9,7 +9,6 @@ const CheckOutSevenPaymentGateway = ({
   const { design, headerSetting, module } = useTheme();
   const advancePay = module?.find((item: any) => item?.modulus_id === 106);
 
-  console.log(module, "ce");
   return (
     <>
       <div className="shadow sm:rounded-md sm:overflow-hidden my-5">

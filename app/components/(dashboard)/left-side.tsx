@@ -6,13 +6,11 @@ import React from "react";
 const LeftSide = () => {
   const { userData } = useTheme();
 
-  console.log(userData, "userData");
-
   return (
     <>
       <div className="mt-5 md:mt-0 md:col-span-1">
         <div className="shadow sm:rounded-md sm:overflow-hidden">
-          <div className=" py-5 space-y-3  flex flex-col">
+          <div className="py-5 space-y-3  flex flex-col">
             <Link
               href="/profile"
               className={`${

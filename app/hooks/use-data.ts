@@ -11,24 +11,24 @@ import httpReq from "../utils/http/axios/http.service";
 // } from "../services/utils/localStorage";
 
 // if (typeof window !== "undefined") {
-let token = JSON.parse(localStorage.getItem("persist:root")!)?.auth
-  ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
-      ?.token
-  : null;
+// let token = JSON.parse(localStorage.getItem("persist:root")!)?.auth
+//   ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
+//       ?.token
+//   : null;
 // }
 
-console.log(token, "token");
+// console.log(token, "token");
 
 // let v: any = "";
 
 // if (typeof window !== "undefined") {
-let v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
-  ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
-      ?.verify
-  : null;
+// let v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
+//   ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
+//       ?.verify
+//   : null;
 // }
 
-console.log(v, "v");
+// console.log(v, "v");
 
 // export const v = JSON.parse(localStorage.getItem("persist:root")!)?.auth
 //   ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)?.user
@@ -79,10 +79,30 @@ const useData = () => {
   const [searchPse, setSearchPse] = useState("");
   const [designData, setDesignData] = useState(null);
 
+  const [token, setToken] = useState("");
+  const [v, setV] = useState<any>(null);
   useEffect(() => {
     if (typeof window !== "undefined") {
+      if (localStorage.getItem("persist:root")) {
+        const auth = JSON.parse(localStorage.getItem("persist:root")!)?.auth;
+
+        if (auth) {
+          const user = JSON.parse(
+            JSON.parse(localStorage.getItem("persist:root")!)?.auth
+          )?.user;
+
+          setV(user?.verify);
+        }
+      }
+
+      setToken(
+        JSON.parse(localStorage.getItem("persist:root")!)?.auth
+          ? JSON.parse(JSON.parse(localStorage.getItem("persist:root")!)?.auth)
+              ?.user?.token
+          : null
+      );
     }
-  }, []);
+  }, [store_id]);
 
   // useEffect(() => {
   //   const designDataColor = {
@@ -361,9 +381,9 @@ const useData = () => {
       productByFirstCategory,
     } = res?.data;
 
-    if (token && v?.verify) {
+    if (token && v) {
       const user = await httpReq.get("getuser");
-      console.log({ user });
+
       setUser(user);
     }
 
@@ -387,7 +407,7 @@ const useData = () => {
     setStore(store);
     setBrand(brand);
     setProductByFirstCategory(productByFirstCategory);
-  }, []);
+  }, [token, v]);
 
   useEffect(() => {
     // const domain = window.location.host;

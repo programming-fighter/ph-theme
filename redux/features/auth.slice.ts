@@ -56,7 +56,6 @@ export const login = createAsyncThunk(
 export const verify = createAsyncThunk(
   "auth/users/checkotp",
   async ({ otp, token }: any, thunkAPI) => {
-    console.log("otp", otp, token);
     try {
       const response = await authService.verify_phone(otp, token);
 
