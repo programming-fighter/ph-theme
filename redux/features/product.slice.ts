@@ -79,7 +79,7 @@ export const productSlice = createSlice({
         (items: any) => items.cartId !== action.payload
       );
     },
-    clearCartList: (state, action) => {
+    clearCartList: (state) => {
       state.cartList = [];
     },
   },

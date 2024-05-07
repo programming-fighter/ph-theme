@@ -135,6 +135,8 @@ const useData = () => {
         setSocial(data?.data?.QuickLogin);
         setModule(data?.data?.modules);
 
+        console.log(data?.data?.modules, "module data");
+
         const webAnalytics = data?.data?.modules?.find(
           (item: any) => item?.modulus_id === 3
         );
@@ -406,8 +408,6 @@ const useData = () => {
     }
     return result;
   };
-
-  console.log({ userData });
 
   return {
     userData,
