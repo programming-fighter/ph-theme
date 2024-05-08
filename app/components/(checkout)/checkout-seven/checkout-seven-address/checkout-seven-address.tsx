@@ -234,6 +234,7 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 {...register("phone", {
                   required: true.valueOf(),
                   minLength: 11,
+                  maxLength: 11,
                 })}
                 type="number"
                 name="phone"
