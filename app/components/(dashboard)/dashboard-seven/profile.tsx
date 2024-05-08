@@ -127,7 +127,7 @@ const Profile = () => {
                         </label>
                         <div className="mt-1 flex items-center">
                           <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                            {user.verify ? (
+                            {user?.verify ? (
                               <img
                                 src={
                                   selectedImage

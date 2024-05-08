@@ -16,6 +16,7 @@ import Card12 from "../../(card)/card12";
 
 const Seven = ({ data }: any) => {
   const { store_id } = useTheme();
+  console.log(data, "data");
 
   const [relatedProduct, setRelatedProduct] = useState([]);
   const [reviews, setReview] = useState([]);
@@ -37,12 +38,15 @@ const Seven = ({ data }: any) => {
         setReview([]);
       }
     });
+
     httpReq.post("related-product", { id: data?.product_id }).then((res) => {
       if (!res?.error) {
         setRelatedProduct(res);
       }
     });
   }, [data, store_id]);
+
+  console.log();
 
   return (
     <div className="container px-5">

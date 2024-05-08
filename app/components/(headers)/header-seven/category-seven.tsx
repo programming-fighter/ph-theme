@@ -92,7 +92,7 @@ const CategorySeven = ({ openMenu }: any) => {
             {menu.map((menuItem: any, j: any) => (
               <div key={menuItem.id} className="relative ">
                 <div className="px-6 py-2 hover:bg-gray-200 ">
-                  <Link href={menuItem?.url}>
+                  <Link href={"/" + menuItem?.url}>
                     <h1 className="menu-hover font-seven text-sm text-black">
                       {menuItem.name}{" "}
                     </h1>

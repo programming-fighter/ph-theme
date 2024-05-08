@@ -12,9 +12,12 @@ import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
 import CategorySeven from "./category-seven";
 import { BottomCart } from "../card-popup-three";
 import SideMenu from "../header-three/side-menu";
+import { logout } from "@/redux/features/auth.slice";
+
+import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const HeaderSeven = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const { user } = useSelector((state: any) => state.auth);
   const { headerSetting, userData, design } = useTheme();
   const [open, setOpen] = useState(false);
@@ -211,7 +214,7 @@ const HeaderSeven = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                href="profile/order"
+                                href="/profile/order"
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
@@ -224,7 +227,7 @@ const HeaderSeven = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <div
-                                // onClick={() => dispatch(logout())}
+                                onClick={() => dispatch(logout())}
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
@@ -294,12 +297,9 @@ const HeaderSeven = () => {
 
       <div className="block px-4 lg:hidden">
         <ul
-          className={`
-                            lg:hidden bg-white fixed sm:w-[350px] md:w-[400px] w-[250px] top-0 overflow-y-auto bottom-0  pb-5
-                            duration-1000 z-50 lg:cursor-pointer ${
-                              open ? "left-0" : "left-[-120%]"
-                            }
-                            `}
+          className={`lg:hidden bg-white fixed sm:w-[350px] md:w-[400px] w-[250px] top-0 overflow-y-auto bottom-0  pb-5 duration-1000 z-50 lg:cursor-pointer ${
+            open ? "left-0" : "left-[-120%]"
+          }`}
         >
           <div className="flex py-4 z-50 justify-between items-center lg:hidden px-10 border-b-2 border-gray-100 pb-8 ">
             <div>

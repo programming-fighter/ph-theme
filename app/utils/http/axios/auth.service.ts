@@ -23,10 +23,17 @@ const login = (store_id: any, phone: any, password: any) => {
     });
 };
 
+const logout = () => {
+  return axiosInstance.post("logout").then((response) => {
+    return response.data;
+  });
+};
+
 const authService = {
   signUp,
   login,
   verify_phone,
+  logout,
 };
 
 export default authService;

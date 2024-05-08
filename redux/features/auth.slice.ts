@@ -75,6 +75,19 @@ export const verify = createAsyncThunk(
   }
 );
 
+export const logout = createAsyncThunk("auth/logout", async (thunkAPI: any) => {
+  try {
+    return await authService.logout();
+  } catch (error) {
+    // const message =
+    //   (error.response && error.response.data && error.response.data.message) ||
+    //   error.message ||
+    //   error.toString();
+    // thunkAPI.dispatch(setMessage(message));
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
 const initialState = user
   ? { isLoggedIn: true, user, success: "" }
   : { isLoggedIn: false, user: null, success: "" };
@@ -118,6 +131,12 @@ const authSlice = createSlice({
     builder.addCase(login.rejected, (state, action) => {
       state.isLoggedIn = false;
       state.user = null;
+    });
+
+    builder.addCase(logout.fulfilled, (state, action) => {
+      state.isLoggedIn = false;
+      state.user = null;
+      state.success = "";
     });
   },
 });
