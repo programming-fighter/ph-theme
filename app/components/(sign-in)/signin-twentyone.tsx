@@ -40,7 +40,7 @@ const LoginTwentyOne = () => {
         if (verify) {
           //   toast(verify, { type: "success" });
           router.push("/profile");
-          //   window.location.reload();
+          // window.location.reload();
         }
         // else {
         //     navigate('/verify-otp')
