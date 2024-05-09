@@ -75,7 +75,7 @@ export const verify = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk("auth/logout", async (thunkAPI: any) => {
+export const logout = createAsyncThunk("auth/logout", async ({}, thunkAPI) => {
   try {
     return await authService.logout();
   } catch (error) {
