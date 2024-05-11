@@ -21,13 +21,15 @@ const BestSellerSeventeen = ({ best_sell_product, design, store_id }: any) => {
   const prev = "best_deals_seller_Prev";
   const next = "best_deals_seller_Next";
 
+  console.log("topBestSecondDeals", img1);
+
   return (
     <div className="relative z-0 h-full overflow-hidden">
       <div className="hidden lg:block">
         <ParallaxProvider>
           <ParallaxBanner className="lg:aspect-[0.6/1] xl2:aspect-[0.7/1] xl:aspect-[1/1] bg-gray-100">
             <ParallaxBannerLayer
-              image={img1}
+              image={img1.src}
               speed={-100}
               style={{
                 backgroundSize: "contain",
