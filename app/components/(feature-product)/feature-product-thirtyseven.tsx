@@ -14,7 +14,7 @@ const FeatureProductThirtySeven = ({
     <div className="shadow-lg py-5 sm:py-10 rounded-sm bg-[#F1F9DD]">
       <div className="container px-5">
         <div>
-          <img src={img} alt="margin" className="mx-auto" />
+          <img src={img.src} alt="margin" className="mx-auto" />
           <h1 className="text-2xl text-center">FEATURE PRODUCTS</h1>
         </div>
         <div className="flex justify-center mt-10">

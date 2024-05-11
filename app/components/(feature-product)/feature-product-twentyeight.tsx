@@ -44,7 +44,7 @@ const FeatureProductTwentyEight = ({
       <style>{styleCss}</style>
       <div className="sm:container py-5 px-5 relative arrow-hov bg-[#FFEFCF]">
         <div className="mb-5 flex justify-between items-center">
-          <img src={hot} alt="" className="h-10" />
+          <img src={hot.src} alt="" className="h-10" />
           <p className="text-xl text-orange-600">
             সকল হট ডিল
             <IoIosArrowForward className="inline" />
