@@ -78,7 +78,7 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
           <SectionHeadingSeventeen text={"Layer cakes"} />
         </div>
         <div className="flex justify-center pt-2 pb-10">
-          <Image src={image} alt="" />
+          <Image src={image.src} alt="" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 ">

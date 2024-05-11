@@ -37,7 +37,7 @@ const NewArrivalProductSeventeen = ({ product, design, store_id }: any) => {
           <SectionHeadingSeventeen text={"Crazy Flavor Cakes"} />
         </div>
         <div className='flex justify-center pt-2'>
-          <Image src={image} alt='' />
+          <Image src={image.src} alt='' />
         </div>
 
         <div className='grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 gap-2 xl:gap-5 mt-16'>
