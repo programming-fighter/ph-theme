@@ -16,12 +16,12 @@ import Card35 from "../(card)/card35";
 
 const NewArrivalProductSeventeen = ({ product, design, store_id }: any) => {
   return (
-    <div className='relative z-0 h-full overflow-hidden py-4 '>
-      <div className='hidden lg:block'>
+    <div className="relative z-0 h-full overflow-hidden py-4 ">
+      <div className="hidden lg:block">
         <ParallaxProvider>
-          <ParallaxBanner className='xl:aspect-[1.3/1] lg:aspect-[0.9/1] w-full'>
+          <ParallaxBanner className="xl:aspect-[1.3/1] lg:aspect-[0.9/1] w-full">
             <ParallaxBannerLayer
-              image={img1}
+              image={img1.src}
               speed={-100}
               style={{
                 backgroundSize: "contain",
@@ -32,15 +32,15 @@ const NewArrivalProductSeventeen = ({ product, design, store_id }: any) => {
           </ParallaxBanner>
         </ParallaxProvider>
       </div>
-      <div className='lg:absolute top-1/2 lg:-translate-y-1/2 left-1/2 lg:-translate-x-1/2 z-[1] sm:container px-5 xl:px-80 mx-auto'>
-        <div className='flex justify-center '>
+      <div className="lg:absolute top-1/2 lg:-translate-y-1/2 left-1/2 lg:-translate-x-1/2 z-[1] sm:container px-5 xl:px-80 mx-auto">
+        <div className="flex justify-center ">
           <SectionHeadingSeventeen text={"Crazy Flavor Cakes"} />
         </div>
-        <div className='flex justify-center pt-2'>
-          <Image src={image.src} alt='' />
+        <div className="flex justify-center pt-2">
+          <Image src={image.src} alt="" />
         </div>
 
-        <div className='grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 gap-2 xl:gap-5 mt-16'>
+        <div className="grid grid-cols-1 xl:grid-cols-4 lg:grid-cols-4 md:grid-cols-2 gap-2 xl:gap-5 mt-16">
           {product?.slice(0, 8).map((data: any) => (
             <Card35
               item={data}

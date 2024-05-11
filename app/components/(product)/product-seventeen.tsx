@@ -62,7 +62,7 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
         <ParallaxProvider>
           <ParallaxBanner className="xl:aspect-[2/1] lg:aspect-[1.2/1] xl2:aspect-[1.5/1] w-full">
             <ParallaxBannerLayer
-              image={img1}
+              image={img1.src}
               speed={-50}
               style={{
                 backgroundSize: "contain",

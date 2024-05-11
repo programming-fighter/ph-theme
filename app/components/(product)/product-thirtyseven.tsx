@@ -3,6 +3,7 @@ import React from "react";
 import img from "./bg-img/37/MARGIN.png";
 import Card64 from "../(card)/card64";
 
+
 const ProductThirtySeven = ({ product, design, store_id }: any) => {
   if (product.length === 0) {
     return null;
