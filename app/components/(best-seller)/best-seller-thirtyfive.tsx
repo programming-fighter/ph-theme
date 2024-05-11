@@ -52,7 +52,7 @@ const BestSellerThirtyFive = ({
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x-2 divide-black">
             <div className="flex pt-5 lg:pt-0 items-center h-full">
               <img
-                src={banner[3]?.image ? bannerImg + banner[3]?.image : img}
+                src={banner[3]?.image ? bannerImg + banner[3]?.image : img.src}
                 alt=""
                 className="w-full h-auto"
               />
