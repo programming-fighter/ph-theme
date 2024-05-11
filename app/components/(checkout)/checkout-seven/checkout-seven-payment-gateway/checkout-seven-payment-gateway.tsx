@@ -69,7 +69,7 @@ const CheckOutSevenPaymentGateway = ({
                   <div className="flex justify-center ">
                     <div>
                       <img
-                        src={bkashLogo}
+                        src={bkashLogo.src}
                         className=" max-h-8 "
                         alt="bkashLogo"
                       />

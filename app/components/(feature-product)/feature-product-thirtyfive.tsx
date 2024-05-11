@@ -83,7 +83,7 @@ const FeatureProductThirtyFive = ({
             </div>
             <div className="flex items-center pt-5 lg:pt-0 h-full order-first lg:order-last">
               <img
-                src={banner[2]?.image ? bannerImg + banner[2]?.image : img}
+                src={banner[2]?.image ? bannerImg + banner[2]?.image : img.src}
                 alt=""
                 className="w-full h-auto"
               />

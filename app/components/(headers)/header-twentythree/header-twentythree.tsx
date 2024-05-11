@@ -210,7 +210,7 @@ const HeaderTwentyThree = () => {
                           />
                         ) : (
                           <img
-                            src={userImg}
+                            src={userImg.src}
                             alt="user"
                             className="object-fit"
                           />

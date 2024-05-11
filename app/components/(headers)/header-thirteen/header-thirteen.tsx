@@ -187,7 +187,7 @@ const SingleCats = ({ item, color }: any) => {
             alt=""
           />
         ) : (
-          <img className="h-[50px] w-[50px]" src={img} alt="" />
+          <img className="h-[50px] w-[50px]" src={img.src} alt="" />
         )}
         <p className="text-white text-sm tracking-tight capitalize font-medium text-center">
           {item?.name}
