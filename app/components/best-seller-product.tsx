@@ -38,13 +38,6 @@ const BestSellerProduct = ({
   banner,
 }: any) => {
   return (
-    <BestSellerSeventeen
-      best_sell_product={best_sell_product}
-      design={design}
-      store_id={store_id}
-    />
-  );
-  return (
     <>
       {theme === "four" && (
         <BestSellerFive
