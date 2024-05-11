@@ -19,7 +19,7 @@ const FeatureProductSeventeen = ({
         <SectionHeadingSeventeen text={"Popular Cupcake Flavors"} />
       </div>
       <div className="flex justify-center pt-2">
-        <img src={image} alt="" />
+        <img src={image.src} alt="" />
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 mt-14">
         {feature_product?.slice(0, 8).map((data: any, index: any) => (
