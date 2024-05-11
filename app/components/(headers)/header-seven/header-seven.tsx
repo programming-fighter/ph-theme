@@ -12,9 +12,6 @@ import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
 import CategorySeven from "./category-seven";
 import { BottomCart } from "../card-popup-three";
 import SideMenu from "../header-three/side-menu";
-import { logout } from "@/redux/features/auth.slice";
-
-import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const HeaderSeven = () => {
   const dispatch = useDispatch();

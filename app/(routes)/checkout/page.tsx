@@ -6,7 +6,6 @@ import Login from "../login/page";
 
 const CheckoutPage = () => {
   const { user } = useSelector((state: any) => state.auth);
-  console.log(user, "user");
 
   if (user?.verify) {
     return <Checkout />;

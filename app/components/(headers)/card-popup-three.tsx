@@ -122,8 +122,6 @@ const ShoppingCart = ({ setOpen }: any) => {
     0
   );
 
-  console.log(cartList, "cartList");
-
   const { design } = useTheme();
 
   return (

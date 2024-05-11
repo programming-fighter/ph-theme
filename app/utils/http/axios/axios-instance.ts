@@ -25,7 +25,7 @@ if (typeof window !== "undefined") {
       }
     }
   }
-  console.log(token, "token");
+
   axiosInstance.interceptors.request.use((config) => {
     // Do something before request is sent
     // config.params = config.params || {}
