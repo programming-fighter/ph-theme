@@ -240,7 +240,7 @@ const HeaderSeven = () => {
                                   "block px-4 py-2 text-sm text-gray-700"
                                 )}
                               >
-                                Sign outx
+                                Sign out
                               </div>
                             )}
                           </Menu.Item>
