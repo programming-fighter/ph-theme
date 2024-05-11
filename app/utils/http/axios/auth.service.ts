@@ -25,6 +25,7 @@ const login = (store_id: any, phone: any, password: any) => {
 
 const logout = () => {
   return axiosInstance.post("logout").then((response) => {
+    console.log(response.data);
     return response.data;
   });
 };

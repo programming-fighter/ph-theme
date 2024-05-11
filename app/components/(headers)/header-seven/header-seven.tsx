@@ -17,7 +17,7 @@ import { logout } from "@/redux/features/auth.slice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 
 const HeaderSeven = () => {
-  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
+  const dispatch = useDispatch();
   const { user } = useSelector((state: any) => state.auth);
   const { headerSetting, userData, design } = useTheme();
   const [open, setOpen] = useState(false);
@@ -27,6 +27,14 @@ const HeaderSeven = () => {
   const [cartOpen, setCartOpen] = useState(false);
 
   const bgColor = design?.header_color;
+
+  const handleClick = () => {
+    if (window !== undefined) {
+      window.localStorage.removeItem("persist:root");
+      console.log("Item removed from localStorage");
+      window.location.href = "/";
+    }
+  };
 
   useEffect(() => {
     // scroll navbar
@@ -79,6 +87,7 @@ const HeaderSeven = () => {
         font-family: 'Open Sans', sans-serif;
     }
      `;
+
   return (
     <div>
       <div className={` ${openMenu && "navbarSeven openMenu"} bg-seven-header`}>
@@ -224,16 +233,17 @@ const HeaderSeven = () => {
                               </Link>
                             )}
                           </Menu.Item>
+                          {/*  */}
                           <Menu.Item>
                             {({ active }) => (
                               <div
-                                onClick={() => dispatch(logout())}
+                                onClick={handleClick}
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
-                                )}  
+                                )}
                               >
-                                Sign out
+                                Sign outx
                               </div>
                             )}
                           </Menu.Item>
