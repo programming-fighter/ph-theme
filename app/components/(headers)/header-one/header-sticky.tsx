@@ -21,7 +21,10 @@ const HeaderSticky = () => {
   return (
     <>
       <Popover
-        style={{ background: `url(${bg}) fixed center`, position: "relative" }}
+        style={{
+          background: `url(${bg.src}) fixed center`,
+          position: "relative",
+        }}
         className="relative shadow-lg mb-2"
       >
         <div className="container mx-auto px-4 sm:px-6">
@@ -37,7 +40,7 @@ const HeaderSticky = () => {
                       )}
                     >
                       <div className="">
-                        <img src={logo} alt="" width={100} />
+                        <img src={logo.src} alt="" width={100} />
                       </div>
                     </Popover.Button>
 
