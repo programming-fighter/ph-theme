@@ -21,7 +21,7 @@ const BestSellerSeventeen = ({ best_sell_product, design, store_id }: any) => {
   const prev = "best_deals_seller_Prev";
   const next = "best_deals_seller_Next";
 
-  console.log("topBestSecondDeals", img1);
+  console.log("topBestSecondDeals", image);
 
   return (
     <div className="relative z-0 h-full overflow-hidden">
@@ -45,7 +45,7 @@ const BestSellerSeventeen = ({ best_sell_product, design, store_id }: any) => {
           <SectionHeadingSeventeen text={"Best Deals"} />
         </div>
         <div className="flex justify-center pt-2">
-          <img src={image} alt="" />
+          <img src={image.src} alt="" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 py-10 lg:pt-20 gap-8 ">
