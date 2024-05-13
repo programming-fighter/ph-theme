@@ -22,6 +22,8 @@ import { iconImg } from "@/app/site-settings/siteUrl";
 import { useRef } from "react";
 
 const FeaturedEleven = ({ category, design, store_id }: any) => {
+  const navigationPrevRef = useRef<any>(null);
+  const navigationNextRef = useRef<any>(null);
   const router = useRouter();
   const customCss = `
     .hoverBorder:hover{
@@ -29,28 +31,25 @@ const FeaturedEleven = ({ category, design, store_id }: any) => {
     }
     `;
 
-  const navigationPrevRef = useRef(null);
-  const navigationNextRef = useRef(null);
-
   return (
-    <div className='sm:container px-5 sm:py-10 py-5 group'>
+    <div className="sm:container px-5 sm:py-10 py-5 group">
       <style>{customCss}</style>
-      <div className='flex justify-between items-center'>
+      <div className="flex justify-between items-center">
         <div>
           <SectionHeadingSeven title={"Shop by Categories "} subtitle={""} />
         </div>
-        <div className='lg:cursor-pointer flex items-center gap-3'>
+        <div className="lg:cursor-pointer flex items-center gap-3">
           <div
             ref={navigationPrevRef}
             className={`h-8 w-8 rounded-full flex justify-center items-center bg-white transition-all duration-500 ease-linear z-[5] `}
           >
-            <ChevronLeftIcon className='h-6 text-2xl font-serif font-bold' />
+            <ChevronLeftIcon className="h-6 text-2xl font-serif font-bold" />
           </div>
           <div
             ref={navigationNextRef}
             className={`bg-white h-8 w-8 flex justify-center items-center rounded-full transition-all duration-500 ease-linear z-[5] `}
           >
-            <ChevronRightIcon className='h-6 text-2xl font-serif font-bold' />
+            <ChevronRightIcon className="h-6 text-2xl font-serif font-bold" />
           </div>
         </div>
       </div>
@@ -68,8 +67,8 @@ const FeaturedEleven = ({ category, design, store_id }: any) => {
           setTimeout(() => {
             // Override prevEl & nextEl now that refs are defined
             if (
-              swiper.params.navigation &&
-              typeof swiper.params.navigation !== "boolean"
+              swiper?.params?.navigation &&
+              typeof swiper?.params?.navigation !== "boolean"
             ) {
               swiper.params.navigation.prevEl = navigationPrevRef.current;
               swiper.params.navigation.nextEl = navigationNextRef.current;
@@ -83,7 +82,7 @@ const FeaturedEleven = ({ category, design, store_id }: any) => {
             swiper.navigation.update();
           });
         }}
-        className='hidden sm:block'
+        className="hidden sm:block"
         breakpoints={{
           350: {
             slidesPerView: 4,
@@ -112,23 +111,23 @@ const FeaturedEleven = ({ category, design, store_id }: any) => {
         }}
       >
         {category?.map((item: any) => (
-          <SwiperSlide key={item?.id} className=''>
+          <SwiperSlide key={item?.id} className="">
             <Link href={"/category/" + item?.id}>
               <div
                 className={`group ${
                   store_id === 2109 ? "bg-[#d5b5f8]" : "bg-gray-200"
                 }  hover:bg-white hover:drop-shadow-xl rounded-lg hoverBorder border text-center`}
               >
-                <div className='p-2'>
-                  <div className='flex justify-center p-1'>
+                <div className="p-2">
+                  <div className="flex justify-center p-1">
                     <img
-                      className='w-16 h-auto'
+                      className="w-16 h-auto"
                       src={iconImg + item?.icon}
-                      alt='Mountain'
+                      alt="Mountain"
                     />
                   </div>
-                  <div className='flex justify-center mt-3'>
-                    <p className='whitespace-nowrap overflow-hidden text-ellipsis w-[100px]'>
+                  <div className="flex justify-center mt-3">
+                    <p className="whitespace-nowrap overflow-hidden text-ellipsis w-[100px]">
                       {item?.name}
                     </p>
                   </div>
@@ -172,10 +171,10 @@ const FeaturedEleven = ({ category, design, store_id }: any) => {
             swiper.navigation.update();
           });
         }}
-        className='h-[300px] sm:hidden'
+        className="h-[300px] sm:hidden"
       >
         {category?.map((item: any) => (
-          <SwiperSlide key={item?.id} className='swiperjs_grid_eleven'>
+          <SwiperSlide key={item?.id} className="swiperjs_grid_eleven">
             <Link
               href={"/category/" + item?.id}
               onClick={() => router.push(`/category/${item?.id}`)}
@@ -183,15 +182,15 @@ const FeaturedEleven = ({ category, design, store_id }: any) => {
                 store_id === 2109 ? "bg-[#d5b5f8]" : "bg-gray-200"
               } rounded-lg pointer-events-auto p-2 border text-center w-full`}
             >
-              <div className='flex justify-center p-1'>
+              <div className="flex justify-center p-1">
                 <img
-                  className='w-16 h-auto'
+                  className="w-16 h-auto"
                   src={iconImg + item?.icon}
-                  alt='catImage'
+                  alt="catImage"
                 />
               </div>
-              <div className='flex justify-center mt-3'>
-                <p className='whitespace-nowrap overflow-hidden text-ellipsis w-[100px]'>
+              <div className="flex justify-center mt-3">
+                <p className="whitespace-nowrap overflow-hidden text-ellipsis w-[100px]">
                   {item?.name}
                 </p>
               </div>

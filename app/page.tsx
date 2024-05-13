@@ -11,7 +11,6 @@ import FeatureProduct from "@/components/feature-product";
 import Testimonial from "@/components/testimonial";
 import Footer from "./components/footer";
 
-
 interface Navigation {
   name: string;
   href: string;

@@ -26,12 +26,12 @@ const HeaderMenu = () => {
 
   const bgColor = design?.header_color;
 
-  //   const cartList = useSelector((state: any) => state.cart.cartList);
-  //   const priceList = cartList?.map((p: any) => p.qty * p.price);
-  //   const total = priceList.reduce(
-  //     (previousValue: any, currentValue: any) => previousValue + currentValue,
-  //     0
-  //   );
+  const cartList = useSelector((state: any) => state.cart.cartList);
+  const priceList = cartList?.map((p: any) => p.qty * p.price);
+  const total = priceList.reduce(
+    (previousValue: any, currentValue: any) => previousValue + currentValue,
+    0
+  );
 
   return (
     <div>
@@ -96,16 +96,16 @@ const HeaderMenu = () => {
               <p className={`pr-1 lg:cursor-pointer`}>
                 <HiOutlineShoppingBag className="text-3xl font-thin menu-hover" />
               </p>
-              {/* <p
+              <p
                 style={{ background: bgColor, color: design?.text_color }}
                 className="text-sm mt-5 -ml-5 rounded-full w-fit px-1.5 h-fit"
               >
                 {cartList.length}
-              </p> */}
+              </p>
             </div>
             <div>
               <p className={`text-lg font-bold lg:cursor-pointer mt-1`}>
-                {/* <Taka tk={(total)} /> */}
+                <Taka tk={total} />
               </p>
             </div>
           </div>
