@@ -1,7 +1,6 @@
 import useTheme from "@/app/hooks/use-theme";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
 import { ThreeDots } from "react-loader-spinner";
 import FilterByColor from "../filter-by-color";
 import FilterByPrice from "../filter-by-price";

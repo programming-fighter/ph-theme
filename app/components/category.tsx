@@ -9,7 +9,15 @@ const Category: React.FC = () => {
   const { design } = useTheme();
   const { id } = useParams();
 
-  return <CategoryThree data={id} />;
+  return (
+    <>
+      {design?.shop_page === "seven" ? (
+        <CategorySeven data={id} />
+      ) : (
+        <CategoryThree data={id} />
+      )}
+    </>
+  );
 };
 
 export default Category;
