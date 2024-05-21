@@ -225,7 +225,16 @@ const Product = ({
         setLoad(false);
 
         if (!shop_load && page !== 1) {
-          setProducts([...products, ...data?.data]);
+          if (Array.isArray(products) && data && Array.isArray(data.data)) {
+            setProducts([...products, ...data.data]);
+          } else {
+            console.error(
+              "One of the values is not iterable or undefined:",
+              products,
+              data,
+              data?.data
+            );
+          }
         } else {
           setProducts([]);
           setPaginate(null);

@@ -127,7 +127,7 @@ const ShoppingCart = ({ setOpen }: any) => {
   return (
     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl relative">
       <div className="flex-1">
-        <div className="flex items-start justify-between bg-black py-3 px-3 fixed top-0 left-0 right-0">
+        <div className="flex items-start justify-between bg-black py-3 px-3  top-0  right-0 w-full">
           <Dialog.Title className="text-lg font-medium text-white uppercase">
             {" "}
             Your Cart
@@ -156,7 +156,7 @@ const ShoppingCart = ({ setOpen }: any) => {
         </div>
       </div>
 
-      <div className="fixed flex justify-center  bottom-0 left-0 right-0">
+      <div className=" flex justify-center bottom-0 right-0 w-full">
         <Link
           onClick={() => setOpen(false)}
           href="/checkout"
