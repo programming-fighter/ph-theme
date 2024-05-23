@@ -9,9 +9,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import { ToastContainer } from "react-toastify";
 import dynamic from "next/dynamic";
 
-// Dynamically import the Header and Footer components
-const Header = dynamic(() => import("./components/header"));
-const Footer = dynamic(() => import("./components/footer"));
+const Header = dynamic(() => import("./components/header"), { ssr: false });
+const Footer = dynamic(() => import("./components/footer"), { ssr: false });
 
 const AppWrapper = ({ children }: PropsWithChildren) => {
   return (
