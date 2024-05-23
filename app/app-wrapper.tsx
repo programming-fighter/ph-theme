@@ -4,9 +4,14 @@ import ThemeProvider from "./hooks/theme-provider";
 import { Provider } from "react-redux";
 import store, { persistor } from "@/redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import Header from "./components/header";
-import Footer from "./components/footer";
+// import Header from "./components/header";
+// import Footer from "./components/footer";
 import { ToastContainer } from "react-toastify";
+import dynamic from "next/dynamic";
+
+// Dynamically import the Header and Footer components
+const Header = dynamic(() => import("./components/header"));
+const Footer = dynamic(() => import("./components/footer"));
 
 const AppWrapper = ({ children }: PropsWithChildren) => {
   return (
