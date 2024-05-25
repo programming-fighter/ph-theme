@@ -38,7 +38,7 @@ const navigation: Navigation[] = [
   { name: "Company", href: "/" },
 ];
 
-const HomePage = async ({ domain }: any) => {
+const HomePage = async () => {
   const res = await axios.post(
     "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
     {
