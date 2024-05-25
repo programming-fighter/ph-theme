@@ -10,14 +10,14 @@ import { ToastContainer } from "react-toastify";
 import dynamic from "next/dynamic";
 
 const Header = dynamic(() => import("./components/header"), { ssr: false });
-const Footer = dynamic(() => import("./components/footer"), { ssr: false });
+const Footer = dynamic(() => import("./components/footer"));
 
 const AppWrapper = ({ children }: PropsWithChildren) => {
   return (
     <ThemeProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Header />
+          {/* <Header /> */}
           {children}
           <Footer />
           <ToastContainer position="top-right" newestOnTop />

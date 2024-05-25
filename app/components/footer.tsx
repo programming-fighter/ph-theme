@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import FooterDefault from "./(footers)/footer-default";
 import dynamic from "next/dynamic";
 import FooterOne from "./(footers)/footer-one";
@@ -62,6 +60,7 @@ import FooterThirtySix from "./(footers)/footer-thirtysix";
 import FooterThirtySeven from "./(footers)/footer-thirtyseven";
 import FooterForty from "./(footers)/footer-forty";
 import useTheme from "../hooks/use-theme";
+import axios from "axios";
 const DynamicFooterDefault = dynamic(
   () => import("@/components/(footers)/footer-default"),
   {
@@ -108,8 +107,18 @@ const DynamicFooterForty = dynamic(
   }
 );
 
-const Footer = () => {
-  const { headerSetting, category, design, store_id, menu, page } = useTheme();
+const Footer = async () => {
+  const res = await axios.post(
+    "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
+    {
+      name: "siam.localhost:3000",
+    }
+  );
+
+  // console.log(res.data, "data");
+
+  const { headerSetting, category, design, store_id, menu, page } = res.data;
+  // return null;
   return (
     <>
       {design?.footer === "default" && (

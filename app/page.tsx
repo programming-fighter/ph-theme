@@ -1,4 +1,3 @@
-"use client";
 import { usePathname } from "next/navigation";
 import React, { Suspense } from "react";
 import HomePage from "./components/home";
