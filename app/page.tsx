@@ -8,22 +8,11 @@ const HomePage = dynamic(() => import("./components/home"));
 // const HomePage = React.lazy(() => import("./components/home"));
 
 export default function Home() {
-  function cleanDomain(domain: any) {
-    // Remove the protocol (http:// or https://)
-    domain = domain.replace(/^(https?:\/\/)/, "");
+  let domain = window.location.host;
 
-    // Remove any trailing slash
-    domain = domain.replace(/\/$/, "");
-
-    return domain;
-  }
-
-  const domain = window.location.host;
-
-  console.log(domain);
   return (
-    // <Suspense fallback={<div>Loading...</div>}>
-    <HomePage domain={domain} />
-    // </Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomePage domain={domain} />
+    </Suspense>
   );
 }
