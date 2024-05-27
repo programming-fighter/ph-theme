@@ -355,7 +355,7 @@ const useData = () => {
     const res = await axios.post(
       "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
       {
-        name: "https://ebitans-nextjs-theme.vercel.app/",
+        name: "ebitans-nextjs-theme.vercel.app",
       }
     );
 
