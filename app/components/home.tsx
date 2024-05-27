@@ -1,3 +1,4 @@
+"use client";
 import axios from "axios";
 import React from "react";
 import Hero from "./hero";
@@ -9,6 +10,7 @@ import BestSellerProduct from "./best-seller-product";
 import FeatureProduct from "./feature-product";
 import Testimonial from "./testimonial";
 import Promo from "./promo";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 interface Navigation {
   name: string;
@@ -38,17 +40,33 @@ const navigation: Navigation[] = [
   { name: "Company", href: "/" },
 ];
 
-const HomePage = async () => {
-  const res = await axios.post(
-    "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
-    {
-      name: "siam.localhost:3000",
-    }
-  );
+const HomePage = ({ domain }: any) => {
+  console.log(domain, "domain from homepage comp");
+  const getTodos = async (domain: any) => {
+    const res = await axios.post(
+      "https://admin.ebitans.com/api/v1/getsubdomain/name",
+      {
+        name: domain,
+      }
+    );
 
-  const { layout, design, page, menu } = res.data;
+    return res?.data;
+  };
+  // const { layout, design, page, menu } = res.data;
 
-  console.log("hellow orld");
+  // Access the client
+  const queryClient = useQueryClient();
+
+  // Queries
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["todos", domain],
+    queryFn: () => getTodos(domain),
+  });
+
+  if (isLoading) return <p>Loading...</p>;
+
+  if (isError) return <p>Error..</p>;
+  const { layout, design, page, menu } = data;
 
   return (
     <>
@@ -59,7 +77,7 @@ const HomePage = async () => {
       >
         {layout &&
           layout.map((item: any, index: number) => (
-            <GetComponent data={res.data} key={index} component={item} />
+            <GetComponent data={data} key={index} component={item} />
           ))}
       </div>
     </>
