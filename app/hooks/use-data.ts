@@ -323,97 +323,98 @@ const useData = () => {
   // };
 
   // main home page api
-  const fetchHeader = useCallback(async () => {
-    // get the data from the api
-    // const {
-    //   store,
-    //   store_id,
-    //   menu,
-    //   headersetting,
-    //   category,
-    //   subcategory,
-    //   slider,
-    //   product,
-    //   feature_product,
-    //   best_sell_product,
-    //   banner,
-    //   testimonials,
-    //   design,
-    //   layout,
-    //   page,
-    //   offer,
-    //   campaign,
-    //   brand,
-    //   productByFirstCategory,
-    // } = await axios.post(
-    //   "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
-    //   {
-    //     name: "siam.localhost:3000",
-    //   }
-    // );
+  const fetchHeader = useCallback(
+    async (data: any) => {
+      // get the data from the api
+      // const {
+      //   store,
+      //   store_id,
+      //   menu,
+      //   headersetting,
+      //   category,
+      //   subcategory,
+      //   slider,
+      //   product,
+      //   feature_product,
+      //   best_sell_product,
+      //   banner,
+      //   testimonials,
+      //   design,
+      //   layout,
+      //   page,
+      //   offer,
+      //   campaign,
+      //   brand,
+      //   productByFirstCategory,
+      // } = await axios.post(
+      //   "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
+      //   {
+      //     name: "siam.localhost:3000",
+      //   }
+      // );
 
-    const res = await axios.post(
-      "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
-      {
-        name: "ebitans-nextjs-theme.vercel.app",
+      const res = await axios.post(
+        "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
+        data
+      );
+
+      const {
+        store,
+        store_id,
+        menu,
+        headersetting,
+        category,
+        subcategory,
+        slider,
+        product,
+        feature_product,
+        best_sell_product,
+        banner,
+        testimonials,
+        design,
+        layout,
+        page,
+        offer,
+        campaign,
+        brand,
+        productByFirstCategory,
+      } = res?.data;
+
+      if (token && v) {
+        const user = await httpReq.get("getuser");
+
+        setUser(user);
       }
-    );
 
-    const {
-      store,
-      store_id,
-      menu,
-      headersetting,
-      category,
-      subcategory,
-      slider,
-      product,
-      feature_product,
-      best_sell_product,
-      banner,
-      testimonials,
-      design,
-      layout,
-      page,
-      offer,
-      campaign,
-      brand,
-      productByFirstCategory,
-    } = res?.data;
-
-    if (token && v) {
-      const user = await httpReq.get("getuser");
-
-      setUser(user);
-    }
-
-    // set state with the result
-    setHeaderSetting(headersetting);
-    setMenu(menu);
-    setPage(page);
-    setCategory(category);
-    setSubcategory(subcategory);
-    setSlider(slider);
-    setProduct(product);
-    set_feature_product(feature_product);
-    set_best_sell_product(best_sell_product);
-    setBanner(banner);
-    setTestimonials(testimonials);
-    setStore_id(store_id);
-    setDesign(design);
-    setLayout(layout);
-    setOffer(offer);
-    setCampaign(campaign);
-    setStore(store);
-    setBrand(brand);
-    setProductByFirstCategory(productByFirstCategory);
-  }, [token, v]);
+      // set state with the result
+      setHeaderSetting(headersetting);
+      setMenu(menu);
+      setPage(page);
+      setCategory(category);
+      setSubcategory(subcategory);
+      setSlider(slider);
+      setProduct(product);
+      set_feature_product(feature_product);
+      set_best_sell_product(best_sell_product);
+      setBanner(banner);
+      setTestimonials(testimonials);
+      setStore_id(store_id);
+      setDesign(design);
+      setLayout(layout);
+      setOffer(offer);
+      setCampaign(campaign);
+      setStore(store);
+      setBrand(brand);
+      setProductByFirstCategory(productByFirstCategory);
+    },
+    [token, v]
+  );
 
   useEffect(() => {
-    // const domain = window.location.host;
-    // const data = { name: domain };
+    const domain = window.location.host;
+    const data = { name: domain };
     // call the function
-    fetchHeader()
+    fetchHeader(data)
       // make sure to catch any error
       .catch(console.error);
   }, [fetchHeader]);
