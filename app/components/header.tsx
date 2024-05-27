@@ -44,9 +44,11 @@ import useTheme from "../hooks/use-theme";
 // test
 
 const Header = () => {
-  // const { design } = useTheme();
+  const { design } = useTheme();
 
   return <p>Hello world</p>;
+
+  console.log(design, "design from header");
   // return (
   //   <>
   //     {design?.header === "default" && <HeaderDefault />}
