@@ -86,7 +86,7 @@ const LoaderThree = () => {
           color={`${text_color}`}
           // height={"200"}
           width={"200"}
-          ariaLabel="loading-indicator"
+          // ariaLabel="loading-indicator"
         />
       </div>
     </div>
