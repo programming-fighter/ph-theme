@@ -29,8 +29,8 @@ const LoaderOne = () => {
         )}
         <Rings
           color={`${text_color}`}
-          height={200}
-          width={200}
+          height={"200"}
+          width={"200"}
           ariaLabel="loading-indicator"
         />
       </div>
@@ -56,8 +56,8 @@ const LoaderTwo = () => {
         <div className="flex justify-center items-center">
           <RotatingSquare
             color={`${text_color}`}
-            height={200}
-            width={200}
+            height={"200"}
+            width={"200"}
             ariaLabel="loading-indicator"
           />
         </div>
@@ -84,8 +84,8 @@ const LoaderThree = () => {
 
         <InfinitySpin
           color={`${text_color}`}
-          height={200}
-          width={200}
+          height={"200"}
+          width={"200"}
           ariaLabel="loading-indicator"
         />
       </div>
