@@ -74,7 +74,7 @@ const HomePage = ({ domain }: any) => {
       {
         name: domain,
       }
-    ); 
+    );
 
     return res?.data;
   };
@@ -96,9 +96,9 @@ const HomePage = ({ domain }: any) => {
     if (queryData) {
       const { layout, design, page, menu } = queryData;
       setTheme(queryData);
-      // setTimeout(() => {
-      //   setLoader(false);
-      // }, 1000);
+      setTimeout(() => {
+        setLoader(false);
+      }, 1000);
     }
   }, [queryData]);
 
