@@ -84,7 +84,7 @@ const LoaderThree = () => {
 
         <InfinitySpin
           color={`${text_color}`}
-          height={"200"}
+          // height={"200"}
           width={"200"}
           ariaLabel="loading-indicator"
         />
