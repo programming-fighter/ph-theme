@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "./hero";
 import FeaturedCategory from "./featured-category";
 import PromoBottom from "./promo-bottom";
@@ -11,6 +11,8 @@ import FeatureProduct from "./feature-product";
 import Testimonial from "./testimonial";
 import Promo from "./promo";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getFromLocalStorage, saveToLocalStorage } from "../utils/localstorage";
+import { LoaderOne, LoaderTwo } from "./pre-loader";
 
 interface Navigation {
   name: string;
@@ -41,32 +43,91 @@ const navigation: Navigation[] = [
 ];
 
 const HomePage = ({ domain }: any) => {
-  console.log(domain, "domain from homepage comp");
+  const [theme, setTheme] = useState<any>(null);
+  const [loader, setLoader] = useState(true);
+  const [data, setData] = useState<any>(null);
+
+  const preloader = theme?.design?.preloader;
+
   const getTodos = async (domain: any) => {
+    const res = await axios.post(
+      "https://admin.ebitans.com/api/v1/getsubdomain/name",
+      { name: domain }
+    );
+    return res?.data;
+  };
+
+  useEffect(() => {
+    if (preloader) {
+      saveToLocalStorage("loader", preloader);
+    }
+    const userData = getFromLocalStorage("loader");
+    if (userData) {
+      setData(userData);
+    }
+  }, [preloader]);
+
+  const getData = async (domain: any) => {
+    console.log(domain);
     const res = await axios.post(
       "https://admin.ebitans.com/api/v1/getsubdomain/name",
       {
         name: domain,
       }
-    );
+    ); 
 
     return res?.data;
   };
   // const { layout, design, page, menu } = res.data;
-
   // Access the client
   const queryClient = useQueryClient();
 
   // Queries
-  const { data, isLoading, isError } = useQuery({
+  const {
+    data: queryData,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["todos", domain],
-    queryFn: () => getTodos(domain),
+    queryFn: () => getData(domain),
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  useEffect(() => {
+    if (queryData) {
+      const { layout, design, page, menu } = queryData;
+      setTheme(queryData);
+      // setTimeout(() => {
+      //   setLoader(false);
+      // }, 1000);
+    }
+  }, [queryData]);
 
+  const renderPreloader = (preloaderType: string) => {
+    switch (preloaderType) {
+      case "default":
+      case "one":
+        return <LoaderOne />;
+      case "two":
+        return <LoaderTwo />;
+      default:
+        return <div className="bg-black h-screen w-full"></div>;
+    }
+  };
+
+  if (isLoading) {
+    const loaderType = data || preloader || "default";
+    return renderPreloader(loaderType);
+  }
   if (isError) return <p>Error..</p>;
-  const { layout, design, page, menu } = data;
+  const { layout, design, page, menu } = queryData;
+
+  if (theme === null && !data) {
+    return <div className="bg-black h-screen w-full"></div>;
+  }
+
+  if (loader && (data || preloader)) {
+    return renderPreloader(data || preloader);
+  }
 
   return (
     <>
@@ -77,7 +138,7 @@ const HomePage = ({ domain }: any) => {
       >
         {layout &&
           layout.map((item: any, index: number) => (
-            <GetComponent data={data} key={index} component={item} />
+            <GetComponent data={queryData} key={index} component={item} />
           ))}
       </div>
     </>
