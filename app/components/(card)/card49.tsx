@@ -9,12 +9,16 @@ import Link from "next/link";
 import BDT from "@/app/utils/bdt";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addToCartList } from "@/redux/features/product.slice";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
 const Card49 = ({ item, design, store_id }: any) => {
   const [view, setView] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -44,14 +48,14 @@ const Card49 = ({ item, design, store_id }: any) => {
 
   const styleCss = `
     .text-color {
-        color: ${design.header_color};
+        color: ${design?.header_color};
       }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
       }
     .bg-color {
         color:  ${design?.text_color};
-        background: ${design.header_color};
+        background: ${design?.header_color};
     }
   `;
 
@@ -125,7 +129,7 @@ const Card49 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -196,9 +200,9 @@ const Card49 = ({ item, design, store_id }: any) => {
           <MdAddShoppingCart className="text-2xl" />
         </div>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

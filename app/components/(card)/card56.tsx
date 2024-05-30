@@ -4,23 +4,27 @@ import BDT from "@/app/utils/bdt";
 import { getPrice } from "@/app/utils/get-price";
 import { getCampaign } from "@/app/utils/http/get-campaign";
 import Rate from "@/app/utils/rate";
+import { addToCartList } from "@/redux/features/product.slice";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BsEye } from "react-icons/bs";
 import { MdAddShoppingCart } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
 const Card56 = ({ item, design, makeid, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
 
-  // const [id, setId] = useState(0)
+  const [id, setId] = useState(0);
   const [view, setView] = useState(false);
 
   const secondImg = item?.image[1] ? item?.image[1] : item?.image[0];
@@ -60,7 +64,7 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
         color:  ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
       }
     .bg-color {
         color:  ${textColor};
@@ -151,7 +155,7 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -265,9 +269,9 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
           )}
         </div>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

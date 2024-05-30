@@ -12,13 +12,19 @@ import { productImg } from "@/app/site-settings/siteUrl";
 import Rate from "@/app/utils/rate";
 import Taka from "@/app/utils/taka";
 import { toast } from "react-toastify";
+import useTheme from "@/app/hooks/use-theme";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
+import { useDispatch } from "react-redux";
+import { addToCartList } from "@/redux/features/product.slice";
 
-const Card15 = ({ item, design, store_id }: any) => {
+const Card15 = ({ item }: any) => {
+  const { design, store_id } = useTheme();
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
   const [hoverCard, setHoverCard] = useState(false);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
@@ -29,7 +35,7 @@ const Card15 = ({ item, design, store_id }: any) => {
       background: ${bgColor};
   }
   .text-hover:hover {
-      color:  ${design.header_color};
+      color:  ${design?.header_color};
     }
 `;
   const productGetPrice = getPrice(
@@ -121,7 +127,7 @@ const Card15 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -221,9 +227,9 @@ const Card15 = ({ item, design, store_id }: any) => {
           </div>
         </div>
       </motion.div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

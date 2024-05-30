@@ -1,12 +1,16 @@
 "use client";
+import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import { getPrice } from "@/app/utils/get-price";
 import { getCampaign } from "@/app/utils/http/get-campaign";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
-const Card64 = ({ item, design, store_id }: any) => {
+const Card64 = ({ item }: any) => {
+  const { design, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
   const [view, setView] = useState(false);
 
@@ -48,7 +52,7 @@ const Card64 = ({ item, design, store_id }: any) => {
         color:  ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
       }
     .bg-color {
         color:  ${textColor};
@@ -122,9 +126,9 @@ const Card64 = ({ item, design, store_id }: any) => {
           </div>
         </div>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

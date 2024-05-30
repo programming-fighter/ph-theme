@@ -9,13 +9,17 @@ import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import { toast } from "react-toastify";
+import useTheme from "@/app/hooks/use-theme";
+import { useDispatch } from "react-redux";
+import { addToCartList } from "@/redux/features/product.slice";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
-const Card59 = ({ item, design, makeid, store_id }: any) => {
+const Card59 = ({ item }: any) => {
+  const { design, makeid, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
-
-  // const dispatch = useDispatch();
-
-  // const [id, setId] = useState(0)
+  const dispatch = useDispatch();
+  const [id, setId] = useState(0);
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
@@ -58,7 +62,7 @@ const Card59 = ({ item, design, makeid, store_id }: any) => {
         color:  ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
         text-decoration: underline;
       }
     .bg-color {
@@ -160,7 +164,7 @@ const Card59 = ({ item, design, makeid, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -248,9 +252,9 @@ const Card59 = ({ item, design, makeid, store_id }: any) => {
       </div>
 
       {/* for modal open  */}
-      {/* <QuikView open={view} setOpen={setView} design={design}>
+      <QuikView open={view} setOpen={setView} design={design}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

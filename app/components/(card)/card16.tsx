@@ -167,7 +167,7 @@ const Card16 = ({ item, design, store_id }: any) => {
         </div>
         <div>
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <Image
+            <img
               className="min-w-full h-auto"
               src={productImg + item?.image[0]}
               alt="productImage"

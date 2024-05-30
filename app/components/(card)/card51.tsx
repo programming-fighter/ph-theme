@@ -14,18 +14,22 @@ import BDT from "@/app/utils/bdt";
 import Rate from "@/app/utils/rate";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
+import useTheme from "@/app/hooks/use-theme";
+import { useDispatch } from "react-redux";
+import { addToCartList } from "@/redux/features/product.slice";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
-const Card51 = ({ item, design, store_id }: any) => {
+const Card51 = ({ item }: any) => {
+  const { design, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
   const [id, setId] = useState(0);
   const [view, setView] = useState(false);
 
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
-
-  // const [id, setId] = useState(0)
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -63,7 +67,7 @@ const Card51 = ({ item, design, store_id }: any) => {
         border: 2px solid ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
       }
     .bg-color {
         color:  ${textColor};
@@ -157,7 +161,7 @@ const Card51 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -257,9 +261,9 @@ const Card51 = ({ item, design, store_id }: any) => {
           </div>
         </div>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

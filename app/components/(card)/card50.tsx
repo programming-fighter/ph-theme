@@ -13,8 +13,18 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
+import useTheme from "@/app/hooks/use-theme";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCartList,
+  decrementQty,
+  incrementQty,
+} from "@/redux/features/product.slice";
 
-const Card50 = ({ item, store_id, design }: any) => {
+const Card50 = ({ item }: any) => {
+  const { store_id, design } = useTheme();
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
@@ -179,9 +189,9 @@ const Card50 = ({ item, store_id, design }: any) => {
           </div>
         </div>
       </div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };
@@ -198,17 +208,17 @@ const AddToCart = ({
   price,
   store_id,
 }: any) => {
-  // const { cartList } = useSelector((state) => state.cart);
-  // const { makeid,  } = useTheme();
+  const { cartList } = useSelector((state: any) => state.cart);
+  const { makeid } = useTheme();
   // const navigate = useNavigate()
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [already, setalready] = useState<any>(null);
 
-  // useEffect(() => {
-  //   const result = cartList.find((i) => i?.id === item?.id);
+  useEffect(() => {
+    const result = cartList.find((i: any) => i?.id === item?.id);
 
-  //   setalready(result);
-  // }, [cartList, item.id]);
+    setalready(result);
+  }, [cartList, item.id]);
 
   // only without variant product added to cart
 
@@ -284,7 +294,7 @@ const AddToCart = ({
             };
           }
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -314,7 +324,7 @@ const AddToCart = ({
         {already?.cartId ? (
           <div className="flex items-center lg:cursor-pointer h-[22px] w-[94px] justify-between">
             <div
-              // onClick={() => dispatch(decrementQty(already?.cartId))}
+              onClick={() => dispatch(decrementQty(already?.cartId))}
               className="max-w-[18px] w-full border-r h-full flex justify-center items-center"
             >
               <MinusIcon className="h-2 w-2  stroke-1 " />
@@ -326,7 +336,7 @@ const AddToCart = ({
               </p>
             </div>
             <div
-              // onClick={() => dispatch(incrementQty(already?.cartId))}
+              onClick={() => dispatch(incrementQty(already?.cartId))}
               className="max-w-[18px] w-full h-full border-l flex justify-center items-center"
             >
               <PlusIcon className="h-2 w-2  stroke-1 " />

@@ -10,19 +10,19 @@ import BDT from "@/app/utils/bdt";
 import Rate from "@/app/utils/rate";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addToCartList } from "@/redux/features/product.slice";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
 const Card58 = ({ item, design, store_id }: any) => {
   const router = useRouter();
   const [camp, setCamp] = useState<any>(null);
-
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   //   const navigate = useNavigate();
-
-  // const [id, setId] = useState(0)
-
+  const [id, setId] = useState(0);
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
-
   // const [id, setId] = useState(0)
   const [view, setView] = useState(false);
 
@@ -62,7 +62,7 @@ const Card58 = ({ item, design, store_id }: any) => {
         border: 2px solid ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
       }
     .bg-color {
         color:  ${textColor};
@@ -158,7 +158,7 @@ const Card58 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -265,9 +265,9 @@ const Card58 = ({ item, design, store_id }: any) => {
       >
         <p className="">কার্টে যোগ করুন</p>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

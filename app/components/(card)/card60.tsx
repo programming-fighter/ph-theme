@@ -1,23 +1,25 @@
 "use client";
+import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import { getPrice } from "@/app/utils/get-price";
 import { getCampaign } from "@/app/utils/http/get-campaign";
+import { addToCartList } from "@/redux/features/product.slice";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { HiOutlineDocumentText } from "react-icons/hi";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
-const Card60 = ({ item, design, store_id }: any) => {
+const Card60 = ({ item }: any) => {
+  const { design, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
-
-  //   const dispatch = useDispatch();
-
-  // const [id, setId] = useState(0)
+  const dispatch = useDispatch();
+  const [id, setId] = useState(0);
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
@@ -62,7 +64,7 @@ const Card60 = ({ item, design, store_id }: any) => {
         color:  ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
         text-decoration: underline;
       }
     .bg-color {
@@ -164,27 +166,27 @@ const Card60 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
   //   const navigate = useNavigate();
 
-  //   const add_cart_item = () => {
-  //     if (item?.variant.length !== 0) {
-  //       setView(!view);
-  //     } else {
-  //       filterOfferProduct(item);
-  //     }
-  //   };
-  //   const buy_now = () => {
-  //     if (item?.variant.length !== 0) {
-  //       setView(!view);
-  //     } else {
-  //       filterOfferProduct(item);
-  //       navigate("/checkout");
-  //     }
-  //   };
+  const add_cart_item = () => {
+    if (item?.variant.length !== 0) {
+      setView(!view);
+    } else {
+      filterOfferProduct(item);
+    }
+  };
+  const buy_now = () => {
+    if (item?.variant.length !== 0) {
+      setView(!view);
+    } else {
+      filterOfferProduct(item);
+      // navigate("/checkout");
+    }
+  };
 
   return (
     <div className="group overlay-group relative px-2 border rounded-xl shadow-xl">
@@ -255,14 +257,14 @@ const Card60 = ({ item, design, store_id }: any) => {
             ) : (
               <div>
                 <div
-                  //   onClick={add_cart_item}
+                  onClick={add_cart_item}
                   className="flex py-2 searchHover duration-500 bg-color justify-center gap-1 items-center relative rounded-md z-[1] lg:cursor-pointer font-bold "
                 >
                   <AiOutlineShoppingCart className="text-lg" />
                   <p className="text-sm">Add to Cart</p>
                 </div>
                 <div
-                  //   onClick={buy_now}
+                  onClick={buy_now}
                   className="flex py-2 mt-2 searchHover duration-500 bg-color justify-center gap-1 items-center relative rounded-md z-[1] lg:cursor-pointer font-bold "
                 >
                   <AiOutlineShoppingCart className="text-lg" />

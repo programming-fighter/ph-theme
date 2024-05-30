@@ -13,13 +13,18 @@ import { IoSearchCircleOutline } from "react-icons/io5";
 import Taka from "@/app/utils/taka";
 import BDT from "@/app/utils/bdt";
 import { toast } from "react-toastify";
+import useTheme from "@/app/hooks/use-theme";
+import { useDispatch } from "react-redux";
+import { addToCartList } from "@/redux/features/product.slice";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
-const Card7 = ({ item, design, store_id }: any) => {
+const Card7 = ({ item }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-  // const { design, makeid, store_id } = useTheme();
-  // const dispatch = useDispatch();
+  const { design, makeid, store_id } = useTheme();
+  const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -140,7 +145,7 @@ const Card7 = ({ item, design, store_id }: any) => {
           ...item,
         };
       }
-      // dispatch(addToCartList({ ...cartItem }));
+      dispatch(addToCartList({ ...cartItem }));
     });
   };
 
@@ -226,9 +231,9 @@ const Card7 = ({ item, design, store_id }: any) => {
           </div>
         </Link>
       </motion.div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };

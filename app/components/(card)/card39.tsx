@@ -10,15 +10,21 @@ import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import Bdt from "@/app/utils/bdt";
 import { toast } from "react-toastify";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
+import useTheme from "@/app/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import { useDispatch } from "react-redux";
 
-const Card39 = ({ item, store_id }: any) => {
+const Card39 = ({ item }: any) => {
+  const { store_id } = useTheme();
   const router = useRouter();
   const [camp, setCamp] = useState<any>(null);
 
   const [open, setOpen] = useState(false);
-  // const [view, setView] = useState(false)
+  const [view, setView] = useState(false);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const navigate = useNavigate();
 
   const productGetPrice = getPrice(
@@ -107,7 +113,7 @@ const Card39 = ({ item, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -184,9 +190,9 @@ const Card39 = ({ item, store_id }: any) => {
         </div>
       </div>
 
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

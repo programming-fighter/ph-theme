@@ -10,11 +10,17 @@ import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Taka from "@/app/utils/taka";
 import { toast } from "react-toastify";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
+import { addToCartList } from "@/redux/features/product.slice";
+import { useDispatch } from "react-redux";
+import useTheme from "@/app/hooks/use-theme";
 
-const Card22 = ({ item, design, makeid, store_id }: any) => {
+const Card22 = ({ item }: any) => {
   const [camp, setCamp] = useState<any>(null);
 
-  // const dispatch = useDispatch();
+  const { design, makeid, store_id } = useTheme();
+  const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
@@ -141,7 +147,7 @@ const Card22 = ({ item, design, makeid, store_id }: any) => {
             };
           }
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -226,9 +232,9 @@ const Card22 = ({ item, design, makeid, store_id }: any) => {
           )}
         </div>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

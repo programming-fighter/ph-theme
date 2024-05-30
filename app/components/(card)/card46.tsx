@@ -1,20 +1,26 @@
 "use client";
+import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { getPrice } from "@/app/utils/get-price";
 import { getCampaign } from "@/app/utils/http/get-campaign";
 import Taka from "@/app/utils/taka";
+import { addToCartList } from "@/redux/features/product.slice";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
-const Card46 = ({ item, store_id }: any) => {
+const Card46 = ({ item }: any) => {
+  const { store_id } = useTheme();
   const [view, setView] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -106,17 +112,17 @@ const Card46 = ({ item, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
-  //   const add_cart_item = () => {
-  //     if (item?.variant.length !== 0) {
-  //       setView(!view);
-  //     } else {
-  //       filterOfferProduct(item);
-  //     }
-  //   };
+  const add_cart_item = () => {
+    if (item?.variant.length !== 0) {
+      setView(!view);
+    } else {
+      filterOfferProduct(item);
+    }
+  };
 
   return (
     <>
@@ -188,9 +194,9 @@ const Card46 = ({ item, store_id }: any) => {
           </div>
         </div>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };

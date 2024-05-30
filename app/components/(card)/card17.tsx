@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
 import { AiOutlineSearch } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { BsPlusLg } from "react-icons/bs";
@@ -13,8 +12,17 @@ import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import Rate from "@/app/utils/rate";
 import { toast } from "react-toastify";
+import useTheme from "@/app/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import { useRouter } from "next/navigation";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
+import { useDispatch } from "react-redux";
 
-const Card17 = ({ item, design, store_id }: any) => {
+const Card17 = ({ item }: any) => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { design, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
   const [view, setView] = useState(false);
@@ -104,20 +112,20 @@ const Card17 = ({ item, design, store_id }: any) => {
           ...item,
         };
       }
-      //   dispatch(addToCartList({ ...cartItem }));
+      dispatch(addToCartList({ ...cartItem }));
     });
   };
 
-  //   const add_cart_item = () => {
-  //     if (item?.variant.length !== 0) {
-  //       setView(!view);
-  //     } else {
-  //       filterOfferProduct(item);
-  //       if (store_id === 2680) {
-  //         navigate("/checkout");
-  //       }
-  //     }
-  //   };
+  const add_cart_item = () => {
+    if (item?.variant.length !== 0) {
+      setView(!view);
+    } else {
+      filterOfferProduct(item);
+      if (store_id === 2680) {
+        router.push("/checkout");
+      }
+    }
+  };
 
   return (
     <div>
@@ -187,9 +195,9 @@ const Card17 = ({ item, design, store_id }: any) => {
           <Rate rating={item?.rating} className="font-twelve" />
         </div>
       </motion.div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

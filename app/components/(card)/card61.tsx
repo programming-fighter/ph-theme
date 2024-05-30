@@ -1,18 +1,22 @@
 "use client";
+import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import { getPrice } from "@/app/utils/get-price";
 import { getCampaign } from "@/app/utils/http/get-campaign";
+import { addToCartList } from "@/redux/features/product.slice";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
-const Card61 = ({ item, design, store_id }: any) => {
+const Card61 = ({ item }: any) => {
+  const { design, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
@@ -54,7 +58,7 @@ const Card61 = ({ item, design, store_id }: any) => {
         color:  ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
         text-decoration: underline;
       }
     .bg-color {
@@ -135,53 +139,53 @@ const Card61 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
-  //   const add_cart_item = () => {
-  //     if (item?.variant.length !== 0) {
-  //       setView(!view);
-  //     } else {
-  //       filterOfferProduct(item);
-  //     }
-  //   };
+  const add_cart_item = () => {
+    if (item?.variant.length !== 0) {
+      setView(!view);
+    } else {
+      filterOfferProduct(item);
+    }
+  };
 
   return (
-    <div className='group overlay-group relative'>
-      <div className=''>
+    <div className="group overlay-group relative">
+      <div className="">
         <style>{styleCss}</style>
-        <div className='relative'>
-          <div className='relative overflow-hidden w-full h-full px-6 border border-black shadow-[5px_5px_1px_1px_black]'>
+        <div className="relative">
+          <div className="relative overflow-hidden w-full h-full px-6 border border-black shadow-[5px_5px_1px_1px_black]">
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
               <img
                 src={productImg + item.image[0]}
-                alt=''
-                className='h-auto min-w-full object-center object-cover hover:scale-105 transform transition duration-700 ease-in-out'
+                alt=""
+                className="h-auto min-w-full object-center object-cover hover:scale-105 transform transition duration-700 ease-in-out"
               />
             </Link>
           </div>
 
-          <div className='flex flex-col gap-2 pb-3 pt-6'>
-            <div className='font-medium flex justify-between items-center flex-wrap'>
+          <div className="flex flex-col gap-2 pb-3 pt-6">
+            <div className="font-medium flex justify-between items-center flex-wrap">
               <Link href={"/product/" + item?.id + "/" + item?.slug}>
-                <h1 className='text-gray-700 text-hover capitalize whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[120px]'>
+                <h1 className="text-gray-700 text-hover capitalize whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[120px]">
                   {item?.name}
                 </h1>
               </Link>
             </div>
-            <div className='flex items-center gap-2'>
+            <div className="flex items-center gap-2">
               {camp?.status !== "active" &&
               (item.discount_type === "no_discount" ||
                 item.discount_price === "0.00") ? (
                 ""
               ) : (
-                <p className='line-through text-xs text-color-thirty'>
+                <p className="line-through text-xs text-color-thirty">
                   {" "}
                   <BDT price={Math.trunc(item.regular_price)} />
                 </p>
               )}
-              <p className='text-sm py-1 rounded-lg text-[#83C341] font-bold'>
+              <p className="text-sm py-1 rounded-lg text-[#83C341] font-bold">
                 <BDT
                   price={
                     camp?.status === "active" ? campPrice : productGetPrice
@@ -191,32 +195,32 @@ const Card61 = ({ item, design, store_id }: any) => {
             </div>
 
             {item?.quantity === "0" ? (
-              <div className='relative lg:cursor-pointer font-bold'>
-                <p className='lg:text-lg text-base relative z-[2] py-3 text-center duration-500 bg-white border border-black text-black'>
+              <div className="relative lg:cursor-pointer font-bold">
+                <p className="lg:text-lg text-base relative z-[2] py-3 text-center duration-500 bg-white border border-black text-black">
                   Out of stock
                 </p>
-                <div className='absolute top-1.5 left-1.5 group-hover:top-0 group-hover:left-0 duration-500 z-[1] h-full w-full cart-thirty-five border border-black'></div>
+                <div className="absolute top-1.5 left-1.5 group-hover:top-0 group-hover:left-0 duration-500 z-[1] h-full w-full cart-thirty-five border border-black"></div>
               </div>
             ) : (
               <div>
                 {item?.variant.length !== 0 ? (
                   <Link href={"/product/" + item?.id + "/" + item?.slug}>
-                    <div className='relative lg:cursor-pointer font-bold'>
-                      <p className='lg:text-lg text-base relative z-[2] py-3 text-center duration-500 bg-white border border-black text-black'>
+                    <div className="relative lg:cursor-pointer font-bold">
+                      <p className="lg:text-lg text-base relative z-[2] py-3 text-center duration-500 bg-white border border-black text-black">
                         {store_id === 2272 ? "Buy Now" : "View details"}
                       </p>
-                      <div className='absolute top-1.5 left-1.5 group-hover:top-0 group-hover:left-0 duration-500 z-[1] h-full w-full cart-thirty-five border border-black'></div>
+                      <div className="absolute top-1.5 left-1.5 group-hover:top-0 group-hover:left-0 duration-500 z-[1] h-full w-full cart-thirty-five border border-black"></div>
                     </div>
                   </Link>
                 ) : (
                   <div
-                    // onClick={add_cart_item}
-                    className='relative lg:cursor-pointer font-bold'
+                    onClick={add_cart_item}
+                    className="relative lg:cursor-pointer font-bold"
                   >
-                    <p className='lg:text-lg text-base relative z-[2] py-3 text-center duration-500 bg-white border border-black text-black'>
+                    <p className="lg:text-lg text-base relative z-[2] py-3 text-center duration-500 bg-white border border-black text-black">
                       {store_id === 2272 ? "Buy Now" : "Add To bag"}
                     </p>
-                    <div className='absolute top-1.5 left-1.5 group-hover:top-0 group-hover:left-0 duration-500 z-[1] h-full w-full cart-thirty-five border border-black'></div>
+                    <div className="absolute top-1.5 left-1.5 group-hover:top-0 group-hover:left-0 duration-500 z-[1] h-full w-full cart-thirty-five border border-black"></div>
                   </div>
                 )}
               </div>

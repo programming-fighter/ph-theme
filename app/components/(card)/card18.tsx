@@ -11,8 +11,13 @@ import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import Rate from "@/app/utils/rate";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { addToCartList } from "@/redux/features/product.slice";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
 const Card18 = ({ item, store_id }: any) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
@@ -88,17 +93,17 @@ const Card18 = ({ item, store_id }: any) => {
           ...item,
         };
       }
-      //   dispatch(addToCartList({ ...cartItem }));
+      dispatch(addToCartList({ ...cartItem }));
     });
   };
 
-  //   const add_cart_item = () => {
-  //     if (item?.variant.length !== 0) {
-  //       setOpen(!open);
-  //     } else {
-  //       filterOfferProduct(item);
-  //     }
-  //   };
+  const add_cart_item = () => {
+    if (item?.variant.length !== 0) {
+      setOpen(!open);
+    } else {
+      filterOfferProduct(item);
+    }
+  };
 
   return (
     <div className="shadow-lg group flex flex-col justify-between relative">
@@ -194,9 +199,9 @@ const Card18 = ({ item, store_id }: any) => {
           </div>
         </div>
       </Link>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

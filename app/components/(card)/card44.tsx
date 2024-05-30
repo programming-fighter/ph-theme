@@ -12,8 +12,10 @@ import { v4 as uuidv4 } from "uuid";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/twenty/details";
 import { toast } from "react-toastify";
+import useTheme from "@/app/hooks/use-theme";
 
-const Card44 = ({ item, design, store_id }: any) => {
+const Card44 = ({ item }: any) => {
+  const { design, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
   const dispatch = useDispatch();
@@ -28,6 +30,7 @@ const Card44 = ({ item, design, store_id }: any) => {
     item.discount_price,
     item.discount_type
   );
+
   const campPrice = getPrice(
     productGetPrice,
     parseInt(camp?.discount_amount),

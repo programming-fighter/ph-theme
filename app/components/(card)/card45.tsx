@@ -1,26 +1,32 @@
 "use client";
+import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import { getPrice } from "@/app/utils/get-price";
 import { getCampaign } from "@/app/utils/http/get-campaign";
 import Rate from "@/app/utils/rate";
+import { addToCartList } from "@/redux/features/product.slice";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
-const Card45 = ({ item, design, store_id, headerSetting }: any) => {
+const Card45 = ({ item }: any) => {
+  const { design, store_id, headerSetting } = useTheme();
   const [camp, setCamp] = useState<any>(null);
-  const [view, setView] = useState(false);
+  const [view, setView] = useState<any>(false);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
 
-  // const [id, setId] = useState(0)
+  const [id, setId] = useState(0);
 
   const secondImg = item?.image[1] ? item?.image[1] : item?.image[0];
 
@@ -59,7 +65,7 @@ const Card45 = ({ item, design, store_id, headerSetting }: any) => {
         color:  ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
       }
     .bg-color {
         color:  ${textColor};
@@ -136,7 +142,7 @@ const Card45 = ({ item, design, store_id, headerSetting }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -262,9 +268,9 @@ const Card45 = ({ item, design, store_id, headerSetting }: any) => {
           </div>
         )}
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

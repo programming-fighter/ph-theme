@@ -11,24 +11,34 @@ import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
+import useTheme from "@/app/hooks/use-theme";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCartList,
+  decrementQty,
+  incrementQty,
+} from "@/redux/features/product.slice";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
-const Card63 = ({ item, design, store_id }: any) => {
+const Card63 = ({ item }: any) => {
+  const { design, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
-  //   const { cartList } = useSelector((state) => state.cart);
-  //   const dispatch = useDispatch();
+  const { cartList } = useSelector((state: any) => state.cart);
+  const dispatch = useDispatch();
 
   const [already, setalready] = useState<any>(null);
 
-  //   useEffect(() => {
-  //     const result = cartList.find((i) => i?.id === item?.id);
+  useEffect(() => {
+    const result = cartList.find((i: any) => i?.id === item?.id);
 
-  //     setalready(result);
-  //   }, [cartList, item.id]);
+    setalready(result);
+  }, [cartList, item.id]);
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
 
-  // const [id, setId] = useState(0)
+  const [id, setId] = useState(0);
   const [view, setView] = useState(false);
 
   const unitAddPrice =
@@ -82,7 +92,7 @@ const Card63 = ({ item, design, store_id }: any) => {
         color:  ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
       }
     .bg-color {
         color:  ${textColor};
@@ -194,7 +204,7 @@ const Card63 = ({ item, design, store_id }: any) => {
             };
           }
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -207,42 +217,42 @@ const Card63 = ({ item, design, store_id }: any) => {
   };
 
   return (
-    <div className='group overlay-group-thirty-six'>
-      <div className='lg:border lg:group-hover:border-gray-200 lg:border-transparent relative lg:p-2 rounded-md'>
+    <div className="group overlay-group-thirty-six">
+      <div className="lg:border lg:group-hover:border-gray-200 lg:border-transparent relative lg:p-2 rounded-md">
         {/* out of stock  */}
         {item?.quantity === "0" && (
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <div className='absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[3]'>
-              <p className='bg-red-600 text-white px-2 py-1 w-max absolute left-0'>
+            <div className="absolute top-0 right-0 w-full h-full bg-black bg-opacity-50 z-[3]">
+              <p className="bg-red-600 text-white px-2 py-1 w-max absolute left-0">
                 Sold Out
               </p>
             </div>
           </Link>
         )}
-        <div className=''>
+        <div className="">
           <style>{styleCss}</style>
-          <div className='relative overflow-hidden rounded-md'>
-            <div className='relative overflow-hidden w-full '>
+          <div className="relative overflow-hidden rounded-md">
+            <div className="relative overflow-hidden w-full ">
               <Link href={"/product/" + item?.id + "/" + item?.slug}>
                 <img
                   src={productImg + item.image[0]}
-                  alt=''
-                  className='h-auto min-w-full'
+                  alt=""
+                  className="h-auto min-w-full"
                 />
               </Link>
             </div>
 
-            <div className='flex flex-col gap-2 pt-3'>
+            <div className="flex flex-col gap-2 pt-3">
               <Link href={"/product/" + item?.id + "/" + item?.slug}>
-                <div className='flex justify-center items-center flex-wrap'>
-                  <h1 className='text-hover capitalize truncate px-1'>
+                <div className="flex justify-center items-center flex-wrap">
+                  <h1 className="text-hover capitalize truncate px-1">
                     {item?.name}
                   </h1>
                 </div>
               </Link>
 
-              <div className='flex items-center justify-center flex-wrap gap-2 group-hover:opacity-0'>
-                <p className='text-sm py-1 rounded-lg text-color-thirty'>
+              <div className="flex items-center justify-center flex-wrap gap-2 group-hover:opacity-0">
+                <p className="text-sm py-1 rounded-lg text-color-thirty">
                   <BDT
                     price={
                       camp?.status === "active" ? campPrice : productGetPrice
@@ -254,46 +264,46 @@ const Card63 = ({ item, design, store_id }: any) => {
                   item.discount_price === "0.00") ? (
                   ""
                 ) : (
-                  <p className='line-through text-xs'>
+                  <p className="line-through text-xs">
                     <BDT price={Math.trunc(item.regular_price)} />
                   </p>
                 )}
               </div>
             </div>
 
-            <div className='lg:absolute card-overlay-thirty-six lg:z-[1] w-full h-full left-0 bottom-0'>
+            <div className="lg:absolute card-overlay-thirty-six lg:z-[1] w-full h-full left-0 bottom-0">
               <Link href={"/product/" + item?.id + "/" + item?.slug}>
-                <p className='absolute rounded-b-md bottom-0 left-0 bg-white border border-gray-500 w-full text-center z-[3] py-1 font-bold text-black'>
+                <p className="absolute rounded-b-md bottom-0 left-0 bg-white border border-gray-500 w-full text-center z-[3] py-1 font-bold text-black">
                   Details
                 </p>{" "}
               </Link>
             </div>
-            <div className='group-hover:opacity-100 opacity-0 text-white hidden lg:block'>
+            <div className="group-hover:opacity-100 opacity-0 text-white hidden lg:block">
               {already?.cartId ? (
                 <>
-                  <div className='flex items-center lg:cursor-pointer lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 justify-between w-full text-white text-sm md:text-base font-bold gap-1 px-6'>
+                  <div className="flex items-center lg:cursor-pointer lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 justify-between w-full text-white text-sm md:text-base font-bold gap-1 px-6">
                     <div
-                      //   onClick={() => dispatch(decrementQty(already?.cartId))}
-                      className='w-10 h-10 border rounded-full relative'
+                      onClick={() => dispatch(decrementQty(already?.cartId))}
+                      className="w-10 h-10 border rounded-full relative"
                     >
-                      <MinusIcon className='h-5 lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2' />
+                      <MinusIcon className="h-5 lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2" />
                     </div>
-                    <div className='text-center relative'>
-                      <p className='lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2'>
+                    <div className="text-center relative">
+                      <p className="lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">
                         {already?.qty}
                       </p>
                     </div>
                     <div
-                      //   onClick={() => dispatch(incrementQty(already?.cartId))}
-                      className='w-10 h-10 relative text-center border rounded-full border-red-50 flex justify-center items-center'
+                      onClick={() => dispatch(incrementQty(already?.cartId))}
+                      className="w-10 h-10 relative text-center border rounded-full border-red-50 flex justify-center items-center"
                     >
-                      <PlusIcon className='h-5 lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2' />
+                      <PlusIcon className="h-5 lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2" />
                     </div>
                   </div>
-                  <p className='lg:absolute lg:z-[2] top-[60%] -translate-x-1/2 left-1/2'>
+                  <p className="lg:absolute lg:z-[2] top-[60%] -translate-x-1/2 left-1/2">
                     in bag
                   </p>
-                  <p className='lg:absolute lg:z-[2] top-[20%] -translate-x-1/2 left-1/2'>
+                  <p className="lg:absolute lg:z-[2] top-[20%] -translate-x-1/2 left-1/2">
                     <BDT
                       price={
                         camp?.status === "active"
@@ -306,7 +316,7 @@ const Card63 = ({ item, design, store_id }: any) => {
               ) : (
                 <p
                   onClick={add_cart_item}
-                  className='flex justify-center items-center lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 text-white h-max text-2xl px-10 text-center lg:cursor-pointer'
+                  className="flex justify-center items-center lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 text-white h-max text-2xl px-10 text-center lg:cursor-pointer"
                 >
                   Add to Shopping Bag
                 </p>
@@ -314,38 +324,38 @@ const Card63 = ({ item, design, store_id }: any) => {
             </div>
           </div>
           {already?.cartId ? (
-            <div className='flex items-center lg:cursor-pointer justify-between w-full mt-2 bg-red-500 text-white text-sm md:text-base font-bold gap-1 h-10'>
+            <div className="flex items-center lg:cursor-pointer justify-between w-full mt-2 bg-red-500 text-white text-sm md:text-base font-bold gap-1 h-10">
               <div
-                // onClick={() => dispatch(decrementQty(already?.cartId))}
-                className='w-16 text-center border-r border-red-50 h-full flex justify-center items-center'
+                onClick={() => dispatch(decrementQty(already?.cartId))}
+                className="w-16 text-center border-r border-red-50 h-full flex justify-center items-center"
               >
-                <MinusIcon className='h-5' />
+                <MinusIcon className="h-5" />
               </div>
-              <div className='w-full text-center'>
-                <p className=''>{already?.qty} in bag</p>
+              <div className="w-full text-center">
+                <p className="">{already?.qty} in bag</p>
               </div>
               <div
-                // onClick={() => dispatch(incrementQty(already?.cartId))}
-                className='w-16 text-center border-l border-red-50 h-full flex justify-center items-center'
+                onClick={() => dispatch(incrementQty(already?.cartId))}
+                className="w-16 text-center border-l border-red-50 h-full flex justify-center items-center"
               >
-                <PlusIcon className='h-5' />
+                <PlusIcon className="h-5" />
               </div>
             </div>
           ) : (
             <div
               onClick={add_cart_item}
-              className='w-full mt-2 bg-white text-color-thirty text-sm md:text-base border font-bold flex px-2 h-10 justify-center gap-1 items-center lg:cursor-pointer'
+              className="w-full mt-2 bg-white text-color-thirty text-sm md:text-base border font-bold flex px-2 h-10 justify-center gap-1 items-center lg:cursor-pointer"
             >
               <AiFillThunderbolt />
-              <p className=''>Add to bag</p>
+              <p className="">Add to bag</p>
             </div>
           )}
         </div>
 
         {/* for modal open  */}
-        {/* <QuikView open={view} setOpen={setView} design={design}>
+        <QuikView open={view} setOpen={setView} design={design}>
           <Details data={{ product_id: item?.id }} />
-        </QuikView> */}
+        </QuikView>
       </div>
     </div>
   );
