@@ -1,41 +1,30 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import CheckOutSevenAddress from "./checkout-seven-address/checkout-seven-address";
-import CheckOutSevenDiscount from "./checkout-seven-discount/checkout-seven-discount";
-import CheckOutSevenPaymentGateway from "./checkout-seven-payment-gateway/checkout-seven-payment-gateway";
-import CheckOutSevenOrder from "./checkout-seven-order/checkout-seven-order";
 import { useSelector } from "react-redux";
+import "./checkoutfive.css";
+import CheckOutFiveAddress from "./checkout-five-address/checkout-five-address";
+import CheckOutFiveDiscount from "./checkout-five-discount/checkout-five-discount";
+import CheckOutFiveOrder from "./checkout-five-order/checkout-five-order";
 import useTheme from "@/app/hooks/use-theme";
 import httpReq from "@/app/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
-import Booking from "../../booking";
+import CheckOutFivePaymentGateway from "./checkout-five-payment-gateway/checkout-five-payment-gateway";
 
-const CheckOutSeven = () => {
-  const { store_id, bookingData } = useTheme();
-  const [selectAddress, setSelectAddress] = useState(null);
-  const [couponDis, setCouponDis] = useState(0);
-  const [coupon, setCoupon] = useState(null);
+const CheckOutsFive = () => {
+  const { store_id } = useTheme();
+
+  const [selectAddress, setSelectAddress] = useState<any>(null);
+  const [couponDis, setCouponDis] = useState<any>(0);
+  const [coupon, setCoupon] = useState<any>(null);
   const [shipping_area, setShipping_area] = useState<any>(0);
-  const [selectPayment, setSelectPayment] = useState(null);
-  const [couponResult, setCouponResult] = useState(null);
-  const [loadPay, setLoadPay] = useState(false);
-  const [token, setToken] = useState(null);
-  const [userName, setUserName] = useState(null);
-  const [userPhone, setUserPhone] = useState(null);
-  const [userAddress, setUserAddress] = useState(null);
-  const [campaign, setCampaign] = useState([]);
-  const [formBookData, setFormBookData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    specificDate: "",
-    startDate: "",
-    endDate: "",
-    time: "",
-    comment: "",
-    pickupLocation: "",
-    dropLocation: "",
-  });
+  const [selectPayment, setSelectPayment] = useState<any>(null);
+  const [couponResult, setCouponResult] = useState<any>(null);
+  const [loadPay, setLoadPay] = useState<any>(false);
+  const [token, setToken] = useState<any>(null);
+  const [userName, setUserName] = useState<any>(null);
+  const [userPhone, setUserPhone] = useState<any>(null);
+  const [userAddress, setUserAddress] = useState<any>(null);
+  const [campaign, setCampaign] = useState<any>([]);
 
   const cartList = useSelector((state: any) => state.cart.cartList);
 
@@ -59,7 +48,7 @@ const CheckOutSeven = () => {
 
   // free delivery
 
-  const free: any = campaign?.find(
+  const free = campaign?.find(
     (item: any) => item?.discount_amount === "0" && item?.status === "active"
   );
   const freeId = free?.campaignProducts?.map((item: any) => item?.id);
@@ -97,52 +86,39 @@ const CheckOutSeven = () => {
   }
 
   return (
-    <div className="bg-white container px-5">
-      <h1 className="text-center text-3xl font-bold">Checkout</h1>
-      <div className="md:grid lg:grid-cols-3 md:gap-2 xl:gap-6 mt-1 py-4 px-2">
-        <div className=" mt-5 md:mt-0 lg:col-span-2">
-          {bookingData?.status === 200 && (
-            <Booking
-              formBookData={formBookData}
-              setFormBookData={setFormBookData}
-            />
-          )}
-          {bookingData?.status !== 200 && (
-            <h3 className="font-semibold text-xl text-black">
-              Shipping Address
-            </h3>
-          )}
-          {bookingData?.status !== 200 && (
-            <CheckOutSevenAddress
-              selectAddress={selectAddress}
-              setSelectAddress={setSelectAddress}
-              setToken={setToken}
-              token={token}
-              setUserAddress={setUserAddress}
-              setUserPhone={setUserPhone}
-              setUserName={setUserName}
-            />
-          )}
-          <CheckOutSevenDiscount
+    <div className="container">
+      <div className="text-center pb-5">
+        <h1 className="text-4xl font-bold">Checkout</h1>
+      </div>
+      <div className="lg:grid lg:grid-cols-3 lg:gap-6 mt-1 py-4 px-2">
+        <div className="CheckOutFiveBorderShadow mt-5 lg:mt-0 lg:col-span-2">
+          <CheckOutFiveAddress
+            selectAddress={selectAddress}
+            setSelectAddress={setSelectAddress}
+            setToken={setToken}
+            token={token}
+            setUserAddress={setUserAddress}
+            setUserPhone={setUserPhone}
+            setUserName={setUserName}
+          />
+          <CheckOutFiveDiscount
             setCouponDis={setCouponDis}
             setShipping_area={setShipping_area}
             setCoupon={setCoupon}
             setCouponResult={setCouponResult}
-            shipping_area={shipping_area}
-            bookingData={bookingData}
           />
-          <CheckOutSevenPaymentGateway
+          <CheckOutFivePaymentGateway
             selectPayment={selectPayment}
             setSelectPayment={setSelectPayment}
           />
         </div>
-        <div className="mt-5 md:mt-0 lg:col-span-1">
-          <CheckOutSevenOrder
+
+        <div className="mt-5 lg:mt-0 lg:col-span-1">
+          <CheckOutFiveOrder
             token={token}
-            formBookData={formBookData}
             setLoadPay={setLoadPay}
-            couponDis={couponDis}
             couponResult={couponResult}
+            couponDis={couponDis}
             selectAddress={selectAddress}
             selectPayment={selectPayment}
             shipping_area={shipping_area}
@@ -157,4 +133,4 @@ const CheckOutSeven = () => {
   );
 };
 
-export default CheckOutSeven;
+export default CheckOutsFive;
