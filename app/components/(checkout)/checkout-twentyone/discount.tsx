@@ -224,10 +224,7 @@ const Discount = ({
                             strokeColor="#6495ED"
                             strokeWidth="6"
                           />
-                          <input
-                            type={"submit"}
-                            value={""}
-                          />
+                          <input type={"submit"} value={""} />
                         </div>
                       ) : (
                         <input

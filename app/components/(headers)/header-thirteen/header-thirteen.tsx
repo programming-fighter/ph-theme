@@ -12,8 +12,9 @@ import {
   UserGroupIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
-import { logoutIcon } from "@/app/assets/svg";
+import { LogoutIcon } from "@/app/assets/svgComp";
 import { iconImg, imgUrl } from "@/app/site-settings/siteUrl";
+import { logout } from "@/redux/features/auth.slice";
 
 const HeaderThirteen = () => {
   return (
@@ -30,6 +31,14 @@ const HeaderTop = () => {
   const { design, headerSetting } = useTheme();
   const { user } = useSelector((state: any) => state.auth);
   const dispatch = useDispatch();
+
+  const handleClick = () => {
+    if (window !== undefined) {
+      window.localStorage.removeItem("persist:root");
+      console.log("Item removed from localStorage");
+      window.location.href = "/";
+    }
+  };
 
   return (
     <div
@@ -51,8 +60,8 @@ const HeaderTop = () => {
           </Link>
           {user?.verify ? (
             <SigleIcon
-              // onClick={() => dispatch(logout())}
-              Icon={logoutIcon}
+              onClick={handleClick}
+              Icon={LogoutIcon}
               text={"Logout"}
             />
           ) : (

@@ -85,6 +85,8 @@ const CheckOutElevenAddress = ({
     }
   }, [store_id, call, setSelectAddress, token, store?.auth_type, user]);
 
+  console.log(open, "open");
+
   return (
     <>
       <div className="shadow sm:rounded-md sm:overflow-hidden my-5">
@@ -434,6 +436,8 @@ export function SaveAddress({
   } = useForm();
   const { user } = useSelector((state: any) => state.auth);
 
+  console.log("open", open, "save address");
+
   const onSubmit = async (data: any) => {
     data["store_id"] = store_id;
     if (store?.auth_type === "EasyOrder" && !user && !token) {
@@ -593,12 +597,10 @@ export function UpdateAddress({
   setSelectAddress,
   token,
 }: any) {
+  console.log(open, setOpen, "update address");
   const { store, store_id } = useTheme();
-
   const { user } = useSelector((state: any) => state.auth);
-
   const apiEdit = "https://admin.ebitans.com/api/v1/address/edit";
-
   const {
     register,
     handleSubmit,
@@ -648,6 +650,8 @@ export function UpdateAddress({
       setSelectAddress(null);
     }
   };
+
+  console.log("update addressxx");
 
   return (
     <Modal open={open} setOpen={setOpen}>
@@ -727,8 +731,7 @@ export function UpdateAddress({
 // modal for address update
 export function Modal({ open, setOpen, children }: any) {
   const cancelButtonRef = useRef(null);
-
-  console.log(open, "open fron dia");
+  console.log(open, setOpen);
 
   return (
     <Transition.Root show={open} as={Fragment}>

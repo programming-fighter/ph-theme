@@ -31,6 +31,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/components/(headers)/header-one/header-down.tsx"
-  ],
+, "app/assets/svg.js"  ],
   "exclude": ["node_modules"]
 }

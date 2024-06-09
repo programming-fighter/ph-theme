@@ -7,6 +7,7 @@ import CheckOutTwentyOne from "./(checkout)/checkout-twentyone/checkout-twentyon
 import CheckOutForty from "./(checkout)/checkout-fourty/checkout-forty";
 
 const Checkout = ({ theme }: any) => {
+  console.log(theme, "theme");
   return (
     <div>
       {theme === "one" && <CheckOutFour />}

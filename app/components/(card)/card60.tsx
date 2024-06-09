@@ -3,6 +3,7 @@ import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
 import BDT from "@/app/utils/bdt";
 import { getPrice } from "@/app/utils/get-price";
+import httpReq from "@/app/utils/http/axios/http.service";
 import { getCampaign } from "@/app/utils/http/get-campaign";
 import { addToCartList } from "@/redux/features/product.slice";
 import axios from "axios";
@@ -13,10 +14,11 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
+import { useRouter } from "next/navigation";
 
 const Card60 = ({ item }: any) => {
-  const { design, store_id } = useTheme();
+  const router = useRouter();
+  const { design, store_id, makeid } = useTheme();
   const [camp, setCamp] = useState<any>(null);
   const dispatch = useDispatch();
   const [id, setId] = useState(0);
@@ -109,55 +111,39 @@ const Card60 = ({ item }: any) => {
       id: item?.id,
       store_id,
     };
+
     toast("Added to Cart", {
       type: "success",
       autoClose: 1000,
     });
 
-    axios
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          );
-          let campaignPrice = getPrice(
-            itemRegularPrice,
-            parseInt(res?.discount_amount),
-            res?.discount_type
-          );
-          if (res?.discount_amount === null) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: itemRegularPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campaignPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+    httpReq.post("get/offer/product", productDetails).then((res: any) => {
+      if (!res?.error) {
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
+        );
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
+        );
+        if (res?.discount_amount === null) {
+          cartItem = {
+            cartId: makeid(100),
+            price: itemRegularPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         } else {
           cartItem = {
-            cartId: uuidv4(),
-            price: price,
+            cartId: makeid(100),
+            price: campaignPrice,
             color: null,
             size: null,
             additional_price: null,
@@ -166,8 +152,21 @@ const Card60 = ({ item }: any) => {
             ...item,
           };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        cartItem = {
+          cartId: makeid(100),
+          price: price,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   //   const navigate = useNavigate();
@@ -185,6 +184,7 @@ const Card60 = ({ item }: any) => {
     } else {
       filterOfferProduct(item);
       // navigate("/checkout");
+      router.push("/checkout");
     }
   };
 

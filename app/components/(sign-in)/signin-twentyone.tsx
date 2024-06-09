@@ -39,7 +39,7 @@ const LoginTwentyOne = () => {
         }
         if (verify) {
           //   toast(verify, { type: "success" });
-          router.push("/profile");
+          window.location.href = "/profile";
           // window.location.reload();
         }
         // else {
@@ -165,7 +165,7 @@ const LoginTwentyOne = () => {
                   <p className="text-base text-[#adadad]">
                     Don&apos;t Have an Account?
                     <a
-                      href="/login#sign-up"
+                      href="/sign-up"
                       className="text-primary hover:underline text-color"
                     >
                       Sign Up

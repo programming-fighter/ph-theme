@@ -17,6 +17,8 @@ import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
 import Search from "./search";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import SideMenu from "../header-three/side-menu";
+import Taka from "@/app/utils/taka";
+import { handleLogout } from "@/app/utils/handle-logout";
 
 const HeaderThirtyFour = () => {
   const { category, design, subcategory, headerSetting, menu, userData } =
@@ -34,12 +36,12 @@ const HeaderThirtyFour = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state: any) => state.auth);
 
-  // const cartList = useSelector((state) => state.cart.cartList);
-  // const priceList = cartList?.map((p) => p.qty * p.price);
-  // const total = priceList.reduce(
-  //   (previousValue, currentValue) => previousValue + currentValue,
-  //   0
-  // );
+  const cartList = useSelector((state: any) => state.cart.cartList);
+  const priceList = cartList?.map((p: any) => p.qty * p.price);
+  const total = priceList.reduce(
+    (previousValue: any, currentValue: any) => previousValue + currentValue,
+    0
+  );
 
   const handleClose = () => {
     setSearch("");
@@ -264,7 +266,7 @@ const HeaderThirtyFour = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <div
-                              // onClick={() => dispatch(logout())}
+                              onClick={handleLogout}
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700 lg:cursor-pointer"
@@ -336,10 +338,10 @@ const HeaderThirtyFour = () => {
             onClick={() => setCartOpen(!cartOpen)}
             className="lg:flex hidden items-center gap-3 lg:cursor-pointer"
           >
-            {/* <p>
+            <p>
               {cartList?.length} item(s) - <Taka />
               {total}
-            </p> */}
+            </p>
             <div className="bg-color py-2 px-2 rounded-md">
               <HiShoppingCart className="text-xl" />
             </div>

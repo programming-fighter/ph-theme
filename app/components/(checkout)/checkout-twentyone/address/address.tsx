@@ -637,6 +637,7 @@ export function UpdateAddress({
   design,
   token,
 }: any) {
+  console.log(open, "open from x");
   const { store } = useTheme();
 
   const { user } = useSelector((state: any) => state.auth);
@@ -775,6 +776,7 @@ export function UpdateAddress({
 
 // modal for address update
 export function Modal({ open, setOpen, children, design }: any) {
+  console.log(open, "open fron dia");
   const cancelButtonRef = useRef(null);
 
   return (

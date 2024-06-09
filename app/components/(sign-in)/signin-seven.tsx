@@ -10,6 +10,7 @@ import Link from "next/link";
 import { imgUrl } from "@/app/site-settings/siteUrl";
 import Loading from "../(register)/loading";
 import { btnhover } from "@/app/site-settings/style";
+import { toast } from "react-toastify";
 
 export const cls =
   "py-2 px-4 md:px-5 w-full appearance-none transition duration-150 ease-in-out border text-input text-xs lg:text-sm font-body rounded-md placeholder-body min-h-12 bg-white border-gray-300 focus:outline-none focus:border-heading h-11 md:h-12";
@@ -37,8 +38,8 @@ const LoginSeven = () => {
           // toast(error, { type: "error" });
         }
         if (verify) {
-          // toast(verify, { type: "success" });
-          router.push("/profile");
+          toast(verify, { type: "success" });
+          window.location.href = "/profile";
           // window.location.reload();
         }
         // else {

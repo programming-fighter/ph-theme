@@ -1,5 +1,5 @@
 // Mobile SVG
-export const mobile = (
+export const MobileIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-4 w-4"
@@ -17,7 +17,7 @@ export const mobile = (
 );
 
 // Location SVG
-export const location = (
+export const LocationIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-4 w-4"
@@ -39,8 +39,8 @@ export const location = (
   </svg>
 );
 
-//  Language SVG
-export const Language = (
+// Language SVG
+export const LanguageIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-4 w-4"
@@ -57,8 +57,8 @@ export const Language = (
   </svg>
 );
 
-//  User SVG
-export const userIcon = (
+// User SVG
+export const UserIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-4 w-4"
@@ -76,7 +76,7 @@ export const userIcon = (
 );
 
 // Heart SVG
-export const heart = (
+export const HeartIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-6 w-6"
@@ -92,8 +92,9 @@ export const heart = (
     />
   </svg>
 );
+
 // Bag SVG
-export const bag = (
+export const BagIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-6 w-6"
@@ -110,16 +111,15 @@ export const bag = (
   </svg>
 );
 
-// eye svg
-
-export const eye = (
+// Eye SVG
+export const EyeIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-6 w-6"
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    strokeWidth="2"
+    strokeWidth={2}
   >
     <path
       strokeLinecap="round"
@@ -134,9 +134,8 @@ export const eye = (
   </svg>
 );
 
-// eye svg
-
-export const logoutIcon = (
+// Logout SVG
+export const LogoutIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-6 w-6"
@@ -153,9 +152,8 @@ export const logoutIcon = (
   </svg>
 );
 
-//down arrow
-
-export const downArrow = (
+// Down Arrow
+export const DownArrowIcon = () => (
   <svg
     className="-mr-1 ml-2 h-5 w-5"
     xmlns="http://www.w3.org/2000/svg"
@@ -171,16 +169,15 @@ export const downArrow = (
   </svg>
 );
 
-// search icon
-
-export const searchIcon = (
+// Search Icon
+export const SearchIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-7 w-8 "
+    className="h-7 w-8"
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    strokeWidth="1"
+    strokeWidth={1}
   >
     <path
       strokeLinecap="round"
@@ -190,16 +187,15 @@ export const searchIcon = (
   </svg>
 );
 
-// shopping icon
-
-export const shoppingIcon = (
+// Shopping Icon
+export const ShoppingIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="h-8 w-10 "
+    className="h-8 w-10"
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    strokeWidth="1.5"
+    strokeWidth={1.5}
   >
     <path
       strokeLinecap="round"
@@ -209,9 +205,7 @@ export const shoppingIcon = (
   </svg>
 );
 
-// user icon circle
-
-export const userCircleIcon = (
+export const userCircleIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-8 w-8"

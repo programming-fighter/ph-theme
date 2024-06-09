@@ -8,7 +8,9 @@ import OvalLoader from "../../(loader)/oval-loader";
 import CheckOutElevenDiscount from "./checkout-eleven-discount/checkout-eleven-discount";
 import CheckOutElevenPaymentGateway from "./checkout-eleven-payment-gateway/checkout-eleven-payment-gateway";
 import CheckOutElevenOrder from "./checkout-eleven-order/checkout-eleven-order";
-import { SaveAddress } from "./checkout-eleven-address/checkout-eleven-address";
+import CheckOutElevenAddress, {
+  SaveAddress,
+} from "./checkout-eleven-address/checkout-eleven-address";
 
 const CheckOutEleven = () => {
   const { store_id, headerSetting } = useTheme();
@@ -101,7 +103,7 @@ const CheckOutEleven = () => {
 
         <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap gap-14">
           <div className="">
-            <SaveAddress
+            <CheckOutElevenAddress
               selectAddress={selectAddress}
               setSelectAddress={setSelectAddress}
               setToken={setToken}
