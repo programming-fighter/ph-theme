@@ -72,7 +72,11 @@ const PaymentGateway = ({ selectPayment, setSelectPayment }: any) => {
                 >
                   <div className="flex justify-center ">
                     <div className="flex gap-2">
-                      <img src={bkashLogo} className=" h-8 " alt="bkashLogo" />
+                      <img
+                        src={bkashLogo.src}
+                        className=" h-8 "
+                        alt="bkashLogo"
+                      />
                       {/* <h3 className='font-semibold tracking-wider'>{"Bkash Payment"}</h3> */}
                     </div>
                   </div>
