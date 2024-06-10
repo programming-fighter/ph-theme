@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import RegisterOne from "./(register)/register-one";
 import RegisterFour from "./(register)/register-four";
