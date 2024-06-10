@@ -1,7 +1,7 @@
 "use client";
 import React, { createRef, useEffect } from "react";
 import { useState } from "react";
-// import "./style.css";
+import "./style.css";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import Slider from "react-slick";
