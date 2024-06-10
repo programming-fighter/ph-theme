@@ -210,7 +210,7 @@ const Card55 = ({ item }: any) => {
               ""
             ) : (
               <div className="h-10 absolute top-2 right-2 z-[2]">
-                <img src={shape} alt="" className="h-full" />
+                <img src={shape.src} alt="" className="h-full" />
                 <p className="text-[11px] text-white absolute top-2 left-3 leading-[12px]">
                   {item.discount_type === "fixed" ? "BDT" : ""}{" "}
                   {Math.trunc(item.discount_price)}{" "}
