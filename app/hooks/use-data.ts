@@ -355,7 +355,8 @@ const useData = () => {
 
       const res = await axios.post(
         "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
-        { name: "siam.localhost:3000" }
+        // { name: "siam.localhost:3000" }
+        { name: window.location.host }
       );
 
       const {

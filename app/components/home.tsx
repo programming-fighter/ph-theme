@@ -52,10 +52,10 @@ const HomePage = ({ domain }: any) => {
   const getTodos = async (domain: any) => {
     const res = await axios.post(
       "https://admin.ebitans.com/api/v1/getsubdomain/name",
-      // { name: domain }
-      {
-        name: "siam.localhost:3000",
-      }
+      { name: domain }
+      // {
+      //   name: "siam.localhost:3000",
+      // }
     );
     return res?.data;
   };
@@ -74,12 +74,12 @@ const HomePage = ({ domain }: any) => {
     console.log(domain);
     const res = await axios.post(
       "https://admin.ebitans.com/api/v1/getsubdomain/name",
-      // {
-      //   name: domain,
-      // }
       {
-        name: "siam.localhost:3000",
+        name: domain,
       }
+      // {
+      //   name: "siam.localhost:3000",
+      // }
     );
 
     return res?.data;

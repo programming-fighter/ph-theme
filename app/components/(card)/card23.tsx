@@ -16,12 +16,17 @@ import { IoSearchCircleOutline } from "react-icons/io5";
 import Rate from "@/app/utils/rate";
 import BDT from "@/app/utils/bdt";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCartList } from "@/redux/features/product.slice";
+import QuikView from "../quick-view";
+import Details from "../(product-details)/three/details";
 
 const Card23 = ({ item, design, store_id }: any) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-  // const cartList = useSelector((state) => state.cart.cartList)
+  const cartList = useSelector((state: any) => state.cart.cartList);
   //   const dispatch = useDispatch();
   const card7CustomStyle = `      
 
@@ -92,7 +97,10 @@ const Card23 = ({ item, design, store_id }: any) => {
       type: "success",
     });
     axios
-      .post(process.env.API_URL + "get/offer/product", productDetails)
+      .post(
+        process.env.NEXT_PUBLIC_REACT_APP_BASE_URL + "get/offer/product",
+        productDetails
+      )
       .then((res: any) => {
         if (!res?.error) {
           if (item?.variant[0]?.unit && store_id === 2109) {
@@ -149,7 +157,7 @@ const Card23 = ({ item, design, store_id }: any) => {
             };
           }
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -254,9 +262,9 @@ const Card23 = ({ item, design, store_id }: any) => {
           </div>
         </Link>
       </motion.div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };
