@@ -90,7 +90,7 @@ const CheckOutElevenPaymentGateway = ({
                         </h3>
                       ) : (
                         <img
-                          src={bkashLogo}
+                          src={bkashLogo.src}
                           className=" max-h-8 "
                           alt="bkashLogo"
                         />
