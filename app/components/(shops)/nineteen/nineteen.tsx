@@ -30,7 +30,7 @@ const Nineteen = ({ data }: any) => {
     <div className="">
       <div className="min-h-[200px] max-h-80 w-full overflow-hidden relative">
         <img
-          src={img}
+          src={img.src}
           alt=""
           className="min-h-[200px] max-h-80 w-full object-cover"
         />
