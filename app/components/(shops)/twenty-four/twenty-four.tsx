@@ -38,7 +38,7 @@ const TwentyFour = ({ data }: any) => {
     <div className="mt-10 lg:mt-0">
       <div className="min-h-[200px] max-h-60 w-full overflow-hidden relative xl:pr-20 lg:pr-10">
         <img
-          src={img}
+          src={img.src}
           alt=""
           className="min-h-[200px] max-h-60 w-full object-cover"
         />
