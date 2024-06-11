@@ -38,7 +38,7 @@ const LoginEleven = () => {
         }
         if (verify) {
           // toast(verify, { type: "success" });
-          router.push("/profile");
+          window.location.href = "/profile";
           // window.location.reload();
         }
         // else {
