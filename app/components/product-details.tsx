@@ -16,7 +16,7 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <Five data={{ product_id, slug }} />
+      <Two data={{ product_id, slug }} />
     </div>
   );
 };
