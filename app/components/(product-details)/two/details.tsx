@@ -47,6 +47,7 @@ const Details = ({ data }: any) => {
   useEffect(() => {
     setFilterV(variant?.filter((item: any) => item?.color === color));
   }, [color, variant]);
+
   useEffect(() => {
     setLoad(true);
     // declare the async data fetching function
@@ -79,14 +80,6 @@ const Details = ({ data }: any) => {
       // make sure to catch any error
       .catch(console.error);
   }, [data, store_id]);
-
-  if (load) {
-    return (
-      <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
-        <OvalLoader />
-      </div>
-    );
-  }
 
   const regularPrice =
     parseInt(product?.regular_price) +
@@ -306,6 +299,14 @@ const Details = ({ data }: any) => {
 
   const buttonOne =
     "font-bold text-white bg-gray-600 rounded-md w-max px-10 py-3 text-center";
+
+  // if (load) {
+  //   return (
+  //     <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
+  //       <OvalLoader />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="grid md:grid-cols-8 grid-cols-1 gap-4 w-full overflow-hidden">
