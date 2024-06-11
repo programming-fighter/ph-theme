@@ -329,6 +329,7 @@ const Details = ({ data }: any) => {
               <span className="text-black">Category: </span>{" "}
             </p>
             <Link
+              prefetch={false}
               href={"/category/" + product?.category_id}
               style={{ color: design?.header_color }}
             >
