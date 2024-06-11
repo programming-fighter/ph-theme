@@ -14,6 +14,8 @@ import Five from "./(product-details)/five/five";
 const ProductDetails = () => {
   const { productID: product_id, slug } = useParams();
 
+  console.log("product details");
+
   return (
     <div>
       <Two data={{ product_id, slug }} />

@@ -11,36 +11,42 @@ import SectionHeadingFive from "../../(section-heading)/section-heading-five";
 import Arrow from "@/app/utils/arrow";
 import SliderFive from "../../(slider)/slider-five";
 import Card16 from "../../(card)/card16";
+import { useParams } from "next/navigation";
 
 const Two = ({ data }: any) => {
   const { store_id } = useTheme();
+  const { productID: product_id, slug } = useParams();
 
   const [relatedProduct, setRelatedProduct] = useState([]);
   const [reviews, setReview] = useState([]);
   const [productDetails, setProductDetails] = useState<any>([]);
 
+  const datax = { product_id, slug, store_id };
+  console.log(datax, "datax");
   useEffect(() => {
     data["store_id"] = store_id;
 
-    httpReq.post("product-details", data).then((res) => {
+    console.log(data, "data from product details");
+
+    httpReq.post("product-details", datax).then((res) => {
       if (!res?.error) {
         setProductDetails(res?.product);
       }
     });
 
-    httpReq.post("get/review", data).then((res) => {
+    httpReq.post("get/review", datax).then((res) => {
       if (!res?.error) {
         setReview(res);
       } else {
         setReview([]);
       }
     });
-    httpReq.post("related-product", { id: data?.product_id }).then((res) => {
+    httpReq.post("related-product", { id: datax?.product_id }).then((res) => {
       if (!res?.error) {
         setRelatedProduct(res);
       }
     });
-  }, [data, store_id]);
+  }, [datax, store_id]);
 
   return (
     <div className="sm:container px-5 sm:py-10 py-5">

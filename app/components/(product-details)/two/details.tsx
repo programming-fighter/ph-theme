@@ -311,9 +311,10 @@ const Details = ({ data }: any) => {
     <div className="grid md:grid-cols-8 grid-cols-1 gap-4 w-full overflow-hidden">
       <div className="md:col-span-4 lg2:col-span-3 col-span-1 h-full overflow-hidden">
         <div className="h-full w-full object-cover">
-          {product?.image?.slice(0, 1).map((item: any) => (
-            <ImageZoom img={productImg + item} key={item.id} />
-          ))}
+          {product?.image?.slice(0, 1).map((item: any, idx: any) => {
+            console.log(item, "item");
+            return <ImageZoom img={productImg + item} key={idx} />;
+          })}
         </div>
       </div>
 
