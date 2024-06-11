@@ -79,7 +79,7 @@ const Card54 = ({ item, design, store_id }: any) => {
         color:  ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design.header_color};
+        color: ${design?.header_color};
       }
     .bg-color {
         color:  ${textColor};
@@ -236,7 +236,7 @@ const Card54 = ({ item, design, store_id }: any) => {
               ""
             ) : (
               <div className="h-10 absolute top-2 right-2 z-[2]">
-                <Image src={shape.src} alt="" className="h-full" />
+                <img src={shape.src} alt="" className="h-full" />
                 <p className="text-[11px] text-white absolute top-2 left-3 leading-[12px]">
                   {item.discount_type === "fixed" ? "BDT" : ""}{" "}
                   {Math.trunc(item.discount_price)}{" "}
