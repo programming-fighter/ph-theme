@@ -12,41 +12,72 @@ import Arrow from "@/app/utils/arrow";
 import SliderFive from "../../(slider)/slider-five";
 import Card16 from "../../(card)/card16";
 import { useParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 
 const Two = ({ data }: any) => {
   const { store_id } = useTheme();
-  const { productID: product_id, slug } = useParams();
 
-  const [relatedProduct, setRelatedProduct] = useState([]);
-  const [reviews, setReview] = useState([]);
-  const [productDetails, setProductDetails] = useState<any>([]);
+  // const [relatedProduct, setRelatedProduct] = useState([]);
+  // const [reviews, setReview] = useState([]);
+  // const [productDetails, setProductDetails] = useState<any>([]);
 
-  const datax = { product_id, slug, store_id };
-  console.log(datax, "datax");
-  useEffect(() => {
-    data["store_id"] = store_id;
+  data["store_id"] = store_id;
 
-    console.log(data, "data from product details");
+  const { data: productDetails, isError: isProductDetailsError } = useQuery({
+    queryKey: ["productDetails", data],
+    queryFn: () => httpReq.post("product-details", data),
+    enabled: !!data,
+  });
 
-    httpReq.post("product-details", datax).then((res) => {
-      if (!res?.error) {
-        setProductDetails(res?.product);
-      }
-    });
+  const { data: reviews, isError: isReviewError } = useQuery({
+    queryKey: ["review", data],
+    queryFn: () => httpReq.post("get/review", data),
+    enabled: !!data,
+  });
 
-    httpReq.post("get/review", datax).then((res) => {
-      if (!res?.error) {
-        setReview(res);
-      } else {
-        setReview([]);
-      }
-    });
-    httpReq.post("related-product", { id: datax?.product_id }).then((res) => {
-      if (!res?.error) {
-        setRelatedProduct(res);
-      }
-    });
-  }, [datax, store_id]);
+  const { data: relatedProduct, isError: isRelatedProductError } = useQuery({
+    queryKey: ["relatedProduct", data],
+    queryFn: () => httpReq.post("related-product", { id: data?.product_id }),
+    enabled: !!data,
+  });
+
+  if (isProductDetailsError || isReviewError || isRelatedProductError) {
+    return <div>Error fetching data</div>;
+  }
+
+  console.log(
+    productDetails,
+    "product details",
+    reviews,
+    "reviews",
+    relatedProduct,
+    "related product"
+  );
+
+  // useEffect(() => {
+  //   data["store_id"] = store_id;
+
+  //   console.log(data, "data from product details");
+
+  //   httpReq.post("product-details", data).then((res) => {
+  //     if (!res?.error) {
+  //       setProductDetails(res?.product);
+  //     }
+  //   });
+
+  //   httpReq.post("get/review", data).then((res) => {
+  //     if (!res?.error) {
+  //       setReview(res);
+  //     } else {
+  //       setReview([]);
+  //     }
+  //   });
+  //   httpReq.post("related-product", { id: data?.product_id }).then((res) => {
+  //     if (!res?.error) {
+  //       setRelatedProduct(res);
+  //     }
+  //   });
+  // }, [data, store_id]);
 
   return (
     <div className="sm:container px-5 sm:py-10 py-5">
@@ -86,7 +117,7 @@ const Two = ({ data }: any) => {
                 ></div>
               </div>
             </Tab.Panel>
-            <Tab.Panel>
+            {/* <Tab.Panel>
               {reviews.length === 0 ? (
                 <div className="flex flex-1 justify-center items-center">
                   <h3 className="text-xl font-sans font-bold py-3">
@@ -98,7 +129,7 @@ const Two = ({ data }: any) => {
                   <UserReview key={item?.id} review={item} />
                 ))
               )}
-            </Tab.Panel>
+            </Tab.Panel> */}
           </Tab.Panels>
         </Tab.Group>
       </div>
