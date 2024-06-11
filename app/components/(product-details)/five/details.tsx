@@ -462,7 +462,7 @@ const Details = ({ data, children }: any) => {
           {store_id === 1187 && (
             <div>
               <div className="flex items-center gap-2">
-                <img src={imgCall} alt="" className="h-12" />
+                <img src={imgCall.src} alt="" className="h-12" />
                 <p>ফোনে অর্ডার করতে ডায়াল করুন</p>
               </div>
               <a href="tel:+8801992822443">
