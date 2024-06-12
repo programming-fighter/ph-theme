@@ -35,30 +35,12 @@ interface GetComponentProps {
   data: any;
 }
 
-const navigation: Navigation[] = [
-  { name: "Product", href: "/" },
-  { name: "Features", href: "/" },
-  { name: "Marketplace", href: "/" },
-  { name: "Company", href: "/" },
-];
-
 const HomePage = ({ domain }: any) => {
   const [theme, setTheme] = useState<any>(null);
   const [loader, setLoader] = useState(true);
   const [data, setData] = useState<any>(null);
 
   const preloader = theme?.design?.preloader;
-
-  const getTodos = async (domain: any) => {
-    const res = await axios.post(
-      "https://admin.ebitans.com/api/v1/getsubdomain/name",
-      { name: domain }
-      // {
-      //   name: "siam.localhost:3000",
-      // }
-    );
-    return res?.data;
-  };
 
   useEffect(() => {
     if (preloader) {
@@ -81,9 +63,9 @@ const HomePage = ({ domain }: any) => {
       //   name: "siam.localhost:3000",
       // }
     );
-
     return res?.data;
   };
+
   // const { layout, design, page, menu } = res.data;
   // Access the client
   const queryClient = useQueryClient();
@@ -94,7 +76,7 @@ const HomePage = ({ domain }: any) => {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["todos", domain],
+    queryKey: ["homepage", domain],
     queryFn: () => getData(domain),
   });
 
@@ -169,15 +151,6 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
   } = data;
 
   switch (component) {
-    // case "header":
-    //   return (
-    //     <Header
-    //       headerSetting={headersetting}
-    //       menu={menu}
-    //       navigation={navigation}
-    //       theme={design?.header}
-    //     />
-    //   );
     case "hero_slider":
       return (
         <Hero slider={slider} theme={design?.hero_slider} design={design} />
@@ -262,18 +235,6 @@ const GetComponent = ({ component, data }: GetComponentProps) => {
           design={design}
         />
       );
-    // case "footer":
-    //   return (
-    //     <Footer
-    //       theme={design?.footer}
-    //       headerSetting={headersetting}
-    //       category={category}
-    //       design={design}
-    //       store_id={store_id}
-    //       menu={menu}
-    //       page={page}
-    //     />
-    //   );
   }
 };
 

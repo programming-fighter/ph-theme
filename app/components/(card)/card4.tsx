@@ -17,14 +17,14 @@ const Card4 = ({ item, design, store_id, makeid }: any) => {
 
   const styleCss = `
   .text-hover:hover {
-    color:  ${design.header_color};
+    color:  ${design?.header_color};
   }
   .search:hover {
-    color:${design.text_color};
-    background:${design.header_color};
+    color:${design?.text_color};
+    background:${design?.header_color};
   }
   .border-hover:hover {
-    border: 1px solid  ${design.header_color};
+    border: 1px solid  ${design?.header_color};
   }
 
   `;

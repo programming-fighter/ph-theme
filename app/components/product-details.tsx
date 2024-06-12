@@ -10,16 +10,174 @@ import One from "./(product-details)/one/one";
 import Two from "./(product-details)/two/two";
 import Four from "./(product-details)/four/four";
 import Five from "./(product-details)/five/five";
+import Six from "./(product-details)/six/six";
+import Eight from "./(product-details)/eight/eight";
+import Nine from "./(product-details)/nine/nine";
+import Ten from "./(product-details)/ten/ten";
+import Eleven from "./(product-details)/eleven/eleven";
+import Twelve from "./(product-details)/twelve/twelve";
+import useTheme from "../hooks/use-theme";
+import {
+  EIGHTEEN,
+  FIFTEEN,
+  FORTY,
+  FOURTEEN,
+  NINETEEN,
+  SEVENTEEN,
+  SIXTEEN,
+  THIRTEEN,
+  THIRTY,
+  THIRTY_EIGHT,
+  THIRTY_FIVE,
+  THIRTY_FOUR,
+  THIRTY_NINE,
+  THIRTY_ONE,
+  THIRTY_SEVEN,
+  THIRTY_SIX,
+  THIRTY_THREE,
+  THIRTY_TWO,
+  TWENTY,
+  TWENTY_EIGHT,
+  TWENTY_FIVE,
+  TWENTY_FOUR,
+  TWENTY_NINE,
+  TWENTY_ONE,
+  TWENTY_SEVEN,
+  TWENTY_SIX,
+  TWENTY_THREE,
+  TWENTY_TWO,
+} from "../consts";
+import ThirtyEight from "./(shops)/thirty-eight/thirty-eight";
 
 const ProductDetails = () => {
   const { productID: product_id, slug } = useParams();
+  const { design } = useTheme();
 
-  console.log("product details");
+  console.log("design", design?.single_product_page);
 
   return (
-    <div>
-      <Two data={{ product_id, slug }} />
-    </div>
+    <>
+      {design?.single_product_page === "one" && (
+        <One data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "two" && (
+        <Two data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "three" && (
+        <Three data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "four" && (
+        <Four data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "five" && (
+        <Five data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "six" && (
+        <Six data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "seven" && (
+        <Seven data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "eight" && (
+        <Eight data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "nine" && (
+        <Nine data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "ten" && (
+        <Ten data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "eleven" && (
+        <Eleven data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === "twelve" && (
+        <Twelve data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTEEN && (
+        <One data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === FOURTEEN && (
+        <Two data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === FIFTEEN && (
+        <Three data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === SIXTEEN && (
+        <Four data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === SEVENTEEN && (
+        <Five data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === EIGHTEEN && (
+        <Six data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === NINETEEN && (
+        <Seven data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY && (
+        <Eight data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY_ONE && (
+        <Nine data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY_TWO && (
+        <Ten data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY_THREE && (
+        <Eleven data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY_FOUR && (
+        <Twelve data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY_FIVE && (
+        <One data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY_SIX && (
+        <Two data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY_SEVEN && (
+        <Three data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY_EIGHT && (
+        <Four data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === TWENTY_NINE && (
+        <Five data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY && (
+        <Six data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY_ONE && (
+        <Seven data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY_TWO && (
+        <Eight data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY_THREE && (
+        <Nine data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY_FOUR && (
+        <Ten data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY_FIVE && (
+        <Eleven data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY_SIX && (
+        <Twelve data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY_SEVEN && (
+        <One data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY_EIGHT && (
+        <Two data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === THIRTY_NINE && (
+        <Three data={{ product_id, slug }} />
+      )}
+      {design?.single_product_page === FORTY && (
+        <Four data={{ product_id, slug }} />
+      )}
+    </>
   );
 };
 

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 // import { isMobile, isTablet, isBrowser } from "react-device-detect";
 import axios from "axios";
 import httpReq from "../utils/http/axios/http.service";
+import { getFromLocalStorage, saveToLocalStorage } from "../utils/localstorage";
 // import httpReq from "../services/http.service";
 // import {
 //   getFromLocalStorage,
@@ -36,8 +37,8 @@ import httpReq from "../utils/http/axios/http.service";
 
 const useData = () => {
   const [layout, setLayout] = useState([]);
-  const [design, setDesign] = useState(null);
-  const [headerSetting, setHeaderSetting] = useState({});
+  const [design, setDesign] = useState<any>(null);
+  const [headerSetting, setHeaderSetting] = useState<any>({});
   const [menu, setMenu] = useState([]);
   const [page, setPage] = useState([]);
   const [category, setCategory] = useState([]);
@@ -77,7 +78,7 @@ const useData = () => {
   const [bookingData, setBookingData] = useState<any>(null);
   const [pseCat, setPseCat] = useState("");
   const [searchPse, setSearchPse] = useState("");
-  const [designData, setDesignData] = useState(null);
+  const [designData, setDesignData] = useState<any>(null);
 
   const [token, setToken] = useState("");
   const [v, setV] = useState<any>(null);
@@ -104,27 +105,27 @@ const useData = () => {
     }
   }, [store_id]);
 
-  // useEffect(() => {
-  //   const designDataColor = {
-  //     header_color: design?.header_color,
-  //     text_color: design?.text_color,
-  //     logo: headerSetting?.logo,
-  //     website_name: headerSetting?.website_name,
-  //   };
+  useEffect(() => {
+    const designDataColor = {
+      header_color: design?.header_color,
+      text_color: design?.text_color,
+      logo: headerSetting?.logo,
+      website_name: headerSetting?.website_name,
+    };
 
-  //   if (design) {
-  //     saveToLocalStorage("design", designDataColor);
-  //   }
-  //   const userData = getFromLocalStorage("design");
-  //   if (userData) {
-  //     setDesignData(userData);
-  //   }
-  // }, [design, headerSetting]);
+    if (design) {
+      saveToLocalStorage("design", designDataColor);
+    }
+    const userData = getFromLocalStorage("design");
+    if (userData) {
+      setDesignData(userData);
+    }
+  }, [design, headerSetting]);
 
-  // const header_color = designData?.header_color || design?.header_color;
-  // const text_color = designData?.text_color || design?.text_color;
-  // const logo = designData?.logo || headerSetting?.logo;
-  // const website_name = designData?.website_name || headerSetting?.website_name;
+  const header_color = designData?.header_color || design?.header_color;
+  const text_color = designData?.text_color || design?.text_color;
+  const logo = designData?.logo || headerSetting?.logo;
+  const website_name = designData?.website_name || headerSetting?.website_name;
 
   // const webAnalytics = module?.find(item => item?.modulus_id === 3)
   // booiking api
@@ -482,10 +483,10 @@ const useData = () => {
     setPseCat,
     setSearchPse,
     searchPse,
-    // header_color,
-    // website_name,
-    // logo,
-    // text_color,
+    header_color,
+    website_name,
+    logo,
+    text_color,
   };
 };
 export default useData;
