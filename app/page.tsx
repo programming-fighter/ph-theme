@@ -9,7 +9,8 @@ import dynamic from "next/dynamic";
 
 export default function Home() {
   const domain = window.location.host;
-  console.log(domain, "domain");
+  const cleanedDomain = domain.startsWith("www.") ? domain.slice(4) : domain;
+  console.log(cleanedDomain, 'cleanedDomain');
 
-  return <HomePage domain={domain} />;
+  return <HomePage domain={cleanedDomain} />;
 }
