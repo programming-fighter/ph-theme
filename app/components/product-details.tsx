@@ -47,7 +47,14 @@ import {
   TWENTY_THREE,
   TWENTY_TWO,
 } from "../consts";
-import ThirtyEight from "./(shops)/thirty-eight/thirty-eight";
+import Thirteen from "./(product-details)/thirteen/thirteen";
+import Details from "./(product-details)/three/details";
+import DetailsFifteen from "./(product-details)/fifteen/details-fifteen";
+import Fifteen from "./(product-details)/fifteen/fifteen";
+import Sixteen from "./(product-details)/sixteen/sixteen";
+import Seventeen from "./(product-details)/seventeen/seventeen";
+import Eighteen from "./(product-details)/eighteen/eighteen";
+import Nineteen from "./(product-details)/nineteen/nineteen";
 
 const ProductDetails = () => {
   const { productID: product_id, slug } = useParams();
@@ -94,28 +101,28 @@ const ProductDetails = () => {
         <Twelve data={{ product_id, slug }} />
       )}
       {design?.single_product_page === THIRTEEN && (
-        <One data={{ product_id, slug }} />
+        <Thirteen data={{ product_id, slug }} />
       )}
       {design?.single_product_page === FOURTEEN && (
-        <Two data={{ product_id, slug }} />
+        <Fourteen data={{ product_id, slug }} />
       )}
       {design?.single_product_page === FIFTEEN && (
-        <Three data={{ product_id, slug }} />
+        <Fifteen data={{ product_id, slug }} />
       )}
       {design?.single_product_page === SIXTEEN && (
-        <Four data={{ product_id, slug }} />
+        <Sixteen data={{ product_id, slug }} />
       )}
       {design?.single_product_page === SEVENTEEN && (
-        <Five data={{ product_id, slug }} />
+        <Seventeen data={{ product_id, slug }} />
       )}
       {design?.single_product_page === EIGHTEEN && (
-        <Six data={{ product_id, slug }} />
+        <Eighteen data={{ product_id, slug }} />
       )}
       {design?.single_product_page === NINETEEN && (
-        <Seven data={{ product_id, slug }} />
+        <Nineteen data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY && (
-        <Eight data={{ product_id, slug }} />
+        <Twenty data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_ONE && (
         <Nine data={{ product_id, slug }} />
@@ -124,7 +131,7 @@ const ProductDetails = () => {
         <Ten data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_THREE && (
-        <Eleven data={{ product_id, slug }} />
+        <TwentyThree data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_FOUR && (
         <Twelve data={{ product_id, slug }} />
