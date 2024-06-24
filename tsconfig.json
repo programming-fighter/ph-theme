@@ -25,15 +25,6 @@
       "@/assets/*": ["app/assets/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/components/(headers)/header-one/header-down.tsx",
-    "app/assets/svg.js",
-    "app/app-wrapper.tsx",
-    "app/components/(product-details)/one/slider.tsx"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

@@ -10,17 +10,28 @@ import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
+interface PersistGateFix extends React.Component {}
+
+const PersistGateX = PersistGate as any as {
+  new (): PersistGateFix;
+};
+
+const props: any = {
+  loading: null,
+  persistor: persistor,
+};
+
 const AppWrapper = ({ children }: any) => {
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+          <PersistGateX {...props}>
             <Header />
             {children}
             <Footer />
             <ToastContainer position="top-right" newestOnTop />
-          </PersistGate>
+          </PersistGateX>
         </Provider>
       </QueryClientProvider>
     </ThemeProvider>
