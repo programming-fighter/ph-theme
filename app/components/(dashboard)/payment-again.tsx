@@ -74,4 +74,9 @@ const PaymentAgain = ({ order, transaction }: any) => {
   );
 };
 
+// "resolutions": {
+//   "@types/react": "17.0.2",
+//   "@types/react-dom": "17.0.2"
+// }
+
 export default PaymentAgain;
