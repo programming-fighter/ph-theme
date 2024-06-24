@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
-const AppWrapper = ({ children }) => {
+const AppWrapper = ({ children }: any) => {
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>

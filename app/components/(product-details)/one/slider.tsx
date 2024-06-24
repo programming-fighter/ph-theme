@@ -19,15 +19,15 @@ import {
 } from "react-icons/bs";
 import Slider from "react-slick";
 
-export const HSlider = ({ product, setOpen, open }) => {
+export const HSlider = ({ product, setOpen, open }: any) => {
   const { design } = useTheme();
 
-  const [id, setId] = useState(null);
+  const [id, setId] = useState<any>(null);
   const [activeMbl, setActiveMbl] = useState(0);
   const [images, setImages] = useState([]);
 
   //creating the ref
-  const customSlider = createRef();
+  const customSlider = createRef<any>();
 
   const goNext = () => {
     customSlider?.current?.slickNext();
@@ -70,10 +70,10 @@ export const HSlider = ({ product, setOpen, open }) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     verticalSwiping: true,
-    beforeChange: function (currentSlide, nextSlide) {
+    beforeChange: function (currentSlide: any, nextSlide: any) {
       console.log("before change", currentSlide, nextSlide);
     },
-    afterChange: function (currentSlide) {
+    afterChange: function (currentSlide: any) {
       console.log("after change", currentSlide);
     },
   };
@@ -110,7 +110,7 @@ export const HSlider = ({ product, setOpen, open }) => {
               prevEl: navigationPrevRef.current,
               nextEl: navigationNextRef.current,
             }}
-            onSwiper={(swiper) => {
+            onSwiper={(swiper: any) => {
               // Delay execution for the refs to be defined
               swiper.on("slideChange", () => {
                 setId(swiper.activeIndex);
@@ -128,7 +128,7 @@ export const HSlider = ({ product, setOpen, open }) => {
             }}
             className="mySwiper relative"
           >
-            {product?.image?.map((item) => (
+            {product?.image?.map((item: any) => (
               <SwiperSlide key={item?.id}>
                 <img
                   onClick={() => setOpen(true)}
