@@ -354,15 +354,10 @@ const useData = () => {
       //   }
       // );
 
-      const domain = window.location.host;
-      const cleanedDomain = domain.startsWith("www.")
-        ? domain.slice(4)
-        : domain;
-
       const res = await axios.post(
         "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
         // { name: "siam.localhost:3000" }
-        { name: cleanedDomain }
+        { name: window.location.host }
       );
 
       const {
@@ -419,8 +414,7 @@ const useData = () => {
 
   useEffect(() => {
     const domain = window.location.host;
-    const cleanedDomain = domain.startsWith("www.") ? domain.slice(4) : domain;
-    const data = { name: cleanedDomain };
+    const data = { name: domain };
     // call the function
     fetchHeader(data)
       // make sure to catch any error
