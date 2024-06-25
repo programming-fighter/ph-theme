@@ -12,6 +12,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "types": ["react", "node"],
+    "typeRoots": ["node_modules/@types"],
     "plugins": [
       {
         "name": "next"
@@ -30,11 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/components/(headers)/header-one/header-down.tsx",
-    "app/assets/svg.js",
-    "app/app-wrapper.tsx",
-    "app/components/(product-details)/one/slider.tsx",
-    ".next/types/app/(routes)/about/page.tsx"
+    "app/**/*"
   ],
   "exclude": ["node_modules"]
 }
