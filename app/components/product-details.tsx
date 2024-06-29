@@ -48,7 +48,7 @@ import {
   TWENTY_TWO,
 } from "../consts";
 import Thirteen from "./(product-details)/thirteen/thirteen";
-import Details from "./(product-details)/three/details";
+
 import DetailsFifteen from "./(product-details)/fifteen/details-fifteen";
 import Fifteen from "./(product-details)/fifteen/fifteen";
 import Sixteen from "./(product-details)/sixteen/sixteen";
@@ -61,6 +61,8 @@ const ProductDetails = () => {
   const { design } = useTheme();
 
   console.log("design", design?.single_product_page);
+
+  return <Twenty data={{ product_id, slug }} />;
 
   return (
     <>
