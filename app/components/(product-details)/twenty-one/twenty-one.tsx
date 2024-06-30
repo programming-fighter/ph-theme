@@ -10,9 +10,9 @@ import httpReq from "@/app/utils/http/axios/http.service";
 import { profileImg } from "@/app/site-settings/siteUrl";
 import Rate from "@/app/utils/rate";
 import SectionHeadingTwentyOne from "../../(section-heading)/section-heading-twentyone";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card45 from "../../(card)/card45";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const TwentyOne = ({ data }: any) => {
   const { store_id, design } = useTheme();
