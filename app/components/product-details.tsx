@@ -55,6 +55,14 @@ import Sixteen from "./(product-details)/sixteen/sixteen";
 import Seventeen from "./(product-details)/seventeen/seventeen";
 import Eighteen from "./(product-details)/eighteen/eighteen";
 import Nineteen from "./(product-details)/nineteen/nineteen";
+import TwentyOne from "./(product-details)/twenty-one/twenty-one";
+import TwentyTwo from "./(product-details)/twenty-two/twentytwo";
+import TwentyFour from "./(product-details)/twenty-four/twenty-four";
+import TwentyFive from "./(product-details)/twenty-five/twenty-five";
+import TwentySix from "./(product-details)/twenty-six/twenty-six";
+import TwentySeven from "./(product-details)/twenty-seven/twenty-seven";
+import TwentyEight from "./(product-details)/twenty-eight/twenty-eight";
+import TwentyNine from "./(product-details)/twenty-nine/twenty-nine";
 
 const ProductDetails = () => {
   const { productID: product_id, slug } = useParams();
@@ -62,7 +70,7 @@ const ProductDetails = () => {
 
   console.log("design", design?.single_product_page);
 
-  return <Twenty data={{ product_id, slug }} />;
+  return <TwentyNine data={{ product_id, slug }} />;
 
   return (
     <>
