@@ -70,6 +70,8 @@ import ThirtyFive from "./(product-details)/thirty-five/thirty-five";
 import ThirtySix from "./(product-details)/thirty-six/thirty-six";
 import ThirtySeven from "./(product-details)/thirty-seven/thirty-seven";
 import ThirtyEight from "./(product-details)/thirty-eight/thirty-eight";
+import ThirtyNine from "./(product-details)/thirty-nine/thirty-nine";
+import Forty from "./(product-details)/forty/forty";
 
 const ProductDetails = () => {
   const { productID: product_id, slug } = useParams();
@@ -77,7 +79,7 @@ const ProductDetails = () => {
 
   console.log("design", design?.single_product_page);
 
-  return <ThirtyEight data={{ product_id, slug }} />;
+  return <Forty data={{ product_id, slug }} />;
 
   return (
     <>
