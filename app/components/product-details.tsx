@@ -77,10 +77,6 @@ const ProductDetails = () => {
   const { productID: product_id, slug } = useParams();
   const { design } = useTheme();
 
-  console.log("design", design?.single_product_page);
-
-  return <Forty data={{ product_id, slug }} />;
-
   return (
     <>
       {design?.single_product_page === "one" && (
@@ -144,64 +140,58 @@ const ProductDetails = () => {
         <Twenty data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_ONE && (
-        <Nine data={{ product_id, slug }} />
+        <TwentyOne data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_TWO && (
-        <Ten data={{ product_id, slug }} />
+        <TwentyTwo data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_THREE && (
         <TwentyThree data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_FOUR && (
-        <Twelve data={{ product_id, slug }} />
+        <TwentyFour data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_FIVE && (
-        <One data={{ product_id, slug }} />
+        <TwentyFive data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_SIX && (
-        <Two data={{ product_id, slug }} />
+        <TwentySix data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_SEVEN && (
-        <Three data={{ product_id, slug }} />
+        <TwentySeven data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_EIGHT && (
-        <Four data={{ product_id, slug }} />
+        <TwentyEight data={{ product_id, slug }} />
       )}
       {design?.single_product_page === TWENTY_NINE && (
-        <Five data={{ product_id, slug }} />
+        <TwentyNine data={{ product_id, slug }} />
       )}
       {design?.single_product_page === THIRTY && (
-        <Six data={{ product_id, slug }} />
-      )}
-      {design?.single_product_page === THIRTY_ONE && (
-        <Seven data={{ product_id, slug }} />
-      )}
-      {design?.single_product_page === THIRTY_TWO && (
-        <Eight data={{ product_id, slug }} />
+        <Thirty data={{ product_id, slug }} />
       )}
       {design?.single_product_page === THIRTY_THREE && (
-        <Nine data={{ product_id, slug }} />
+        <ThirtyThree data={{ product_id, slug }} />
       )}
       {design?.single_product_page === THIRTY_FOUR && (
-        <Ten data={{ product_id, slug }} />
+        <ThirtyFour data={{ product_id, slug }} />
       )}
       {design?.single_product_page === THIRTY_FIVE && (
-        <Eleven data={{ product_id, slug }} />
+        <ThirtyFive data={{ product_id, slug }} />
       )}
       {design?.single_product_page === THIRTY_SIX && (
-        <Twelve data={{ product_id, slug }} />
+        <ThirtySix data={{ product_id, slug }} />
       )}
       {design?.single_product_page === THIRTY_SEVEN && (
-        <One data={{ product_id, slug }} />
+        <ThirtySeven data={{ product_id, slug }} />
       )}
       {design?.single_product_page === THIRTY_EIGHT && (
-        <Two data={{ product_id, slug }} />
+        <ThirtyEight data={{ product_id, slug }} />
       )}
       {design?.single_product_page === THIRTY_NINE && (
-        <Three data={{ product_id, slug }} />
+        <ThirtyNine data={{ product_id, slug }} />
       )}
       {design?.single_product_page === FORTY && (
-        <Four data={{ product_id, slug }} />
+        <Forty data={{ product_id, slug }} />
       )}
     </>
   );
