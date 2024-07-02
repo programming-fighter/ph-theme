@@ -84,13 +84,13 @@ const Details = ({ data, children, open, setOpen }: any) => {
     bookNow(variant, size, color, unit, filterV, setOpenBooking, openBooking);
   };
 
-  if (load) {
-    return (
-      <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
-        <OvalLoader />
-      </div>
-    );
-  }
+  // if (load) {
+  //   return (
+  //     <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
+  //       <OvalLoader />
+  //     </div>
+  //   );
+  // }
 
   const regularPrice =
     parseInt(product?.regular_price) +
