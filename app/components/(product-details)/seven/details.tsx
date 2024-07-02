@@ -19,6 +19,7 @@ import QuikView from "../../quick-view";
 import BookingForm from "../../booking-form";
 import Link from "next/link";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { toast } from "react-toastify";
 
 const Details = ({ data, children, open, setOpen }: any) => {
   const { makeid, store_id, headerSetting, bookingData } = useTheme();
@@ -136,10 +137,10 @@ const Details = ({ data, children, open, setOpen }: any) => {
               })
             );
 
-            // toast("Successfully you added to cart", {
-            //   type: "success",
-            //   autoClose: 1000,
-            // });
+            toast("Successfully you added to cart", {
+              type: "success",
+              autoClose: 1000,
+            });
           }
 
           // size and color also with offer
@@ -156,10 +157,10 @@ const Details = ({ data, children, open, setOpen }: any) => {
               })
             );
 
-            // toast("Successfully you added to cart", {
-            //   type: "success",
-            //   autoClose: 1000,
-            // });
+            toast("Successfully you added to cart", {
+              type: "success",
+              autoClose: 1000,
+            });
           }
 
           // color with offer
@@ -175,23 +176,23 @@ const Details = ({ data, children, open, setOpen }: any) => {
                 ...product,
               })
             );
-            // toast("Successfully you added to cart", {
-            //   type: "success",
-            //   autoClose: 1000,
-            // });
+            toast("Successfully you added to cart", {
+              type: "success",
+              autoClose: 1000,
+            });
           }
 
           // alert variant add
           else if (filterV.length === 0) {
-            // toast("Please Select Variant", {
-            //   type: "danger",
-            //   autoClose: 1000,
-            // });
+            toast("Please Select Variant", {
+              type: "warning",
+              autoClose: 1000,
+            });
           } else if (filterV.length > 0) {
-            // toast("Please Select Variant", {
-            //   type: "danger",
-            //   autoClose: 1000,
-            // });
+            toast("Please Select Variant", {
+              type: "warning",
+              autoClose: 1000,
+            });
           }
         } else {
           dispatch(
@@ -207,10 +208,10 @@ const Details = ({ data, children, open, setOpen }: any) => {
               ...product,
             })
           );
-          // toast("Successfully you added to cart", {
-          //   type: "success",
-          //   autoClose: 1000,
-          // });
+          toast("Successfully you added to cart", {
+            type: "success",
+            autoClose: 1000,
+          });
         }
       } else {
         if (variant?.length) {
@@ -227,10 +228,10 @@ const Details = ({ data, children, open, setOpen }: any) => {
                 ...product,
               })
             );
-            // toast("Successfully you added to cart", {
-            //   type: "success",
-            //   autoClose: 1000,
-            // });
+            toast("Successfully you added to cart", {
+              type: "success",
+              autoClose: 1000,
+            });
           }
           // size with regular price
           else if (size && filterV) {
@@ -245,10 +246,10 @@ const Details = ({ data, children, open, setOpen }: any) => {
                 ...product,
               })
             );
-            // toast("Successfully you added to cart", {
-            //   type: "success",
-            //   autoClose: 1000,
-            // });
+            toast("Successfully you added to cart", {
+              type: "success",
+              autoClose: 1000,
+            });
           }
           // color with regular price
           else if (color && !size && filterV.length === 0) {
@@ -263,23 +264,23 @@ const Details = ({ data, children, open, setOpen }: any) => {
                 ...product,
               })
             );
-            // toast("Successfully you added to cart", {
-            //   type: "success",
-            //   autoClose: 1000,
-            // });
+            toast("Successfully you added to cart", {
+              type: "success",
+              autoClose: 1000,
+            });
           }
 
           // alert for variant
           else if (filterV.length === 0) {
-            // toast("Please Select Variant", {
-            //   type: "danger",
-            //   autoClose: 1000,
-            // });
+            toast("Please Select Variant", {
+              type: "warning",
+              autoClose: 1000,
+            });
           } else if (filterV.length > 0) {
-            // toast("Please Select Variant", {
-            //   type: "danger",
-            //   autoClose: 1000,
-            // });
+            toast("Please Select Variant", {
+              type: "warning",
+              autoClose: 1000,
+            });
           }
         } else {
           dispatch(
@@ -295,10 +296,10 @@ const Details = ({ data, children, open, setOpen }: any) => {
               ...product,
             })
           );
-          // toast("Successfully you added to cart", {
-          //   type: "success",
-          //   autoClose: 1000,
-          // });
+          toast("Successfully you added to cart", {
+            type: "success",
+            autoClose: 1000,
+          });
         }
       }
     });
