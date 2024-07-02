@@ -7,9 +7,9 @@ import useTheme from "@/app/hooks/use-theme";
 
 const CheckoutPage = () => {
   const { user } = useSelector((state: any) => state.auth);
-  const { design } = useTheme();
+  const { design, store } = useTheme();
 
-  if (user?.verify) {
+  if (user?.verify || store?.auth_type === "EasyOrder") {
     return <Checkout theme={design?.checkout_page} />;
   } else {
     return <Login />;

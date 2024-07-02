@@ -10,22 +10,23 @@ import Link from "next/link";
 import { imgUrl } from "@/app/site-settings/siteUrl";
 import Loading from "../(register)/loading";
 import { btnhover } from "@/app/site-settings/style";
+import { clearMessage } from "@/redux/features/message.slice";
+import { toast } from "react-toastify";
 
 export const cls =
   "py-2 px-4 md:px-5 w-full appearance-none transition duration-150 ease-in-out border text-input text-xs lg:text-sm font-body rounded-md placeholder-body min-h-12 bg-white border-gray-300 focus:outline-none focus:border-heading h-11 md:h-12";
 
 const LoginEleven = () => {
   const { headerSetting, store_id, store } = useTheme();
-
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
 
   const dispatch = useDispatch();
   const router = useRouter();
 
-  // useEffect(() => {
-  //   dispatch(clearMessage());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(clearMessage());
+  }, [dispatch]);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data: any) => {
@@ -34,10 +35,10 @@ const LoginEleven = () => {
       .unwrap()
       .then(({ verify, error }: any) => {
         if (error) {
-          // toast(error, { type: "error" });
+          toast(error, { type: "error" });
         }
         if (verify) {
-          // toast(verify, { type: "success" });
+          toast(verify, { type: "success" });
           window.location.href = "/profile";
           // window.location.reload();
         }
@@ -46,7 +47,7 @@ const LoginEleven = () => {
         // }
       })
       .catch((er: any) => {
-        // toast('Credential Doesn"t Match', { type: "error" });
+        toast('Credential Doesn"t Match', { type: "error" });
 
         setLoading(false);
       });

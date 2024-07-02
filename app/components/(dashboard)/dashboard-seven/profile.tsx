@@ -181,7 +181,8 @@ const Profile = () => {
                           {...register("name")}
                           type="text"
                           autoComplete="given-name"
-                          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                          className="mt-1 py-2 px-4 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-300 ease-in-out"
+                          placeholder="Enter your name"
                         />
                       </div>
 
@@ -200,7 +201,7 @@ const Profile = () => {
                             disabled={
                               userDetails?.auth_type === "email" ? true : false
                             }
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="mt-1 py-2 px-4 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-300 ease-in-out"
                           />
                         ) : (
                           <input
@@ -211,7 +212,7 @@ const Profile = () => {
                             disabled={
                               userDetails?.auth_type === "email" ? true : false
                             }
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="mt-1 py-2 px-4 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-300 ease-in-out"
                           />
                         )}
                       </div>
@@ -232,7 +233,7 @@ const Profile = () => {
                             }
                             type="number"
                             autoComplete="given-name"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="mt-1 py-2 px-4 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-300 ease-in-out"
                           />
                         ) : (
                           <input
@@ -242,7 +243,7 @@ const Profile = () => {
                             }
                             type="number"
                             autoComplete="given-name"
-                            className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            className="mt-1 py-2 px-4 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-300 ease-in-out"
                           />
                         )}
                       </div>
@@ -259,7 +260,7 @@ const Profile = () => {
                             defaultValue={userDetails?.address}
                             {...register("address")}
                             rows={3}
-                            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                            className="mt-1 py-2 px-4 w-full border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition duration-300 ease-in-out"
                             placeholder="Your Address"
                           />
                         </div>

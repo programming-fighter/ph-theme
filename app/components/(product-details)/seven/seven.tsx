@@ -45,8 +45,6 @@ const Seven = ({ data }: any) => {
     });
   }, [data, store_id]);
 
-  console.log();
-
   return (
     <div className="container px-5">
       <Details data={data}>
@@ -187,7 +185,7 @@ const Related = ({ product }: any) => {
               {/* <ProductCardTwo item={item} /> */}
               <Card12 item={item} />
             </SwiperSlide>
-          ))}
+          ))} 
         </SliderFive>
       </div>
     </div>
