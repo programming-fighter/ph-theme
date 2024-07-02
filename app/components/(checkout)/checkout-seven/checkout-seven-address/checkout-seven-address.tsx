@@ -100,8 +100,9 @@ const CheckOutSevenAddress = ({
                   onChange={(e) => setUserName(e.target.value)}
                   type="text"
                   placeholder="Name"
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
+                  className="border border-gray-400 focus:outline-none focus:border-blue-500 rounded-lg focus:ring-0 p-2 text-lg shadow-sm"
                 />
+
                 <input
                   onChange={(e) => setUserPhone(e.target.value)}
                   type="number"
@@ -217,8 +218,9 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 name="name"
                 id="name"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-0 focus:border-gray-400 block w-full shadow-md sm:text-md border-2 border-gray-300 rounded-lg p-3 text-gray-700"
               />
+
               {errors.name && (
                 <span className="text-red-500">Phone name is required</span>
               )}
@@ -240,7 +242,7 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 name="phone"
                 id="phone"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-0 focus:border-gray-400 block w-full shadow-md sm:text-md border-2 border-gray-300 rounded-lg p-3 text-gray-700"
               />
 
               {errors.phone?.type === "required" && (
@@ -265,7 +267,7 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 name="address"
                 id="address"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-0 focus:border-gray-400 block w-full shadow-md sm:text-md border-2 border-gray-300 rounded-lg p-3 text-gray-700"
               />
               {errors.address && (
                 <span className="text-red-500">Phone address is required</span>
