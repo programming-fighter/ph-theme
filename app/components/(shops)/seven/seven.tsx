@@ -19,9 +19,7 @@ import Card12 from "../../(card)/card12";
 
 const Seven = ({ data }: any) => {
   const { module, category } = useTheme();
-
   const paginateModule = module?.find((item: any) => item?.modulus_id === 105);
-
   const [open, setOpen] = useState(false);
   const [paginate, setPaginate] = useState({});
   const [products, setProducts] = useState([]);
@@ -31,7 +29,6 @@ const Seven = ({ data }: any) => {
   const [activeColor, setActiveColor] = useState(null);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-
   const shop_load = parseInt(paginateModule?.status);
   const pageShop = shop_load === 1 ? data?.page : page;
 

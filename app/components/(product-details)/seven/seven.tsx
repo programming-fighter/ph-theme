@@ -1,8 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { SwiperSlide } from "swiper/react";
-import httpReq from "@/app/utils/http/axios/http.service";
-import useTheme from "@/app/hooks/use-theme";
 import Details from "./details";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { profileImg } from "@/app/site-settings/siteUrl";
@@ -14,8 +12,8 @@ import SliderFive from "../../(slider)/slider-five";
 import Card12 from "../../(card)/card12";
 import { UpdateData } from "../../product-details";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import { getProductDetails, getRelatedProducts } from "./apis";
+import { useEffect, useState } from "react";
+import { getProductDetails, getRelatedProducts, getReviews } from "./apis";
 
 interface Props {
   data: any;
@@ -23,40 +21,6 @@ interface Props {
 }
 
 const Seven = ({ data, updatedData }: Props) => {
-  // const { store_id } = useTheme();
-
-  // const [relatedProduct, setRelatedProduct] = useState([]);
-  // const [reviews, setReview] = useState([]);
-  // const [productDetails, setProductDetails] = useState<any>([]);
-
-  // useEffect(() => {
-  //   data["store_id"] = store_id;
-
-  //   httpReq.post("product-details", data).then((res: any) => {
-  //     if (!res?.error) {
-  //       setProductDetails(res?.product);
-  //     }
-  //   });
-
-  //   httpReq.post("get/review", data).then((res: any) => {
-  //     if (!res?.error) {
-  //       setReview(res);
-  //     } else {
-  //       setReview([]);
-  //     }
-  //   });
-
-  //   httpReq.post("related-product", { id: data?.product_id }).then((res) => {
-  //     if (!res?.error) {
-  //       setRelatedProduct(res);
-  //     }
-  //   });
-  // }, [data, store_id]);
-
-  // const getProductDetails = async (updatedData: any) => {
-  //   return await httpReq.post("/product-details", updatedData);
-  // };
-
   const {
     data: productDetailsData,
     isLoading: isProductDetailsLoading,
@@ -77,23 +41,24 @@ const Seven = ({ data, updatedData }: Props) => {
     enabled: !!updatedData.slug && !!updatedData.store_id,
   });
 
-  // const { product, variant, vrcolor } = productDetailsData || {};
+  const {
+    data: reviews,
+    isLoading: isReviewsLoading,
+    isError: isReviewsError,
+  } = useQuery({
+    queryKey: ["rv-7"],
+    queryFn: () => getReviews(updatedData),
+    enabled: !!updatedData.slug && !!updatedData.store_id,
+  });
 
-  if (isProductDetailsLoading || isRelatedProductLoading) return <p>loading</p>;
+  if (isProductDetailsLoading || isRelatedProductLoading || isReviewsLoading)
+    return <p>loading</p>;
 
   const datax = {
     product: productDetailsData?.product,
     variant: productDetailsData?.variant,
     vrcolor: productDetailsData?.vrcolor,
   };
-
-  // return <p>hello</p>;
-
-  console.log(updatedData, "updateData");
-
-  console.log({ productDetailsData });
-  // console.log({ relatedProducts });
-  console.log({ datax });
 
   return (
     <div className="container px-5">
@@ -145,7 +110,7 @@ const Seven = ({ data, updatedData }: Props) => {
               text={"Product Details"}
               desc={productDetailsData?.product?.description}
             />
-            {/* <According text={"Customer Reviews"} desc={reviews} /> */}
+            <According text={"Customer Reviews"} desc={reviews} />
           </Details>
           {relatedProducts && <Related product={relatedProducts} />}
         </>
@@ -154,60 +119,6 @@ const Seven = ({ data, updatedData }: Props) => {
       )}
     </div>
   );
-
-  // return (
-  //   <div className="container px-5">
-  //     <Details data={data}>
-  //       <div className="h-[1px] bg-gray-300 w-full "></div>
-  //       <div className="flex flex-col space-y-3 font-seven">
-  //         <div className="flex items-center gap-x-3 py-3">
-  //           <div className="font-semibold text-[#212121] font-seven">
-  //             Availability:
-  //           </div>
-  //           <div className="text-sm">
-  //             {productDetails?.quantity !== "0" ? (
-  //               <p>
-  //                 <span className="font-medium">
-  //                   {productDetails?.quantity}
-  //                 </span>{" "}
-  //                 <span className="text-green-500">In Stock!</span>
-  //               </p>
-  //             ) : (
-  //               <span className="text-red-600">Out of Stock!</span>
-  //             )}
-  //           </div>
-  //         </div>
-  //         <p className="text-sm text-[#5a5a5a] font-seven">
-  //           <span className="font-semibold text-[#212121] font-seven">
-  //             SKU:
-  //           </span>{" "}
-  //           {productDetails?.SKU}
-  //         </p>
-  //         <p className="text-sm text-[#5a5a5a] font-seven">
-  //           <span className="font-semibold text-[#212121] font-seven">
-  //             Category:
-  //           </span>{" "}
-  //           {productDetails?.category}
-  //         </p>
-  //         {productDetails?.tags && (
-  //           <p className="text-sm text-[#5a5a5a] font-seven">
-  //             <span className="font-semibold text-[#212121] font-seven">
-  //               Tags:
-  //             </span>{" "}
-  //             {productDetails?.tags}
-  //           </p>
-  //         )}
-  //       </div>
-  //       <div className="h-[1px] bg-gray-300 w-full "></div>
-  //       <According
-  //         text={"Product Details"}
-  //         desc={productDetails?.description}
-  //       />
-  //       <According text={"Customer Reviews"} desc={reviews} />
-  //     </Details>
-  //     <Related product={relatedProduct} />
-  //   </div>
-  // );
 };
 
 export default Seven;
