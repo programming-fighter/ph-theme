@@ -1,6 +1,6 @@
 "use client";
 import { useParams } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Seven from "./(product-details)/seven/seven";
 import Three from "./(product-details)/three/three";
 import Fourteen from "./(product-details)/fourteen/fourteen";
@@ -73,9 +73,30 @@ import ThirtyEight from "./(product-details)/thirty-eight/thirty-eight";
 import ThirtyNine from "./(product-details)/thirty-nine/thirty-nine";
 import Forty from "./(product-details)/forty/forty";
 
+export interface UpdateData {
+  product_id: string;
+  store_id: number;
+  slug: string;
+}
+
 const ProductDetails = () => {
-  const { productID: product_id, slug } = useParams();
-  const { design } = useTheme();
+  const { productID: product_id, slug } = useParams<{
+    productID: string;
+    slug: string;
+  }>();
+  const { design, store_id } = useTheme();
+
+  console.log({ product_id, slug, store_id }, "productID");
+
+  const [updatedData, setUpdatedData] = useState<UpdateData>({
+    product_id: "",
+    store_id: 0,
+    slug: "",
+  });
+
+  useEffect(() => {
+    setUpdatedData({ product_id, store_id, slug });
+  }, [product_id, store_id, slug]);
 
   return (
     <>
@@ -98,7 +119,7 @@ const ProductDetails = () => {
         <Six data={{ product_id, slug }} />
       )}
       {design?.single_product_page === "seven" && (
-        <Seven data={{ product_id, slug }} />
+        <Seven updatedData={updatedData} data={{ product_id, slug }} />
       )}
       {design?.single_product_page === "eight" && (
         <Eight data={{ product_id, slug }} />

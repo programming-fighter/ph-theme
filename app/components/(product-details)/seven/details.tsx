@@ -21,14 +21,15 @@ import Link from "next/link";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
 
-const Details = ({ data, children, open, setOpen }: any) => {
+const Details = ({ data, children, open, setOpen, datax }: any) => {
+  const { product, variant, vrcolor } = datax;
   const { makeid, store_id, headerSetting, bookingData } = useTheme();
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState<any>({});
-  const [variant, setVariant] = useState<any>([]);
+  // const [product, setProduct] = useState<any>({});
+  // const [variant, setVariant] = useState<any>([]);
   const [filterV, setFilterV] = useState<any>([]);
-  const [vrcolor, setVrcolor] = useState([]);
+  // const [vrcolor, setVrcolor] = useState([]);
   const [load, setLoad] = useState(false);
   const [openBooking, setOpenBooking] = useState(false);
 
@@ -51,11 +52,10 @@ const Details = ({ data, children, open, setOpen }: any) => {
     const fetchData = async () => {
       data["store_id"] = store_id;
       // get the data from the api
-      const { product, variant, vrcolor } = await httpReq.post(
-        "product-details",
-        data
-      );
-      const res = await httpReq.post("product-details", data);
+      // const { product, variant, vrcolor } = await httpReq.post(
+      //   "product-details",
+      //   data
+      // );
 
       const response = await getCampaignProduct(product, store_id);
 
@@ -66,9 +66,9 @@ const Details = ({ data, children, open, setOpen }: any) => {
       }
 
       // set state with the result
-      setProduct(product);
-      setVariant(variant);
-      setVrcolor(vrcolor);
+      // setProduct(product);
+      // setVariant(variant);
+      // setVrcolor(vrcolor);
       setColor(null);
       setSize(null);
       setUnit(null);
@@ -307,6 +307,8 @@ const Details = ({ data, children, open, setOpen }: any) => {
 
   const buttonSeven =
     "font-bold text-white bg-gray-600 rounded-md w-60 text-center py-3 font-seven lg:cursor-pointer";
+
+  console.log(datax, "datax from details");
 
   return (
     <div className="pt-5 pb-20 bg-white">

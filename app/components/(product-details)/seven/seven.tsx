@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SwiperSlide } from "swiper/react";
 import httpReq from "@/app/utils/http/axios/http.service";
@@ -13,91 +12,202 @@ import SectionHeadingSeven from "../../(section-heading)/section-heading-seven";
 import Arrow from "@/app/utils/arrow";
 import SliderFive from "../../(slider)/slider-five";
 import Card12 from "../../(card)/card12";
+import { UpdateData } from "../../product-details";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { getProductDetails, getRelatedProducts } from "./apis";
 
-const Seven = ({ data }: any) => {
-  const { store_id } = useTheme();
+interface Props {
+  data: any;
+  updatedData: UpdateData;
+}
 
-  const [relatedProduct, setRelatedProduct] = useState([]);
-  const [reviews, setReview] = useState([]);
-  const [productDetails, setProductDetails] = useState<any>([]);
+const Seven = ({ data, updatedData }: Props) => {
+  // const { store_id } = useTheme();
 
-  useEffect(() => {
-    data["store_id"] = store_id;
+  // const [relatedProduct, setRelatedProduct] = useState([]);
+  // const [reviews, setReview] = useState([]);
+  // const [productDetails, setProductDetails] = useState<any>([]);
 
-    httpReq.post("product-details", data).then((res: any) => {
-      if (!res?.error) {
-        setProductDetails(res?.product);
-      }
-    });
+  // useEffect(() => {
+  //   data["store_id"] = store_id;
 
-    httpReq.post("get/review", data).then((res: any) => {
-      if (!res?.error) {
-        setReview(res);
-      } else {
-        setReview([]);
-      }
-    });
+  //   httpReq.post("product-details", data).then((res: any) => {
+  //     if (!res?.error) {
+  //       setProductDetails(res?.product);
+  //     }
+  //   });
 
-    httpReq.post("related-product", { id: data?.product_id }).then((res) => {
-      if (!res?.error) {
-        setRelatedProduct(res);
-      }
-    });
-  }, [data, store_id]);
+  //   httpReq.post("get/review", data).then((res: any) => {
+  //     if (!res?.error) {
+  //       setReview(res);
+  //     } else {
+  //       setReview([]);
+  //     }
+  //   });
+
+  //   httpReq.post("related-product", { id: data?.product_id }).then((res) => {
+  //     if (!res?.error) {
+  //       setRelatedProduct(res);
+  //     }
+  //   });
+  // }, [data, store_id]);
+
+  // const getProductDetails = async (updatedData: any) => {
+  //   return await httpReq.post("/product-details", updatedData);
+  // };
+
+  const {
+    data: productDetailsData,
+    isLoading: isProductDetailsLoading,
+    isError: isProductDetailsError,
+  } = useQuery({
+    queryKey: ["pd-7"],
+    queryFn: () => getProductDetails(updatedData),
+    enabled: !!updatedData.slug && !!updatedData.store_id,
+  });
+
+  const {
+    data: relatedProducts,
+    isLoading: isRelatedProductLoading,
+    isError: isRelatedProductError,
+  } = useQuery({
+    queryKey: ["rp-7"],
+    queryFn: () => getRelatedProducts(updatedData?.product_id),
+    enabled: !!updatedData.slug && !!updatedData.store_id,
+  });
+
+  // const { product, variant, vrcolor } = productDetailsData || {};
+
+  if (isProductDetailsLoading || isRelatedProductLoading) return <p>loading</p>;
+
+  const datax = {
+    product: productDetailsData?.product,
+    variant: productDetailsData?.variant,
+    vrcolor: productDetailsData?.vrcolor,
+  };
+
+  // return <p>hello</p>;
+
+  console.log(updatedData, "updateData");
+
+  console.log({ productDetailsData });
+  // console.log({ relatedProducts });
+  console.log({ datax });
 
   return (
     <div className="container px-5">
-      <Details data={data}>
-        <div className="h-[1px] bg-gray-300 w-full "></div>
-        <div className="flex flex-col space-y-3 font-seven">
-          <div className="flex items-center gap-x-3 py-3">
-            <div className="font-semibold text-[#212121] font-seven">
-              Availability:
-            </div>
-            <div className="text-sm">
-              {productDetails?.quantity !== "0" ? (
-                <p>
-                  <span className="font-medium">
-                    {productDetails?.quantity}
+      {productDetailsData?.product ? (
+        <>
+          <Details data={data} datax={datax}>
+            <div className="h-[1px] bg-gray-300 w-full "></div>
+            <div className="flex flex-col space-y-3 font-seven">
+              <div className="flex items-center gap-x-3 py-3">
+                <div className="font-semibold text-[#212121] font-seven">
+                  Availability:
+                </div>
+                <div className="text-sm">
+                  {productDetailsData?.product?.quantity !== "0" ? (
+                    <p>
+                      <span className="font-medium">
+                        {productDetailsData?.product?.quantity}
+                      </span>{" "}
+                      <span className="text-green-500">In Stock!</span>
+                    </p>
+                  ) : (
+                    <span className="text-red-600">Out of Stock!</span>
+                  )}
+                </div>
+              </div>
+              <p className="text-sm text-[#5a5a5a] font-seven">
+                <span className="font-semibold text-[#212121] font-seven">
+                  SKU:
+                </span>{" "}
+                {productDetailsData?.product?.SKU}
+              </p>
+              <p className="text-sm text-[#5a5a5a] font-seven">
+                <span className="font-semibold text-[#212121] font-seven">
+                  Category:
+                </span>{" "}
+                {productDetailsData?.product?.category}
+              </p>
+              {productDetailsData?.product?.tags && (
+                <p className="text-sm text-[#5a5a5a] font-seven">
+                  <span className="font-semibold text-[#212121] font-seven">
+                    Tags:
                   </span>{" "}
-                  <span className="text-green-500">In Stock!</span>
+                  {productDetailsData?.product?.tags}
                 </p>
-              ) : (
-                <span className="text-red-600">Out of Stock!</span>
               )}
             </div>
-          </div>
-          <p className="text-sm text-[#5a5a5a] font-seven">
-            <span className="font-semibold text-[#212121] font-seven">
-              SKU:
-            </span>{" "}
-            {productDetails?.SKU}
-          </p>
-          <p className="text-sm text-[#5a5a5a] font-seven">
-            <span className="font-semibold text-[#212121] font-seven">
-              Category:
-            </span>{" "}
-            {productDetails?.category}
-          </p>
-          {productDetails?.tags && (
-            <p className="text-sm text-[#5a5a5a] font-seven">
-              <span className="font-semibold text-[#212121] font-seven">
-                Tags:
-              </span>{" "}
-              {productDetails?.tags}
-            </p>
-          )}
-        </div>
-        <div className="h-[1px] bg-gray-300 w-full "></div>
-        <According
-          text={"Product Details"}
-          desc={productDetails?.description}
-        />
-        <According text={"Customer Reviews"} desc={reviews} />
-      </Details>
-      <Related product={relatedProduct} />
+            <div className="h-[1px] bg-gray-300 w-full "></div>
+            <According
+              text={"Product Details"}
+              desc={productDetailsData?.product?.description}
+            />
+            {/* <According text={"Customer Reviews"} desc={reviews} /> */}
+          </Details>
+          {relatedProducts && <Related product={relatedProducts} />}
+        </>
+      ) : (
+        <p>Loading product details...</p>
+      )}
     </div>
   );
+
+  // return (
+  //   <div className="container px-5">
+  //     <Details data={data}>
+  //       <div className="h-[1px] bg-gray-300 w-full "></div>
+  //       <div className="flex flex-col space-y-3 font-seven">
+  //         <div className="flex items-center gap-x-3 py-3">
+  //           <div className="font-semibold text-[#212121] font-seven">
+  //             Availability:
+  //           </div>
+  //           <div className="text-sm">
+  //             {productDetails?.quantity !== "0" ? (
+  //               <p>
+  //                 <span className="font-medium">
+  //                   {productDetails?.quantity}
+  //                 </span>{" "}
+  //                 <span className="text-green-500">In Stock!</span>
+  //               </p>
+  //             ) : (
+  //               <span className="text-red-600">Out of Stock!</span>
+  //             )}
+  //           </div>
+  //         </div>
+  //         <p className="text-sm text-[#5a5a5a] font-seven">
+  //           <span className="font-semibold text-[#212121] font-seven">
+  //             SKU:
+  //           </span>{" "}
+  //           {productDetails?.SKU}
+  //         </p>
+  //         <p className="text-sm text-[#5a5a5a] font-seven">
+  //           <span className="font-semibold text-[#212121] font-seven">
+  //             Category:
+  //           </span>{" "}
+  //           {productDetails?.category}
+  //         </p>
+  //         {productDetails?.tags && (
+  //           <p className="text-sm text-[#5a5a5a] font-seven">
+  //             <span className="font-semibold text-[#212121] font-seven">
+  //               Tags:
+  //             </span>{" "}
+  //             {productDetails?.tags}
+  //           </p>
+  //         )}
+  //       </div>
+  //       <div className="h-[1px] bg-gray-300 w-full "></div>
+  //       <According
+  //         text={"Product Details"}
+  //         desc={productDetails?.description}
+  //       />
+  //       <According text={"Customer Reviews"} desc={reviews} />
+  //     </Details>
+  //     <Related product={relatedProduct} />
+  //   </div>
+  // );
 };
 
 export default Seven;
@@ -185,7 +295,7 @@ const Related = ({ product }: any) => {
               {/* <ProductCardTwo item={item} /> */}
               <Card12 item={item} />
             </SwiperSlide>
-          ))} 
+          ))}
         </SliderFive>
       </div>
     </div>
