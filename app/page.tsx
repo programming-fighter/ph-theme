@@ -1,16 +1,22 @@
-"use client";
-import { usePathname } from "next/navigation";
-import React, { Suspense } from "react";
+import React from "react";
 import HomePage from "./components/home";
-import dynamic from "next/dynamic";
-// const HomePage = dynamic(() => import("./components/home"));
+import { headers } from "next/headers";
+import axios from "axios";
 
-// const HomePage = React.lazy(() => import("./components/home"));
+export default async function Home() {
+  const headersList = headers();
+  const host = headersList.get("host");
+  const forwardedPath = headersList.get("x-forwarded-path") || "";
+  const url = `${host}${forwardedPath}`;
 
-export default function Home() {
-  const domain = window.location.host;
-  const cleanedDomain = domain.startsWith("www.") ? domain.slice(4) : domain;
-  console.log(cleanedDomain, 'cleanedDomain');
+  const res = await axios.post(
+    "https://admin.ebitans.com/api/v1/getsubdomain/name",
+    {
+      name: url,
+    }
+  );
 
-  return <HomePage domain={cleanedDomain} />;
+  const { layout, design } = res?.data;
+
+  return <HomePage layoutx={layout} queryDatax={res?.data} design={design} />;
 }

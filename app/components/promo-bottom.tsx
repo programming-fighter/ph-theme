@@ -61,7 +61,6 @@ const PromoBottom = ({ banner, theme, brand }: any) => {
       )}
       {theme === "twentyseven" && <PromoBottomTwentySeven banner={banner} />}
       {theme === "twentyeight" && <PromoBottomTwentyEight banner={banner} />}
-
       {theme === "twentynine" && <PromoBottomTwentySeven banner={banner} />}
       {theme === "thirty" && <PromoBottomThirty banner={banner} />}
       {theme === "thirtyone" && <PromoBottomThirtyOne banner={banner} />}

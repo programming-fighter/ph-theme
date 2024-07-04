@@ -14,6 +14,7 @@ import { UpdateData } from "../../product-details";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { getProductDetails, getRelatedProducts, getReviews } from "./apis";
+import SkeletonWrapper from "../../skeleton-wrapper";
 
 interface Props {
   data: any;
@@ -25,6 +26,8 @@ const Seven = ({ data, updatedData }: Props) => {
     data: productDetailsData,
     isLoading: isProductDetailsLoading,
     isError: isProductDetailsError,
+    isFetched,
+    fetchStatus,
   } = useQuery({
     queryKey: ["pd-7"],
     queryFn: () => getProductDetails(updatedData),
@@ -51,8 +54,12 @@ const Seven = ({ data, updatedData }: Props) => {
     enabled: !!updatedData.slug && !!updatedData.store_id,
   });
 
-  if (isProductDetailsLoading || isRelatedProductLoading || isReviewsLoading)
-    return <p>loading</p>;
+  if (isProductDetailsLoading || isReviewsLoading) return <p>loading</p>;
+
+  // Ensure data is ready before rendering
+  if (!productDetailsData || !reviews) {
+    return <p>No data available</p>;
+  }
 
   const datax = {
     product: productDetailsData?.product,
@@ -60,63 +67,70 @@ const Seven = ({ data, updatedData }: Props) => {
     vrcolor: productDetailsData?.vrcolor,
   };
 
+  console.log(isFetched, "isFetch");
+  console.log("fetchStatus", fetchStatus);
+
   return (
     <div className="container px-5">
-      {productDetailsData?.product ? (
-        <>
-          <Details data={data} datax={datax}>
-            <div className="h-[1px] bg-gray-300 w-full "></div>
-            <div className="flex flex-col space-y-3 font-seven">
-              <div className="flex items-center gap-x-3 py-3">
-                <div className="font-semibold text-[#212121] font-seven">
-                  Availability:
-                </div>
-                <div className="text-sm">
-                  {productDetailsData?.product?.quantity !== "0" ? (
-                    <p>
-                      <span className="font-medium">
-                        {productDetailsData?.product?.quantity}
-                      </span>{" "}
-                      <span className="text-green-500">In Stock!</span>
-                    </p>
-                  ) : (
-                    <span className="text-red-600">Out of Stock!</span>
-                  )}
-                </div>
+      <Details fetchStatus={fetchStatus} data={data} datax={datax}>
+        <div className="h-[1px] bg-gray-300 w-full "></div>
+        <div className="flex flex-col space-y-3 font-seven">
+          <SkeletonWrapper fetchStatus={fetchStatus} width={"200px"}>
+            <div className="flex items-center gap-x-3 py-3">
+              <div className="font-semibold text-[#212121] font-seven">
+                Availability:
               </div>
-              <p className="text-sm text-[#5a5a5a] font-seven">
-                <span className="font-semibold text-[#212121] font-seven">
-                  SKU:
-                </span>{" "}
-                {productDetailsData?.product?.SKU}
-              </p>
-              <p className="text-sm text-[#5a5a5a] font-seven">
-                <span className="font-semibold text-[#212121] font-seven">
-                  Category:
-                </span>{" "}
-                {productDetailsData?.product?.category}
-              </p>
-              {productDetailsData?.product?.tags && (
-                <p className="text-sm text-[#5a5a5a] font-seven">
-                  <span className="font-semibold text-[#212121] font-seven">
-                    Tags:
-                  </span>{" "}
-                  {productDetailsData?.product?.tags}
-                </p>
-              )}
+              <div className="text-sm">
+                {productDetailsData?.product?.quantity !== "0" ? (
+                  <p>
+                    <span className="font-medium">
+                      {productDetailsData?.product?.quantity}
+                    </span>{" "}
+                    <span className="text-green-500">In Stock!</span>
+                  </p>
+                ) : (
+                  <span className="text-red-600">Out of Stock!</span>
+                )}
+              </div>
             </div>
-            <div className="h-[1px] bg-gray-300 w-full "></div>
-            <According
-              text={"Product Details"}
-              desc={productDetailsData?.product?.description}
-            />
-            <According text={"Customer Reviews"} desc={reviews} />
-          </Details>
-          {relatedProducts && <Related product={relatedProducts} />}
-        </>
-      ) : (
-        <p>Loading product details...</p>
-      )}
+          </SkeletonWrapper>
+          <SkeletonWrapper fetchStatus={fetchStatus} width={"100px"}>
+            <p className="text-sm text-[#5a5a5a] font-seven">
+              <span className="font-semibold text-[#212121] font-seven">
+                SKU:
+              </span>
+              {productDetailsData?.product?.SKU}
+            </p>
+          </SkeletonWrapper>
+
+          <SkeletonWrapper fetchStatus={fetchStatus} width={"100px"}>
+            <p className="text-sm text-[#5a5a5a] font-seven">
+              <span className="font-semibold text-[#212121] font-seven">
+                Category:
+              </span>{" "}
+              {productDetailsData?.product?.category}
+            </p>
+          </SkeletonWrapper>
+
+          {productDetailsData?.product?.tags && (
+            <SkeletonWrapper fetchStatus={fetchStatus} width={"100px"}>
+              <p className="text-sm text-[#5a5a5a] font-seven">
+                <span className="font-semibold text-[#212121] font-seven">
+                  Tags:
+                </span>{" "}
+                {productDetailsData?.product?.tags}
+              </p>
+            </SkeletonWrapper>
+          )}
+        </div>
+        <div className="h-[1px] bg-gray-300 w-full "></div>
+        <According
+          text={"Product Details"}
+          desc={productDetailsData?.product?.description}
+        />
+        <According text={"Customer Reviews"} desc={reviews} />
+      </Details>
+      {relatedProducts && <Related product={relatedProducts} />}
     </div>
   );
 };

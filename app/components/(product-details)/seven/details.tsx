@@ -20,8 +20,18 @@ import BookingForm from "../../booking-form";
 import Link from "next/link";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import SkeletonWrapper from "../../skeleton-wrapper";
 
-const Details = ({ data, children, open, setOpen, datax }: any) => {
+const Details = ({
+  data,
+  children,
+  open,
+  setOpen,
+  datax,
+  fetchStatus,
+}: any) => {
   const { product, variant, vrcolor } = datax;
   const { makeid, store_id, headerSetting, bookingData } = useTheme();
   const dispatch = useDispatch();
@@ -308,8 +318,6 @@ const Details = ({ data, children, open, setOpen, datax }: any) => {
   const buttonSeven =
     "font-bold text-white bg-gray-600 rounded-md w-60 text-center py-3 font-seven lg:cursor-pointer";
 
-  console.log(datax, "datax from details");
-
   return (
     <div className="pt-5 pb-20 bg-white">
       <div className="grid grid-cols-1 md:grid-cols-9 gap-x-10 gap-y-5">
@@ -352,11 +360,17 @@ const Details = ({ data, children, open, setOpen, datax }: any) => {
                       className={`w-full h-full flex justify-center`}
                       key={idx}
                     >
-                      <img
-                        className="w-auto max-h-[500px] border-2 border-gray-200"
-                        src={productImg + data}
-                        alt=""
-                      />
+                      <SkeletonWrapper
+                        fetchStatus={fetchStatus}
+                        height={"600px"}
+                        width={"400px"}
+                      >
+                        <img
+                          className="w-auto max-h-[500px] border-2 border-gray-200"
+                          src={productImg + data}
+                          alt=""
+                        />
+                      </SkeletonWrapper>
                     </div>
                   ))}
               </div>
@@ -371,11 +385,17 @@ const Details = ({ data, children, open, setOpen, datax }: any) => {
                         product?.image.length === 1 && "col-span-2"
                       } w-full h-full flex justify-center`}
                     >
-                      <img
-                        className="w-auto max-h-[500px] border-2 border-gray-200"
-                        src={productImg + data}
-                        alt=""
-                      />
+                      <SkeletonWrapper
+                        fetchStatus={fetchStatus}
+                        height={"600px"}
+                        width={"400px"}
+                      >
+                        <img
+                          className="w-auto max-h-[500px] border-2 border-gray-200"
+                          src={productImg + data}
+                          alt=""
+                        />
+                      </SkeletonWrapper>
                     </div>
                   ))}
               </div>
@@ -384,37 +404,71 @@ const Details = ({ data, children, open, setOpen, datax }: any) => {
         )}
 
         <div className="md:col-span-4 space-y-8 font-seven">
-          <h2 className="text-2xl text-[#212121] font-bold mb-3">
+          <SkeletonWrapper
+            fetchStatus={fetchStatus}
+            width={"200px"}
+            height={"30px"}
+            className="mb-5"
+          >
+            <h2 className="text-2xl text-[#212121] font-bold mb-3">
+              {product?.name}
+            </h2>
+          </SkeletonWrapper>
+          {/* {fetchStatus === "idle" ? (
+            <h2 className="text-2xl text-[#212121] font-bold mb-3">
+              {product?.name}
+            </h2>
+          ) : (
+            <Skeleton width={"200px"} height={"30px"} className="mb-5" />
+          )} */}
+          {/* <h2 className="text-2xl text-[#212121] font-bold mb-3">
             {product?.name}
-          </h2>
-          <p className="text-sm text-[#5a5a5a] font-seven leading-8 apiHtml">
-            {parse(`${product?.description?.slice(0, 250)}`)}{" "}
-            {product?.description?.length > 250 && "..."}
-          </p>
+          </h2> */}
+          <SkeletonWrapper fetchStatus={fetchStatus} count={3} className="mb-6">
+            <p className="text-sm text-[#5a5a5a] font-seven leading-8 apiHtml">
+              {parse(`${product?.description?.slice(0, 250)}`)}{" "}
+              {product?.description?.length > 250 && "..."}
+            </p>
+          </SkeletonWrapper>
+          {/* 
+          {fetchStatus === "idle" ? (
+            <p className="text-sm text-[#5a5a5a] font-seven leading-8 apiHtml">
+              {parse(`${product?.description?.slice(0, 250)}`)}{" "}
+              {product?.description?.length > 250 && "..."}
+            </p>
+          ) : (
+            <Skeleton count={3} />
+          )} */}
 
-          <div className="flex justify-start items-center gap-x-4">
-            <div className="text-[#212121] text-2xl font-seven font-bold flex justify-start items-center gap-4">
-              <BDT />
-              {camp?.status === "active" ? campPrice : price}{" "}
-              {camp?.status !== "active" &&
-              (product?.discount_type === "no_discount" ||
-                product?.discount_price === "0.00") ? (
-                " "
-              ) : (
-                <span className="text-gray-500 font-thin line-through text-xl font-seven">
-                  <BDT />
-                  {regularPrice}
-                </span>
+          <SkeletonWrapper
+            fetchStatus={fetchStatus}
+            width={"200px"}
+            height={"30px"}
+          >
+            <div className="flex justify-start items-center gap-x-4">
+              <div className="text-[#212121] text-2xl font-seven font-bold flex justify-start items-center gap-4">
+                <BDT />
+                {camp?.status === "active" ? campPrice : price}{" "}
+                {camp?.status !== "active" &&
+                (product?.discount_type === "no_discount" ||
+                  product?.discount_price === "0.00") ? (
+                  " "
+                ) : (
+                  <span className="text-gray-500 font-thin line-through text-xl font-seven">
+                    <BDT />
+                    {regularPrice}
+                  </span>
+                )}
+              </div>
+              {/* <p className='line-through text-md text-gray-400'> ${product?.regular_price}</p> */}
+              {product?.discount_type === "percent" && (
+                <p className="text-md text-gray-400">
+                  {" "}
+                  {product?.discount_price}% Off
+                </p>
               )}
             </div>
-            {/* <p className='line-through text-md text-gray-400'> ${product?.regular_price}</p> */}
-            {product?.discount_type === "percent" && (
-              <p className="text-md text-gray-400">
-                {" "}
-                {product?.discount_price}% Off
-              </p>
-            )}
-          </div>
+          </SkeletonWrapper>
 
           {product?.quantity !== "0" && (
             <div className="h-[1px] bg-gray-300 w-full"></div>
