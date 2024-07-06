@@ -16,7 +16,7 @@ const LoaderOne = () => {
 
   return (
     <div
-      className="flex justify-center h-screen items-center"
+      className="flex justify-center min-h-screen min-w-screen items-center"
       style={{ backgroundColor: header_color, color: text_color }}
     >
       <div className="flex flex-col justify-center items-center">

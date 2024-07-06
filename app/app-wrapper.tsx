@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import ThemeProvider from "./hooks/theme-provider";
 import { Provider } from "react-redux";
 import store, { persistor } from "@/redux/store";
@@ -11,13 +11,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CartPopUp from "./components/cart-popup";
 const queryClient = new QueryClient();
 
-const AppWrapper = ({ children }: any) => {
+const AppWrapper = ({ children, design, headerSetting }: any) => {
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <Header />
+            <Header design={design} headerSetting={headerSetting} />
             {children}
             <Footer />
             <CartPopUp />

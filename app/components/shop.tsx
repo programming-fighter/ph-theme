@@ -41,7 +41,6 @@ import useTheme from "../hooks/use-theme";
 const ShopComponent = () => {
   const { design } = useTheme();
 
-  console.log(design?.shop_page, "shop page");
   return (
     <>
       {design?.shop_page === "default" && <One data={{}} />}

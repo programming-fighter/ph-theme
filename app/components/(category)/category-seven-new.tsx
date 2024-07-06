@@ -16,9 +16,10 @@ import httpReq from "@/app/utils/http/axios/http.service";
 import Skeleton from "../(loader)/skeleton";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card12 from "../(card)/card12";
+import delay from "delay";
 
-const CategorySeven = ({ data }: any) => {
-  const { category, module } = useTheme();
+const CategorySevenNew = ({ data, category }: any) => {
+  const { module } = useTheme();
 
   const paginateModule = module?.find((item: any) => item?.modulus_id === 105);
 
@@ -33,8 +34,20 @@ const CategorySeven = ({ data }: any) => {
   const [hasMore, setHasMore] = useState(true);
   const [dataId, setDataId] = useState(null);
 
+  // test
+  const [test, setTest] = useState(true);
+
   const shop_load = parseInt(paginateModule?.status);
   const pageShop = shop_load === 1 ? data?.page : page;
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await delay(100).then(() => setTest(true));
+  //     // other async operations
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     setPage(1);
@@ -43,133 +56,141 @@ const CategorySeven = ({ data }: any) => {
   }, [data]);
 
   return (
-    <div className="grid grid-cols-5 lg:gap-8 sm:container px-5 bg-white">
-      <div className="lg:col-span-1 lg:block hidden">
-        <div className="flex gap-3 py-10">
-          <Link href="/">
-            <span className="text-base text-gray-500">Home</span>
-          </Link>
-          <span className="text-base font-medium text-gray-500">/</span>
-          <span className="text-base text-gray-600 font-bold">Search</span>
-        </div>
-
-        <div className="mt-10 ">
-          <h1 className="mb-10 text-2xl text-gray-700 font-medium">Category</h1>
-          {category.map((item: any) => (
-            <div key={item.id} className="">
-              <SingleCat key={item?.id} item={item} />
+    <>
+      {test && (
+        <div className="grid grid-cols-5 lg:gap-8 sm:container px-5 bg-white">
+          <div className="lg:col-span-1 lg:block hidden">
+            <div className="flex gap-3 py-10">
+              <Link href="/">
+                <span className="text-base text-gray-500">Home</span>
+              </Link>
+              <span className="text-base font-medium text-gray-500">/</span>
+              <span className="text-base text-gray-600 font-bold">Search</span>
             </div>
-          ))}
-        </div>
-        <div className="bg-gray-100 border-2 border-gray-200 my-6 p-4">
-          <FilterByColor
-            id={data?.id}
-            setActiveColor={setActiveColor}
-            colors={colors}
-            activeColor={activeColor}
-            shop_load={shop_load}
-            setPage={setPage}
-            setHasMore={setHasMore}
-          />
-        </div>
-        <div className="bg-gray-100 border-2 border-gray-200 p-4">
-          <FilterByPrice
-            id={data?.id}
-            setVal={setVal}
-            val={val}
-            setPage={setPage}
-            setHasMore={setHasMore}
-          />
-        </div>
-      </div>
 
-      <div className="col-span-5 lg:col-span-4 w-full">
-        <div className="flex justify-between py-10">
-          <div>
-            <h1 className="text-3xl lg:block hidden font-semibold">Products</h1>
-            <div
-              onClick={() => setOpen(!open)}
-              className="lg:cursor-pointer border-2 border-gray-100 rounded-lg justify-between px-3 w-32 py-2 lg:hidden items-center flex gap-3"
-            >
-              <HiOutlineAdjustments className="rotate-90 text-xl" />
-              <button className="text-xl">`Filter`</button>
+            <div className="mt-10 ">
+              <h1 className="mb-10 text-2xl text-gray-700 font-medium">
+                Category
+              </h1>
+              {category.map((item: any) => (
+                <div key={item.id} className="">
+                  <SingleCat key={item?.id} item={item} />
+                </div>
+              ))}
+            </div>
+            <div className="bg-gray-100 border-2 border-gray-200 my-6 p-4">
+              <FilterByColor
+                id={data?.id}
+                setActiveColor={setActiveColor}
+                colors={colors}
+                activeColor={activeColor}
+                shop_load={shop_load}
+                setPage={setPage}
+                setHasMore={setHasMore}
+              />
+            </div>
+            <div className="bg-gray-100 border-2 border-gray-200 p-4">
+              <FilterByPrice
+                id={data?.id}
+                setVal={setVal}
+                val={val}
+                setPage={setPage}
+                setHasMore={setHasMore}
+              />
             </div>
           </div>
-          <div>
-            <Filter
-              onChange={(e: any) => {
-                setSort(e.target.value);
-                setPage(1);
-                setHasMore(true);
-              }}
-              paginate={paginate}
-              setOpen={setOpen}
-              open={open}
-            />
-          </div>
-        </div>
 
-        <div>
-          <Product
-            dataId={dataId}
-            page={pageShop}
-            sort={sort}
-            open={open}
-            products={products}
-            setProducts={setProducts}
-            setPaginate={setPaginate}
-            setColors={setColors}
-            activeColor={activeColor}
-            val={val}
-            setPage={setPage}
-            shop_load={shop_load}
-            setHasMore={setHasMore}
-            hasMore={hasMore}
-          />
-        </div>
-        {shop_load === 1 && (
-          <div className="my-5">
-            <Pagination data={data} paginate={paginate} />
-          </div>
-        )}
-      </div>
-
-      {/* tablet and mobile view  */}
-
-      <div className="block py-6 lg:hidden">
-        <ul
-          className={`lg:hidden bg-white fixed md:w-128 w-96 top-0 overflow-y-auto bottom-0 -ml-32 pb-5 duration-1000 z-10 lg:cursor-pointer ${
-            open ? "left-0" : "left-[-120%]"
-          }`}
-        >
-          <div className="flex py-4  items-center lg:hidden px-10 border-b-2 border-gray-100 pb-8 ml-20">
-            <ArrowLeftIcon
-              onClick={() => setOpen(!open)}
-              className="h-5 basis-2/4"
-            />
-            <h3 className=" basis-2/4 text-2xl font-medium text-gray-700">
-              Filters
-            </h3>
-          </div>
-          <hr className="mr-10 ml-44" />
-          <div className="mt-10 ml-36">
-            <h1 className="mb-10 text-2xl text-gray-700 font-medium">
-              Category
-            </h1>
-
-            {category.map((item: any) => (
-              <div key={item.id} className="">
-                <SingleCat item={item} />
+          <div className="col-span-5 lg:col-span-4 w-full">
+            <div className="flex justify-between py-10">
+              <div>
+                <h1 className="text-3xl lg:block hidden font-semibold">
+                  Products
+                </h1>
+                <div
+                  onClick={() => setOpen(!open)}
+                  className="lg:cursor-pointer border-2 border-gray-100 rounded-lg justify-between px-3 w-32 py-2 lg:hidden items-center flex gap-3"
+                >
+                  <HiOutlineAdjustments className="rotate-90 text-xl" />
+                  <button className="text-xl">`Filter`</button>
+                </div>
               </div>
-            ))}
+              <div>
+                <Filter
+                  onChange={(e: any) => {
+                    setSort(e.target.value);
+                    setPage(1);
+                    setHasMore(true);
+                  }}
+                  paginate={paginate}
+                  setOpen={setOpen}
+                  open={open}
+                />
+              </div>
+            </div>
+
+            <div>
+              <Product
+                dataId={dataId}
+                page={pageShop}
+                sort={sort}
+                open={open}
+                products={products}
+                setProducts={setProducts}
+                setPaginate={setPaginate}
+                setColors={setColors}
+                activeColor={activeColor}
+                val={val}
+                setPage={setPage}
+                shop_load={shop_load}
+                setHasMore={setHasMore}
+                hasMore={hasMore}
+              />
+            </div>
+            {shop_load === 1 && (
+              <div className="my-5">
+                <Pagination data={data} paginate={paginate} />
+              </div>
+            )}
           </div>
-        </ul>
-      </div>
-    </div>
+
+          {/* tablet and mobile view  */}
+
+          <div className="block py-6 lg:hidden">
+            <ul
+              className={`lg:hidden bg-white fixed md:w-128 w-96 top-0 overflow-y-auto bottom-0 -ml-32 pb-5 duration-1000 z-10 lg:cursor-pointer ${
+                open ? "left-0" : "left-[-120%]"
+              }`}
+            >
+              <div className="flex py-4  items-center lg:hidden px-10 border-b-2 border-gray-100 pb-8 ml-20">
+                <ArrowLeftIcon
+                  onClick={() => setOpen(!open)}
+                  className="h-5 basis-2/4"
+                />
+                <h3 className=" basis-2/4 text-2xl font-medium text-gray-700">
+                  Filters
+                </h3>
+              </div>
+              <hr className="mr-10 ml-44" />
+              <div className="mt-10 ml-36">
+                <h1 className="mb-10 text-2xl text-gray-700 font-medium">
+                  Category
+                </h1>
+
+                {category.map((item: any) => (
+                  <div key={item.id} className="">
+                    <SingleCat item={item} />
+                  </div>
+                ))}
+              </div>
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
-export default CategorySeven;
+export default CategorySevenNew;
 
 const Product = ({
   products,
@@ -220,14 +241,14 @@ const Product = ({
     );
 
     if (error) {
-      const res = await httpReq.post(
-        `getsubcatproduct${
-          page ? (shop_load === 1 ? page : `?page=${page}`) : `?page=1`
-        }&filter=${sort}&priceFilter=${
-          Number(val) !== 0 ? Number(val) : ""
-        }&colorFilter=${activeColor ? encodeURIComponent(activeColor) : ""}`,
-        { id: dataId }
-      );
+      // const res = await httpReq.post(
+      //   `getsubcatproduct${
+      //     page ? (shop_load === 1 ? page : `?page=${page}`) : `?page=1`
+      //   }&filter=${sort}&priceFilter=${
+      //     Number(val) !== 0 ? Number(val) : ""
+      //   }&colorFilter=${activeColor ? encodeURIComponent(activeColor) : ""}`,
+      //   { id: dataId }
+      // );
 
       const { colors, data, error } = await httpReq.post(
         `getsubcatproduct${

@@ -13,10 +13,10 @@ import CategorySeven from "./category-seven";
 import { BottomCart } from "../card-popup-three";
 import SideMenu from "../header-three/side-menu";
 
-const HeaderSeven = () => {
+const HeaderSeven = ({ headerSetting, design }: any) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state: any) => state.auth);
-  const { headerSetting, userData, design } = useTheme();
+  const { userData } = useTheme();
   const [open, setOpen] = useState(false);
   const [searchTxt, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState(false);

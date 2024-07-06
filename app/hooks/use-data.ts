@@ -382,6 +382,8 @@ const useData = () => {
         productByFirstCategory,
       } = res?.data;
 
+      console.log(category, "category");
+
       if (token && v) {
         const user = await httpReq.get("getuser");
 
