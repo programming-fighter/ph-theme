@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import FilterByColor from "../filter-by-color";
 import FilterByPrice from "../filter-by-price";
 import { HiOutlineAdjustments } from "react-icons/hi";
@@ -14,26 +14,43 @@ import Card12 from "../(card)/card12";
 import useTheme from "@/app/hooks/use-theme";
 import { useParams } from "next/navigation";
 import httpReq from "@/app/utils/http/axios/http.service";
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import PaginationComponent from "./pagination-new";
+import FilterByColorNew from "./filter-by-color-new";
 
-const fetchData = async (id: any, sort: string, page: number) => {
-  // get the data from the api
-  const { colors, data, error } = await httpReq.post(`getcatproducts`, {
-    id,
-  });
+const fetchData = async (
+  id: any,
+  sort: string,
+  page: number,
+  activeColor: any
+) => {
+  try {
+    const categoryResponse = await httpReq.post("getcatproducts", { id });
+    const { colors, data } = categoryResponse;
 
-  if (error) {
-    const { colors, data, error } = await httpReq.post(
-      `getsubcatproduct` + `?page=${page}&filter=${sort}`,
-      {
-        id,
-      }
-    );
-    return { data, colors };
+    if (data && data.length > 0) {
+      return { colors, data };
+    }
+  } catch (error) {
+    console.error(error);
   }
-  return { data, colors };
+
+  try {
+    // Encode activeColor using encodeURIComponent
+    const encodedColor = encodeURIComponent(activeColor);
+
+    const subcategoryResponse = await httpReq.post(
+      `getsubcatproduct?page=${page}&filter=${sort}&colorFilter=${encodedColor}`,
+      { id }
+    );
+    console.log("activeColor", activeColor);
+    const { colors, data } = subcategoryResponse;
+    return { colors, data };
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 const CategorySevenNew = () => {
@@ -45,13 +62,14 @@ const CategorySevenNew = () => {
   //
   const [sort, setSort] = useState("za");
   const [page, setPage] = useState(1);
+  const [activeColor, setActiveColor] = useState("");
 
-  const { data, isLoading, status } = useQuery({
-    queryKey: ["category-products", id, sort, page],
-    queryFn: () => fetchData(id, sort, page),
+  const { data, status, refetch } = useQuery({
+    queryKey: ["category-products", id, sort, page, activeColor],
+    queryFn: () => fetchData(id, sort, page, activeColor),
+    placeholderData: keepPreviousData,
   });
 
-  console.log(sort, "sort");
   return (
     <>
       <div className="grid grid-cols-5 lg:gap-8 sm:container px-5 bg-white">
@@ -75,7 +93,11 @@ const CategorySevenNew = () => {
             ))}
           </div>
           <div className="bg-gray-100 border-2 border-gray-200 my-6 p-4">
-            <FilterByColor colors={data?.colors} />
+            <FilterByColorNew
+              colors={data?.colors}
+              setActiveColor={setActiveColor}
+              activeColor={activeColor}
+            />
           </div>
           <div className="bg-gray-100 border-2 border-gray-200 p-4">
             <FilterByPrice />
@@ -107,11 +129,28 @@ const CategorySevenNew = () => {
               />
             </div>
           </div>
-
-          <div>
-            {/* <Product products={data} /> */}
-
-            <Product products={data} status={status} sort={sort} />
+          <Product
+            products={data}
+            status={status}
+            sort={sort}
+            activeColor={activeColor}
+          />
+          {/* <button
+            className="px-5 py-2 bg-slate-400"
+            onClick={() => {
+              setPage((prev) => (prev === 1 ? 2 : 1));
+            }}
+            disabled={isPlaceholderData}
+          >
+            Pagination
+          </button> */}
+          <div className="md:mt-12 flex justify-center">
+            <PaginationComponent
+              lastPage={data?.data?.last_page}
+              setPage={setPage}
+              currentPage={data?.data?.current_page}
+              initialPage={page}
+            />
           </div>
         </div>
 
@@ -138,13 +177,11 @@ const CategorySevenNew = () => {
                 Category
               </h1>
 
-              <Suspense fallback={<p>Loading Category Data</p>}>
-                {category.map((item: any) => (
-                  <div key={item.id} className="">
-                    <SingleCat item={item} />
-                  </div>
-                ))}
-              </Suspense>
+              {category.map((item: any) => (
+                <div key={item.id} className="">
+                  <SingleCat item={item} />
+                </div>
+              ))}
             </div>
           </ul>
         </div>
@@ -155,7 +192,7 @@ const CategorySevenNew = () => {
 
 export default CategorySevenNew;
 
-const Product = ({ products, status, sort }: any) => {
+const Product = ({ products, status, sort, color }: any) => {
   return (
     <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-3 md:gap-3 xl:grid-cols-4 grid-cols-2 gap-2">
       {status === "pending" ? (
@@ -211,7 +248,7 @@ const Filter = ({ onChange }: any) => {
 };
 
 const SingleCat = ({ item }: any) => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   const styleCss = `
     .category-page .active{
