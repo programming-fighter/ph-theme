@@ -45,7 +45,7 @@ const ShopComponent = () => {
     <>
       {design?.shop_page === "default" && <One data={{}} />}
       {design?.shop_page === "one" && <One data={{}} />}
-      {design?.shop_page === "two" && <Two data={{}} />}?
+      {design?.shop_page === "two" && <Two data={{}} />}
       {design?.shop_page === "three" && <Three data={{}} />}
       {design?.shop_page === "four" && <Four data={{}} />}
       {design?.shop_page === "five" && <Five data={{}} />}

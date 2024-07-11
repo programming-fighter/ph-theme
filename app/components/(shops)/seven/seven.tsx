@@ -195,7 +195,7 @@ const Product = ({
     console.log(window.location.host, "host");
     // get the data from the api
     const { colors, data, error } = await httpReq.get(
-      `shoppage/products${
+      `/shoppage/products${
         page ? (shop_load === 1 ? page : `?page=${page}`) : `?page=1`
       }&name=${window.location.host}&filter=${sort}&priceFilter=${
         Number(val) !== 0 ? Number(val) : ""

@@ -117,7 +117,7 @@ const FooterSeven = ({
               {menu?.map((m: any) =>
                 m?.name !== "Category" ? (
                   <p key={m?.id}>
-                    <Link href={m?.url} className="menu-hover">
+                    <Link href={"/" + m?.url} className="menu-hover">
                       {" "}
                       {m?.name}
                     </Link>
