@@ -19,12 +19,14 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import PaginationComponent from "./pagination-new";
 import FilterByColorNew from "./filter-by-color-new";
+import FilterByPriceNew from "./filter-by-price-new";
 
 const fetchData = async (
   id: any,
   sort: string,
   page: number,
-  activeColor: any
+  activeColor: any,
+  priceValue: any
 ) => {
   try {
     const categoryResponse = await httpReq.post("getcatproducts", { id });
@@ -42,7 +44,7 @@ const fetchData = async (
     const encodedColor = encodeURIComponent(activeColor);
 
     const subcategoryResponse = await httpReq.post(
-      `getsubcatproduct?page=${page}&filter=${sort}&colorFilter=${encodedColor}`,
+      `getsubcatproduct?page=${page}&filter=${sort}&colorFilter=${encodedColor}&priceFilter=${priceValue}`,
       { id }
     );
     console.log("activeColor", activeColor);
@@ -59,14 +61,15 @@ const CategorySevenNew = () => {
   const { category } = useTheme();
   const { id } = useParams<{ id: string }>();
 
-  //
+  // filtering state
   const [sort, setSort] = useState("za");
   const [page, setPage] = useState(1);
   const [activeColor, setActiveColor] = useState("");
+  const [priceValue, setPriceValue] = useState("");
 
   const { data, status, refetch } = useQuery({
-    queryKey: ["category-products", id, sort, page, activeColor],
-    queryFn: () => fetchData(id, sort, page, activeColor),
+    queryKey: ["category-products", id, sort, page, activeColor, priceValue],
+    queryFn: () => fetchData(id, sort, page, activeColor, priceValue),
     placeholderData: keepPreviousData,
   });
 
@@ -100,7 +103,10 @@ const CategorySevenNew = () => {
             />
           </div>
           <div className="bg-gray-100 border-2 border-gray-200 p-4">
-            <FilterByPrice />
+            <FilterByPriceNew
+              priceValue={priceValue}
+              setPriceValue={setPriceValue}
+            />
           </div>
         </div>
 
@@ -292,7 +298,6 @@ const SingleCat = ({ item }: any) => {
             {item?.cat?.map((sub: any) => (
               <div key={sub.id} className="py-2 category-page">
                 <Link href={"/category/" + sub?.id}>
-                  {" "}
                   <p className={`pb-2 text-sm `}>{sub?.name}</p>
                 </Link>
                 <div className="pr-4">
