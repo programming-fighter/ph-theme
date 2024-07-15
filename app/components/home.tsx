@@ -9,27 +9,6 @@ import FeatureProduct from "./feature-product";
 import Testimonial from "./testimonial";
 import Promo from "./promo";
 
-interface Navigation {
-  name: string;
-  href: string;
-}
-
-interface GetComponentProps {
-  component:
-    | "header"
-    | "hero_slider"
-    | "feature_category"
-    | "banner"
-    | "product"
-    | "feature_product"
-    | "banner_bottom"
-    | "best_seller_product"
-    | "new_arrival"
-    | "testimonial"
-    | "footer";
-  data: any;
-}
-
 const HomePage = ({ layoutx, queryDatax, design }: any) => {
   return (
     <>
@@ -47,7 +26,7 @@ const HomePage = ({ layoutx, queryDatax, design }: any) => {
   );
 };
 
-const GetComponent = ({ component, data }: GetComponentProps) => {
+const GetComponent = ({ component, data }: any) => {
   const {
     headersetting,
     slider,
