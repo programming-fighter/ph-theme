@@ -29,29 +29,37 @@ const fetchData = async (
   priceValue: any
 ) => {
   try {
-    const categoryResponse = await httpReq.post("getcatproducts", { id });
-    const { colors, data } = categoryResponse;
-
-    if (data && data.length > 0) {
-      return { colors, data };
-    }
-  } catch (error) {
-    console.error(error);
-  }
-
-  try {
-    // Encode activeColor using encodeURIComponent
     const encodedColor = encodeURIComponent(activeColor);
-
-    const subcategoryResponse = await httpReq.post(
-      `getsubcatproduct?page=${page}&filter=${sort}&colorFilter=${encodedColor}&priceFilter=${priceValue}`,
+    const categoryResponse = await httpReq.post(
+      `getcatproducts?page=${page}&filter=${sort}&colorFilter=${encodedColor}&priceFilter=${priceValue}`,
       { id }
     );
-    console.log("activeColor", activeColor);
-    const { colors, data } = subcategoryResponse;
+    const { colors, data } = categoryResponse;
+
+    console.log(data, "categorydata");
+
+    if (!data) {
+      try {
+        // Encode activeColor using encodeURIComponent
+        const encodedColor = encodeURIComponent(activeColor);
+
+        const subcategoryResponse = await httpReq.post(
+          `getsubcatproduct?page=${page}&filter=${sort}&colorFilter=${encodedColor}&priceFilter=${priceValue}`,
+          { id }
+        );
+
+        const { colors, data } = subcategoryResponse;
+
+        console.log(data, "subcategorydata");
+        return { colors, data };
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
     return { colors, data };
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
   }
 };
 
