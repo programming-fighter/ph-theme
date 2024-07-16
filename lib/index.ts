@@ -1,10 +1,11 @@
 import axios from "axios";
 
-const getSubdomainName = async (url: string) => {
+const getSubdomainName = async (url: string, head?: string) => {
   const res = await axios.post(
     "https://admin.ebitans.com/api/v1/getsubdomain/name",
     {
       name: url,
+      head: head,
     }
   );
   return res?.data;
