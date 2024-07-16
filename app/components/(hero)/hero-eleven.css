@@ -1,5 +1,5 @@
 .heroElevenBgImage {
-  background-image: url("../../assets/img/heroElevenBg.webp");
+  background-image: url("/assets/img/heroElevenBg.webp");
   width: 100%;
   /* You must set a specified height */
   background-position: center; /* Center the image */

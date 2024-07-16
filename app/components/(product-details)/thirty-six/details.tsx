@@ -4,19 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import parse from "html-react-parser";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { useRouter } from "next/navigation";
-import { buyNow } from "@/app/utils/buy-now";
-import { getPrice } from "@/app/utils/get-price";
+import { buyNow } from "@/utils/buy-now";
+import { getPrice } from "@/utils/get-price";
 import {
   addToCartList,
   decrementQty,
   incrementQty,
 } from "@/redux/features/product.slice";
 import { HSlider } from "./slider";
-import BDT from "@/app/utils/bdt";
-import CallForPrice from "@/app/utils/call-for-price";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import OvalLoader from "../../(loader)/oval-loader";
 

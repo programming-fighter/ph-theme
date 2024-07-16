@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { useRouter } from "next/navigation";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { toast } from "react-toastify";
 import axios from "axios";
 import {
@@ -14,14 +14,14 @@ import {
   removeToCartList,
 } from "@/redux/features/product.slice";
 import { login } from "@/redux/features/auth.slice";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Link from "next/link";
 import { FaEdit } from "react-icons/fa";
 import MyModal from "@/app/components/modal";
 import { btnhover } from "@/app/site-settings/style";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 
 import "./checkout-five-order.css";
 

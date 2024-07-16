@@ -1,9 +1,9 @@
 "use client";
 import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
-import { getPrice } from "@/app/utils/get-price";
-import httpReq from "@/app/utils/http/axios/http.service";
-import Taka from "@/app/utils/taka";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import Taka from "@/utils/taka";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";

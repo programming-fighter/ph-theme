@@ -2,14 +2,14 @@
 import React, { useState } from "react";
 
 import parse from "html-react-parser";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import SectionHeadingTwentyNine from "../(section-heading)/section-heading-twentynine";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
-import BDT from "@/app/utils/bdt";
+import Rate from "@/utils/rate";
+import BDT from "@/utils/bdt";
 import { FaCartPlus } from "react-icons/fa";
 import { toast } from "react-toastify";
 

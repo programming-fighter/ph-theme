@@ -6,7 +6,7 @@ import { confirmAlert } from "react-confirm-alert";
 import { toast } from "react-toastify";
 import moment from "moment";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Link from "next/link";
 
 const Orders = () => {

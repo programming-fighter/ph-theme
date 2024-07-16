@@ -8,7 +8,7 @@ import useTheme from "@/app/hooks/use-theme";
 import Pagination from "../../(category)/pagination";
 import OvalLoader from "../../(loader)/oval-loader";
 import Link from "next/link";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Card69 from "../../(card)/card69";
 
 const Forty = ({ data }: any) => {

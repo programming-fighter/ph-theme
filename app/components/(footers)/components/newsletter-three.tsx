@@ -1,5 +1,5 @@
 "use client";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import React, { useRef } from "react";
 import { toast } from "react-toastify";
 

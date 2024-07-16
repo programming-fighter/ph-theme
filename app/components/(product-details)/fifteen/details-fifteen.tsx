@@ -15,8 +15,8 @@ import "swiper/css/thumbs";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getPrice } from "@/app/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/app/site-settings/siteUrl";
 const DetailsFifteen = ({ data }: any) => {

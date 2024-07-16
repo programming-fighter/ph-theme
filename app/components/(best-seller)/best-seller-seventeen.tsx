@@ -11,7 +11,7 @@ import {
 } from "react-scroll-parallax";
 import SectionHeadingSeventeen from "../(section-heading)/section-heading-seventeen";
 import Card31 from "../(card)/card31";
-import Arrowbetween from "@/app/utils/arrow-between";
+import Arrowbetween from "@/utils/arrow-between";
 import DefaultSlider from "../(slider)/default-slider";
 
 const BestSellerSeventeen = ({ best_sell_product, design, store_id }: any) => {

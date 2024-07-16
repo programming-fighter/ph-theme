@@ -1,9 +1,9 @@
 "use client";
 import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
-import BDT from "@/app/utils/bdt";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import QuikView from "../quick-view";

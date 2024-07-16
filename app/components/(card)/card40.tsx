@@ -1,8 +1,8 @@
 "use client";
 import { productImg } from "@/app/site-settings/siteUrl";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
-import Taka from "@/app/utils/taka";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
+import Taka from "@/utils/taka";
 import { LinkIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Link from "next/link";

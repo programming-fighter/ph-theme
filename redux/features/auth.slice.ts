@@ -1,5 +1,5 @@
 "use client";
-import authService from "@/app/utils/http/axios/auth.service";
+import authService from "@/utils/http/axios/auth.service";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 let user;

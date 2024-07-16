@@ -4,15 +4,15 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./product-card-one.css";
 import { BsBagPlus } from "react-icons/bs";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { EyeIcon } from "@heroicons/react/24/outline";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 import { toast } from "react-toastify";
 
 const ProductCardOne = ({ item, store_id }: any) => {

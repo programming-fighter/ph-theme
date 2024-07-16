@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Arrow from "@/app/utils/arrow";
+import Arrow from "@/utils/arrow";
 import SectionHeadingFive from "@/app/components/(section-heading)/section-heading-five";
 import DefaultSlider from "@/app/components/(slider)/default-slider";
 import { SwiperSlide } from "swiper/react";

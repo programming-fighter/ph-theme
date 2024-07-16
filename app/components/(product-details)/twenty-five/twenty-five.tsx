@@ -1,14 +1,14 @@
 "use client";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import React, { useState, useEffect } from "react";
 import { SwiperSlide } from "swiper/react";
 import Details from "./details";
 import { Tab } from "@headlessui/react";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import moment from "moment";
-import Arrow from "@/app/utils/arrow";
+import Arrow from "@/utils/arrow";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card50 from "../../(card)/card50";
 

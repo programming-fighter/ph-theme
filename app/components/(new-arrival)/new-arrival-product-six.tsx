@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 
 // import "./NewArrivalProductSix.css";
 import SectionHeadingSix from "../(section-heading)/section-heading-six";
-import ArrowSquare from "@/app/utils/arrow-square";
+import ArrowSquare from "@/utils/arrow-square";
 import SliderFive from "../(slider)/slider-five";
 import Card57 from "../(card)/card57";
 import Card7 from "../(card)/card7";
@@ -20,16 +20,16 @@ const NewArrivalProductSix = ({ product, design, store_id }: any) => {
   const next = "new_arrival_Next";
 
   return (
-    <div className=' sm:container px-5 sm:py-10 py-5 rounded-sm bg-white relative'>
-      <div className='my-5 pt-1 flex justify-between items-center '>
+    <div className=" sm:container px-5 sm:py-10 py-5 rounded-sm bg-white relative">
+      <div className="my-5 pt-1 flex justify-between items-center ">
         <SectionHeadingSix title={"New Arrival"} subtitle={""} />
       </div>
 
       <div
-        className='customHoverSix'
+        className="customHoverSix"
         style={{ border: "2px solid #f5f5f5", padding: "20px" }}
       >
-        <div className='flex top-5 absolute inset-1  items-center  '>
+        <div className="flex top-5 absolute inset-1  items-center  ">
           <ArrowSquare
             prevEl={prev}
             nextEl={next}
@@ -40,7 +40,7 @@ const NewArrivalProductSix = ({ product, design, store_id }: any) => {
           {product.slice(0, 10).map((productData: any) => {
             console.log(productData, "productData");
             return (
-              <SwiperSlide key={productData.id} className='flex justify-center'>
+              <SwiperSlide key={productData.id} className="flex justify-center">
                 <Card7 item={productData} store_id={store_id} />
               </SwiperSlide>
             );

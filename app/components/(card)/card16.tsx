@@ -1,6 +1,6 @@
 "use client";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import React, { useEffect, useState } from "react";
@@ -9,9 +9,9 @@ import Link from "next/link";
 import { AiOutlineSearch } from "react-icons/ai";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Image from "next/image";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 import { BsPlusLg } from "react-icons/bs";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import { toast } from "react-toastify";
 
 const Card16 = ({ item, design, store_id }: any) => {

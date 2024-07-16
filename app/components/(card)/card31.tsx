@@ -1,15 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { v4 as uuidv4 } from "uuid";
 
 import axios from "axios";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getCampaign } from "@/utils/http/get-campaign";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { AiOutlineSearch } from "react-icons/ai";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import { toast } from "react-toastify";
 const Card31 = ({ item, design, store_id, makeid }: any) => {
   const [open, setOpen] = useState(false);

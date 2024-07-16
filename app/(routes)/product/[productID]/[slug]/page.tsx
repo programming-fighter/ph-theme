@@ -2,7 +2,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 
 import ProductDetails from "@/app/components/product-details";
 import React, { cache } from "react";
-import getUrl from "@/app/utils/get-url";
+import getUrl from "@/utils/get-url";
 import { fetchDomainData, getProductDetails, getSubdomainName } from "@/lib";
 import { imgUrl } from "@/app/site-settings/siteUrl";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
@@ -30,11 +30,7 @@ type Props = {
 //   };
 // }
 
-const SingleProductDetails = async ({
-  params,
-}: {
-  params: { productID: string; slug: string };
-}) => {
+const SingleProductDetails = async ({ params }: Props) => {
   return (
     <div>
       <ProductDetails />

@@ -1,6 +1,6 @@
 import { productImg } from "@/app/site-settings/siteUrl";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";

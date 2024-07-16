@@ -6,17 +6,17 @@ import moment from "moment";
 import { RiArrowRightSLine } from "react-icons/ri";
 import userImg from "@/assets/img/user.png";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Link from "next/link";
 import Details from "./details";
 import { productImg, profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import SectionHeadingTwentyThree from "../../(section-heading)/section-heading-twentythree";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card47 from "../../(card)/card47";
-import { getPrice } from "@/app/utils/get-price";
-import BDT from "@/app/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import BDT from "@/utils/bdt";
 
 const TwentyThree = ({ data }: any) => {
   console.log(data, "data");

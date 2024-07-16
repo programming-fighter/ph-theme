@@ -6,7 +6,7 @@ import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";
 import useTheme from "@/app/hooks/use-theme";
 import Pagination from "../../(category)/pagination";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card64 from "../../(card)/card64";

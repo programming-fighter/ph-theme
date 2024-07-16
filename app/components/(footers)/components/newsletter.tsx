@@ -1,6 +1,6 @@
 "use client";
 import { imgUrl } from "@/app/site-settings/siteUrl";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Link from "next/link";
 import React, { useRef } from "react";
 

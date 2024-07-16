@@ -4,7 +4,7 @@ import SectionHeadingSeven from "../(section-heading)/section-heading-seven";
 import SliderFive from "../(slider)/slider-five";
 import { SwiperSlide } from "swiper/react";
 import Card11 from "../(card)/card11";
-import Arrowbetween from "@/app/utils/arrow-between";
+import Arrowbetween from "@/utils/arrow-between";
 
 const BestSellerSeven = ({ best_sell_product }: any) => {
   const prev = "best_seller_Prev";

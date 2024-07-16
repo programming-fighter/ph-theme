@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useTheme from "../hooks/use-theme";
 import { useRouter } from "next/navigation";
 import { login } from "@/redux/features/auth.slice";
-import httpReq from "../utils/http/axios/http.service";
+import httpReq from "../../utils/http/axios/http.service";
 
 const BookingForm = ({
   product,

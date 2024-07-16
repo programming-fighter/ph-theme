@@ -6,13 +6,13 @@ import moment from "moment";
 import useTheme from "@/app/hooks/use-theme";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import { FacebookShareButton, WhatsappShareButton } from "react-share";
 import { FaFacebookF, FaWhatsapp } from "react-icons/fa";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import SectionHeadingFive from "../../(section-heading)/section-heading-five";
-import Arrow from "@/app/utils/arrow";
+import Arrow from "@/utils/arrow";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card65 from "../../(card)/card65";
 

@@ -1,14 +1,14 @@
 "use client";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { v4 as uuidv4 } from "uuid";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
-import BDT from "@/app/utils/bdt";
-import Rate from "@/app/utils/rate";
+import BDT from "@/utils/bdt";
+import Rate from "@/utils/rate";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { toast } from "react-toastify";
 const Card21 = ({ item, design, store_id, makeid }: any) => {

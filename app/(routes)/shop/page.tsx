@@ -1,6 +1,6 @@
 import ShopComponent from "@/app/components/shop";
 import { imgUrl } from "@/app/site-settings/siteUrl";
-import getUrl from "@/app/utils/get-url";
+import getUrl from "@/utils/get-url";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
 import { getSubdomainName } from "@/lib";
 import React from "react";

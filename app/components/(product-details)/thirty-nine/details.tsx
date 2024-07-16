@@ -5,20 +5,20 @@ import { toast } from "react-toastify";
 import { IoMdCart } from "react-icons/io";
 import { TiTickOutline } from "react-icons/ti";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { useRouter } from "next/navigation";
-import { buyNow } from "@/app/utils/buy-now";
+import { buyNow } from "@/utils/buy-now";
 import OvalLoader from "../../(loader)/oval-loader";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/app/site-settings/siteUrl";
-import BDT from "@/app/utils/bdt";
-import CallForPrice from "@/app/utils/call-for-price";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
 import QuikView from "../../quick-view";
 import BookingForm from "../../booking-form";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { bookNow } from "@/app/utils/book-now";
+import { bookNow } from "@/utils/book-now";
 
 const Details = ({ data, children }: any) => {
   const { makeid, store_id, headerSetting, design, bookingData } = useTheme();

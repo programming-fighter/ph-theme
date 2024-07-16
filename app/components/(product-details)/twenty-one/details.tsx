@@ -13,14 +13,14 @@ import {
 import parse from "html-react-parser";
 import useTheme from "@/app/hooks/use-theme";
 import { useRouter } from "next/navigation";
-import { buyNow } from "@/app/utils/buy-now";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
-import { getPrice } from "@/app/utils/get-price";
+import { buyNow } from "@/utils/buy-now";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { getPrice } from "@/utils/get-price";
 import OvalLoader from "../../(loader)/oval-loader";
 import { addToCartList } from "@/redux/features/product.slice";
-import BDT from "@/app/utils/bdt";
-import Rate from "@/app/utils/rate";
+import BDT from "@/utils/bdt";
+import Rate from "@/utils/rate";
 
 const Details = ({ data, children }: any) => {
   const { makeid, design, store_id, headerSetting } = useTheme();

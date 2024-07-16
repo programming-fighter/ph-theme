@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import { EyeDropperIcon, EyeIcon } from "@heroicons/react/24/outline";
 
 const ChangePassword = () => {

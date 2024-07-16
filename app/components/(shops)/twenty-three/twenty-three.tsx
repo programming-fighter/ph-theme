@@ -18,7 +18,7 @@ import {
   TableCellsIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 
 const TwentyThree = ({ data }: any) => {
   const { category, design, module } = useTheme();

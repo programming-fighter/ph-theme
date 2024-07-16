@@ -4,10 +4,10 @@ import Details from "./details";
 import { motion, AnimatePresence } from "framer-motion";
 import moment from "moment";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import SectionHeadingThirtyFive from "../../(section-heading)/section-heading-thirty-five";
 import Card61 from "../../(card)/card61";
 

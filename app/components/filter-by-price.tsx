@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
-import Taka from "../utils/taka";
+import Taka from "../../utils/taka";
 const FilterByPrice = ({ setVal, val, id, setPage, setHasMore }: any) => {
   const router = useRouter();
   const inputRef = useRef<any>(null);

@@ -1,6 +1,6 @@
 import SubCategoryComponent from "@/app/components/category";
 import { imgUrl } from "@/app/site-settings/siteUrl";
-import getUrl from "@/app/utils/get-url";
+import getUrl from "@/utils/get-url";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
 import { fetchDomainData, getSubdomainName } from "@/lib";
 

@@ -3,10 +3,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useEffect } from "react";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getPrice } from "@/app/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getPrice } from "@/utils/get-price";
 import { productImg } from "@/app/site-settings/siteUrl";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 import Link from "next/link";
 import useTheme from "@/app/hooks/use-theme";
 

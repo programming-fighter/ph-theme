@@ -6,7 +6,7 @@ import { ThreeDots } from "react-loader-spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useTheme from "@/app/hooks/use-theme";
 import Pagination from "../../(category)/pagination";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import Card50 from "../../(card)/card50";
 import Link from "next/link";

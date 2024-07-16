@@ -9,7 +9,7 @@ import Pagination from "../../(category)/pagination";
 import OvalLoader from "../../(loader)/oval-loader";
 import Card61 from "../../(card)/card61";
 import Link from "next/link";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import { motion } from "framer-motion";
 
 const ThirtyFive = ({ data }: any) => {

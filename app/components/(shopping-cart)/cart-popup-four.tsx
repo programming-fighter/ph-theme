@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 // import { getPrice } from '../../../../services/utils';
 import { toast } from "react-toastify";
 import useTheme from "@/app/hooks/use-theme";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 import { XIcon } from "react-share";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";

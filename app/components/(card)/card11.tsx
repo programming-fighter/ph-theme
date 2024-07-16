@@ -1,5 +1,5 @@
 import { productImg } from "@/app/site-settings/siteUrl";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 import Link from "next/link";
 import React from "react";
 

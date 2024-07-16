@@ -9,7 +9,7 @@ import Pagination from "../../(category)/pagination";
 import OvalLoader from "../../(loader)/oval-loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { AnimatePresence, motion } from "framer-motion";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Card6 from "../../(card)/card6";
 import { CgMenuGridO } from "react-icons/cg";
 import {

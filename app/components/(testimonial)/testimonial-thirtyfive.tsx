@@ -7,7 +7,7 @@ import { ImQuotesLeft } from "react-icons/im";
 import "swiper/css";
 import "swiper/css/pagination";
 import SectionHeadingThirtyFive from "../(section-heading)/section-heading-thirty-five";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 
 const TestimonialThirtyFive = ({ testimonials }: any) => {
   let menu = [""];

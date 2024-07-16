@@ -1,9 +1,9 @@
 "use client";
 import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
-import { getPrice } from "@/app/utils/get-price";
-import httpReq from "@/app/utils/http/axios/http.service";
-import Rate from "@/app/utils/rate";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import Rate from "@/utils/rate";
 import { addToCartList } from "@/redux/features/product.slice";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/three/details";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getCampaign } from "@/utils/http/get-campaign";
 
 const Card42 = ({ item }: any) => {
   const [open, setOpen] = useState<any>(false);

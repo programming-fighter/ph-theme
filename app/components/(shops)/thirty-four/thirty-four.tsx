@@ -18,7 +18,7 @@ import {
   PlusIcon,
   TableCellsIcon,
 } from "@heroicons/react/24/outline";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 
 const ThirtyFour = ({ data }: any) => {
   const { category, design, module, store_id } = useTheme();

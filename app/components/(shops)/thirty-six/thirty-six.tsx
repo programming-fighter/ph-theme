@@ -10,7 +10,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Card63 from "../../(card)/card63";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 
 const ThirtySix = ({ data }: any) => {
   const { category, design, module } = useTheme();

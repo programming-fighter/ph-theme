@@ -10,18 +10,18 @@ import parse from "html-react-parser";
 import { useRouter } from "next/navigation";
 import useTheme from "@/app/hooks/use-theme";
 import { toast } from "react-toastify";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import { useDispatch } from "react-redux";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { addToCartList } from "@/redux/features/product.slice";
 import { HSlider } from "./slider";
-import BDT from "@/app/utils/bdt";
-import Rate from "@/app/utils/rate";
-import CallForPrice from "@/app/utils/call-for-price";
+import BDT from "@/utils/bdt";
+import Rate from "@/utils/rate";
+import CallForPrice from "@/utils/call-for-price";
 import { IoCall } from "react-icons/io5";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import imgCall from "@/assets/img/call.png";
 
 const Details = ({ data, children }: any) => {

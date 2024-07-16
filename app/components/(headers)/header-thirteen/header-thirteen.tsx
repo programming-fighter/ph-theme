@@ -12,7 +12,7 @@ import {
   UserGroupIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
-import { LogoutIcon } from "@/app/assets/svgComp";
+import { LogoutIcon } from "assets/svgComp";
 import { iconImg, imgUrl } from "@/app/site-settings/siteUrl";
 import { logout } from "@/redux/features/auth.slice";
 

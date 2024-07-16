@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
 import { imgUrl } from "@/app/site-settings/siteUrl";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 import { ArrowLeftIcon, TableCellsIcon } from "@heroicons/react/24/outline";
 import Search from "./search";
 import SideCategory from "./side-category";

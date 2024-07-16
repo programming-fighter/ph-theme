@@ -5,10 +5,10 @@ import { SwiperSlide } from "swiper/react";
 
 import moment from "moment";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Details from "./details";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import SectionHeadingTwentyOne from "../../(section-heading)/section-heading-twentyone";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import DefaultSlider from "../../(slider)/default-slider";

@@ -2,7 +2,7 @@
 import React from "react";
 import { SwiperSlide } from "swiper/react";
 import SectionHeadingFive from "../(section-heading)/section-heading-five";
-import Arrow from "@/app/utils/arrow";
+import Arrow from "@/utils/arrow";
 import DefaultSlider from "../(slider)/default-slider";
 import Card4 from "../(card)/card4";
 

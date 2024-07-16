@@ -7,10 +7,10 @@ import "swiper/css/navigation";
 import SectionHeadingTwelve from "../(section-heading)/section-heading-twelve";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import SliderFive from "../(slider)/slider-five";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 
 const FeatureProductTwelve = ({ feature_product, design }: any) => {
   const prevEl = "feature-product-prev";

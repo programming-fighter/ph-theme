@@ -4,17 +4,17 @@ import { useDispatch } from "react-redux";
 import parse from "html-react-parser";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
-import { bookNow } from "@/app/utils/book-now";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { bookNow } from "@/utils/book-now";
 import OvalLoader from "../../(loader)/oval-loader";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { Autoplay, Pagination } from "swiper/modules";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { HSlider } from "../twenty-three/slider";
-import BDT from "@/app/utils/bdt";
-import CallForPrice from "@/app/utils/call-for-price";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
 import QuikView from "../../quick-view";
 import BookingForm from "../../booking-form";
 import Link from "next/link";
@@ -477,37 +477,63 @@ const Details = ({
           {/* unit  */}
           {/* && variant[0]?.unit */}
           {!vrcolor && variant?.length !== 0 && (
-            <Units unit={unit} setUnit={setUnit} variant={variant} />
+            <SkeletonWrapper
+              fetchStatus={fetchStatus}
+              width={"200px"}
+              height={"30px"}
+            >
+              <Units unit={unit} setUnit={setUnit} variant={variant} />
+            </SkeletonWrapper>
           )}
           {/* color and size  */}
           {vrcolor && sizeV !== undefined && (
-            <>
-              {" "}
+            <SkeletonWrapper
+              fetchStatus={fetchStatus}
+              width={"200px"}
+              height={"200px"}
+            >
               <Colors
                 color={color}
                 setColor={setColor}
                 vrcolor={vrcolor}
                 setSize={setSize}
               />
-            </>
+            </SkeletonWrapper>
           )}
           {/* filterV[0]?.size && */}
-          {vrcolor && <Sizes size={size} setSize={setSize} variant={filterV} />}
+          {vrcolor && (
+            <SkeletonWrapper
+              fetchStatus={fetchStatus}
+              width={"200px"}
+              height={"30px"}
+            >
+              <Sizes size={size} setSize={setSize} variant={filterV} />
+            </SkeletonWrapper>
+          )}
           {/* color only  */}
           {vrcolor && sizeV === undefined && (
-            <>
-              {" "}
+            <SkeletonWrapper
+              fetchStatus={fetchStatus}
+              width="200px"
+              height="30px"
+            >
               <ColorsOnly
                 color={color}
                 setColor={setColor}
                 variant={variant}
                 setColorid={setColorid}
               />
-            </>
+            </SkeletonWrapper>
           )}
           {/* size only  */}
           {!vrcolor?.length && sizeV !== undefined && (
-            <Sizes size={size} setSize={setSize} variant={filterV} />
+            <SkeletonWrapper
+              fetchStatus={fetchStatus}
+              width="200px"
+              height="30px"
+            >
+              <Sizes size={size} setSize={setSize} variant={filterV} />
+            </SkeletonWrapper>
           )}
 
           <div className="mt-5">

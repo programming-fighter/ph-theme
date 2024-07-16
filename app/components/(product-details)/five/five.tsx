@@ -4,13 +4,13 @@ import { Tab } from "@headlessui/react";
 import { SwiperSlide } from "swiper/react";
 import "./five.css";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Details from "./details";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import moment from "moment";
 import SectionHeadingFive from "../../(section-heading)/section-heading-five";
-import Arrow from "@/app/utils/arrow";
+import Arrow from "@/utils/arrow";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card42 from "../../(card)/card42";
 

@@ -30,7 +30,7 @@ import StickyNav from "./sticky-nav";
 import { headerBg } from "@/app/site-settings/color";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import Search from "./search";
-import { location } from "@/app/assets/svg";
+import { location } from "assets/svg";
 import SideCategory from "./side-category";
 import "./header-twelve.css";
 

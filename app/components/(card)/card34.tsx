@@ -1,8 +1,8 @@
 "use client";
 import { productImg } from "@/app/site-settings/siteUrl";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
-import Rate from "@/app/utils/rate";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
+import Rate from "@/utils/rate";
 import Link from "next/link";
 // created by iazadur
 import React, { useEffect, useState } from "react";

@@ -1,13 +1,13 @@
 "use client";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 import { toast } from "react-toastify";
 
 const Card48 = ({ item, store_id }: any) => {

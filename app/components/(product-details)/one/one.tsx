@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import RelatedProducts from "./related-products";
 import { Tab } from "@headlessui/react";
 import moment from "moment";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import useTheme from "@/app/hooks/use-theme";
 import Details from "./details";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 
 const One = ({ data }: any) => {
   const { store_id } = useTheme();

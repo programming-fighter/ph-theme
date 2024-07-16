@@ -17,8 +17,8 @@ import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
 import Search from "./search";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import SideMenu from "../header-three/side-menu";
-import Taka from "@/app/utils/taka";
-import { handleLogout } from "@/app/utils/handle-logout";
+import Taka from "@/utils/taka";
+import { handleLogout } from "@/utils/handle-logout";
 
 const HeaderThirtyFour = () => {
   const { category, design, subcategory, headerSetting, menu, userData } =

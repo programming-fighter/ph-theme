@@ -19,8 +19,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import SectionHeadingNine from "../(section-heading)/section-heading-nine";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
-import Taka from "@/app/utils/taka";
-import { getPrice } from "@/app/utils/get-price";
+import Taka from "@/utils/taka";
+import { getPrice } from "@/utils/get-price";
 
 const NewArrivalProductNine = ({ product, design }: any) => {
   const prevEl = "new-product-prev";

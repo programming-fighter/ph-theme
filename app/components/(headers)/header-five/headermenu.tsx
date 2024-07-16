@@ -10,7 +10,7 @@ import Link from "next/link";
 import { imgUrl } from "@/app/site-settings/siteUrl";
 import Category from "./category";
 import { headerBg } from "@/app/site-settings/color";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 import Search from "./search";
 
 const HeaderMenu = () => {

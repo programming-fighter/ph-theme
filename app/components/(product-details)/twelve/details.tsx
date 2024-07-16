@@ -13,15 +13,15 @@ import {
 } from "react-share";
 import useTheme from "@/app/hooks/use-theme";
 import { useRouter } from "next/navigation";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import OvalLoader from "../../(loader)/oval-loader";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
-import BDT from "@/app/utils/bdt";
-import Rate from "@/app/utils/rate";
-import CallForPrice from "@/app/utils/call-for-price";
-import { buyNow } from "@/app/utils/buy-now";
+import BDT from "@/utils/bdt";
+import Rate from "@/utils/rate";
+import CallForPrice from "@/utils/call-for-price";
+import { buyNow } from "@/utils/buy-now";
 
 const Details = ({ data, children }: any) => {
   const { makeid, design, store_id, headerSetting } = useTheme();

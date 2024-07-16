@@ -2,14 +2,14 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./card.css";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
-import Taka from "@/app/utils/taka";
+import Rate from "@/utils/rate";
+import Taka from "@/utils/taka";
 import { toast } from "react-toastify";
 
 const Card5 = ({ item, store_id }: any) => {

@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AppWrapper from "./app-wrapper";
 import { headers } from "next/headers";
 import axios from "axios";
-import getUrl from "./utils/get-url";
+import getUrl from "../utils/get-url";
 import { getSubdomainName } from "@/lib";
 
 const inter = Inter({ subsets: ["latin"] });

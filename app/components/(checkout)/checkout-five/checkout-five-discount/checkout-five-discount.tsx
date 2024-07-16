@@ -1,7 +1,7 @@
 import useTheme from "@/app/hooks/use-theme";
 import { btnhover } from "@/app/site-settings/style";
-import { getDiscount } from "@/app/utils/get-discount";
-import httpReq from "@/app/utils/http/axios/http.service";
+import { getDiscount } from "@/utils/get-discount";
+import httpReq from "@/utils/http/axios/http.service";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";

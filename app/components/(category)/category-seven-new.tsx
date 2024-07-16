@@ -12,7 +12,7 @@ import {
 import Card12 from "../(card)/card12";
 import useTheme from "@/app/hooks/use-theme";
 import { useParams } from "next/navigation";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";

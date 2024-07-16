@@ -1,6 +1,6 @@
 import React from "react";
 import CheckoutComponent from "./checkout-component";
-import getUrl from "@/app/utils/get-url";
+import getUrl from "@/utils/get-url";
 import { getSubdomainName } from "@/lib";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
 import { imgUrl } from "@/app/site-settings/siteUrl";

@@ -5,7 +5,7 @@ import { IoFilter } from "react-icons/io5";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";
 import FilterCat from "./filter-cat";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Pagination from "../../(category)/pagination";
 import OvalLoader from "../../(loader)/oval-loader";
 import Card26 from "../../(card)/card26";

@@ -5,7 +5,7 @@ import { ThreeDots } from "react-loader-spinner";
 import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";
 import Pagination from "../../(category)/pagination";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card18 from "../../(card)/card18";

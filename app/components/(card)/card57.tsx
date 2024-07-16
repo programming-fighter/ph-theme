@@ -1,6 +1,6 @@
 import { productImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
-import Taka from "@/app/utils/taka";
+import Rate from "@/utils/rate";
+import Taka from "@/utils/taka";
 import Link from "next/link";
 import React from "react";
 

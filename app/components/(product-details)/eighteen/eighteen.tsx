@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SwiperSlide } from "swiper/react";
 import moment from "moment";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Details from "./details";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import SectionHeadingEighteen from "../../(section-heading)/section-heading-eighteen";
-import Arrow from "@/app/utils/arrow";
+import Arrow from "@/utils/arrow";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card38 from "../../(card)/card38";
 

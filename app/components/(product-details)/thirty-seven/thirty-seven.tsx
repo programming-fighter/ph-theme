@@ -4,9 +4,9 @@ import Details from "./details";
 import moment from "moment";
 import { Tab } from "@headlessui/react";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import Card64 from "../../(card)/card64";
 
 const ThirtySeven = ({ data }: any) => {

@@ -1,8 +1,8 @@
 import { productImg } from "@/app/site-settings/siteUrl";
-import BDT from "@/app/utils/bdt";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
-import Rate from "@/app/utils/rate";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
+import Rate from "@/utils/rate";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 

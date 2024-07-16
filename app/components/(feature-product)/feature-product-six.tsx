@@ -3,7 +3,7 @@ import React from "react";
 import { SwiperSlide } from "swiper/react";
 import "./feature-product-six.css";
 import SectionHeadingSix from "../(section-heading)/section-heading-six";
-import ArrowSquare from "@/app/utils/arrow-square";
+import ArrowSquare from "@/utils/arrow-square";
 import GridSliderFour from "../(slider)/grid-slider/grid-slider-four";
 import Card8 from "../(card)/card8";
 

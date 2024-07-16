@@ -6,7 +6,7 @@ import CheckOutSevenPaymentGateway from "./checkout-seven-payment-gateway/checko
 import CheckOutSevenOrder from "./checkout-seven-order/checkout-seven-order";
 import { useSelector } from "react-redux";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import Booking from "../../booking";
 

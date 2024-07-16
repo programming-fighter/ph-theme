@@ -1,14 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
-import BDT from "@/app/utils/bdt";
-import Bdt from "@/app/utils/bdt";
+import BDT from "@/utils/bdt";
+import Bdt from "@/utils/bdt";
 import { toast } from "react-toastify";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/three/details";

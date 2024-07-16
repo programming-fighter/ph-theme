@@ -1,7 +1,7 @@
 "use client";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
@@ -12,12 +12,12 @@ import {
 } from "react-share";
 import { toast } from "react-toastify";
 import OvalLoader from "../../(loader)/oval-loader";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { HSlider } from "./slider";
-import Rate from "@/app/utils/rate";
-import BDT from "@/app/utils/bdt";
-import CallForPrice from "@/app/utils/call-for-price";
+import Rate from "@/utils/rate";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const Details = ({ data }: any) => {

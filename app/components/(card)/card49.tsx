@@ -1,12 +1,12 @@
 "use client";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { MdAddShoppingCart } from "react-icons/md";
 import Link from "next/link";
-import BDT from "@/app/utils/bdt";
+import BDT from "@/utils/bdt";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";

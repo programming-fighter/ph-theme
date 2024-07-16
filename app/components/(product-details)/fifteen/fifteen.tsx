@@ -4,12 +4,12 @@ import { FaFacebookF } from "react-icons/fa";
 import { AiFillYoutube } from "react-icons/ai";
 import { RiInstagramLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import useTheme from "@/app/hooks/use-theme";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg, profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 // import { addToCartList, decrementQty } from '../../../../redux/slices/productslice';
 const Fifteen = ({ data }: any) => {
   const [relatedProduct, setRelatedProduct] = useState<any>([]);

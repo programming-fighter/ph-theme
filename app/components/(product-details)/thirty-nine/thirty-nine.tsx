@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { Tab } from "@headlessui/react";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Details from "./details";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import Card67 from "../../(card)/card67";
 
 const ThirtyNine = ({ data }: any) => {

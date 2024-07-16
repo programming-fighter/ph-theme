@@ -7,7 +7,7 @@ import useTheme from "@/app/hooks/use-theme";
 import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";
 import Pagination from "../../(category)/pagination";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import Card23 from "../../(card)/card23";
 import Card6 from "../../(card)/card6";

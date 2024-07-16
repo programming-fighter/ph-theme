@@ -7,18 +7,18 @@ import { FiPhone } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { TiTickOutline } from "react-icons/ti";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { useRouter } from "next/navigation";
-import { buyNow } from "@/app/utils/buy-now";
+import { buyNow } from "@/utils/buy-now";
 import OvalLoader from "../../(loader)/oval-loader";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/app/site-settings/siteUrl";
 import { HSlider } from "./slider";
-import BDT from "@/app/utils/bdt";
-import CallForPrice from "@/app/utils/call-for-price";
-import ImageModal from "@/app/utils/image-modal";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
+import ImageModal from "@/utils/image-modal";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const Details = ({ data, children }: any) => {

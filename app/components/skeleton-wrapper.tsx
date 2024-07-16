@@ -1,8 +1,17 @@
-import React from "react";
-import Skeleton from "react-loading-skeleton";
+import { ReactNode, FC } from "react";
+import Skeleton, { SkeletonProps } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const SkeletonWrapper = ({ children, fetchStatus, ...rest }: any) => {
+interface SkeletonWrapperProps extends SkeletonProps {
+  children: ReactNode;
+  fetchStatus: "idle" | "loading" | "error";
+}
+
+const SkeletonWrapper: FC<SkeletonWrapperProps> = ({
+  children,
+  fetchStatus,
+  ...rest
+}) => {
   return (
     <>{fetchStatus === "idle" ? <>{children}</> : <Skeleton {...rest} />}</>
   );

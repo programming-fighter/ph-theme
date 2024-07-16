@@ -1,7 +1,7 @@
 "use client";
 import { productImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
-import Taka from "@/app/utils/taka";
+import Rate from "@/utils/rate";
+import Taka from "@/utils/taka";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -50,7 +50,7 @@ const Card24 = ({ item, design, store_id }: any) => {
     <>
       <Link href={"/product/" + item?.id + "/" + item?.slug}>
         <div
-          className='p-6 group rounded-md bg-white shadow-lg '
+          className="p-6 group rounded-md bg-white shadow-lg "
           style={{
             border: cardBorder
               ? `1px solid ${design?.header_color}`
@@ -61,22 +61,22 @@ const Card24 = ({ item, design, store_id }: any) => {
         >
           <style>{customStyle}</style>
 
-          <div className='flex justify-center '>
-            <div className='flex sm:flex-row flex-col md:max-w-xl   '>
-              <div className=' border flex items-center relative'>
+          <div className="flex justify-center ">
+            <div className="flex sm:flex-row flex-col md:max-w-xl   ">
+              <div className=" border flex items-center relative">
                 <img
-                  className='h-48 w-48  '
+                  className="h-48 w-48  "
                   src={productImg + item?.image[0]}
-                  alt='Mountain'
+                  alt="Mountain"
                 />
 
-                <div className='bg-white hidden border-1 border-gray-300 rounded-full h-10 w-10 absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:flex  items-center justify-center searchIconCard24 group  font-thin lg:cursor-pointer'>
-                  <IoSearchCircleOutline className=' h-4 ' />
+                <div className="bg-white hidden border-1 border-gray-300 rounded-full h-10 w-10 absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:flex  items-center justify-center searchIconCard24 group  font-thin lg:cursor-pointer">
+                  <IoSearchCircleOutline className=" h-4 " />
                 </div>
               </div>
-              <div className='sm:px-5 flex flex-col justify-start mt-6'>
+              <div className="sm:px-5 flex flex-col justify-start mt-6">
                 <div
-                  className='font-sans text-sm font-normal antialiased card5itemCategory'
+                  className="font-sans text-sm font-normal antialiased card5itemCategory"
                   style={{
                     height: "20px",
                     overflow: "hidden",
@@ -88,7 +88,7 @@ const Card24 = ({ item, design, store_id }: any) => {
                   {item.category}
                 </div>
                 <div
-                  className=' text-base antialiased  font-semibold'
+                  className=" text-base antialiased  font-semibold"
                   style={{
                     height: "30px",
                     overflow: "hidden",
@@ -101,8 +101,8 @@ const Card24 = ({ item, design, store_id }: any) => {
                 </div>
 
                 <Rate rating={item?.rating} />
-                <div className='flex gap-4 xl:gap-4 md:gap-4 lg:gap-4'>
-                  <div className='text-base font-semibold'>
+                <div className="flex gap-4 xl:gap-4 md:gap-4 lg:gap-4">
+                  <div className="text-base font-semibold">
                     <Taka />
                     {/* {camp?.status === "active" ? campPrice : productGetPrice} */}
                   </div>

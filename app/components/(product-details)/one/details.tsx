@@ -12,19 +12,19 @@ import {
 } from "react-share";
 import { Swiper, SwiperSlide } from "swiper/react";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import OvalLoader from "../../(loader)/oval-loader";
-import { buyNow } from "@/app/utils/buy-now";
+import { buyNow } from "@/utils/buy-now";
 import { useRouter } from "next/navigation";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { Autoplay, Pagination } from "swiper/modules";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Link from "next/link";
-import Rate from "@/app/utils/rate";
-import BDT from "@/app/utils/bdt";
-import CallForPrice from "@/app/utils/call-for-price";
+import Rate from "@/utils/rate";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const Details = ({ data }: any) => {

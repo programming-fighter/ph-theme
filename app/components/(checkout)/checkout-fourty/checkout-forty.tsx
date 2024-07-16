@@ -1,6 +1,6 @@
 "use client";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import OvalLoader from "../../(loader)/oval-loader";

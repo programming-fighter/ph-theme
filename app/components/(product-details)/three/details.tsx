@@ -1,20 +1,20 @@
 "use client";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import React, { useEffect, useState } from "react";
 import { VscCreditCard } from "react-icons/vsc";
 import { useDispatch } from "react-redux";
 import OvalLoader from "../../(loader)/oval-loader";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
-import { getPrice } from "@/app/utils/get-price";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { toast } from "react-toastify";
 import ImageZoom from "../image-zoom";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Link from "next/link";
-import Rate from "@/app/utils/rate";
-import BDT from "@/app/utils/bdt";
-import CallForPrice from "@/app/utils/call-for-price";
+import Rate from "@/utils/rate";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
 import parse from "html-react-parser";
 import {
   FacebookIcon,

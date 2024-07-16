@@ -11,7 +11,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Card56 from "../../(card)/card56";
 import Link from "next/link";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 
 const TwentySix = ({ data }: any) => {
   const { category, design, module } = useTheme();

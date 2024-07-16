@@ -2,13 +2,13 @@
 import React, { useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import "./best-seller-six.css";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import SectionHeadingSix from "../(section-heading)/section-heading-six";
 import { productImg } from "@/app/site-settings/siteUrl";
-import Taka from "@/app/utils/taka";
-import ArrowSquare from "@/app/utils/arrow-square";
+import Taka from "@/utils/taka";
+import ArrowSquare from "@/utils/arrow-square";
 import GridSliderFive from "../(slider)/grid-slider/grid-slider-five";
 import Card7 from "../(card)/card7";
 import { toast } from "react-toastify";

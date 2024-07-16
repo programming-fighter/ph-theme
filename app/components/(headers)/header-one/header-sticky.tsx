@@ -3,8 +3,8 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 
-import logo from "../../../../assets/img/headerLogo.png";
-import bg from "../../../../assets/img/headerBg.jpg";
+import logo from "../..//assetsimg/headerLogo.png";
+import bg from "../..//assetsimg/headerBg.jpg";
 import useTheme from "@/app/hooks/use-theme";
 import Link from "next/link";
 import {

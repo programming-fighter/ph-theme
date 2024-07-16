@@ -6,13 +6,13 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { HSlider } from "./slider";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
-import { getPrice } from "@/app/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
-import BDT from "@/app/utils/bdt";
-import Rate from "@/app/utils/rate";
-import CallForPrice from "@/app/utils/call-for-price";
+import BDT from "@/utils/bdt";
+import Rate from "@/utils/rate";
+import CallForPrice from "@/utils/call-for-price";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const Details = ({ data, children }: any) => {

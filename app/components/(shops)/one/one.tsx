@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Link from "next/link";
 import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";

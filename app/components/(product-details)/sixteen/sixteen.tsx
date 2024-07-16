@@ -4,11 +4,11 @@ import { SwiperSlide } from "swiper/react";
 import "./five.css";
 import { Tab } from "@headlessui/react";
 import moment from "moment";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Details from "./details";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
-import Arrow from "@/app/utils/arrow";
+import Rate from "@/utils/rate";
+import Arrow from "@/utils/arrow";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card25 from "../../(card)/card25";
 

@@ -6,7 +6,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import Pagination from "../../(category)/pagination";
 import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";

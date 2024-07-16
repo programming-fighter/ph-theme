@@ -9,7 +9,7 @@ import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";
 import Pagination from "../../(category)/pagination";
 import OvalLoader from "../../(loader)/oval-loader";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Card55 from "../../(card)/card55";
 import Card6 from "../../(card)/card6";
 import {

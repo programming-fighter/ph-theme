@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Link from "next/link";
 import { imgUrl } from "@/app/site-settings/siteUrl";
 import Loading from "./loading";

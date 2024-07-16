@@ -7,8 +7,8 @@ import { useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import useTheme from "@/app/hooks/use-theme";
-import { getDiscount } from "@/app/utils/get-discount";
-import httpReq from "@/app/utils/http/axios/http.service";
+import { getDiscount } from "@/utils/get-discount";
+import httpReq from "@/utils/http/axios/http.service";
 import { btnhover } from "@/app/site-settings/style";
 
 const Discount = ({

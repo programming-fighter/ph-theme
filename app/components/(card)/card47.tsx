@@ -1,7 +1,7 @@
 "use client";
 import { productImg } from "@/app/site-settings/siteUrl";
-import BDT from "@/app/utils/bdt";
-import { getPrice } from "@/app/utils/get-price";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";

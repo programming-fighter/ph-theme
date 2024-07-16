@@ -4,10 +4,10 @@ import { SwiperSlide } from "swiper/react";
 import Details from "./details";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import Rate from "@/app/utils/rate";
+import Rate from "@/utils/rate";
 import moment from "moment";
 import SectionHeadingSeven from "../../(section-heading)/section-heading-seven";
-import Arrow from "@/app/utils/arrow";
+import Arrow from "@/utils/arrow";
 import SliderFive from "../../(slider)/slider-five";
 import Card12 from "../../(card)/card12";
 import { UpdateData } from "../../product-details";
@@ -34,41 +34,23 @@ const Seven = ({ data, updatedData }: Props) => {
     enabled: !!updatedData.slug && !!updatedData.store_id,
   });
 
-  const {
-    data: relatedProducts,
-    isLoading: isRelatedProductLoading,
-    isError: isRelatedProductError,
-  } = useQuery({
+  const { data: relatedProducts } = useQuery({
     queryKey: ["rp-7"],
     queryFn: () => getRelatedProducts(updatedData?.product_id),
     enabled: !!updatedData.slug && !!updatedData.store_id,
   });
 
-  const {
-    data: reviews,
-    isLoading: isReviewsLoading,
-    isError: isReviewsError,
-  } = useQuery({
+  const { data: reviews } = useQuery({
     queryKey: ["rv-7"],
     queryFn: () => getReviews(updatedData),
     enabled: !!updatedData.slug && !!updatedData.store_id,
   });
-
-  if (isProductDetailsLoading || isReviewsLoading) return <p>loading</p>;
-
-  // Ensure data is ready before rendering
-  if (!productDetailsData || !reviews) {
-    return <p>No data available</p>;
-  }
 
   const datax = {
     product: productDetailsData?.product,
     variant: productDetailsData?.variant,
     vrcolor: productDetailsData?.vrcolor,
   };
-
-  console.log(isFetched, "isFetch");
-  console.log("fetchStatus", fetchStatus);
 
   return (
     <div className="container px-5">

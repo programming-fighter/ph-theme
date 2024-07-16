@@ -23,8 +23,8 @@
     "paths": {
       "@/*": ["./*"],
       "@/components/*": ["app/components/*"],
-      "@/utils/*": ["app/utils/*"],
-      "@/assets/*": ["app/assets/*"]
+      "@/utils/*": ["utils/*"],
+      "@/assets/*": ["/assets/*"]
     }
   },
   "include": [
@@ -32,7 +32,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/**/*"
+    "app/**/*",
+    "utils"
   ],
   "exclude": ["node_modules"]
 }

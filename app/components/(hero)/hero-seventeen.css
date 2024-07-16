@@ -1,5 +1,5 @@
 .heroSeventeenBackground {
-  background-image: url("../../assets/heroSeventeenBackgroundImage/iconbgtopimg.webp"); /* The image used */
+  background-image: url("/assetsheroSeventeenBackgroundImage/iconbgtopimg.webp"); /* The image used */
   background-repeat: repeat-x; /* Do not repeat the image */
   height: 50px;
   width: 100%;

@@ -1,4 +1,4 @@
-import Arrow from "@/app/utils/arrow";
+import Arrow from "@/utils/arrow";
 import React from "react";
 
 import { SwiperSlide } from "swiper/react";
@@ -49,23 +49,23 @@ const FeaturedThree = ({ product, category, design, store_id }: any) => {
   );
 
   return (
-    <div className='bg-white px-2'>
+    <div className="bg-white px-2">
       <style>{customDesign}</style>
-      <div className='container py-5'>
-        <div className='py-5 pt-1 flex justify-between items-center '>
-          <div className='container'>
-            <div className='grid lg2:grid-cols-3 grid-cols-1 gap-4'>
+      <div className="container py-5">
+        <div className="py-5 pt-1 flex justify-between items-center ">
+          <div className="container">
+            <div className="grid lg2:grid-cols-3 grid-cols-1 gap-4">
               {categoryOne.length > 0 && (
                 <div>
-                  <div className='flex items-center justify-between mb-4'>
-                    <div className='font-bold text-lg footerFiveBorderCustom'>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="font-bold text-lg footerFiveBorderCustom">
                       {latestCategory[0]?.name}
                     </div>
-                    <div className=''>
+                    <div className="">
                       <Arrow prevEl={prev1} nextEl={next1}></Arrow>
                     </div>
                   </div>
-                  <div className='container'>
+                  <div className="container">
                     <SliderEleven prevEl={prev1} nextEl={next1}>
                       {categoryOne?.map((item: any) => (
                         <SwiperSlide key={item?.id}>
@@ -83,15 +83,15 @@ const FeaturedThree = ({ product, category, design, store_id }: any) => {
 
               {categoryTwo.length > 0 && (
                 <div>
-                  <div className='flex items-center justify-between mb-4'>
-                    <div className='font-bold text-lg footerFiveBorderCustom'>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="font-bold text-lg footerFiveBorderCustom">
                       {latestCategory[1]?.name}
                     </div>
-                    <div className=''>
+                    <div className="">
                       <Arrow prevEl={prev2} nextEl={next2}></Arrow>
                     </div>
                   </div>
-                  <div className='container'>
+                  <div className="container">
                     <SliderEleven prevEl={prev2} nextEl={next2}>
                       {categoryTwo?.map((item: any) => (
                         <SwiperSlide key={item?.id}>
@@ -109,15 +109,15 @@ const FeaturedThree = ({ product, category, design, store_id }: any) => {
 
               {categoryThree.length > 0 && (
                 <div>
-                  <div className='flex items-center justify-between mb-4'>
-                    <div className='font-bold text-lg footerFiveBorderCustom'>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="font-bold text-lg footerFiveBorderCustom">
                       {latestCategory[2]?.name}
                     </div>
-                    <div className=''>
+                    <div className="">
                       <Arrow prevEl={prev3} nextEl={next3}></Arrow>
                     </div>
                   </div>
-                  <div className='container'>
+                  <div className="container">
                     <SliderEleven prevEl={prev3} nextEl={next3}>
                       {categoryThree?.map((item: any) => (
                         <SwiperSlide key={item?.id}>

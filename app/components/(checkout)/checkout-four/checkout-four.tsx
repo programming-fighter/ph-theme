@@ -5,7 +5,7 @@ import Discount from "./discount";
 import PaymentGateway from "./payment-gateway/payment-gateway";
 import YourOrders from "./your-orders/your-orders";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import Address from "./address/address";
 

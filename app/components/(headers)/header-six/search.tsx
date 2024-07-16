@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import useTheme from "@/app/hooks/use-theme";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getPrice } from "@/app/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getPrice } from "@/utils/get-price";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
-import Taka from "@/app/utils/taka";
+import Taka from "@/utils/taka";
 
 const Search = ({ search, setSearch }: any) => {
   const { store_id } = useTheme();

@@ -5,13 +5,13 @@ import React, { useEffect, useState } from "react";
 
 import { TbLiveView } from "react-icons/tb";
 import { FaCartPlus } from "react-icons/fa";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Link from "next/link";
-import BDT from "@/app/utils/bdt";
-import Rate from "@/app/utils/rate";
+import BDT from "@/utils/bdt";
+import Rate from "@/utils/rate";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import useTheme from "@/app/hooks/use-theme";

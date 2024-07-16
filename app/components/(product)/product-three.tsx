@@ -3,7 +3,7 @@ import React from "react";
 
 import { SwiperSlide } from "swiper/react";
 import SectionHeadingSeven from "../(section-heading)/section-heading-seven";
-import Arrowbetween from "@/app/utils/arrow-between";
+import Arrowbetween from "@/utils/arrow-between";
 import DefaultSlider from "../(slider)/default-slider";
 import Card23 from "../(card)/card23";
 

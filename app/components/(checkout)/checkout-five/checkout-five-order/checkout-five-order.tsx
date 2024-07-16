@@ -8,7 +8,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import useTheme from "@/app/hooks/use-theme";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import { toast } from "react-toastify";
 import axios from "axios";
 import {
@@ -19,8 +19,8 @@ import {
 } from "@/redux/features/product.slice";
 import { login } from "@/redux/features/auth.slice";
 import { useRouter } from "next/navigation";
-import httpReq from "@/app/utils/http/axios/http.service";
-import Taka from "@/app/utils/taka";
+import httpReq from "@/utils/http/axios/http.service";
+import Taka from "@/utils/taka";
 import { btnhover } from "@/app/site-settings/style";
 import MyModal from "@/app/components/modal";
 import { productImg } from "@/app/site-settings/siteUrl";

@@ -15,16 +15,16 @@ import {
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import OvalLoader from "../../(loader)/oval-loader";
-import { getCampaignProduct } from "@/app/utils/http/get-campaign-product";
-import httpReq from "@/app/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
 import { addToCartList } from "@/redux/features/product.slice";
-import BDT from "@/app/utils/bdt";
-import Rate from "@/app/utils/rate";
-import CallForPrice from "@/app/utils/call-for-price";
+import BDT from "@/utils/bdt";
+import Rate from "@/utils/rate";
+import CallForPrice from "@/utils/call-for-price";
 import useTheme from "@/app/hooks/use-theme";
-import ImageModal from "@/app/utils/image-modal";
-import { buyNow } from "@/app/utils/buy-now";
-import { getPrice } from "@/app/utils/get-price";
+import ImageModal from "@/utils/image-modal";
+import { buyNow } from "@/utils/buy-now";
+import { getPrice } from "@/utils/get-price";
 import { ProductSlider } from "./product-slider";
 
 const Details = ({ data, children }: any) => {

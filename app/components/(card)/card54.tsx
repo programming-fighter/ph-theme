@@ -1,14 +1,14 @@
 "use client";
 import { productImg } from "@/app/site-settings/siteUrl";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import shape from "@/assets/img/shape.png";
 import Image from "next/image";
-import Rate from "@/app/utils/rate";
-import BDT from "@/app/utils/bdt";
+import Rate from "@/utils/rate";
+import BDT from "@/utils/bdt";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 const Card54 = ({ item, design, store_id }: any) => {

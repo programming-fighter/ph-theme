@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import SectionHeadingSeven from "../(section-heading)/section-heading-seven";
-import Arrowbetween from "@/app/utils/arrow-between";
+import Arrowbetween from "@/utils/arrow-between";
 import DefaultSlider from "../(slider)/default-slider";
 import Card40 from "../(card)/card40";
 

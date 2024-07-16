@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Taka from "../../utils/taka";
+import Taka from "../../../utils/taka";
 
 const FilterByPriceNew = ({ priceValue, setPriceValue }: any) => {
   const inputRef = useRef<any>(null);

@@ -5,17 +5,17 @@ import { toast } from "react-toastify";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { getPrice } from "@/app/utils/get-price";
+import { getPrice } from "@/utils/get-price";
 import useTheme from "@/app/hooks/use-theme";
 import {
   clearCartList,
   removeToCartList,
 } from "@/redux/features/product.slice";
 import { login } from "@/redux/features/auth.slice";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import { productImg } from "@/app/site-settings/siteUrl";
 import Link from "next/link";
-import BDT from "@/app/utils/bdt";
+import BDT from "@/utils/bdt";
 import MyModal from "@/app/components/modal";
 import PaymentGateway from "../payment-gateway/payment-gateway";
 import { btnhover } from "@/app/site-settings/style";

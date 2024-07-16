@@ -1,7 +1,7 @@
 "use client";
 import useTheme from "@/app/hooks/use-theme";
 import { profileImg } from "@/app/site-settings/siteUrl";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";

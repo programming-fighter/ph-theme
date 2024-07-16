@@ -4,13 +4,13 @@ import { IoEyeSharp } from "react-icons/io5";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 import "./product-card-two.css";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
-import BDT from "@/app/utils/bdt";
+import BDT from "@/utils/bdt";
 import { toast } from "react-toastify";
 // import CardModal from './CardModal';
 

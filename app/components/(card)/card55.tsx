@@ -1,17 +1,17 @@
 "use client";
 import useTheme from "@/app/hooks/use-theme";
 import { productImg } from "@/app/site-settings/siteUrl";
-import { getPrice } from "@/app/utils/get-price";
-import httpReq from "@/app/utils/http/axios/http.service";
-import { getCampaign } from "@/app/utils/http/get-campaign";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaign } from "@/utils/http/get-campaign";
 import { addToCartList } from "@/redux/features/product.slice";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import shape from "@/assets/img/shape.png";
-import Rate from "@/app/utils/rate";
-import BDT from "@/app/utils/bdt";
+import Rate from "@/utils/rate";
+import BDT from "@/utils/bdt";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/three/details";
 

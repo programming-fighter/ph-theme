@@ -12,7 +12,7 @@ import {
   MinusIcon,
   PlusIcon,
 } from "@heroicons/react/24/outline";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import Skeleton from "../(loader)/skeleton";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card12 from "../(card)/card12";

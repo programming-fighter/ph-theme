@@ -5,13 +5,13 @@ import { HiShoppingCart } from "react-icons/hi";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import useTheme from "@/app/hooks/use-theme";
-import { getPrice } from "@/app/utils/get-price";
-import { getCampaign } from "@/app/utils/http/get-campaign";
-import httpReq from "@/app/utils/http/axios/http.service";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
+import httpReq from "@/utils/http/axios/http.service";
 import { addToCartList } from "@/redux/features/product.slice";
 import Link from "next/link";
 import { productImg } from "@/app/site-settings/siteUrl";
-import BDT from "@/app/utils/bdt";
+import BDT from "@/utils/bdt";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/three/details";
 

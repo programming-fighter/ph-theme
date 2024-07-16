@@ -9,7 +9,7 @@ import OvalLoader from "../../(loader)/oval-loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";
 import Card15 from "../../(card)/card15";
-import httpReq from "@/app/utils/http/axios/http.service";
+import httpReq from "@/utils/http/axios/http.service";
 import { AnimatePresence, motion } from "framer-motion";
 import Card6 from "../../(card)/card6";
 import {
