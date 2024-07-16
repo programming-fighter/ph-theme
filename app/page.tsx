@@ -5,18 +5,18 @@ import { getSubdomainName } from "@/lib";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
 import { imgUrl } from "./site-settings/siteUrl";
 
-export async function generateMetadata() {
-  const url = getUrl();
-  const {
-    headersetting: { website_name, favicon },
-  } = await getSubdomainName(url);
-  const websiteName = capitalizeFirstLetter(website_name);
+// export async function generateMetadata() {
+//   const url = getUrl();
+//   const {
+//     headersetting: { website_name, favicon },
+//   } = await getSubdomainName(url);
+//   const websiteName = capitalizeFirstLetter(website_name);
 
-  return {
-    title: `${websiteName} | Home`,
-    icons: { icon: imgUrl + favicon },
-  };
-}
+//   return {
+//     title: `${websiteName} | Home`,
+//     icons: { icon: imgUrl + favicon },
+//   };
+// }
 
 export default async function Home() {
   const url = getUrl();
