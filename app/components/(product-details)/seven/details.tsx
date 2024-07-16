@@ -7,7 +7,6 @@ import useTheme from "@/app/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { bookNow } from "@/utils/book-now";
-import OvalLoader from "../../(loader)/oval-loader";
 import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -20,7 +19,6 @@ import BookingForm from "../../booking-form";
 import Link from "next/link";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import SkeletonWrapper from "../../skeleton-wrapper";
 
@@ -35,11 +33,7 @@ const Details = ({
   const { product, variant, vrcolor } = datax;
   const { makeid, store_id, headerSetting, bookingData } = useTheme();
   const dispatch = useDispatch();
-
-  // const [product, setProduct] = useState<any>({});
-  // const [variant, setVariant] = useState<any>([]);
   const [filterV, setFilterV] = useState<any>([]);
-  // const [vrcolor, setVrcolor] = useState([]);
   const [load, setLoad] = useState(false);
   const [openBooking, setOpenBooking] = useState(false);
 
@@ -61,11 +55,6 @@ const Details = ({
     // declare the async data fetching function
     const fetchData = async () => {
       data["store_id"] = store_id;
-      // get the data from the api
-      // const { product, variant, vrcolor } = await httpReq.post(
-      //   "product-details",
-      //   data
-      // );
 
       const response = await getCampaignProduct(product, store_id);
 
@@ -75,10 +64,6 @@ const Details = ({
         setCamp(null);
       }
 
-      // set state with the result
-      // setProduct(product);
-      // setVariant(variant);
-      // setVrcolor(vrcolor);
       setColor(null);
       setSize(null);
       setUnit(null);
@@ -94,14 +79,6 @@ const Details = ({
   const bookNowBtn = () => {
     bookNow(variant, size, color, unit, filterV, setOpenBooking, openBooking);
   };
-
-  // if (load) {
-  //   return (
-  //     <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
-  //       <OvalLoader />
-  //     </div>
-  //   );
-  // }
 
   const regularPrice =
     parseInt(product?.regular_price) +
@@ -414,32 +391,12 @@ const Details = ({
               {product?.name}
             </h2>
           </SkeletonWrapper>
-          {/* {fetchStatus === "idle" ? (
-            <h2 className="text-2xl text-[#212121] font-bold mb-3">
-              {product?.name}
-            </h2>
-          ) : (
-            <Skeleton width={"200px"} height={"30px"} className="mb-5" />
-          )} */}
-          {/* <h2 className="text-2xl text-[#212121] font-bold mb-3">
-            {product?.name}
-          </h2> */}
           <SkeletonWrapper fetchStatus={fetchStatus} count={3} className="mb-6">
             <p className="text-sm text-[#5a5a5a] font-seven leading-8 apiHtml">
               {parse(`${product?.description?.slice(0, 250)}`)}{" "}
               {product?.description?.length > 250 && "..."}
             </p>
           </SkeletonWrapper>
-          {/* 
-          {fetchStatus === "idle" ? (
-            <p className="text-sm text-[#5a5a5a] font-seven leading-8 apiHtml">
-              {parse(`${product?.description?.slice(0, 250)}`)}{" "}
-              {product?.description?.length > 250 && "..."}
-            </p>
-          ) : (
-            <Skeleton count={3} />
-          )} */}
-
           <SkeletonWrapper
             fetchStatus={fetchStatus}
             width={"200px"}

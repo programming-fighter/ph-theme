@@ -13,7 +13,6 @@ import { FaFacebookF } from "react-icons/fa";
 import { Fragment } from "react";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import useTheme from "@/app/hooks/use-theme";
-import { location } from "@/assets/svg";
 import {
   ArrowLeftIcon,
   Bars4Icon,
@@ -27,6 +26,7 @@ import { imgUrl } from "@/app/site-settings/siteUrl";
 import { headerBg } from "@/app/site-settings/color";
 import SideMenu from "../header-three/side-menu";
 import "./header-five.css";
+import { location } from "@/assets/svg";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");

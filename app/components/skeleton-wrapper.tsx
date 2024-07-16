@@ -4,7 +4,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 interface SkeletonWrapperProps extends SkeletonProps {
   children: ReactNode;
-  fetchStatus: "idle" | "loading" | "error";
+  fetchStatus: any;
 }
 
 const SkeletonWrapper: FC<SkeletonWrapperProps> = ({
