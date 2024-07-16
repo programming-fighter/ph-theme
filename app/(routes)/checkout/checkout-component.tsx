@@ -1,5 +1,5 @@
 "use client";
-import Checkout from "@/app/components/checkout";
+import Checkout from "@/components/checkout";
 import useTheme from "@/app/hooks/use-theme";
 import React from "react";
 import { useSelector } from "react-redux";

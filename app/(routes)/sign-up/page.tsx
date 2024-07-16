@@ -1,4 +1,4 @@
-import Register from "@/app/components/register";
+import Register from "@/components/register";
 import useTheme from "@/app/hooks/use-theme";
 import axios from "axios";
 import React from "react";

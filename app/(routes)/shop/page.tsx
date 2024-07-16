@@ -1,4 +1,4 @@
-import ShopComponent from "@/app/components/shop";
+import ShopComponent from "@/components/shop";
 import { imgUrl } from "@/app/site-settings/siteUrl";
 import getUrl from "@/utils/get-url";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";

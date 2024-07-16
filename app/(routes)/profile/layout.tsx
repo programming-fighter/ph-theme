@@ -1,4 +1,4 @@
-import LeftSide from "@/app/components/(dashboard)/left-side";
+import LeftSide from "@/components/(dashboard)/left-side";
 import React, { PropsWithChildren } from "react";
 
 const ProfileLayout = ({ children }: PropsWithChildren) => {

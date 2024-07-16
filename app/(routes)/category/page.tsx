@@ -1,4 +1,4 @@
-import ShopComponent from "@/app/components/shop";
+import ShopComponent from "@/components/shop";
 import React from "react";
 
 const CategoryPage = () => {

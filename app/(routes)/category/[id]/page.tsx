@@ -1,4 +1,4 @@
-import SubCategoryComponent from "@/app/components/category";
+import SubCategoryComponent from "@/components/category";
 import { imgUrl } from "@/app/site-settings/siteUrl";
 import getUrl from "@/utils/get-url";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";

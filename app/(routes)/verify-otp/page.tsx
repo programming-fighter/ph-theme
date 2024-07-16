@@ -1,5 +1,5 @@
 "use client";
-import OTP from "@/app/components/otp";
+import OTP from "@/components/otp";
 import useTheme from "@/app/hooks/use-theme";
 import React from "react";
 

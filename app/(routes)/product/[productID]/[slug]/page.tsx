@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 
-import ProductDetails from "@/app/components/product-details";
+import ProductDetails from "@/components/product-details";
 import React, { cache } from "react";
 import getUrl from "@/utils/get-url";
 import { fetchDomainData, getProductDetails, getSubdomainName } from "@/lib";
