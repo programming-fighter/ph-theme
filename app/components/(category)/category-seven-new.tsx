@@ -1,8 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { Suspense, useEffect, useState } from "react";
-import FilterByColor from "../filter-by-color";
-import FilterByPrice from "../filter-by-price";
+
 import { HiOutlineAdjustments } from "react-icons/hi";
 import {
   ArrowLeftIcon,

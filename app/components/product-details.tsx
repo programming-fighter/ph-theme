@@ -9,6 +9,11 @@ export interface UpdateData {
   slug: string;
 }
 
+type ParamsType = {
+  productID: string;
+  slug: string;
+};
+
 // Lazy load components
 const componentsMap: any = {
   one: lazy(() => import("./(product-details)/one/one")),
@@ -76,19 +81,14 @@ const componentsMap: any = {
 };
 
 const ProductDetails = () => {
-  const { productID: product_id, slug } = useParams<{
-    productID: string;
-    slug: string;
-  }>();
-  const { design, store_id } = useTheme();
-
-  console.log({ product_id, slug, store_id }, "productID");
-
+  const { productID: product_id, slug } = useParams<ParamsType>();
   const [updatedData, setUpdatedData] = useState<UpdateData>({
     product_id: "",
     store_id: 0,
     slug: "",
   });
+
+  const { design, store_id } = useTheme();
 
   useEffect(() => {
     setUpdatedData({ product_id, store_id, slug });
@@ -97,14 +97,14 @@ const ProductDetails = () => {
   const RenderComponent = componentsMap[design?.single_product_page] || null;
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
       {RenderComponent && (
         <RenderComponent
           updatedData={updatedData}
           data={{ product_id, slug }}
         />
       )}
-    </Suspense>
+    </>
   );
 };
 

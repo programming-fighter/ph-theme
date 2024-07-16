@@ -7,6 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import AppWrapper from "./app-wrapper";
 import { headers } from "next/headers";
 import axios from "axios";
+import getUrl from "./utils/get-url";
+import { getSubdomainName } from "@/lib";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,19 +25,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = headers();
-  const host = headersList.get("host");
-  const forwardedPath = headersList.get("x-forwarded-path") || "";
-  const url = `${host}${forwardedPath}`;
+  const url = getUrl();
+  const { design, headersetting } = await getSubdomainName(url);
 
-  const res = await axios.post(
-    "https://admin.ebitans.com/api/v1/getsubdomain/name",
-    {
-      name: url,
-    }
-  );
-
-  const { design, headersetting } = res?.data;
   return (
     <html lang="en">
       <body className={`${inter.className} lg2 `}>

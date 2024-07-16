@@ -1,19 +1,24 @@
-"use client";
-import Checkout from "@/app/components/checkout";
 import React from "react";
-import { useSelector } from "react-redux";
-import Login from "../login/page";
-import useTheme from "@/app/hooks/use-theme";
+import CheckoutComponent from "./checkout-component";
+import getUrl from "@/app/utils/get-url";
+import { getSubdomainName } from "@/lib";
+import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
+import { imgUrl } from "@/app/site-settings/siteUrl";
+
+export async function generateMetadata() {
+  const url = getUrl();
+  const subDomainData = await getSubdomainName(url);
+  const { headersetting } = subDomainData;
+  const websiteName = capitalizeFirstLetter(headersetting.website_name);
+
+  return {
+    title: `${websiteName} | Checkout`,
+    icons: { icon: imgUrl + headersetting.favicon },
+  };
+}
 
 const CheckoutPage = () => {
-  const { user } = useSelector((state: any) => state.auth);
-  const { design, store } = useTheme();
-
-  if (user?.verify || store?.auth_type === "EasyOrder") {
-    return <Checkout theme={design?.checkout_page} />;
-  } else {
-    return <Login />;
-  }
+  return <CheckoutComponent />;
 };
 
 export default CheckoutPage;

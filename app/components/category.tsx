@@ -4,7 +4,7 @@ import CategoryThree from "./(category)/category-three";
 import CategorySevenNew from "./(category)/category-seven-new";
 import useTheme from "../hooks/use-theme";
 
-const Category = () => {
+const SubCategoryComponent = () => {
   const { design } = useTheme();
   return (
     <>
@@ -14,4 +14,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default SubCategoryComponent;
