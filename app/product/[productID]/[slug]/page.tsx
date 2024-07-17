@@ -3,7 +3,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import ProductDetails from "@/components/product-details";
 import React, { cache } from "react";
 import getUrl from "@/utils/get-url";
-import { fetchDomainData, getProductDetails, getSubdomainName } from "@/lib";
+import { getProductDetails, getSubdomainName } from "@/lib";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
 import { imgUrl } from "@/site-settings/siteUrl";
 
@@ -16,10 +16,10 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const url = getUrl();
-  const subDomainData = await getSubdomainName(url, "design,headersetting");
-  const { design, headersetting } = subDomainData;
+  const subDomainData = await getSubdomainName(url, "headersetting");
+  const { store_id, headersetting } = subDomainData;
   const product = await getProductDetails({
-    store_id: design?.store_id,
+    store_id,
     product_id: params.productID,
   });
   const { name } = product;

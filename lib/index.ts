@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getSubdomainName = async (url: string, head?: string) => {
+const getSubdomainName = async (url: string, head: string = "") => {
   const res = await axios.post(
     "https://admin.ebitans.com/api/v1/getsubdomain/name",
     {
@@ -9,23 +9,6 @@ const getSubdomainName = async (url: string, head?: string) => {
     }
   );
   return res?.data;
-};
-
-const fetchDomainData = async (url: string) => {
-  const response = await fetch(
-    "https://admin.ebitans.com/api/v1/getsubdomain/name",
-
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name: url }),
-      cache: "no-cache",
-    }
-  );
-  const data = await response.json();
-  return data;
 };
 
 const getProductDetails = async ({
@@ -43,4 +26,5 @@ const getProductDetails = async ({
   return productDetails;
 };
 
-export { getSubdomainName, getProductDetails, fetchDomainData };
+const getSiteInfo = async () => {};
+export { getSubdomainName, getProductDetails };

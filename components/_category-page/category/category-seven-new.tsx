@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { HiOutlineAdjustments } from "react-icons/hi";
 import {
@@ -74,7 +74,7 @@ const CategorySevenNew = () => {
   const [activeColor, setActiveColor] = useState("");
   const [priceValue, setPriceValue] = useState("");
 
-  const { data, status, refetch } = useQuery({
+  const { data, status } = useQuery({
     queryKey: ["category-products", id, sort, page, activeColor, priceValue],
     queryFn: () => fetchData(id, sort, page, activeColor, priceValue),
     placeholderData: keepPreviousData,
@@ -136,9 +136,6 @@ const CategorySevenNew = () => {
                 onChange={(e: any) => {
                   setSort(e.target.value);
                 }}
-                // paginate={paginate}
-                // setOpen={setOpen}
-                // open={open}
               />
             </div>
           </div>
@@ -148,15 +145,7 @@ const CategorySevenNew = () => {
             sort={sort}
             activeColor={activeColor}
           />
-          {/* <button
-            className="px-5 py-2 bg-slate-400"
-            onClick={() => {
-              setPage((prev) => (prev === 1 ? 2 : 1));
-            }}
-            disabled={isPlaceholderData}
-          >
-            Pagination
-          </button> */}
+
           <div className="md:mt-12 flex justify-center">
             <PaginationComponent
               lastPage={data?.data?.last_page}
@@ -279,7 +268,6 @@ const SingleCat = ({ item }: any) => {
           href={"/category/" + item.id}
           className={`flex-1 text-sm font-medium `}
         >
-          {" "}
           <p>{item.name}</p>
         </Link>
         {item?.cat ? (

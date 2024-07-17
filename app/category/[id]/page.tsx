@@ -2,7 +2,7 @@ import SubCategoryComponent from "@/components/category";
 import { imgUrl } from "@/site-settings/siteUrl";
 import getUrl from "@/utils/get-url";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
-import { fetchDomainData, getSubdomainName } from "@/lib";
+import { getSubdomainName } from "@/lib";
 
 export async function generateMetadata() {
   const url = getUrl();

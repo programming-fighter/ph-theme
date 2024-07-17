@@ -22,13 +22,7 @@ interface Props {
 }
 
 const Seven = ({ data, updatedData }: Props) => {
-  const {
-    data: productDetailsData,
-    isLoading: isProductDetailsLoading,
-    isError: isProductDetailsError,
-    isFetched,
-    fetchStatus,
-  } = useQuery({
+  const { data: productDetailsData, fetchStatus } = useQuery({
     queryKey: ["pd-7"],
     queryFn: () => getProductDetails(updatedData),
     enabled: !!updatedData.slug && !!updatedData.store_id,

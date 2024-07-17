@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Seven from "@/components/_shop-page/shops/seven/seven";
 import Eight from "@/components/_shop-page/shops/eight/eight";
@@ -36,52 +35,56 @@ import ThirtySeven from "@/components/_shop-page/shops/thirty-seven/thirty-seven
 import ThirtyEight from "@/components/_shop-page/shops/thirty-eight/thirty-eight";
 import ThirtyNine from "@/components/_shop-page/shops/thirty-nine/thirty-nine";
 import Forty from "@/components/_shop-page/shops/forty/forty";
-import useTheme from "@/hooks/use-theme";
+import getUrl from "@/utils/get-url";
+import { getSubdomainName } from "@/lib";
 
-const ShopComponent = () => {
-  const { design } = useTheme();
+const ShopComponent = async () => {
+  const url = getUrl();
+  const {
+    design: { shop_page },
+  } = await getSubdomainName(url, "design");
 
   return (
     <>
-      {design?.shop_page === "default" && <One data={{}} />}
-      {design?.shop_page === "one" && <One data={{}} />}
-      {design?.shop_page === "two" && <Two data={{}} />}
-      {design?.shop_page === "three" && <Three data={{}} />}
-      {design?.shop_page === "four" && <Four data={{}} />}
-      {design?.shop_page === "five" && <Five data={{}} />}
-      {design?.shop_page === "six" && <Six data={{}} />}
-      {design?.shop_page === "seven" && <Seven data={{}} />}
-      {design?.shop_page === "eight" && <Eight data={{}} />}
-      {design?.shop_page === "nine" && <Nine data={{}} />}
-      {design?.shop_page === "ten" && <Ten data={{}} />}
-      {design?.shop_page === "eleven" && <Eight data={{}} />}
-      {design?.shop_page === "twelve" && <Twelve data={{}} />}
-      {design?.shop_page === "thirteen" && <Thirteen data={{}} />}
-      {design?.shop_page === "fourteen" && <Fourteen data={{}} />}
-      {design?.shop_page === "sixteen" && <Sixteen data={{}} />}
-      {design?.shop_page === "seventeen" && <Seventeen data={{}} />}
-      {design?.shop_page === "eighteen" && <Eighteen data={{}} />}
-      {design?.shop_page === "nineteen" && <Nineteen data={{}} />}
-      {design?.shop_page === "twenty" && <Twenty data={{}} />}
-      {design?.shop_page === "twentyone" && <TwentyOne data={{}} />}
-      {design?.shop_page === "twentytwo" && <Twentytwo data={{}} />}
-      {design?.shop_page === "twentythree" && <TwentyThree data={{}} />}
-      {design?.shop_page === "twentyfour" && <TwentyFour data={{}} />}
-      {design?.shop_page === "twentyfive" && <TwentyFive data={{}} />}
-      {design?.shop_page === "twentysix" && <TwentySix data={{}} />}
-      {design?.shop_page === "twentyseven" && <TwentySeven data={{}} />}
-      {design?.shop_page === "twentyeight" && <TwentyEight data={{}} />}
-      {design?.shop_page === "twentynine" && <TwentyNine data={{}} />}
-      {design?.shop_page === "thirty" && <Thirty data={{}} />}
-      {design?.shop_page === "thirtyone" && <Thirty data={{}} />}
-      {design?.shop_page === "thirtythree" && <ThirtyThree data={{}} />}
-      {design?.shop_page === "thirtyfour" && <ThirtyFour data={{}} />}
-      {design?.shop_page === "thirtyfive" && <ThirtyFive data={{}} />}
-      {design?.shop_page === "thirtysix" && <ThirtySix data={{}} />}
-      {design?.shop_page === "thirtyseven" && <ThirtySeven data={{}} />}
-      {design?.shop_page === "thirtyeight" && <ThirtyEight data={{}} />}
-      {design?.shop_page === "thirtynine" && <ThirtyNine data={{}} />}
-      {design?.shop_page === "forty" && <Forty data={{}} />}
+      {shop_page === "default" && <One data={{}} />}
+      {shop_page === "one" && <One data={{}} />}
+      {shop_page === "two" && <Two data={{}} />}
+      {shop_page === "three" && <Three data={{}} />}
+      {shop_page === "four" && <Four data={{}} />}
+      {shop_page === "five" && <Five data={{}} />}
+      {shop_page === "six" && <Six data={{}} />}
+      {shop_page === "seven" && <Seven data={{}} />}
+      {shop_page === "eight" && <Eight data={{}} />}
+      {shop_page === "nine" && <Nine data={{}} />}
+      {shop_page === "ten" && <Ten data={{}} />}
+      {shop_page === "eleven" && <Eight data={{}} />}
+      {shop_page === "twelve" && <Twelve data={{}} />}
+      {shop_page === "thirteen" && <Thirteen data={{}} />}
+      {shop_page === "fourteen" && <Fourteen data={{}} />}
+      {shop_page === "sixteen" && <Sixteen data={{}} />}
+      {shop_page === "seventeen" && <Seventeen data={{}} />}
+      {shop_page === "eighteen" && <Eighteen data={{}} />}
+      {shop_page === "nineteen" && <Nineteen data={{}} />}
+      {shop_page === "twenty" && <Twenty data={{}} />}
+      {shop_page === "twentyone" && <TwentyOne data={{}} />}
+      {shop_page === "twentytwo" && <Twentytwo data={{}} />}
+      {shop_page === "twentythree" && <TwentyThree data={{}} />}
+      {shop_page === "twentyfour" && <TwentyFour data={{}} />}
+      {shop_page === "twentyfive" && <TwentyFive data={{}} />}
+      {shop_page === "twentysix" && <TwentySix data={{}} />}
+      {shop_page === "twentyseven" && <TwentySeven data={{}} />}
+      {shop_page === "twentyeight" && <TwentyEight data={{}} />}
+      {shop_page === "twentynine" && <TwentyNine data={{}} />}
+      {shop_page === "thirty" && <Thirty data={{}} />}
+      {shop_page === "thirtyone" && <Thirty data={{}} />}
+      {shop_page === "thirtythree" && <ThirtyThree data={{}} />}
+      {shop_page === "thirtyfour" && <ThirtyFour data={{}} />}
+      {shop_page === "thirtyfive" && <ThirtyFive data={{}} />}
+      {shop_page === "thirtysix" && <ThirtySix data={{}} />}
+      {shop_page === "thirtyseven" && <ThirtySeven data={{}} />}
+      {shop_page === "thirtyeight" && <ThirtyEight data={{}} />}
+      {shop_page === "thirtynine" && <ThirtyNine data={{}} />}
+      {shop_page === "forty" && <Forty data={{}} />}
     </>
   );
 };

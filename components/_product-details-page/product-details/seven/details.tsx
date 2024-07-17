@@ -458,7 +458,7 @@ const Details = ({
             </SkeletonWrapper>
           )}
           {/* filterV[0]?.size && */}
-          {vrcolor && (
+          {filterV && filterV[0]?.size && vrcolor && (
             <SkeletonWrapper
               fetchStatus={fetchStatus}
               width={"200px"}

@@ -1,15 +1,19 @@
-"use client";
+// "use client";
 import React from "react";
 import CategoryThree from "./_category-page/category/category-three";
 import CategorySevenNew from "./_category-page/category/category-seven-new";
-import useTheme from "@/hooks/use-theme";
+import getUrl from "@/utils/get-url";
+import { getSubdomainName } from "@/lib";
 
-const SubCategoryComponent = () => {
-  const { design } = useTheme();
+const SubCategoryComponent = async () => {
+  const url = getUrl();
+  const {
+    design: { shop_page },
+  } = await getSubdomainName(url, "design");
   return (
     <>
-      {design?.shop_page === "seven" && <CategorySevenNew />}
-      {design?.shop_page === "default" && <CategoryThree />}
+      {shop_page === "seven" && <CategorySevenNew />}
+      {shop_page === "default" && <CategoryThree />}
     </>
   );
 };

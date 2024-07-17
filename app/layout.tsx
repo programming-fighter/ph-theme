@@ -14,7 +14,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const url = getUrl();
-  const { design, headersetting } = await getSubdomainName(url);
+  const { design, headersetting } = await getSubdomainName(
+    url,
+    "design,headersetting"
+  );
 
   return (
     <html lang="en">
