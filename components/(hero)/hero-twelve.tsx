@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { BiRightArrowAlt } from "react-icons/bi";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroTwelve = ({ slider, design }: any) => {
   let menu = [""];
@@ -71,22 +71,22 @@ const HeroTwelve = ({ slider, design }: any) => {
     `;
 
   return (
-    <div className='group z-0 relative sm:container px-5 lg:mt-10 mt-5'>
+    <div className="group z-0 relative sm:container px-5 lg:mt-10 mt-5">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-twelve'></div>
+        <div className="swiper-pagination-twelve"></div>
       </div>
 
-      <div className='lg:group-hover:flex hidden'>
+      <div className="lg:group-hover:flex hidden">
         <div
           className={`${prevEl} bg-gray-500 hover:bg-black text-white transition-all duration-500  ease-linear absolute left-6 top-1/2 z-10 `}
         >
-          <ChevronLeftIcon className='h-8 text-2xl font-serif font-bold' />
+          <ChevronLeftIcon className="h-8 text-2xl font-serif font-bold" />
         </div>
         <div
           className={`${nextEl} bg-gray-500 hover:bg-black text-white transition-all duration-500  ease-linear absolute right-6 top-1/2 z-10 `}
         >
-          <ChevronRightIcon className='h-8 text-2xl font-serif font-bold' />
+          <ChevronRightIcon className="h-8 text-2xl font-serif font-bold" />
         </div>
       </div>
       <Swiper
@@ -101,32 +101,32 @@ const HeroTwelve = ({ slider, design }: any) => {
           delay: 5000,
         }}
         modules={[Pagination, Autoplay, Navigation, Controller]}
-        className='mySwiper relative '
+        className="mySwiper relative "
       >
         {slider?.map((s: any) => (
           <SwiperSlide key={s.id}>
-            <div className=''>
+            <div className="">
               <div
                 style={{ color: s?.color }}
-                className='absolute z-[1] top-1/2 -translate-y-1/2 md:max-w-[450px] max-w-[250px] px-4 sm:px-0 lg:left-[10%] sm:left-5 flex flex-col gap-y-2 md:gap-y-4'
+                className="absolute z-[1] top-1/2 -translate-y-1/2 md:max-w-[450px] max-w-[250px] px-4 sm:px-0 lg:left-[10%] sm:left-5 flex flex-col gap-y-2 md:gap-y-4"
               >
-                <h1 className='xl:text-4xl md:text-[28px] text-[16px] font-bold md:leading-7'>
+                <h1 className="xl:text-4xl md:text-[28px] text-[16px] font-bold md:leading-7">
                   {s?.title}
                 </h1>
                 {/* <p className='h-[2px] w-10 bg-black mx-auto md:block hidden'></p> */}
-                <p className='md:text-lg text-xs md:leading-5'>{s?.subtitle}</p>
-                <a href={s?.link} target='_blank' rel='noopener noreferrer'>
-                  <h1 className='lg:px-10 px-3 md:py-2 py-1 shop-link duration-300 lg:text-lg text-xs sm:text-left w-max  lg:cursor-pointer uppercase font-medium'>
-                    Shop Now <BiRightArrowAlt className='inline' />
+                <p className="md:text-lg text-xs md:leading-5">{s?.subtitle}</p>
+                <a href={s?.link} target="_blank" rel="noopener noreferrer">
+                  <h1 className="lg:px-10 px-3 md:py-2 py-1 shop-link duration-300 lg:text-lg text-xs sm:text-left w-max  lg:cursor-pointer uppercase font-medium">
+                    Shop Now <BiRightArrowAlt className="inline" />
                   </h1>
                 </a>
               </div>
             </div>
 
             <img
-              className='h-auto min-w-full'
+              className="h-auto min-w-full"
               src={sliderImg + s.image}
-              alt=''
+              alt=""
             />
           </SwiperSlide>
         ))}

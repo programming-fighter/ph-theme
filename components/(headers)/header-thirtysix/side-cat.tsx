@@ -1,6 +1,6 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
+import { iconImg } from "@/site-settings/siteUrl";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import React, { useState } from "react";

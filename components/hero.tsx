@@ -68,7 +68,7 @@ import {
   TWENTY_SIX,
   TWENTY_THREE,
   TWENTY_TWO,
-} from "@/app/consts";
+} from "@/consts";
 
 const DynamicHeroDefault = dynamic(
   () => import("@/components/(hero)/hero-default"),

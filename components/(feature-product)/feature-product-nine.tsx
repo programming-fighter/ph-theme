@@ -18,7 +18,7 @@ import SectionHeadingNine from "../(section-heading)/section-heading-nine";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { getPrice } from "@/utils/get-price";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
 
 const FeatureProductNine = ({ feature_product, design }: any) => {

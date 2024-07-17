@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import "./header-seven.css";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 

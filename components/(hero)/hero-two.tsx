@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./hero-two.css";
 
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroTwo = ({ slider, design }: any) => {
   let menu = [""];

@@ -4,7 +4,6 @@ import img from "@/components/(new-arrival)/bg-img/37/MARGIN.png";
 import Image from "next/image";
 import Card64 from "../(card)/card64";
 
-
 const NewArrivalProductThirtySeven = ({ product, design, store_id }: any) => {
   if (product.length === 0) {
     return null;

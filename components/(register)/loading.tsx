@@ -1,5 +1,5 @@
-import useTheme from "@/app/hooks/use-theme";
-import { btnhover } from "@/app/site-settings/style";
+import useTheme from "@/hooks/use-theme";
+import { btnhover } from "@/site-settings/style";
 import React from "react";
 import { RotatingLines } from "react-loader-spinner";
 

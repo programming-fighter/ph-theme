@@ -8,7 +8,7 @@ import "./header-ten.css";
 import { HiMenu } from "react-icons/hi";
 import { FiPhoneCall } from "react-icons/fi";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import {
   ArrowLeftIcon,
   ChevronDownIcon,
@@ -16,7 +16,7 @@ import {
 } from "@heroicons/react/24/outline";
 import HeaderCatTen from "./header-cat-ten";
 import SideMenu from "../header-three/side-menu";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");

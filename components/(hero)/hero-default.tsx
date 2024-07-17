@@ -1,6 +1,6 @@
 "use client";
 
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 import { BsArrowRight } from "react-icons/bs";
 import { Pagination, Autoplay, Navigation, Controller } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";

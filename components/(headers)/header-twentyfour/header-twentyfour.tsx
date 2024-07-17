@@ -6,10 +6,10 @@ import { IoSearchOutline } from "react-icons/io5";
 import { RiShoppingBagLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { Menu, Transition } from "@headlessui/react";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import Search from "./search";
 
 const HeaderTwentyFour = () => {

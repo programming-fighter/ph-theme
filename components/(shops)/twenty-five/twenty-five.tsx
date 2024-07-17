@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { ThreeDots } from "react-loader-spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Pagination from "../../(category)/pagination";
 import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";

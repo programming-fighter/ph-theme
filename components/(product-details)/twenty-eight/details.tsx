@@ -21,7 +21,7 @@ import { addToCartList } from "@/redux/features/product.slice";
 import BDT from "@/utils/bdt";
 import Rate from "@/utils/rate";
 import CallForPrice from "@/utils/call-for-price";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import ImageModal from "@/utils/image-modal";
 import { buyNow } from "@/utils/buy-now";
 import { getPrice } from "@/utils/get-price";

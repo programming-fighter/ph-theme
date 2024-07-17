@@ -14,11 +14,11 @@ import "swiper/css/thumbs";
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 const DetailsFifteen = ({ data }: any) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [product, setProduct] = useState<any>({});

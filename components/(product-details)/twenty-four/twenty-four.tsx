@@ -5,10 +5,10 @@ import { SwiperSlide } from "swiper/react";
 
 import moment from "moment";
 import img from "@/assets/bg-image/twenty-four-shop.webp";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import Details from "./details";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import SectionHeadingTwentyThree from "../../(section-heading)/section-heading-twentythree";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";

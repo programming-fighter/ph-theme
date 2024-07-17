@@ -1,5 +1,5 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import React, { useEffect, useState } from "react";
 import { VscCreditCard } from "react-icons/vsc";
@@ -10,7 +10,7 @@ import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { toast } from "react-toastify";
 import ImageZoom from "../image-zoom";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import Rate from "@/utils/rate";
 import BDT from "@/utils/bdt";

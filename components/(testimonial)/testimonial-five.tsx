@@ -2,7 +2,7 @@
 import React from "react";
 import SliderFive from "@/components/(slider)/slider-five";
 import { SwiperSlide } from "swiper/react";
-import { testimonialImg } from "@/app/site-settings/siteUrl";
+import { testimonialImg } from "@/site-settings/siteUrl";
 import Slider from "../(slider)/slider";
 
 const TestimonialFive = ({ testimonials }: any) => {

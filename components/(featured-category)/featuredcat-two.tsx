@@ -1,7 +1,7 @@
 import React from "react";
 import SectionHeadingTen from "@/components/(section-heading)/section-heading-ten";
 import Link from "next/link";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 
 const FeaturedTwo = ({ category, design }: any) => {
   const styleCss = `

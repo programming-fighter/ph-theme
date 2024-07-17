@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import Card12 from "../(card)/card12";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useParams } from "next/navigation";
 import httpReq from "@/utils/http/axios/http.service";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";

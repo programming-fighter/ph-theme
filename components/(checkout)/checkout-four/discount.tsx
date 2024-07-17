@@ -1,6 +1,6 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
-import { btnhover } from "@/app/site-settings/style";
+import useTheme from "@/hooks/use-theme";
+import { btnhover } from "@/site-settings/style";
 import { getDiscount } from "@/utils/get-discount";
 import httpReq from "@/utils/http/axios/http.service";
 import React from "react";

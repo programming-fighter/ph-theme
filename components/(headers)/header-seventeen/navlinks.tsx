@@ -1,5 +1,5 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
 import React from "react";
 

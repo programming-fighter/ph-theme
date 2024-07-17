@@ -1,9 +1,9 @@
 import React from "react";
-import HomePage from "../components/home";
+import HomePage from "@/components/home";
 import getUrl from "../utils/get-url";
 import { getSubdomainName } from "@/lib";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
-import { imgUrl } from "./site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 
 export async function generateMetadata() {
   const url = getUrl();

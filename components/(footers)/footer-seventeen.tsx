@@ -12,7 +12,7 @@ import { RiInstagramLine } from "react-icons/ri";
 import "./footer-seventeen.css";
 import Newsletter from "./components/newsletter";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import CopyrightAll from "./components/copyrightall";
 import MenuList from "./components/menu-list";
 

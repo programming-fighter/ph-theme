@@ -1,4 +1,4 @@
-import { bannerImg } from "@/app/site-settings/siteUrl";
+import { bannerImg } from "@/site-settings/siteUrl";
 import React from "react";
 
 const PromoThirtySix = ({ banner, design }: any) => {
@@ -14,15 +14,15 @@ const PromoThirtySix = ({ banner, design }: any) => {
       `;
 
   return (
-    <div className=''>
+    <div className="">
       <style>{styleCss}</style>
-      <div className='sm:container px-5 sm:py-10 py-5'>
-        <div className='grid md:grid-cols-2 xl:grid-cols-3 gap-3'>
+      <div className="sm:container px-5 sm:py-10 py-5">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-3">
           {banner.slice(0, 3).map((ban: any) => (
-            <div key={ban?.id} className='relative overflow-hidden'>
+            <div key={ban?.id} className="relative overflow-hidden">
               <img
-                alt='gallery'
-                className='w-full object-cover object-center block h-auto'
+                alt="gallery"
+                className="w-full object-cover object-center block h-auto"
                 src={bannerImg + ban?.image}
               />
             </div>

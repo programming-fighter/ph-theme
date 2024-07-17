@@ -1,5 +1,5 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -9,7 +9,7 @@ import CheckOutFortyAddress from "./address/checkout-forty-address";
 import CheckOutFortyDiscount from "./discount/checkout-forty-discount";
 import CheckOutFortyPaymentGateway from "./payment/checkout-forty-payment-gateway";
 import CheckOutFortyOrder from "./order/checkout-forty-order";
-// import Booking from '../../../components/booking/Booking';
+// import Booking from '../../"@/components/booking/Booking';
 
 const CheckOutForty = () => {
   const { store_id, bookingData } = useTheme();

@@ -9,7 +9,7 @@ import Link from "next/link";
 import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
 import BDT from "@/utils/bdt";
 import Rate from "@/utils/rate";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { toast } from "react-toastify";
 const Card21 = ({ item, design, store_id, makeid }: any) => {
   const router = useRouter();

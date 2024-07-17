@@ -6,13 +6,13 @@ import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import Bdt from "@/utils/bdt";
 import { toast } from "react-toastify";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/three/details";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
 import { useDispatch } from "react-redux";
 

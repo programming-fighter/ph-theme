@@ -1,6 +1,6 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
-import { productImg } from "@/app/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
+import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
 import { getCampaign } from "@/utils/http/get-campaign";

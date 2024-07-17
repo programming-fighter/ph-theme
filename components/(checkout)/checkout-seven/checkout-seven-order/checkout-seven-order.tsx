@@ -9,7 +9,7 @@ import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { AiOutlineUpload } from "react-icons/ai";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { getPrice } from "@/utils/get-price";
 import {
   clearCartList,
@@ -18,9 +18,9 @@ import {
 import { login } from "@/redux/features/auth.slice";
 import httpReq from "@/utils/http/axios/http.service";
 import Taka from "@/utils/taka";
-import { btnhover } from "@/app/site-settings/style";
+import { btnhover } from "@/site-settings/style";
 import MyModal from "@/components/modal";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 
 const CheckOutSevenOrder = ({

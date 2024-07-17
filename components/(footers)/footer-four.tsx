@@ -4,7 +4,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { GoLocation } from "react-icons/go";
 import Newsletter from "./components/newsletter";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 
 const FooterFour = ({ menu, headerSetting, page, store_id }: any) => {
   const result = page.filter(

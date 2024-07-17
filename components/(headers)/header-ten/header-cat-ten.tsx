@@ -4,7 +4,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
 import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/outline";

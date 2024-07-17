@@ -5,7 +5,7 @@ import RegisterFour from "./(register)/register-four";
 import RegisterFive from "./(register)/register-five";
 import RegisterSeven from "./(register)/register-seven";
 import RegisterEleven from "./(register)/register-eleven";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const Register = () => {
   const { design } = useTheme();

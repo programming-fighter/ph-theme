@@ -8,9 +8,9 @@ import { FiUser } from "react-icons/fi";
 import { Menu, Transition } from "@headlessui/react";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import Search from "./search";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");

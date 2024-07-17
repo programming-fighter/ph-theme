@@ -10,13 +10,13 @@ import {
   MdKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 
 const Card69 = ({ item }: any) => {

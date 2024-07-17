@@ -8,7 +8,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import SectionHeadingSixteen from "../(section-heading)/section-heading-sixteen";
 import DefaultSlider from "../(slider)/default-slider";
 import Link from "next/link";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 
 const FeaturedSixteen = ({ category, design }: any) => {
   const prevEl = "feature-category-prev";
@@ -34,20 +34,20 @@ const FeaturedSixteen = ({ category, design }: any) => {
     `;
 
   return (
-    <div className='sm:container px-5 sm:py-10 py-5 mx-auto  bg-white relative group '>
+    <div className="sm:container px-5 sm:py-10 py-5 mx-auto  bg-white relative group ">
       <style>{styleCss}</style>
       <SectionHeadingSixteen title={"Top Categories"} subtitle={""} />
-      <div className='relative z-[2]'>
-        <div className=' gap-2 lg:cursor-pointer lg:group-hover:opacity-100  lg:opacity-0 duration-500'>
+      <div className="relative z-[2]">
+        <div className=" gap-2 lg:cursor-pointer lg:group-hover:opacity-100  lg:opacity-0 duration-500">
           <div
             className={`${prevEl} bg-gray-400 text-white  rounded-full transition-all duration-500  ease-linear absolute -left-4  top-28 `}
           >
-            <ChevronLeftIcon className='h-8 text-2xl font-serif font-bold' />
+            <ChevronLeftIcon className="h-8 text-2xl font-serif font-bold" />
           </div>
           <div
             className={`${nextEl} bg-gray-400 text-white rounded-full transition-all duration-500  ease-linear absolute -right-4 top-28  `}
           >
-            <ChevronRightIcon className='h-8 text-2xl font-serif font-bold' />
+            <ChevronRightIcon className="h-8 text-2xl font-serif font-bold" />
           </div>
         </div>
       </div>
@@ -103,18 +103,18 @@ const Card = ({ item }: any) => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className='flex flex-col items-center justify-center gap-8 overflow-hidden h-60 rounded-lg border-[1px] category-hover duration-500 bg-gray-100'>
-        <div className='' onClick={() => setOpen(!open)}>
+      <div className="flex flex-col items-center justify-center gap-8 overflow-hidden h-60 rounded-lg border-[1px] category-hover duration-500 bg-gray-100">
+        <div className="" onClick={() => setOpen(!open)}>
           <img
             src={iconImg + item.icon}
-            alt='Mountain'
-            className='h-28 w-28 duration-500'
+            alt="Mountain"
+            className="h-28 w-28 duration-500"
           />
         </div>
 
-        <div className='text-center font-twelve'>
+        <div className="text-center font-twelve">
           <Link href={"/category/" + item.id}>
-            <p className='uppercase text-sm font-semibold text-gray-800 mb-4'>
+            <p className="uppercase text-sm font-semibold text-gray-800 mb-4">
               {" "}
               {item.name}
             </p>

@@ -4,12 +4,12 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { login } from "@/redux/features/auth.slice";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import Loading from "../(register)/loading";
-import { btnhover } from "@/app/site-settings/style";
+import { btnhover } from "@/site-settings/style";
 // import Loading from './loading';
 export const cls =
   "w-full rounded-md border border-[#E9EDF4] py-3 px-5 bg-[#FCFDFE] text-base text-body-color placeholder-[#ACB6BE] outline-none focus-visible:shadow-none focus:border-primary ";

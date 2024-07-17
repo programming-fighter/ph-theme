@@ -9,10 +9,10 @@ import { VscClose } from "react-icons/vsc";
 import { AiFillShopping, AiOutlineMenu } from "react-icons/ai";
 import { TbSearch } from "react-icons/tb";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Search from "./search";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import Category from "./category";
 
 const HeaderEighteen = () => {

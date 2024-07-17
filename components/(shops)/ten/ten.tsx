@@ -1,5 +1,5 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import React, { useEffect, useState } from "react";
 import { CgMenuGridO } from "react-icons/cg";
 import FilterByColor from "../../filter-by-color";

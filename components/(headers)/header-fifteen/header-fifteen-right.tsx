@@ -2,7 +2,7 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { motion, AnimatePresence } from "framer-motion";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import {
   ChevronDownIcon,
   ChevronRightIcon,
@@ -10,7 +10,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 
 const HeaderFifteenRight = ({ open, setOpen }: any) => {
   const { category, darktheme, darkThemeColor, design, headerSetting } =

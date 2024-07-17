@@ -1,5 +1,5 @@
 "use client";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
 import Taka from "@/utils/taka";
@@ -13,7 +13,7 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/three/details";
 import { useDispatch, useSelector } from "react-redux";

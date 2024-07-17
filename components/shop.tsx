@@ -36,7 +36,7 @@ import ThirtySeven from "./(shops)/thirty-seven/thirty-seven";
 import ThirtyEight from "./(shops)/thirty-eight/thirty-eight";
 import ThirtyNine from "./(shops)/thirty-nine/thirty-nine";
 import Forty from "./(shops)/forty/forty";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const ShopComponent = () => {
   const { design } = useTheme();

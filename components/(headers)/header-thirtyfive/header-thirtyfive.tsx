@@ -5,11 +5,11 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { BsSearch } from "react-icons/bs";
 import { Menu, Transition } from "@headlessui/react";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Search from "./search";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import { BottomCart } from "../card-popup-three";
 import SideMenu from "../header-three/side-menu";
 

@@ -10,9 +10,9 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { decrementQty, incrementQty } from "@/redux/features/product.slice";
 import { ToastContainer, toast } from "react-toastify";
 

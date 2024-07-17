@@ -30,7 +30,7 @@ import {
   TWENTY_ONE,
   TWENTY_SEVEN,
   TWENTY_THREE,
-} from "../app/consts";
+} from "../consts";
 import FeaturedSixteen from "./(featured-category)/featuredcat-sixteen";
 import FeaturedSeventeen from "./(featured-category)/featuredcat-seventeen";
 import FeaturedEighteen from "./(featured-category)/featuredcat-eighteen";

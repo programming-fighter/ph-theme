@@ -8,7 +8,7 @@ import {
   ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import { testimonialImg } from "@/app/site-settings/siteUrl";
+import { testimonialImg } from "@/site-settings/siteUrl";
 
 const TestimonialOne = ({ testimonials }: any) => {
   return (

@@ -10,8 +10,8 @@ import DataLoader from "../../(loader)/data-loader";
 import BookingInformation from "../booking-information";
 import PaymentAgain from "../payment-again";
 import OrderStatus from "../order-status";
-import useTheme from "@/app/hooks/use-theme";
-import { productImg } from "@/app/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
+import { productImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import GiveReview from "../dashboard-four/order/review";
 

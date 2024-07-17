@@ -10,7 +10,7 @@ import {
 } from "react-icons/ai";
 import { GrFacebookOption, GrInstagram, GrYoutube } from "react-icons/gr";
 import { FaFacebook } from "react-icons/fa";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ArrowLeftIcon,
@@ -24,10 +24,10 @@ import {
   IoLogoWhatsapp,
   IoSearchCircleOutline,
 } from "react-icons/io5";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import HeaderCatTwelve from "./header-cat-twelve";
 import StickyNav from "./sticky-nav";
-import { headerBg } from "@/app/site-settings/color";
+import { headerBg } from "@/site-settings/color";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import Search from "./search";
 import { location } from "assets/svg";

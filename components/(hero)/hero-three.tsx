@@ -18,7 +18,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import "./hero-three.css";
 import "swiper/css/effect-creative";
 import "swiper/css/effect-fade";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroThree = ({ slider, design }: any) => {
   let menu = [""];

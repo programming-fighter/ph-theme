@@ -38,7 +38,7 @@ import {
   TWENTY_SIX,
   TWENTY_THREE,
   TWENTY_TWO,
-} from "../app/consts";
+} from "../consts";
 import FooterThirteen from "./(footers)/footer-thirteen";
 import FooterFourteen from "./(footers)/footer-fourteen";
 import FooterSixteen from "./(footers)/footer-sixteen";
@@ -60,7 +60,7 @@ import FooterThirtyFive from "./(footers)/footer-thirtyfive";
 import FooterThirtySix from "./(footers)/footer-thirtysix";
 import FooterThirtySeven from "./(footers)/footer-thirtyseven";
 import FooterForty from "./(footers)/footer-forty";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import axios from "axios";
 const DynamicFooterDefault = dynamic(
   () => import("@/components/(footers)/footer-default"),

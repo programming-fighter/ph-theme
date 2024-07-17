@@ -1,4 +1,4 @@
-import { brandImg } from "@/app/site-settings/siteUrl";
+import { brandImg } from "@/site-settings/siteUrl";
 import React from "react";
 import Marquee from "react-fast-marquee";
 

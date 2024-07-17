@@ -1,5 +1,5 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { getPrice } from "@/utils/get-price";
 import Rate from "@/utils/rate";
 import Taka from "@/utils/taka";
@@ -12,7 +12,7 @@ import QuikView from "../quick-view";
 import { getCampaign } from "@/utils/http/get-campaign";
 import httpReq from "@/utils/http/axios/http.service";
 import { addToCartList } from "@/redux/features/product.slice";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Details from "../(product-details)/fourteen/details";
 
 const Card6 = ({ item }: any) => {

@@ -2,7 +2,7 @@
 import React from "react";
 import { SwiperSlide } from "swiper/react";
 import DefaultSlider from "../(slider)/default-slider";
-import { testimonialImg } from "@/app/site-settings/siteUrl";
+import { testimonialImg } from "@/site-settings/siteUrl";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const TestimonialThree = ({ testimonials, design }: any) => {

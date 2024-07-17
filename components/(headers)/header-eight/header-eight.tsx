@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosClose, IoIosSearch } from "react-icons/io";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Search from "./search";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import {
   ChevronDownIcon,
   TableCellsIcon,

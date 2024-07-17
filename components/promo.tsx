@@ -37,7 +37,7 @@ import {
   TWENTY_SIX,
   TWENTY_THREE,
   TWENTY_TWO,
-} from "../app/consts";
+} from "../consts";
 import PromoEight from "./(promotions)/promo-eight";
 import PromoNine from "./(promotions)/promo-nine";
 import PromoEleven from "./(promotions)/promo-eleven";

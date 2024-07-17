@@ -1,5 +1,5 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { mobile, location, logoutIcon, userIcon } from "@/assets/svg";

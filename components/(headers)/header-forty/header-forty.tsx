@@ -6,12 +6,12 @@ import { IoBagOutline, IoSearchOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { Menu, Transition } from "@headlessui/react";
 import { RiMenu2Line } from "react-icons/ri";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { BottomCart } from "../card-popup-three";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Search from "./search";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import SideMenu from "../header-three/side-menu";
 
 const HeaderForty = () => {

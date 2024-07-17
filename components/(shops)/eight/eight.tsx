@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ThreeDots } from "react-loader-spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useEffect, useState } from "react";
 import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";

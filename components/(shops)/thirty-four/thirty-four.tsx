@@ -5,7 +5,7 @@ import { IoGridSharp } from "react-icons/io5";
 import { AiOutlineHome } from "react-icons/ai";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
 import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";

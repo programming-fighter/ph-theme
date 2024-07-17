@@ -17,7 +17,7 @@ import "swiper/css/navigation";
 // import './heroSixteenCss/herosixteen.css'
 import "swiper/css/effect-creative";
 import "swiper/css/effect-fade";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 // import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 
 const HeroTwentySix = ({ slider, design }: any) => {
@@ -89,10 +89,10 @@ const HeroTwentySix = ({ slider, design }: any) => {
 
       `;
   return (
-    <div className='z-0 relative sm:container px-5 '>
+    <div className="z-0 relative sm:container px-5 ">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-fourteen'></div>
+        <div className="swiper-pagination-fourteen"></div>
       </div>
 
       <Swiper
@@ -116,33 +116,33 @@ const HeroTwentySix = ({ slider, design }: any) => {
           EffectCreative,
           EffectFade,
         ]}
-        className='mySwiper relative'
+        className="mySwiper relative"
       >
         {slider?.map((s: any) => (
           <SwiperSlide key={s.id}>
-            <div className=''>
+            <div className="">
               <div
                 style={{ color: s?.color }}
-                className='absolute top-[40%] lg:top-[30%] lg:left-28 left-10 max-w-sm'
+                className="absolute top-[40%] lg:top-[30%] lg:left-28 left-10 max-w-sm"
               >
-                <h1 className='xl:text-4xl md:text-[28px] text-[22px] font-medium mb-3'>
+                <h1 className="xl:text-4xl md:text-[28px] text-[22px] font-medium mb-3">
                   {s?.title}
                 </h1>
-                <p className='md:text-xl text-sm mb-5'>{s?.subtitle}</p>
+                <p className="md:text-xl text-sm mb-5">{s?.subtitle}</p>
                 {s?.link && (
-                  <a href={s?.link} target='_blank' rel='noopener noreferrer'>
-                    <h1 className='lg:px-6 rounded-md px-4 lg:py-3 py-2 bg-white text-black font-bold lg:text-sm text-xs w-max  btn-color duration-500 lg:cursor-pointer '>
+                  <a href={s?.link} target="_blank" rel="noopener noreferrer">
+                    <h1 className="lg:px-6 rounded-md px-4 lg:py-3 py-2 bg-white text-black font-bold lg:text-sm text-xs w-max  btn-color duration-500 lg:cursor-pointer ">
                       Explore Now
                     </h1>
                   </a>
                 )}
               </div>
             </div>
-            <div className='group'>
+            <div className="group">
               <img
-                className='h-auto min-w-full rounded-lg'
+                className="h-auto min-w-full rounded-lg"
                 src={sliderImg + s.image}
-                alt=''
+                alt=""
               />
             </div>
           </SwiperSlide>

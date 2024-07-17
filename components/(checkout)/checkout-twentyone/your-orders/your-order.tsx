@@ -6,19 +6,19 @@ import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { getPrice } from "@/utils/get-price";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import {
   clearCartList,
   removeToCartList,
 } from "@/redux/features/product.slice";
 import { login } from "@/redux/features/auth.slice";
 import httpReq from "@/utils/http/axios/http.service";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import BDT from "@/utils/bdt";
 import MyModal from "@/components/modal";
 import PaymentGateway from "../payment-gateway/payment-gateway";
-import { btnhover } from "@/app/site-settings/style";
+import { btnhover } from "@/site-settings/style";
 
 const YourOrders = ({
   couponDis,

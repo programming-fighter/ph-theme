@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { Tab } from "@headlessui/react";
 import DetailsFour from "./details";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 import moment from "moment";
 import Rate from "@/utils/rate";
 import SectionHeadingFive from "../../(section-heading)/section-heading-five";

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 // import { getPrice } from '../../../services/utils';
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useRouter } from "next/navigation";
 import { login } from "@/redux/features/auth.slice";
 import httpReq from "../utils/http/axios/http.service";

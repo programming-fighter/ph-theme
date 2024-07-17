@@ -15,7 +15,7 @@ import MyAccount from "./components/myaccount";
 import MenuList from "./components/menu-list";
 import CategoryList from "./components/category-list";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import CopyrightAll from "./components/copyrightall";
 
 const FooterTwentyOne = ({

@@ -7,8 +7,8 @@ import {
   BsFillArrowDownSquareFill,
   BsFillArrowUpSquareFill,
 } from "react-icons/bs";
-import useTheme from "@/app/hooks/use-theme";
-import { productImg } from "@/app/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
+import { productImg } from "@/site-settings/siteUrl";
 import ImageZoom from "../image-zoom";
 
 export const HSlider = ({ product }: any) => {

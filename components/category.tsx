@@ -2,7 +2,7 @@
 import React from "react";
 import CategoryThree from "./(category)/category-three";
 import CategorySevenNew from "./(category)/category-seven-new";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const SubCategoryComponent = () => {
   const { design } = useTheme();

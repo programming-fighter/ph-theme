@@ -4,7 +4,7 @@ import SectionHeadingSeven from "@/components/(section-heading)/section-heading-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { ImQuotesLeft } from "react-icons/im";
-import { testimonialImg } from "@/app/site-settings/siteUrl";
+import { testimonialImg } from "@/site-settings/siteUrl";
 
 const TestimonialSeven = ({ testimonials }: any) => {
   return (

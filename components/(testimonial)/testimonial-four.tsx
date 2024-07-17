@@ -7,7 +7,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import SectionHeading from "../(section-heading)/section-heading";
-import { testimonialImg } from "@/app/site-settings/siteUrl";
+import { testimonialImg } from "@/site-settings/siteUrl";
 
 const TestimonialFour = ({ testimonials, design }: any) => {
   if (testimonials.length === 0) {

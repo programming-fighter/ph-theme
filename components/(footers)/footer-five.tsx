@@ -1,4 +1,4 @@
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import React from "react";
 import { FiPhoneCall } from "react-icons/fi";
 import FollowUs from "./components/follow-us";

@@ -7,14 +7,14 @@ import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
 import { toast } from "react-toastify";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/three/details";
 import { addToCartList } from "@/redux/features/product.slice";
 import { useDispatch } from "react-redux";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const Card22 = ({ item }: any) => {
   const [camp, setCamp] = useState<any>(null);

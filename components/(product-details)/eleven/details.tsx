@@ -8,7 +8,7 @@ import {
 } from "react-share";
 import parse from "html-react-parser";
 import { useRouter } from "next/navigation";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { toast } from "react-toastify";
 import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";

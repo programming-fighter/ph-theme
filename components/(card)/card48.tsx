@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import Taka from "@/utils/taka";
 import { toast } from "react-toastify";

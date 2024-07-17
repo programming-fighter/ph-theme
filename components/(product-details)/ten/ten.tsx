@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Tab } from "@headlessui/react";
 import { SwiperSlide } from "swiper/react";
 import "./five.css";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import Details from "./details";
 import Rate from "@/utils/rate";
@@ -11,7 +11,7 @@ import SectionHeadingFive from "../../(section-heading)/section-heading-five";
 import Arrow from "@/utils/arrow";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card42 from "../../(card)/card42";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 
 const Ten = ({ data }: any) => {
   const { store_id } = useTheme();

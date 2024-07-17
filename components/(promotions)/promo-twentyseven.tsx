@@ -13,7 +13,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import SectionHeadingTwentySeven from "../(section-heading)/section-heading-twenty-seven";
-import { bannerImg } from "@/app/site-settings/siteUrl";
+import { bannerImg } from "@/site-settings/siteUrl";
 
 const PromoTwentySeven = ({ banner }: any) => {
   const navigationPrevRef = React.useRef(null);

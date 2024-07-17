@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { AiOutlineSearch } from "react-icons/ai";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Image from "next/image";
 import Taka from "@/utils/taka";
 import { BsPlusLg } from "react-icons/bs";

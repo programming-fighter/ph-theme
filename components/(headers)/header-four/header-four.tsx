@@ -3,7 +3,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { useSelector, useDispatch } from "react-redux";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Right from "./right";
 import {
   Bars4Icon,
@@ -11,11 +11,11 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import { IoSearchCircleOutline } from "react-icons/io5";
 import Search from "./search";
-import { red } from "@/app/site-settings/color";
-import { btnhover } from "@/app/site-settings/style";
+import { red } from "@/site-settings/color";
+import { btnhover } from "@/site-settings/style";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");

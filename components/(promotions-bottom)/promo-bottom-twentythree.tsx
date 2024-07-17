@@ -1,4 +1,4 @@
-import { bannerImg } from "@/app/site-settings/siteUrl";
+import { bannerImg } from "@/site-settings/siteUrl";
 import React from "react";
 
 const PromoBottomTwentyThree = ({ banner }: any) => {

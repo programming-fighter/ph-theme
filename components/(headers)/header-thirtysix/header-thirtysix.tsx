@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import Search from "./search";
 import SideCat from "./side-cat";
 

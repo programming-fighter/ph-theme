@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState, Suspense, lazy } from "react";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 export interface UpdateData {
   product_id: string;

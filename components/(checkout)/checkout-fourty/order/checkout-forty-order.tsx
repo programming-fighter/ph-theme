@@ -15,12 +15,12 @@ import {
 } from "@/redux/features/product.slice";
 import { login } from "@/redux/features/auth.slice";
 import httpReq from "@/utils/http/axios/http.service";
-import useTheme from "@/app/hooks/use-theme";
-import { productImg } from "@/app/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
+import { productImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import { FaEdit } from "react-icons/fa";
 import MyModal from "@/components/modal";
-import { btnhover } from "@/app/site-settings/style";
+import { btnhover } from "@/site-settings/style";
 import Taka from "@/utils/taka";
 
 import "./checkout-five-order.css";

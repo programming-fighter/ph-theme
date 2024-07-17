@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 import { BsPlusLg } from "react-icons/bs";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 import "./hero-nine.css";
 
 const HeroNine = ({ slider, design }: any) => {

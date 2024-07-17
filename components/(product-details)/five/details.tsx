@@ -13,7 +13,7 @@ import {
 import parse from "html-react-parser";
 import imgCall from "@/assets/img/call.png";
 import { IoCall } from "react-icons/io5";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { buyNow } from "@/utils/buy-now";

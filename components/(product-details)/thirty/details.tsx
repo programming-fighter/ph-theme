@@ -17,7 +17,7 @@ import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import BDT from "@/utils/bdt";
 import { HSlider } from "./slider";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Rate from "@/utils/rate";
 import CallForPrice from "@/utils/call-for-price";
 

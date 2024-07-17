@@ -5,7 +5,7 @@ import { FaFacebook } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { GrInstagram, GrYoutube } from "react-icons/gr";
 import { BsSearch } from "react-icons/bs";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { Fragment, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";

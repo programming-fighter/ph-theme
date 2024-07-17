@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { motion } from "framer-motion";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import Link from "next/link";
 import FilterByColor from "../../filter-by-color";

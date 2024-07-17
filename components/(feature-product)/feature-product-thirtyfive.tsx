@@ -5,7 +5,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import img from "@/assets/img/thirtyfive/01.webp";
 import SliderThirtyFive from "../(slider)/slider-thirty-five";
 import Card61 from "../(card)/card61";
-import { bannerImg } from "@/app/site-settings/siteUrl";
+import { bannerImg } from "@/site-settings/siteUrl";
 
 const FeatureProductThirtyFive = ({
   feature_product,

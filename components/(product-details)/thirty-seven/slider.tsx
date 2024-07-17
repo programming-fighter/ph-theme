@@ -15,8 +15,8 @@ import {
   Autoplay,
   Controller,
 } from "swiper/modules";
-import { productImg } from "@/app/site-settings/siteUrl";
-import useTheme from "@/app/hooks/use-theme";
+import { productImg } from "@/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
 
 export const HSlider = ({ product, setOpen, open }: any) => {
   const { design } = useTheme();

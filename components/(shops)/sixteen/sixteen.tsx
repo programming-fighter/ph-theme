@@ -1,5 +1,5 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import React, { useEffect, useState } from "react";
 import { IoFilter } from "react-icons/io5";
 import InfiniteScroll from "react-infinite-scroll-component";

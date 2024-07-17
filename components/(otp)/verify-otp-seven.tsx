@@ -1,5 +1,5 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 import httpReq from "@/utils/http/axios/http.service";
 import { verify } from "@/redux/features/auth.slice";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import Loading from "../(register)/loading";
-import { btnhover } from "@/app/site-settings/style";
+import { btnhover } from "@/site-settings/style";
 
 const VerifyOtpSeven = () => {
   const router = useRouter();

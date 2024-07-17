@@ -4,8 +4,8 @@ import ProductDetails from "@/components/product-details";
 import React, { cache } from "react";
 import getUrl from "@/utils/get-url";
 import { fetchDomainData, getProductDetails, getSubdomainName } from "@/lib";
-import { imgUrl } from "@/app/site-settings/siteUrl";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
+import { imgUrl } from "@/site-settings/siteUrl";
 
 type Props = {
   params: { productID: string; slug: string };

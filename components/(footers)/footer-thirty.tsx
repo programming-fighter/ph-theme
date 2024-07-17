@@ -7,7 +7,7 @@ import {
 
 import { BsFacebook, BsYoutube } from "react-icons/bs";
 import Newsletter from "./components/newsletter";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import CopyrightAll from "./components/copyrightall";
 

@@ -1,5 +1,5 @@
 "use client";
-import { bannerImg } from "@/app/site-settings/siteUrl";
+import { bannerImg } from "@/site-settings/siteUrl";
 import React from "react";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";

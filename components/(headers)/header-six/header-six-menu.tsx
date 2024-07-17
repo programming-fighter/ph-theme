@@ -9,10 +9,10 @@ import { Menu, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoLogoWhatsapp } from "react-icons/io5";
 import { GrInstagram, GrYoutube } from "react-icons/gr";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import { ArrowLeftIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import SideMenu from "../header-three/side-menu";
 

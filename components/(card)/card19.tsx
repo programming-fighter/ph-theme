@@ -1,4 +1,4 @@
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";

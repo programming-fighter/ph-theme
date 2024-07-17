@@ -13,9 +13,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 // import Zoom from './Zoom';
-// import ImageZoom from '../../../components/utils/ImageZoom'
+// import ImageZoom from '../../"@/components/utils/ImageZoom'
 
 const ImageSection = ({ images }: any) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);

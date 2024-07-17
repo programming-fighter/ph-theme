@@ -1,11 +1,11 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import React, { useState, useEffect } from "react";
 import { SwiperSlide } from "swiper/react";
 import Details from "./details";
 import { Tab } from "@headlessui/react";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import moment from "moment";
 import Arrow from "@/utils/arrow";

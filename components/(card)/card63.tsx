@@ -7,11 +7,11 @@ import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCartList,

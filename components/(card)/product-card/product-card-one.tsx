@@ -10,7 +10,7 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import Taka from "@/utils/taka";
 import { toast } from "react-toastify";

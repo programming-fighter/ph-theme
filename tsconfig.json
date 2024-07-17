@@ -24,7 +24,10 @@
       "@/*": ["./*"],
       "@/components/*": ["components/*"],
       "@/utils/*": ["utils/*"],
-      "@/assets/*": ["assets/*"]
+      "@/assets/*": ["assets/*"],
+      "@/consts/*": ["consts/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/site-settings/*": ["site-settings/*"]
     }
   },
   "include": [
@@ -34,7 +37,10 @@
     ".next/types/**/*.ts",
     "app/**/*",
     "utils",
-    "components"
+    "components",
+    "consts",
+    "site-settings",
+    "site-settings"
   ],
   "exclude": ["node_modules"]
 }

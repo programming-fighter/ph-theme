@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Discount from "./discount";
 import PaymentGateway from "./payment-gateway/payment-gateway";
 import YourOrders from "./your-orders/your-orders";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import Address from "./address/address";

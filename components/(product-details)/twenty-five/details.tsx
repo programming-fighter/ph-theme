@@ -8,14 +8,14 @@ import {
   WhatsappIcon,
 } from "react-share";
 import parse from "html-react-parser";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useDispatch } from "react-redux";
 import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { toast } from "react-toastify";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import ImageZoom from "../image-zoom";
 import BDT from "@/utils/bdt";
 import {

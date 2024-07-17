@@ -1,5 +1,5 @@
 import ShopComponent from "@/components/shop";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import getUrl from "@/utils/get-url";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
 import { getSubdomainName } from "@/lib";

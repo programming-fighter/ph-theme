@@ -1,5 +1,5 @@
 import Register from "@/components/register";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import axios from "axios";
 import React from "react";
 

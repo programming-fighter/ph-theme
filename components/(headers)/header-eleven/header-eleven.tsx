@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import "./header-eleven.css";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import HeaderElevenHeaderMenu from "./header-eleven-headermenu";
 import HeaderElevenCategory from "./header-eleven-category";
 import { TableCellsIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import SideMenu from "../header-three/side-menu";
 
 const HeaderEleven = () => {
@@ -99,7 +99,10 @@ const HeaderEleven = () => {
               </Link>
             </div>
             <div>
-              <XMarkIcon onClick={() => setOpen(!open)} className="h-5 basis-2/4" />
+              <XMarkIcon
+                onClick={() => setOpen(!open)}
+                className="h-5 basis-2/4"
+              />
             </div>
           </div>
           <div className="z-50 px-10">

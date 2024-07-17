@@ -11,9 +11,9 @@ import {
 } from "react-icons/bs";
 import { MdOutlineZoomOutMap } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import ImageZoom from "../image-zoom";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 export const HSlider = ({ product }: any) => {
   const { design } = useTheme();

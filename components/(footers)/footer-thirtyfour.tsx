@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { TbPhoneCall } from "react-icons/tb";
 import Newsletter from "./components/newsletter";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import CopyrightAll from "./components/copyrightall";
 

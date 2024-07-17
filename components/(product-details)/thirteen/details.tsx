@@ -10,7 +10,7 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import OvalLoader from "../../(loader)/oval-loader";
 import { addToCartList } from "@/redux/features/product.slice";
 import { HSlider } from "./slider";

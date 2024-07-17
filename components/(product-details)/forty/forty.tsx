@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 import Details from "./details";
 import { Tab } from "@headlessui/react";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import SectionHeadingSixteen from "../../(section-heading)/section-heading-sixteen";
 import Arrow from "@/utils/arrow";

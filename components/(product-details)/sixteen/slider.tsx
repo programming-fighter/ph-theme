@@ -10,9 +10,9 @@ import {
 } from "react-icons/bs";
 import { MdOutlineZoomOutMap } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Slider from "react-slick";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import ImageZoom from "../image-zoom";
 
 export const HSlider = ({ product }: any) => {

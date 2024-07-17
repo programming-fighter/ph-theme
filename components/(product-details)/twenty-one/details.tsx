@@ -11,7 +11,7 @@ import {
   WhatsappIcon,
 } from "react-share";
 import parse from "html-react-parser";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useRouter } from "next/navigation";
 import { buyNow } from "@/utils/buy-now";
 import httpReq from "@/utils/http/axios/http.service";

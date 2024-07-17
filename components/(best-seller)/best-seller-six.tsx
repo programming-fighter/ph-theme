@@ -6,7 +6,7 @@ import { getPrice } from "@/utils/get-price";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import SectionHeadingSix from "../(section-heading)/section-heading-six";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
 import ArrowSquare from "@/utils/arrow-square";
 import GridSliderFive from "../(slider)/grid-slider/grid-slider-five";

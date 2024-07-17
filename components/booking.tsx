@@ -1,5 +1,5 @@
 import React from "react";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const Booking = ({ setFormBookData, formBookData }: any) => {
   const { bookingData } = useTheme();

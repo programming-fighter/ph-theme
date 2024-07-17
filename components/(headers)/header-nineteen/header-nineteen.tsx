@@ -10,10 +10,10 @@ import { RiMenu2Line, RiUser2Fill } from "react-icons/ri";
 import { GoLocation } from "react-icons/go";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import SideMenu from "../header-three/side-menu";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Search from "./search";
 
 const HeaderNineteen = () => {

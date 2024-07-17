@@ -12,7 +12,7 @@ import MenuList from "./components/menu-list";
 import CategoryList from "./components/category-list";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 
 const FooterTwentyThree = ({
   headerSetting,

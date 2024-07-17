@@ -5,7 +5,7 @@ import SectionHeadingTwentyThree from "../(section-heading)/section-heading-twen
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import DefaultSlider from "../(slider)/default-slider";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import parse from "html-react-parser";
 
 const FeatureProductTwentyThree = ({ feature_product, design }: any) => {

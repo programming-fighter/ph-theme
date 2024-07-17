@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SwiperSlide } from "swiper/react";
 import httpReq from "@/utils/http/axios/http.service";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import Arrow from "@/utils/arrow";
 import DefaultSlider from "../../(slider)/default-slider";

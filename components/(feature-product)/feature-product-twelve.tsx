@@ -9,7 +9,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import SliderFive from "../(slider)/slider-five";
 import { getPrice } from "@/utils/get-price";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
 
 const FeatureProductTwelve = ({ feature_product, design }: any) => {

@@ -19,7 +19,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-creative";
 import "swiper/css/effect-fade";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroFourteen = ({ slider, design }: any) => {
   let menu = [""];
@@ -85,22 +85,22 @@ const HeroFourteen = ({ slider, design }: any) => {
 
       `;
   return (
-    <div className='group z-0 relative '>
+    <div className="group z-0 relative ">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-fourteen'></div>
+        <div className="swiper-pagination-fourteen"></div>
       </div>
 
-      <div className=' gap-2 sm:flex hidden lg:cursor-pointer'>
+      <div className=" gap-2 sm:flex hidden lg:cursor-pointer">
         <div
           className={`${prevEl}   text-gray-600 arrow-color absolute left-4 top-[50%] -translate-y-1/2 z-10 `}
         >
-          <ChevronLeftIcon className='h-12 font-serif font-bold' />
+          <ChevronLeftIcon className="h-12 font-serif font-bold" />
         </div>
         <div
           className={`${nextEl}  text-gray-600 arrow-color absolute right-4 top-[50%] -translate-y-1/2 z-10 `}
         >
-          <ChevronRightIcon className='h-12 font-serif font-bold' />
+          <ChevronRightIcon className="h-12 font-serif font-bold" />
         </div>
       </div>
 
@@ -125,30 +125,30 @@ const HeroFourteen = ({ slider, design }: any) => {
           EffectCreative,
           EffectFade,
         ]}
-        className='mySwiper relative'
+        className="mySwiper relative"
       >
         {slider?.map((s: any) => (
           <SwiperSlide key={s.id}>
-            <div className=''>
+            <div className="">
               <div
                 style={{ color: s?.color }}
-                className='sm:pr-[50%] absolute top-[40%] lg:left-60 md:left-[120px] sm:left-[60px] px-5 sm:px-0'
+                className="sm:pr-[50%] absolute top-[40%] lg:left-60 md:left-[120px] sm:left-[60px] px-5 sm:px-0"
               >
-                <h1 className='xl:text-4xl md:text-[28px] text-[22px] font-medium  font-seven mb-3'>
+                <h1 className="xl:text-4xl md:text-[28px] text-[22px] font-medium  font-seven mb-3">
                   {s?.title}
                 </h1>
-                <p className='md:text-xl text-sm font-seven '>{s?.subtitle}</p>
+                <p className="md:text-xl text-sm font-seven ">{s?.subtitle}</p>
               </div>
             </div>
-            <a href={s?.link} target='_blank' rel='noopener noreferrer'>
-              <h1 className='lg:px-5 px-2 lg:py-2 py-1 bg-transparent border-white border-2 text-white font-seven lg:text-lg text-xs md:block hidden w-max absolute bottom-[25%] btn-color duration-500 lg:cursor-pointer lg:left-60 md:left-[120px] left-10'>
+            <a href={s?.link} target="_blank" rel="noopener noreferrer">
+              <h1 className="lg:px-5 px-2 lg:py-2 py-1 bg-transparent border-white border-2 text-white font-seven lg:text-lg text-xs md:block hidden w-max absolute bottom-[25%] btn-color duration-500 lg:cursor-pointer lg:left-60 md:left-[120px] left-10">
                 Shop now
               </h1>
             </a>
             <img
-              className='h-auto min-w-full'
+              className="h-auto min-w-full"
               src={sliderImg + s.image}
-              alt=''
+              alt=""
             />
           </SwiperSlide>
         ))}

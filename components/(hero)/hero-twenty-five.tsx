@@ -5,7 +5,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroTwentyFive = ({ slider, design }: any) => {
   return (
@@ -19,14 +19,14 @@ const HeroTwentyFive = ({ slider, design }: any) => {
           delay: 5000,
         }}
         modules={[Pagination, Autoplay]}
-        className='mySwiper'
+        className="mySwiper"
       >
         {slider.map((item: any) => (
           <SwiperSlide key={item?.id}>
             <img
               src={sliderImg + item?.image}
               className={"min-h-[200px] min-w-full"}
-              alt=''
+              alt=""
             />
           </SwiperSlide>
         ))}

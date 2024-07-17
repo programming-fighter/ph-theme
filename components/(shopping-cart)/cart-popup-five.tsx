@@ -6,11 +6,11 @@ import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Dialog, Transition } from "@headlessui/react";
 import { toast } from "react-toastify";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { ShoppingBagIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { XIcon } from "react-share";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { motion } from "framer-motion";
 import { removeToCartList } from "@/redux/features/product.slice";
 

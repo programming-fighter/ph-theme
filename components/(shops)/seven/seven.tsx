@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
 import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";

@@ -6,12 +6,12 @@ import { HiUser } from "react-icons/hi";
 import { useSelector, useDispatch } from "react-redux";
 import { CgClose } from "react-icons/cg";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import { TableCellsIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { IoSearchCircleOutline } from "react-icons/io5";
 import Search from "./search";
-import { btnhover } from "@/app/site-settings/style";
-import useTheme from "@/app/hooks/use-theme";
+import { btnhover } from "@/site-settings/style";
+import useTheme from "@/hooks/use-theme";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");

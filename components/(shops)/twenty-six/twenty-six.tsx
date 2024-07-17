@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ThreeDots } from "react-loader-spinner";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import FilterByColor from "../../filter-by-color";
 import FilterByPrice from "../../filter-by-price";
 import Pagination from "../../(category)/pagination";

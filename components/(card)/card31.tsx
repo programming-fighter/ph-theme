@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { getCampaign } from "@/utils/http/get-campaign";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { AiOutlineSearch } from "react-icons/ai";
 import Rate from "@/utils/rate";
 import { toast } from "react-toastify";

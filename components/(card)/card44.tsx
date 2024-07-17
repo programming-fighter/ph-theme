@@ -1,5 +1,5 @@
 "use client";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
 import Taka from "@/utils/taka";
@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/twenty/details";
 import { toast } from "react-toastify";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const Card44 = ({ item }: any) => {
   const { design, store_id } = useTheme();

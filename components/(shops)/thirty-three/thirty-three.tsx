@@ -11,7 +11,7 @@ import OvalLoader from "../../(loader)/oval-loader";
 import Card59 from "../../(card)/card59";
 import Link from "next/link";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const ThirtyThree = ({ data }: any) => {
   const { category, design, module } = useTheme();

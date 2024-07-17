@@ -18,7 +18,7 @@ import "swiper/css/effect-fade";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import SectionHeadingNine from "../(section-heading)/section-heading-nine";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
 import { getPrice } from "@/utils/get-price";
 

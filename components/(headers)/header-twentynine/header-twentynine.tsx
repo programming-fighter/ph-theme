@@ -10,7 +10,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import HeaderTwentyNineMenu from "./header-twentynine-menu";
 import HeaderTwentyNineCat from "./header-twentynine-cat";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");

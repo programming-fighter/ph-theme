@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { MdAddShoppingCart } from "react-icons/md";
 import Link from "next/link";
 import BDT from "@/utils/bdt";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addToCartList } from "@/redux/features/product.slice";

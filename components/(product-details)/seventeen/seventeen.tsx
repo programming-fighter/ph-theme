@@ -11,7 +11,7 @@ import Rate from "@/utils/rate";
 import Arrow from "@/utils/arrow";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card31 from "../../(card)/card31";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const Seventeen = ({ data }: any) => {
   const { store_id } = useTheme();

@@ -11,10 +11,10 @@ import "./six.css";
 import { GiShoppingCart } from "react-icons/gi";
 import { XIcon } from "react-share";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { removeToCartList } from "@/redux/features/product.slice";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const CartPopUpSix = () => {
   const { design } = useTheme();

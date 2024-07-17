@@ -115,7 +115,6 @@ const FooterDefault = ({ headerSetting, category }: any) => {
         </div>
         <hr />
         <p className=" xl:px-20 lg:px-10 md:px-10 px-5 py-3">
-          {" "}
           <CopyrightAll headerSetting={headerSetting} />
         </p>
         {/* <Messenger /> */}

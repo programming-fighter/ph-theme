@@ -7,7 +7,7 @@ import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import Taka from "@/utils/taka";
 import { toast } from "react-toastify";

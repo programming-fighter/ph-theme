@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import SectionHeadingEighteen from "../(section-heading)/section-heading-eighteen";
 import DefaultSlider from "../(slider)/default-slider";
-import { catImg } from "@/app/site-settings/siteUrl";
+import { catImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 
 const FeaturedEighteen = ({ category, design }: any) => {
@@ -39,20 +39,20 @@ const FeaturedEighteen = ({ category, design }: any) => {
     `;
 
   return (
-    <div className='sm:container px-5 sm:py-10 py-5 relative group '>
+    <div className="sm:container px-5 sm:py-10 py-5 relative group ">
       <style>{styleCss}</style>
       <SectionHeadingEighteen title={"Shop by Category"} subtitle={""} />
-      <div className='relative z-[6]'>
-        <div className='gap-2 lg:cursor-pointer group-hover:opacity-100  opacity-0  duration-500'>
+      <div className="relative z-[6]">
+        <div className="gap-2 lg:cursor-pointer group-hover:opacity-100  opacity-0  duration-500">
           <div
             className={`${prevEl} bg-gray-400 text-white  rounded-full transition-all duration-500  ease-linear absolute -left-4  top-52 `}
           >
-            <ChevronLeftIcon className='h-8 text-2xl font-serif font-bold' />
+            <ChevronLeftIcon className="h-8 text-2xl font-serif font-bold" />
           </div>
           <div
             className={`${nextEl} bg-gray-400 text-white rounded-full transition-all duration-500  ease-linear absolute -right-4 top-52  `}
           >
-            <ChevronRightIcon className='h-8 text-2xl font-serif font-bold' />
+            <ChevronRightIcon className="h-8 text-2xl font-serif font-bold" />
           </div>
         </div>
       </div>
@@ -95,18 +95,18 @@ export default FeaturedEighteen;
 const Card = ({ item }: any) => {
   return (
     <>
-      <div className='category-hover'>
-        <div className=' h-full overflow-hidden '>
+      <div className="category-hover">
+        <div className=" h-full overflow-hidden ">
           <img
             src={catImg + item.banner}
-            alt='Mountain'
-            className='h-auto w-full duration-500 '
+            alt="Mountain"
+            className="h-auto w-full duration-500 "
           />
         </div>
 
-        <div className='flex justify-center py-4 '>
+        <div className="flex justify-center py-4 ">
           <Link href={"/category/" + item.id}>
-            <p className='card-text-color uppercase text-sm font-semibold text-gray-800 mb-4 border-b-2 border-transparent'>
+            <p className="card-text-color uppercase text-sm font-semibold text-gray-800 mb-4 border-b-2 border-transparent">
               {" "}
               {item.name}
             </p>

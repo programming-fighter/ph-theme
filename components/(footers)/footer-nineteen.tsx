@@ -1,7 +1,7 @@
 import React from "react";
 import Newsletter from "./components/newsletter";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import FollowUs from "./components/follow-us";
 import MenuList from "./components/menu-list";
 import CategoryList from "./components/category-list";

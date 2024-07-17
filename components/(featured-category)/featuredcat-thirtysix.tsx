@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import Link from "next/link";
 import DefaultSlider from "../(slider)/default-slider";
-import { catImg } from "@/app/site-settings/siteUrl";
+import { catImg } from "@/site-settings/siteUrl";
 
 const FeaturedThirtySix = ({ category, design }: any) => {
   const prevEl = "feature-category-prev";
@@ -27,16 +27,16 @@ const FeaturedThirtySix = ({ category, design }: any) => {
 
   return (
     <div
-      data-aos='fade-up'
-      className='sm:container px-5 sm:py-10 py-5 relative'
+      data-aos="fade-up"
+      className="sm:container px-5 sm:py-10 py-5 relative"
     >
       <style>{styleCss}</style>
-      <div className='text-center py-10 flex items-center justify-between'>
+      <div className="text-center py-10 flex items-center justify-between">
         <div></div>
-        <p className='text-xl xl:text-2xl'>Popular Categories</p>
-        <Link href='/shop'>
-          <div className='lg:flex justify-center items-center gap-2 font-bold hidden'>
-            <p className='border-b border-black'>View all</p>
+        <p className="text-xl xl:text-2xl">Popular Categories</p>
+        <Link href="/shop">
+          <div className="lg:flex justify-center items-center gap-2 font-bold hidden">
+            <p className="border-b border-black">View all</p>
             <AiOutlineArrowRight />
           </div>
         </Link>
@@ -71,7 +71,7 @@ const FeaturedThirtySix = ({ category, design }: any) => {
       >
         {category.map((productData: any) => (
           <SwiperSlide key={productData.id}>
-            <div className='py-3 px-2'>
+            <div className="py-3 px-2">
               <Card item={productData} />
             </div>
           </SwiperSlide>
@@ -88,20 +88,20 @@ const Card = ({ item }: any) => {
   return (
     <>
       <Link href={"/category/" + item.id}>
-        <div className='text-center relative min-w-full category-hover border shadow-[0px_3px_8px_0px_rgba(0,0,0,0.24)] rounded-lg'>
+        <div className="text-center relative min-w-full category-hover border shadow-[0px_3px_8px_0px_rgba(0,0,0,0.24)] rounded-lg">
           <div
-            className='flex justify-center items-center h-full'
+            className="flex justify-center items-center h-full"
             onClick={() => setOpen(!open)}
           >
             <img
               src={catImg + item?.banner}
-              alt='catImage'
-              className='h-auto w-full p-5'
+              alt="catImage"
+              className="h-auto w-full p-5"
             />
           </div>
 
-          <div className='text-center font-twelve w-full px-2 pb-2'>
-            <p className='text-lg text-gray-800 truncate'> {item.name}</p>
+          <div className="text-center font-twelve w-full px-2 pb-2">
+            <p className="text-lg text-gray-800 truncate"> {item.name}</p>
           </div>
         </div>
       </Link>

@@ -3,11 +3,8 @@ import { useCallback, useEffect, useState } from "react";
 // import { token } from "../services/AxiosInstance";
 // import { isMobile, isTablet, isBrowser } from "react-device-detect";
 import axios from "axios";
-import httpReq from "../../utils/http/axios/http.service";
-import {
-  getFromLocalStorage,
-  saveToLocalStorage,
-} from "../../utils/localstorage";
+import httpReq from "@/utils/http/axios/http.service";
+import { getFromLocalStorage, saveToLocalStorage } from "@/utils/localstorage";
 // import httpReq from "../services/http.service";
 // import {
 //   getFromLocalStorage,

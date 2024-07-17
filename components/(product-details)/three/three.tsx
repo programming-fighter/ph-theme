@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import moment from "moment";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import Details from "./details";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import SectionHeadingSeven from "../../(section-heading)/section-heading-seven";
 import Arrow from "@/utils/arrow";

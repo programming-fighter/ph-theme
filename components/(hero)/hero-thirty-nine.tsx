@@ -25,7 +25,7 @@ import {
   MdOutlinePause,
   MdPlayArrow,
 } from "react-icons/md";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 SwiperCore.use([Autoplay]);
 
@@ -106,8 +106,8 @@ const HeroThirtyNine = ({ slider, design }: any) => {
   };
 
   return (
-    <div className='mt-20'>
-      <div className='z-0 relative sm:container px-5 pt-3 group'>
+    <div className="mt-20">
+      <div className="z-0 relative sm:container px-5 pt-3 group">
         <style>{styleCss}</style>
 
         <Swiper
@@ -128,67 +128,67 @@ const HeroThirtyNine = ({ slider, design }: any) => {
             EffectCreative,
             EffectFade,
           ]}
-          className='mySwiper relative'
+          className="mySwiper relative"
         >
           {slider?.map((s: any) => (
             <SwiperSlide key={s.id}>
-              <div className=''>
+              <div className="">
                 <div
                   style={{ color: s?.color }}
-                  className='absolute z-[1] md:text-center top-1/2 -translate-y-1/2 md:max-w-sm max-w-[250px] px-4 sm:px-0 lg:left-14 xl:left-24 md:left-10 sm:left-5 flex flex-col gap-y-2 md:gap-y-4'
+                  className="absolute z-[1] md:text-center top-1/2 -translate-y-1/2 md:max-w-sm max-w-[250px] px-4 sm:px-0 lg:left-14 xl:left-24 md:left-10 sm:left-5 flex flex-col gap-y-2 md:gap-y-4"
                 >
-                  <h1 className='xl:text-4xl md:text-[28px] text-[16px] font-bold md:text-center md:leading-7'>
+                  <h1 className="xl:text-4xl md:text-[28px] text-[16px] font-bold md:text-center md:leading-7">
                     {s?.title}
                   </h1>
                   {/* <p className='h-[2px] w-10 bg-black mx-auto md:block hidden'></p> */}
-                  <p className='md:text-lg text-xs md:text-center md:leading-5'>
+                  <p className="md:text-lg text-xs md:text-center md:leading-5">
                     {s?.subtitle}
                   </p>
                   {s?.link && (
-                    <a href={s?.link} target='_blank' rel='noopener noreferrer'>
+                    <a href={s?.link} target="_blank" rel="noopener noreferrer">
                       <h1
                         className={`lg:px-10 px-6 md:py-2 py-1 btn-slider duration-300 lg:text-lg text-xs sm:text-center w-max md:mx-auto lg:cursor-pointer bg-black text-white rounded-full font-medium ${
                           !s?.title && "sm:mt-20 mt-10"
                         }`}
                       >
-                        Shop Now <BiRightArrowAlt className='inline' />
+                        Shop Now <BiRightArrowAlt className="inline" />
                       </h1>
                     </a>
                   )}
                 </div>
               </div>
-              <div className=''>
+              <div className="">
                 <img
-                  className='h-auto min-w-full rounded-lg'
+                  className="h-auto min-w-full rounded-lg"
                   src={sliderImg + s.image}
-                  alt=''
+                  alt=""
                 />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        <div className='flex justify-center items-center gap-x-5 border-b'>
-          <div className='flex items-center gap-x-3 border-r py-3 pr-3'>
+        <div className="flex justify-center items-center gap-x-5 border-b">
+          <div className="flex items-center gap-x-3 border-r py-3 pr-3">
             <div
               className={`${prevEl} text-gray-600 lg:cursor-pointer flex justify-center items-center`}
             >
-              <MdKeyboardArrowLeft className='text-xl font-bold' />
+              <MdKeyboardArrowLeft className="text-xl font-bold" />
             </div>
-            <div className='swiper-pagination-thirtynine'></div>
+            <div className="swiper-pagination-thirtynine"></div>
             <div
               className={`${nextEl} text-gray-600 lg:cursor-pointer flex justify-center items-center`}
             >
-              <MdOutlineKeyboardArrowRight className='text-xl font-bold' />
+              <MdOutlineKeyboardArrowRight className="text-xl font-bold" />
             </div>
           </div>
           {!isPlaying && (
-            <MdPlayArrow onClick={handlePlay} className='lg:cursor-pointer' />
+            <MdPlayArrow onClick={handlePlay} className="lg:cursor-pointer" />
           )}
           {isPlaying && (
             <MdOutlinePause
               onClick={handlePause}
-              className='lg:cursor-pointer'
+              className="lg:cursor-pointer"
             />
           )}
         </div>

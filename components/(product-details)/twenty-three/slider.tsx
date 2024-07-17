@@ -8,10 +8,10 @@ import {
   BsFillArrowDownSquareFill,
   BsFillArrowUpSquareFill,
 } from "react-icons/bs";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Slider from "react-slick";
 import ImageZoom from "../image-zoom";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 
 export const HSlider = ({ product, colorid, setColorid, vrcolor }: any) => {
   const { design } = useTheme();

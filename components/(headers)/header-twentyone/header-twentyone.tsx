@@ -21,11 +21,11 @@ import { SiGmail } from "react-icons/si";
 import { BottomCart } from "../card-popup-three";
 import Search from "./search";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import SideMenu from "../header-three/side-menu";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const HeaderTwentyOne = () => {
   const {

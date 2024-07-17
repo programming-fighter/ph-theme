@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import bkashLogo from "@/assets/paymentMethodLogo/bkashLogo.png";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const CheckOutFivePaymentGateway = ({
   selectPayment,

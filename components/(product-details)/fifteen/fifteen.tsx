@@ -5,10 +5,10 @@ import { AiFillYoutube } from "react-icons/ai";
 import { RiInstagramLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import httpReq from "@/utils/http/axios/http.service";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
-import { productImg, profileImg } from "@/app/site-settings/siteUrl";
+import { productImg, profileImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 // import { addToCartList, decrementQty } from '../../../../redux/slices/productslice';
 const Fifteen = ({ data }: any) => {

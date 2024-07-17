@@ -4,7 +4,7 @@ import { Menu, Popover, Transition } from "@headlessui/react";
 
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import HeaderFifteenRight from "./header-fifteen-right";
 import {
   MoonIcon,
@@ -13,8 +13,8 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
-import { btnhover } from "@/app/site-settings/style";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
+import { btnhover } from "@/site-settings/style";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");

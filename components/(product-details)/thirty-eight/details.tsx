@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import parse from "html-react-parser";
 import { HiShoppingCart } from "react-icons/hi";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { useRouter } from "next/navigation";

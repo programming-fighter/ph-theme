@@ -4,9 +4,9 @@ import { Popover, Transition } from "@headlessui/react";
 
 import { useSelector, useDispatch } from "react-redux";
 import MultiStep from "./multistep";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import {
   PhoneIcon,
   XMarkIcon,

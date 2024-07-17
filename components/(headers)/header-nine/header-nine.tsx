@@ -5,13 +5,13 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineSetting } from "react-icons/ai";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import HeaderMenu from "./header-menu";
 import Category from "./category";
 import StickyNav from "./sticky-nav";
 import { ArrowLeftIcon, TableCellsIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import SideMenu from "../header-three/side-menu";
 
 const HeaderNine = () => {

@@ -9,7 +9,7 @@ import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import BDT from "@/utils/bdt";
 import { v4 as uuidv4 } from "uuid";
@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import QuikView from "../quick-view";
 import Details from "../(product-details)/three/details";
 import { addToCartList } from "@/redux/features/product.slice";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const Card53 = ({ item }: any) => {
   const { design, store_id } = useTheme();

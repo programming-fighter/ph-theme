@@ -8,7 +8,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { CgShoppingBag } from "react-icons/cg";
 import { useSelector } from "react-redux";
 import { IoIosArrowForward } from "react-icons/io";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
 import Search from "./search";

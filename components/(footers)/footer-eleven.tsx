@@ -11,7 +11,7 @@ import { BsHeadset } from "react-icons/bs";
 import { SiMinutemailer } from "react-icons/si";
 import { motion } from "framer-motion";
 import Newsletter from "./components/newsletter";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import {
   MapPinIcon,
   MinusIcon,

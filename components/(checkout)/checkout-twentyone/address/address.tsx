@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 

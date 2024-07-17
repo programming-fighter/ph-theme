@@ -5,7 +5,7 @@ import "./checkoutfive.css";
 import CheckOutFiveAddress from "./checkout-five-address/checkout-five-address";
 import CheckOutFiveDiscount from "./checkout-five-discount/checkout-five-discount";
 import CheckOutFiveOrder from "./checkout-five-order/checkout-five-order";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "../../(loader)/oval-loader";
 import CheckOutFivePaymentGateway from "./checkout-five-payment-gateway/checkout-five-payment-gateway";

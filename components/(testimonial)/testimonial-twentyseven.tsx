@@ -6,7 +6,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
-import { testimonialImg } from "@/app/site-settings/siteUrl";
+import { testimonialImg } from "@/site-settings/siteUrl";
 
 const TestimonialTwentySeven = ({ testimonials, design }: any) => {
   return (

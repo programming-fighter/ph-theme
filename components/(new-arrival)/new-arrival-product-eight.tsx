@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import SectionHeadingFive from "../(section-heading)/section-heading-five";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
 import { getPrice } from "@/utils/get-price";
 import { IoSearchCircleOutline } from "react-icons/io5";

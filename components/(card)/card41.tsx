@@ -1,4 +1,4 @@
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
 import { LinkIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";

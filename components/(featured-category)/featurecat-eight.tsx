@@ -5,7 +5,7 @@ import SectionHeadingSeven from "../(section-heading)/section-heading-seven";
 import Arrow from "@/utils/arrow";
 import DefaultSlider from "../(slider)/default-slider";
 import Link from "next/link";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 
 const FeaturedEight = ({ category, design }: any) => {
   const prev1 = "shop_best_seller_Prev1";

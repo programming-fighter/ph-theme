@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 import { RiInstagramLine } from "react-icons/ri";
 import Newsletter from "./components/newsletter";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import {
   DevicePhoneMobileIcon,
   InboxIcon,

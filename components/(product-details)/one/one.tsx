@@ -4,9 +4,9 @@ import RelatedProducts from "./related-products";
 import { Tab } from "@headlessui/react";
 import moment from "moment";
 import httpReq from "@/utils/http/axios/http.service";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Details from "./details";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 
 const One = ({ data }: any) => {

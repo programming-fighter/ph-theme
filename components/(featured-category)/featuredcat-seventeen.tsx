@@ -4,7 +4,7 @@ import img2 from "../(featured-category)/seventeen-bg-img/border.webp";
 import img1 from "../(featured-category)/seventeen-bg-img/icon_wrapper_bg_1.webp";
 import "./featuredcat-seventeen.css";
 import Link from "next/link";
-import { catImg, iconImg } from "@/app/site-settings/siteUrl";
+import { catImg, iconImg } from "@/site-settings/siteUrl";
 import SectionHeadingSeventeen from "../(section-heading)/section-heading-seventeen";
 import Image from "next/image";
 import {

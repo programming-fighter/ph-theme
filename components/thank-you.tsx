@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { TiTickOutline } from "react-icons/ti";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useRouter } from "next/navigation";
 
 const ThankYou = () => {

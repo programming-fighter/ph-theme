@@ -1,6 +1,6 @@
 import React from "react";
 import Newsletter from "./components/newsletter";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import MenuList from "./components/menu-list";
 import MyAccount from "./components/myaccount";
 import FollowUs from "./components/follow-us";

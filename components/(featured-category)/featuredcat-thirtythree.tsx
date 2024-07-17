@@ -1,4 +1,4 @@
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import React from "react";
 
@@ -28,8 +28,8 @@ const FeaturedThirtyThree = ({ category, design }: any) => {
   return (
     <div>
       <style>{styleCss}</style>
-      <div className='sm:container px-5 sm:py-10 py-5'>
-        <div className=' xl:grid-cols-8 lg:grid-cols-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 bg-white grid '>
+      <div className="sm:container px-5 sm:py-10 py-5">
+        <div className=" xl:grid-cols-8 lg:grid-cols-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 bg-white grid ">
           {category?.slice(0, 6).map((item: any, index: any) => (
             <div key={item.id}>
               <FeatureCatSix item={item} index={index} />
@@ -66,8 +66,8 @@ const FeatureCatSix = ({ item, index }: any) => {
       >
         <img
           src={iconImg + item.icon}
-          className='h-auto w-full group-hover:scale-110 duration-500'
-          alt=''
+          className="h-auto w-full group-hover:scale-110 duration-500"
+          alt=""
         />
         <span className={`text-base font-bold`}>{item.name}</span>
       </Link>

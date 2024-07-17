@@ -11,9 +11,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
 import Search from "../header-ten/search";
-import { imgUrl } from "@/app/site-settings/siteUrl";
-import { headerBg } from "@/app/site-settings/color";
-import useTheme from "@/app/hooks/use-theme";
+import { imgUrl } from "@/site-settings/siteUrl";
+import { headerBg } from "@/site-settings/color";
+import useTheme from "@/hooks/use-theme";
 
 const HeaderElevenHeaderMenu = () => {
   const { isLoggedIn } = useSelector((state: any) => state.auth);

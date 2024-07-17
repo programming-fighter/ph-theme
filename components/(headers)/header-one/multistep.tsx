@@ -2,8 +2,8 @@
 import React from "react";
 import "./multistep.css";
 import Link from "next/link";
-import { iconImg } from "@/app/site-settings/siteUrl";
-import useTheme from "@/app/hooks/use-theme";
+import { iconImg } from "@/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
 
 const MultiStep = ({ category, children }: any) => {
   return (

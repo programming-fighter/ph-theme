@@ -9,7 +9,7 @@ import {
 import { BsFacebook, BsYoutube } from "react-icons/bs";
 import NewsletterFour from "./components/newsletter-four";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import CategoryList from "./components/category-list";
 import MenuList from "./components/menu-list";
 import CopyrightAll from "./components/copyrightall";

@@ -15,7 +15,7 @@ import "swiper/css/navigation";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 import "./hero-seventeen.css";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroSeventeen = ({ slider, design }: any) => {
   let menu = [""];
@@ -70,20 +70,20 @@ const HeroSeventeen = ({ slider, design }: any) => {
 
     `;
   return (
-    <div className=' mt-0 xl:mt-0 bg-white relative z-[2]'>
+    <div className=" mt-0 xl:mt-0 bg-white relative z-[2]">
       <style>{styleCss}</style>
-      <div className='xl:px-[0px] lg:px-0 md:px-0 px-0  '>
-        <div className='group  z-0 relative '>
+      <div className="xl:px-[0px] lg:px-0 md:px-0 px-0  ">
+        <div className="group  z-0 relative ">
           <div>
-            <div className='swiper-pagination-seventeen'></div>
+            <div className="swiper-pagination-seventeen"></div>
           </div>
 
-          <div className=' gap-2 relative md:group-hover:flex hidden'>
+          <div className=" gap-2 relative md:group-hover:flex hidden">
             <div
               className={`${prevEl} lg:cursor-pointer bg-gray-500 hover:bg-black text-white transition-all duration-500  ease-linear absolute left-10 lg2:top-[200px] xl:top-[325px] top-[150px] z-10 `}
             >
               <ChevronLeftIcon
-                className='h-8 text-2xl font-serif font-bold'
+                className="h-8 text-2xl font-serif font-bold"
                 style={{
                   background: design?.header_color,
                   color: design?.text_color,
@@ -94,7 +94,7 @@ const HeroSeventeen = ({ slider, design }: any) => {
               className={`${nextEl} lg:cursor-pointer bg-gray-500 hover:bg-black text-white transition-all duration-500  ease-linear absolute right-10 lg2:top-[200px] xl:top-[325px] top-[150px] z-10 `}
             >
               <ChevronRightIcon
-                className='h-8 text-2xl font-serif font-bold'
+                className="h-8 text-2xl font-serif font-bold"
                 style={{
                   background: design?.header_color,
                   color: design?.text_color,
@@ -116,22 +116,22 @@ const HeroSeventeen = ({ slider, design }: any) => {
               delay: 5000,
             }}
             modules={[Pagination, Autoplay, Navigation, Controller, EffectFade]}
-            className='mySwiper relative'
+            className="mySwiper relative"
           >
             {slider?.map((s: any) => (
-              <SwiperSlide key={s.id} className='rounded-lg'>
+              <SwiperSlide key={s.id} className="rounded-lg">
                 <a href={s?.link}>
                   <img
-                    className='min-w-full h-auto'
+                    className="min-w-full h-auto"
                     src={sliderImg + s.image}
-                    alt=''
+                    alt=""
                   />
                 </a>
               </SwiperSlide>
             ))}
           </Swiper>
 
-          <div className='heroSeventeenBackground text-white absolute -bottom-12 z-50'></div>
+          <div className="heroSeventeenBackground text-white absolute -bottom-12 z-50"></div>
         </div>
       </div>
     </div>

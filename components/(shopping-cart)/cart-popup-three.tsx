@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Dialog, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import {
   MinusIcon,
   PlusIcon,
@@ -15,7 +15,7 @@ import {
 import { XIcon } from "react-share";
 import Link from "next/link";
 import { decrementQty, incrementQty } from "@/redux/features/product.slice";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 
 const CartPopUpThree = () => {
   const { design } = useTheme();

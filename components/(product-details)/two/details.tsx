@@ -12,11 +12,11 @@ import {
 import OvalLoader from "../../(loader)/oval-loader";
 import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import { toast } from "react-toastify";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import ImageZoom from "../image-zoom";
 import Link from "next/link";
 import Rate from "@/utils/rate";

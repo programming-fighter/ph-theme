@@ -8,10 +8,10 @@ import { GrClose } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Search from "./search";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import { BottomCart } from "../card-popup-three";
 import {
   ChevronDownIcon,

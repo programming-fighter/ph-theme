@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import { FiHeadphones } from "react-icons/fi";
 import { BsGrid } from "react-icons/bs";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 
 const HeaderElevenCategory = () => {

@@ -4,9 +4,9 @@ import { Menu, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { motion } from "framer-motion";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import { IoSearchCircleOutline } from "react-icons/io5";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import SearchBox from "./searchbox";

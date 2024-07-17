@@ -12,14 +12,14 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import OvalLoader from "../../(loader)/oval-loader";
 import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
 import ImageZoom from "../image-zoom";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import Rate from "@/utils/rate";
 import BDT from "@/utils/bdt";

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import PopUpCart from "./popup-cart";
 
 const CartPopUp = () => {

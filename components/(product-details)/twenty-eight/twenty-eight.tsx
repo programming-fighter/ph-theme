@@ -7,12 +7,12 @@ import moment from "moment";
 import { RiArrowRightSLine } from "react-icons/ri";
 import Link from "next/link";
 import httpReq from "@/utils/http/axios/http.service";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import DefaultSlider from "../../(slider)/default-slider";
 import Card58 from "../../(card)/card58";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const TwentyEight = ({ data }: any) => {
   const { store_id, design } = useTheme();

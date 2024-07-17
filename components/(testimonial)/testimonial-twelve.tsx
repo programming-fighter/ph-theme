@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import SectionHeadingTwelve from "../(section-heading)/section-heading-twelve";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import SliderFive from "../(slider)/slider-five";
-import { testimonialImg } from "@/app/site-settings/siteUrl";
+import { testimonialImg } from "@/site-settings/siteUrl";
 
 const TestimonialTwelve = ({ testimonials, design }: any) => {
   const prevEl = "feature-category-prev";

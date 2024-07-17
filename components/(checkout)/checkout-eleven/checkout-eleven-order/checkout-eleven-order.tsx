@@ -3,17 +3,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import axios from "axios";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useRouter } from "next/navigation";
 import { getPrice } from "@/utils/get-price";
 import { clearCartList } from "@/redux/features/product.slice";
 import { login } from "@/redux/features/auth.slice";
 import httpReq from "@/utils/http/axios/http.service";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import Taka from "@/utils/taka";
 import MyModal from "@/components/modal";
-import { btnhover } from "@/app/site-settings/style";
+import { btnhover } from "@/site-settings/style";
 
 const CheckOutElevenOrder = ({
   couponDis,

@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroEight = ({ slider }: any) => {
   let menu = ["", "", "", ""];
@@ -23,7 +23,7 @@ const HeroEight = ({ slider }: any) => {
     clickable: true,
     renderBullet: function (index: number, className: string) {
       return '<span className="' + className + '">' + menu[index] + "</span>";
-    }, 
+    },
   };
   const styleCss = `
     .swiper-pagination-five .swiper-pagination-bullet {
@@ -43,7 +43,7 @@ const HeroEight = ({ slider }: any) => {
             </div>
 
             <div className="gap-2 md:group-hover:flex hidden">
-              <div 
+              <div
                 className={`${prevEl} bg-gray-500 hover:bg-black text-white transition-all duration-500  ease-linear absolute left-10 top-1/2 -translate-y-1/ z-[2]`}
               >
                 <ChevronLeftIcon className="h-8 text-2xl font-serif font-bold" />

@@ -4,13 +4,13 @@ import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { BsSearch } from "react-icons/bs";
 import { useSelector } from "react-redux";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import Category from "./category";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { headerBg } from "@/app/site-settings/color";
+import { headerBg } from "@/site-settings/color";
 import Taka from "@/utils/taka";
 import Search from "./search";
 

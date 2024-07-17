@@ -18,7 +18,7 @@ import "swiper/css/effect-fade";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import SectionHeadingSeven from "../(section-heading)/section-heading-seven";
 import Link from "next/link";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 import { useRef } from "react";
 
 const FeaturedEleven = ({ category, design, store_id }: any) => {

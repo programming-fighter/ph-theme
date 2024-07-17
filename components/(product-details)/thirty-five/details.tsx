@@ -7,12 +7,12 @@ import { toast } from "react-toastify";
 import OvalLoader from "../../(loader)/oval-loader";
 import { getPrice } from "@/utils/get-price";
 import { addToCartList } from "@/redux/features/product.slice";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import CallForPrice from "@/utils/call-for-price";
 import Link from "next/link";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 
 const Details = ({ data, children, open, setOpen }: any) => {
   const { makeid, store_id, headerSetting, design } = useTheme();

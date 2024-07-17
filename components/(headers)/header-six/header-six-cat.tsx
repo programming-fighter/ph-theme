@@ -7,7 +7,7 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import { motion } from "framer-motion";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
 import Search from "./search";
 

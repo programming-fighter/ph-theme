@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SwiperSlide } from "swiper/react";
 import Details from "./details";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import { profileImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import moment from "moment";
 import SectionHeadingSeven from "../../(section-heading)/section-heading-seven";

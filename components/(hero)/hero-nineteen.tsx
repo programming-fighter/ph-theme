@@ -16,7 +16,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-creative";
 import "swiper/css/effect-fade";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroNineteen = ({ slider, design }: any) => {
   let menu = [""];
@@ -78,22 +78,22 @@ const HeroNineteen = ({ slider, design }: any) => {
 
       `;
   return (
-    <div className='group z-0 relative'>
+    <div className="group z-0 relative">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-five'></div>
+        <div className="swiper-pagination-five"></div>
       </div>
 
-      <div className=' gap-2 md:group-hover:flex lg:cursor-pointer hidden'>
+      <div className=" gap-2 md:group-hover:flex lg:cursor-pointer hidden">
         <div
           className={`${prevEl}  lg2:h-12 lg2:w-12 h-8 w-8 bg-gray-200 arrow-hover-five duration-500 text-gray-600 absolute left-4 top-[50%] translate-y-[-50%] z-10 `}
         >
-          <ChevronLeftIcon className='h-8 lg2:h-12 lg2:w-12 font-serif font-bold' />
+          <ChevronLeftIcon className="h-8 lg2:h-12 lg2:w-12 font-serif font-bold" />
         </div>
         <div
           className={`${nextEl}  lg2:h-12 lg2:w-12 h-8 w-8 bg-gray-200 text-gray-600 duration-500 arrow-hover-five absolute right-4 top-[50%] translate-y-[-50%] z-10 `}
         >
-          <ChevronRightIcon className='h-8 lg2:h-12 lg2:w-12 font-serif font-bold' />
+          <ChevronRightIcon className="h-8 lg2:h-12 lg2:w-12 font-serif font-bold" />
         </div>
       </div>
 
@@ -118,22 +118,22 @@ const HeroNineteen = ({ slider, design }: any) => {
           EffectCreative,
           EffectFade,
         ]}
-        className='mySwiper relative'
+        className="mySwiper relative"
       >
         {slider?.map((s: any) => (
           <SwiperSlide key={s.id}>
-            <div className='absolute top-1/2 -translate-y-1/2 left-[10%] max-w-[50%]'>
+            <div className="absolute top-1/2 -translate-y-1/2 left-[10%] max-w-[50%]">
               <div
                 style={{ color: s?.color }}
-                className='flex flex-col lg:gap-y-8 gap-y-2 max-w-[500px]'
+                className="flex flex-col lg:gap-y-8 gap-y-2 max-w-[500px]"
               >
-                <p className='md:text-base text-xs'>{s?.subtitle}</p>
-                <h1 className='xl:text-4xl md:text-[24px] text-[14px] font-bold'>
+                <p className="md:text-base text-xs">{s?.subtitle}</p>
+                <h1 className="xl:text-4xl md:text-[24px] text-[14px] font-bold">
                   {s?.title}
                 </h1>
                 {s?.link && (
-                  <a href={s?.link} target='_blank' rel='noopener noreferrer'>
-                    <h1 className='lg:px-5 px-2 lg:py-2 py-1 hover:bg-[#f7f3e3] bg-[#F1EBD1] text-[#837B5D] lg:text-lg text-xs border border-black w-max'>
+                  <a href={s?.link} target="_blank" rel="noopener noreferrer">
+                    <h1 className="lg:px-5 px-2 lg:py-2 py-1 hover:bg-[#f7f3e3] bg-[#F1EBD1] text-[#837B5D] lg:text-lg text-xs border border-black w-max">
                       SHOP NOW
                     </h1>
                   </a>
@@ -141,9 +141,9 @@ const HeroNineteen = ({ slider, design }: any) => {
               </div>
             </div>
             <img
-              className='h-auto min-w-full '
+              className="h-auto min-w-full "
               src={sliderImg + s.image}
-              alt=''
+              alt=""
             />
           </SwiperSlide>
         ))}

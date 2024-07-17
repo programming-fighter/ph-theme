@@ -19,7 +19,7 @@ import "swiper/css/effect-creative";
 import "swiper/css/effect-fade";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroTwentyTwo = ({ slider, design }: any) => {
   let menu = [""];
@@ -93,22 +93,22 @@ const HeroTwentyTwo = ({ slider, design }: any) => {
 
       `;
   return (
-    <div className='group z-0 relative '>
+    <div className="group z-0 relative ">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-fourteen'></div>
+        <div className="swiper-pagination-fourteen"></div>
       </div>
 
-      <div className=' gap-2 sm:flex hidden lg:cursor-pointer'>
+      <div className=" gap-2 sm:flex hidden lg:cursor-pointer">
         <div
           className={`${prevEl}   text-gray-600 arrow-color absolute left-4 top-[50%] -translate-y-1/2 z-10 `}
         >
-          <ChevronLeftIcon className='h-12 font-serif font-bold' />
+          <ChevronLeftIcon className="h-12 font-serif font-bold" />
         </div>
         <div
           className={`${nextEl}  text-gray-600 arrow-color absolute right-4 top-[50%] -translate-y-1/2 z-10 `}
         >
-          <ChevronRightIcon className='h-12 font-serif font-bold' />
+          <ChevronRightIcon className="h-12 font-serif font-bold" />
         </div>
       </div>
 
@@ -133,32 +133,32 @@ const HeroTwentyTwo = ({ slider, design }: any) => {
           EffectCreative,
           EffectFade,
         ]}
-        className='mySwiper relative'
+        className="mySwiper relative"
       >
         {slider?.map((s: any) => (
           <SwiperSlide key={s.id}>
-            <div className=''>
+            <div className="">
               <div
                 style={{ color: s?.color }}
-                className='sm:pr-[50%] absolute top-[30%] lg:top-[40%] lg:left-60 md:left-[120px] sm:left-[60px] px-5 sm:px-0'
+                className="sm:pr-[50%] absolute top-[30%] lg:top-[40%] lg:left-60 md:left-[120px] sm:left-[60px] px-5 sm:px-0"
               >
-                <h1 className='xl:text-4xl md:text-[28px] text-[22px] font-medium'>
+                <h1 className="xl:text-4xl md:text-[28px] text-[22px] font-medium">
                   {s?.title}
                 </h1>
-                <p className='md:text-xl text-sm'>{s?.subtitle}</p>
-                <a href={s?.link} target='_blank' rel='noopener noreferrer'>
-                  <div className='lg:px-5 px-2 lg:py-2 py-1 mt-5 bg-transparent border-white bg-slate-800 border-2 text-white font-seven lg:text-lg text-xs md:block hidden w-max btn-color duration-500 lg:cursor-pointer font-semibold'>
+                <p className="md:text-xl text-sm">{s?.subtitle}</p>
+                <a href={s?.link} target="_blank" rel="noopener noreferrer">
+                  <div className="lg:px-5 px-2 lg:py-2 py-1 mt-5 bg-transparent border-white bg-slate-800 border-2 text-white font-seven lg:text-lg text-xs md:block hidden w-max btn-color duration-500 lg:cursor-pointer font-semibold">
                     subscribe
-                    <AiOutlineArrowRight className='text-white inline ml-2' />
+                    <AiOutlineArrowRight className="text-white inline ml-2" />
                   </div>{" "}
                 </a>
               </div>
             </div>
 
             <img
-              className='h-auto min-w-full'
+              className="h-auto min-w-full"
               src={sliderImg + s.image}
-              alt=''
+              alt=""
             />
           </SwiperSlide>
         ))}

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RiMenu2Line } from "react-icons/ri";
 import img from "@/assets/custom_menu_icon.png";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
 import {
   ShoppingBagIcon,
@@ -13,7 +13,7 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 import { LogoutIcon } from "assets/svgComp";
-import { iconImg, imgUrl } from "@/app/site-settings/siteUrl";
+import { iconImg, imgUrl } from "@/site-settings/siteUrl";
 import { logout } from "@/redux/features/auth.slice";
 
 const HeaderThirteen = () => {

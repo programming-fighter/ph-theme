@@ -12,7 +12,7 @@ import { GoLocation } from "react-icons/go";
 import { FaFacebookF } from "react-icons/fa";
 import { Fragment } from "react";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import {
   ArrowLeftIcon,
   Bars4Icon,
@@ -22,8 +22,8 @@ import {
 import Link from "next/link";
 import HeaderMenu from "./headermenu";
 import StickyNav from "./sticky-nav";
-import { imgUrl } from "@/app/site-settings/siteUrl";
-import { headerBg } from "@/app/site-settings/color";
+import { imgUrl } from "@/site-settings/siteUrl";
+import { headerBg } from "@/site-settings/color";
 import SideMenu from "../header-three/side-menu";
 import "./header-five.css";
 import { location } from "@/assets/svg";

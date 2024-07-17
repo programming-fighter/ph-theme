@@ -6,10 +6,10 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { getDiscount } from "@/utils/get-discount";
 import httpReq from "@/utils/http/axios/http.service";
-import { btnhover } from "@/app/site-settings/style";
+import { btnhover } from "@/site-settings/style";
 
 const Discount = ({
   setCouponDis,

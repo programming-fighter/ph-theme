@@ -1,4 +1,4 @@
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import Taka from "@/utils/taka";
 import Link from "next/link";

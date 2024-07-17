@@ -8,8 +8,8 @@ import {
   ThreeDots,
 } from "react-loader-spinner";
 import { motion } from "framer-motion";
-import useTheme from "../app/hooks/use-theme";
-import { imgUrl } from "../app/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
+import { imgUrl } from "@/site-settings/siteUrl";
 
 const LoaderOne = () => {
   const { header_color, text_color, logo, website_name } = useTheme();

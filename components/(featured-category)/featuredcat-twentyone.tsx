@@ -1,5 +1,5 @@
 "use client";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -31,8 +31,8 @@ const FeaturedTwentyOne = ({ category, design }: any) => {
   return (
     <div>
       <style>{styleCss}</style>
-      <div className='sm:container px-5 sm:py-10 py-5'>
-        <div className=' xl:grid-cols-6 grid-cols-2 md:grid-cols-3 gap-5 bg-white grid '>
+      <div className="sm:container px-5 sm:py-10 py-5">
+        <div className=" xl:grid-cols-6 grid-cols-2 md:grid-cols-3 gap-5 bg-white grid ">
           {category?.slice(0, 6).map((item: any) => (
             <div key={item.id}>
               <FeatureCatSix item={item} text={text} setText={setText} />
@@ -66,9 +66,9 @@ const FeatureCatSix = ({ item, setText, text }: any) => {
         href={`/category/${item.id}`}
         onMouseEnter={() => setText(item.name)}
         onMouseLeave={() => setText("")}
-        className='bg-hover group text-gray-600 flex flex-col gap-2 items-center justify-center bg-gray-100 border border-gray-100 px-3 py-5 rounded-lg'
+        className="bg-hover group text-gray-600 flex flex-col gap-2 items-center justify-center bg-gray-100 border border-gray-100 px-3 py-5 rounded-lg"
       >
-        <img src={iconImg + item.icon} className='h-14 w-14' alt='' />
+        <img src={iconImg + item.icon} className="h-14 w-14" alt="" />
         <span
           className={`text-base  font-bold ${
             text === item.name ? " " : "text-black"
@@ -76,7 +76,7 @@ const FeatureCatSix = ({ item, setText, text }: any) => {
         >
           {item.name}
         </span>
-        <span className='font-medium text-base'>
+        <span className="font-medium text-base">
           ({result === undefined ? 0 : result} items)
         </span>
       </Link>

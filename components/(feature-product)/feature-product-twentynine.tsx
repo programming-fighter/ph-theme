@@ -7,7 +7,7 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import SectionHeadingTwentyNine from "../(section-heading)/section-heading-twentynine";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import BDT from "@/utils/bdt";
 import { FaCartPlus } from "react-icons/fa";

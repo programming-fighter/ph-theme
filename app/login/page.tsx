@@ -1,6 +1,6 @@
 "use client";
 import Signin from "@/components/signin";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import React from "react";
 
 const Login = () => {

@@ -19,7 +19,7 @@ import {
 
 import axios from "axios";
 import SectionHeadingSeventeen from "../(section-heading)/section-heading-seventeen";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 import ArrowSeventeen from "@/utils/arrow-seventeen";
 import SliderSeventeenSingleSlide from "../(slider)/slider-seventeen-single";
 import Card33 from "../(card)/card33";

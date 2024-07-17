@@ -3,7 +3,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { SwiperSlide } from "swiper/react";
 import Slider1 from "@/components/(slider)/slider-one";
 import Link from "next/link";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 import { motion } from "framer-motion";
 
 const FeaturedOne = ({ category, design }: any) => {

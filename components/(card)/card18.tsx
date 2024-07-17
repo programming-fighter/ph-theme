@@ -7,7 +7,7 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import Rate from "@/utils/rate";
 import { toast } from "react-toastify";

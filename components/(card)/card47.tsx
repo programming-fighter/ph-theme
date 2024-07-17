@@ -1,5 +1,5 @@
 "use client";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
 import axios from "axios";
@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { BsEye } from "react-icons/bs";
 import { toast } from "react-toastify";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { useDispatch } from "react-redux";
 import { addToCartList } from "@/redux/features/product.slice";
 import QuikView from "../quick-view";

@@ -1,5 +1,5 @@
 "use client";
-import { bannerImg, brandImg } from "@/app/site-settings/siteUrl";
+import { bannerImg, brandImg } from "@/site-settings/siteUrl";
 import React from "react";
 import { SwiperSlide } from "swiper/react";
 import DefaultSlider from "../(slider)/default-slider";

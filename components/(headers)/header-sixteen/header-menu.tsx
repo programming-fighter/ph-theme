@@ -1,12 +1,12 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import React, { useEffect, useState } from "react";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { RiCloseCircleLine, RiMenu3Fill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { BottomCart } from "../card-popup-three";
 import Link from "next/link";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
 import { ArrowLeftIcon, TableCellsIcon } from "@heroicons/react/24/outline";
 import Search from "./search";

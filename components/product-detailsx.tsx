@@ -16,7 +16,7 @@ import Nine from "./(product-details)/nine/nine";
 import Ten from "./(product-details)/ten/ten";
 import Eleven from "./(product-details)/eleven/eleven";
 import Twelve from "./(product-details)/twelve/twelve";
-import useTheme from "../app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import {
   EIGHTEEN,
   FIFTEEN,
@@ -46,7 +46,7 @@ import {
   TWENTY_SIX,
   TWENTY_THREE,
   TWENTY_TWO,
-} from "../app/consts";
+} from "../consts";
 import Thirteen from "./(product-details)/thirteen/thirteen";
 
 import DetailsFifteen from "./(product-details)/fifteen/details-fifteen";

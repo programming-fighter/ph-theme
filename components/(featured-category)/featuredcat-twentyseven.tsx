@@ -10,7 +10,7 @@ import bgImg5 from "../(featured-category)/twentyseven-bg-img/bg-cat5.svg";
 
 import { useState } from "react";
 import Link from "next/link";
-import { iconImg } from "@/app/site-settings/siteUrl";
+import { iconImg } from "@/site-settings/siteUrl";
 import axios from "axios";
 
 const FeaturedTwentySeven = ({ category, design, product }: any) => {

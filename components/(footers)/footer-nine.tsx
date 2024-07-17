@@ -1,7 +1,7 @@
 import React from "react";
 import { FiPhoneCall } from "react-icons/fi";
 import Newsletter from "./components/newsletter";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import CopyrightAll from "./components/copyrightall";
 import CategoryList from "./components/category-list";
 import MenuList from "./components/menu-list";

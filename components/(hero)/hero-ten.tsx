@@ -15,7 +15,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 // import './heroFiveCss/herofive.css'
 
 const HeroTen = ({ slider, design }: any) => {
@@ -85,22 +85,22 @@ const HeroTen = ({ slider, design }: any) => {
   }
     `;
   return (
-    <div className='group z-0 relative'>
+    <div className="group z-0 relative">
       <style>{styleCss}</style>
       <div>
-        <div className='swiper-pagination-ten'></div>
+        <div className="swiper-pagination-ten"></div>
       </div>
 
-      <div className=' md:group-hover:flex hidden lg:cursor-pointer'>
+      <div className=" md:group-hover:flex hidden lg:cursor-pointer">
         <div
           className={`${prevEl} bg-gray-500 hover:bg-black text-white transition-all duration-500 ease-linear absolute left-10 top-1/2 -translate-y-1/2 z-[2] `}
         >
-          <ChevronLeftIcon className='h-8 text-2xl font-serif font-bold' />
+          <ChevronLeftIcon className="h-8 text-2xl font-serif font-bold" />
         </div>
         <div
           className={`${nextEl} bg-gray-500 hover:bg-black text-white transition-all duration-500 ease-linear absolute right-10 top-1/2 -translate-y-1/2 z-[2] `}
         >
-          <ChevronRightIcon className='h-8 text-2xl font-serif font-bold' />
+          <ChevronRightIcon className="h-8 text-2xl font-serif font-bold" />
         </div>
       </div>
       <Swiper
@@ -116,29 +116,29 @@ const HeroTen = ({ slider, design }: any) => {
           delay: 5000,
         }}
         modules={[Pagination, Autoplay, Navigation, Controller, EffectFade]}
-        className='mySwiper'
+        className="mySwiper"
       >
         {slider?.map((s: any) => (
           <SwiperSlide key={s.id}>
-            <div className='absolute top-1/2 -translate-y-1/2 left-[10%] max-w-[50%]'>
-              <div style={{ color: s?.color }} className=''>
-                <h1 className='xl:text-4xl md:text-[24px] text-[14px] font-seven mb-1 md:mb-3 font-bold'>
+            <div className="absolute top-1/2 -translate-y-1/2 left-[10%] max-w-[50%]">
+              <div style={{ color: s?.color }} className="">
+                <h1 className="xl:text-4xl md:text-[24px] text-[14px] font-seven mb-1 md:mb-3 font-bold">
                   {s?.title}
                 </h1>
-                <p className='md:text-base text-xs font-seven'>{s?.subtitle}</p>
+                <p className="md:text-base text-xs font-seven">{s?.subtitle}</p>
               </div>
               {s?.link && (
-                <a href={s?.link} target='_blank' rel='noopener noreferrer'>
-                  <h1 className='md:mt-10 mt-3 lg:px-5 px-2 lg:py-2 py-1 bg-black text-white font-seven lg:text-lg text-xs rounded-md w-max'>
+                <a href={s?.link} target="_blank" rel="noopener noreferrer">
+                  <h1 className="md:mt-10 mt-3 lg:px-5 px-2 lg:py-2 py-1 bg-black text-white font-seven lg:text-lg text-xs rounded-md w-max">
                     Go To Collection
                   </h1>
                 </a>
               )}
             </div>
             <img
-              className='min-w-full h-auto '
+              className="min-w-full h-auto "
               src={sliderImg + s.image}
-              alt=''
+              alt=""
             />
           </SwiperSlide>
         ))}

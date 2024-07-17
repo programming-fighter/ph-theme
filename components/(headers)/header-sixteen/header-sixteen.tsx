@@ -5,8 +5,8 @@ import { IoLocationOutline } from "react-icons/io5";
 import { MdLocalPhone } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Menu, Transition } from "@headlessui/react";
-import useTheme from "@/app/hooks/use-theme";
-import { profileImg } from "@/app/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
+import { profileImg } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import HeaderMenu from "./header-menu";
 

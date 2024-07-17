@@ -9,11 +9,11 @@ import { Dialog, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 // import { getPrice } from '../../../../services/utils';
 import { toast } from "react-toastify";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Taka from "@/utils/taka";
 import { XIcon } from "react-share";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import { removeToCartList } from "@/redux/features/product.slice";
 
 const CartPopUpFour = () => {

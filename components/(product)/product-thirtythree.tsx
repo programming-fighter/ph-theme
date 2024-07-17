@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SectionHeadingThirtyThree from "../(section-heading)/section-heading-thirtythree";
 import { getPrice } from "@/utils/get-price";
 import Link from "next/link";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import Taka from "@/utils/taka";
 

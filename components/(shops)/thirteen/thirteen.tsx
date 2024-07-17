@@ -11,7 +11,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Card18 from "../../(card)/card18";
 import { AnimatePresence, motion } from "framer-motion";
 import Card6 from "../../(card)/card6";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import {
   MinusIcon,
   PlusIcon,

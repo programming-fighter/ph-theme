@@ -6,8 +6,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import Slider from "react-slick";
 import { CgClose } from "react-icons/cg";
-import useTheme from "@/app/hooks/use-theme";
-import { productImg } from "@/app/site-settings/siteUrl";
+import useTheme from "@/hooks/use-theme";
+import { productImg } from "@/site-settings/siteUrl";
 import {
   BsFillArrowDownSquareFill,
   BsFillArrowUpSquareFill,

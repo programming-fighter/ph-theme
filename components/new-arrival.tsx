@@ -25,7 +25,7 @@ import {
   TWENTY_SEVEN,
   TWENTY_THREE,
   TWENTY_TWO,
-} from "../app/consts";
+} from "../consts";
 import NewArrivalProductsEight from "./(new-arrival)/new-arrival-product-eight";
 import NewArrivalProductFive from "./(new-arrival)/new-arrival-product-five";
 import NewArrivalProductFourteen from "./(new-arrival)/new-arrival-product-fourteen";

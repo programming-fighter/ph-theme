@@ -1,4 +1,4 @@
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import Link from "next/link";
 import React from "react";
 import FollowUs from "./components/follow-us";

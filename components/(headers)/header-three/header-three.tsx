@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { location } from "@/assets/svg";
 import "./header-three.css";
 import {
@@ -13,7 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import HeaderMenu from "./header-menu";
-import { imgUrl, profileImg } from "@/app/site-settings/siteUrl";
+import { imgUrl, profileImg } from "@/site-settings/siteUrl";
 import SideMenu from "./side-menu";
 
 function classNames(...classes: any) {

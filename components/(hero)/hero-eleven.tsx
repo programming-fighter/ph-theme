@@ -17,7 +17,7 @@ import "swiper/css/navigation";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 // import "./heroFiveCss/herofive.css";
 import "./hero-eleven.css";
-import { sliderImg } from "@/app/site-settings/siteUrl";
+import { sliderImg } from "@/site-settings/siteUrl";
 
 const HeroEleven = ({ slider, design }: any) => {
   let menu = [""];
@@ -83,20 +83,20 @@ const HeroEleven = ({ slider, design }: any) => {
 
     `;
   return (
-    <div className='bg-white relative heroElevenBgImage'>
+    <div className="bg-white relative heroElevenBgImage">
       <style>{styleCss}</style>
-      <div className='sm:container px-5'>
-        <div className='group py-5 lg:py-5 z-0 relative rounded-md'>
+      <div className="sm:container px-5">
+        <div className="group py-5 lg:py-5 z-0 relative rounded-md">
           <div>
-            <div className='swiper-pagination-five'></div>
+            <div className="swiper-pagination-five"></div>
           </div>
 
-          <div className='md:group-hover:flex hidden'>
+          <div className="md:group-hover:flex hidden">
             <div
               className={`${prevEl} bg-gray-500 hover:bg-black text-white transition-all duration-500  ease-linear absolute left-10 top-1/2 -translate-y-1/2 z-10 `}
             >
               <ChevronLeftIcon
-                className='h-8 text-2xl font-serif font-bold'
+                className="h-8 text-2xl font-serif font-bold"
                 style={{
                   background: design?.header_color,
                   color: design?.text_color,
@@ -107,7 +107,7 @@ const HeroEleven = ({ slider, design }: any) => {
               className={`${nextEl} bg-gray-500 hover:bg-black text-white transition-all duration-500  ease-linear absolute right-10 top-1/2 -translate-y-1/2 z-10 `}
             >
               <ChevronRightIcon
-                className='h-8 text-2xl font-serif font-bold'
+                className="h-8 text-2xl font-serif font-bold"
                 style={{
                   background: design?.header_color,
                   color: design?.text_color,
@@ -129,14 +129,14 @@ const HeroEleven = ({ slider, design }: any) => {
               delay: 5000,
             }}
             modules={[Pagination, Autoplay, Navigation, Controller, EffectFade]}
-            className='mySwiper relative'
+            className="mySwiper relative"
           >
             {slider?.map((s: any) => (
-              <SwiperSlide key={s.id} className='rounded-lg'>
+              <SwiperSlide key={s.id} className="rounded-lg">
                 <img
-                  className='h-auto min-w-full rounded-3xl'
+                  className="h-auto min-w-full rounded-3xl"
                   src={sliderImg + s.image}
-                  alt=''
+                  alt=""
                 />
               </SwiperSlide>
             ))}

@@ -5,7 +5,7 @@ import { Popover, Transition } from "@headlessui/react";
 
 import logo from "../..//assetsimg/headerLogo.png";
 import bg from "../..//assetsimg/headerBg.jpg";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import Link from "next/link";
 import {
   PhoneIcon,

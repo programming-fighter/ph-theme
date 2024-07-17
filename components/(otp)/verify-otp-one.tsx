@@ -1,12 +1,12 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { verify } from "@/redux/features/auth.slice";
-// import useTheme from '../../../../hooks/useTheme';
+// import useTheme from '../../../.@/hooks/useTheme';
 // import { token } from '../../../../services/AxiosInstance';
 
 const VerifyOtpOne = () => {

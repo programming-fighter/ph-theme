@@ -2,7 +2,7 @@ import { GrInstagram, GrYoutube } from "react-icons/gr";
 
 import { AiFillLinkedin } from "react-icons/ai";
 import Newsletter from "./components/newsletter";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import { FaFacebook } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io5";
 import MyAccount from "./components/myaccount";

@@ -10,9 +10,9 @@ import {
   Autoplay,
   Controller,
 } from "swiper/modules";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { productImg } from "@/app/site-settings/siteUrl";
+import { productImg } from "@/site-settings/siteUrl";
 import {
   BsFillArrowDownSquareFill,
   BsFillArrowUpSquareFill,

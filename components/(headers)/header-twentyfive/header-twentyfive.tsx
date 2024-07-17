@@ -9,7 +9,7 @@ import {
 } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { CgShoppingBag } from "react-icons/cg";
-import useTheme from "@/app/hooks/use-theme";
+import useTheme from "@/hooks/use-theme";
 import {
   PhoneIcon,
   TableCellsIcon,
@@ -17,7 +17,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { BottomCart } from "../card-popup-three";
-import { imgUrl } from "@/app/site-settings/siteUrl";
+import { imgUrl } from "@/site-settings/siteUrl";
 import { IoSearchCircleOutline } from "react-icons/io5";
 import Search from "../header-seven/search";
 

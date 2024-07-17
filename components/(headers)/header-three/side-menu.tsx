@@ -1,6 +1,6 @@
 "use client";
-import useTheme from "@/app/hooks/use-theme";
-import { btnhover } from "@/app/site-settings/style";
+import useTheme from "@/hooks/use-theme";
+import { btnhover } from "@/site-settings/style";
 import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
