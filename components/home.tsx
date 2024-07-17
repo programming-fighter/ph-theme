@@ -1,13 +1,20 @@
-import React from "react";
-import Hero from "./hero";
-import FeaturedCategory from "./featured-category";
-import PromoBottom from "./promo-bottom";
-import Product from "./product";
-import NewArrival from "./new-arrival";
-import BestSellerProduct from "./best-seller-product";
-import FeatureProduct from "./feature-product";
-import Testimonial from "./testimonial";
-import Promo from "./promo";
+import dynamic from "next/dynamic";
+
+const Hero = dynamic(() => import("./hero"), { ssr: false });
+const FeaturedCategory = dynamic(() => import("./featured-category"), {
+  ssr: false,
+});
+const PromoBottom = dynamic(() => import("./promo-bottom"), { ssr: false });
+const Product = dynamic(() => import("./product"), { ssr: false });
+const NewArrival = dynamic(() => import("./new-arrival"), { ssr: false });
+const BestSellerProduct = dynamic(() => import("./best-seller-product"), {
+  ssr: false,
+});
+const FeatureProduct = dynamic(() => import("./feature-product"), {
+  ssr: false,
+});
+const Testimonial = dynamic(() => import("./testimonial"), { ssr: false });
+const Promo = dynamic(() => import("./promo"), { ssr: false });
 
 const HomePage = ({ layoutx, queryDatax, design }: any) => {
   return (
