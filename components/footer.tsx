@@ -1,17 +1,17 @@
 "use client";
-import FooterDefault from "./(footers)/footer-default";
+import FooterDefault from "./footers/footer-default";
 import dynamic from "next/dynamic";
-import FooterOne from "./(footers)/footer-one";
-import FooterTwo from "./(footers)/footer-two";
-import FooterThree from "./(footers)/footer-three";
-import FooterFour from "./(footers)/footer-four";
-import FooterFive from "./(footers)/footer-five";
-import FooterSix from "./(footers)/footer-six";
-import FooterSeven from "./(footers)/footer-seven";
-import FooterEight from "./(footers)/footer-eight";
-import FooterNine from "./(footers)/footer-nine";
-import FooterEleven from "./(footers)/footer-eleven";
-import FooterTwelve from "./(footers)/footer-twelve";
+import FooterOne from "./footers/footer-one";
+import FooterTwo from "./footers/footer-two";
+import FooterThree from "./footers/footer-three";
+import FooterFour from "./footers/footer-four";
+import FooterFive from "./footers/footer-five";
+import FooterSix from "./footers/footer-six";
+import FooterSeven from "./footers/footer-seven";
+import FooterEight from "./footers/footer-eight";
+import FooterNine from "./footers/footer-nine";
+import FooterEleven from "./footers/footer-eleven";
+import FooterTwelve from "./footers/footer-twelve";
 import {
   EIGHTEEN,
   FOURTEEN,
@@ -39,70 +39,70 @@ import {
   TWENTY_THREE,
   TWENTY_TWO,
 } from "../consts";
-import FooterThirteen from "./(footers)/footer-thirteen";
-import FooterFourteen from "./(footers)/footer-fourteen";
-import FooterSixteen from "./(footers)/footer-sixteen";
-import FooterSeventeen from "./(footers)/footer-seventeen";
-import FooterEighteen from "./(footers)/footer-eighteen";
-import FooterNineteen from "./(footers)/footer-nineteen";
-import FooterTwenty from "./(footers)/footer-twenty";
-import FooterTwentyOne from "./(footers)/footer-twentyone";
-import FooterTwentyTwo from "./(footers)/footer-twentytwo";
-import FooterTwentyThree from "./(footers)/footer-twentythree";
-import FooterTwentyFour from "./(footers)/footer-twentyfour";
-import FooterTwentyFive from "./(footers)/footer-twentyfive";
-import FooterTwentySix from "./(footers)/footer-twentysix";
-import FooterTwentySeven from "./(footers)/footer-twentyseven";
-import FooterTwentyNine from "./(footers)/footer-twentynine";
-import FooterThirty from "./(footers)/footer-thirty";
-import FooterThirtyFour from "./(footers)/footer-thirtyfour";
-import FooterThirtyFive from "./(footers)/footer-thirtyfive";
-import FooterThirtySix from "./(footers)/footer-thirtysix";
-import FooterThirtySeven from "./(footers)/footer-thirtyseven";
-import FooterForty from "./(footers)/footer-forty";
+import FooterThirteen from "./footers/footer-thirteen";
+import FooterFourteen from "./footers/footer-fourteen";
+import FooterSixteen from "./footers/footer-sixteen";
+import FooterSeventeen from "./footers/footer-seventeen";
+import FooterEighteen from "./footers/footer-eighteen";
+import FooterNineteen from "./footers/footer-nineteen";
+import FooterTwenty from "./footers/footer-twenty";
+import FooterTwentyOne from "./footers/footer-twentyone";
+import FooterTwentyTwo from "./footers/footer-twentytwo";
+import FooterTwentyThree from "./footers/footer-twentythree";
+import FooterTwentyFour from "./footers/footer-twentyfour";
+import FooterTwentyFive from "./footers/footer-twentyfive";
+import FooterTwentySix from "./footers/footer-twentysix";
+import FooterTwentySeven from "./footers/footer-twentyseven";
+import FooterTwentyNine from "./footers/footer-twentynine";
+import FooterThirty from "./footers/footer-thirty";
+import FooterThirtyFour from "./footers/footer-thirtyfour";
+import FooterThirtyFive from "./footers/footer-thirtyfive";
+import FooterThirtySix from "./footers/footer-thirtysix";
+import FooterThirtySeven from "./footers/footer-thirtyseven";
+import FooterForty from "./footers/footer-forty";
 import useTheme from "@/hooks/use-theme";
 import axios from "axios";
 const DynamicFooterDefault = dynamic(
-  () => import("@/components/(footers)/footer-default"),
+  () => import("@/components/footers/footer-default"),
   {
     ssr: false,
   }
 );
 const DynamicFooterFive = dynamic(
-  () => import("@/components/(footers)/footer-five"),
+  () => import("@/components/footers/footer-five"),
   {
     ssr: false,
   }
 );
 
 const DynamicFooterNine = dynamic(
-  () => import("@/components/(footers)/footer-nine"),
+  () => import("@/components/footers/footer-nine"),
   {
     ssr: false,
   }
 );
 const DynamicFooterTwelve = dynamic(
-  () => import("@/components/(footers)/footer-twelve"),
+  () => import("@/components/footers/footer-twelve"),
   {
     ssr: false,
   }
 );
 const DynamicFooterTwentyFour = dynamic(
-  () => import("@/components/(footers)/footer-twentyfour"),
+  () => import("@/components/footers/footer-twentyfour"),
   {
     ssr: false,
   }
 );
 
 const DynamicFooterThirtyEight = dynamic(
-  () => import("@/components/(footers)/footer-thirtyeight"),
+  () => import("@/components/footers/footer-thirtyeight"),
   {
     ssr: false,
   }
 );
 
 const DynamicFooterForty = dynamic(
-  () => import("@/components/(footers)/footer-forty"),
+  () => import("@/components/footers/footer-forty"),
   {
     ssr: false,
   }

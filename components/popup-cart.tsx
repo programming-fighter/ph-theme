@@ -1,8 +1,8 @@
 import React from "react";
-import CartPopUpThree from "./(shopping-cart)/cart-popup-three";
-import CartPopUpFour from "./(shopping-cart)/cart-popup-four";
-import CartPopUpFive from "./(shopping-cart)/cart-popup-five";
-import CartPopUpSix from "./(shopping-cart)/six/cart-popup-six";
+import CartPopUpThree from "./shopping-cart/cart-popup-three";
+import CartPopUpFour from "./shopping-cart/cart-popup-four";
+import CartPopUpFive from "./shopping-cart/cart-popup-five";
+import CartPopUpSix from "./shopping-cart/six/cart-popup-six";
 
 const PopUpCart = ({ theme }: any) => {
   return (

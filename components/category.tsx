@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import CategoryThree from "./(category)/category-three";
-import CategorySevenNew from "./(category)/category-seven-new";
+import CategoryThree from "./_category-page/category/category-three";
+import CategorySevenNew from "./_category-page/category/category-seven-new";
 import useTheme from "@/hooks/use-theme";
 
 const SubCategoryComponent = () => {

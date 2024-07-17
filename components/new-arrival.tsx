@@ -1,13 +1,13 @@
 import dynamic from "next/dynamic";
 const NewArrivalProductNineDynamic = dynamic(
-  () => import("@/components/(new-arrival)/new-arrival-product-nine"),
+  () => import("@/components/new-arrival/new-arrival-product-nine"),
   {
     ssr: false,
     loading: NewArrivalProductNine,
   }
 );
 
-import NewArrivalProductSeven from "@/components/(new-arrival)/new-arrival-product-seven";
+import NewArrivalProductSeven from "@/components/new-arrival/new-arrival-product-seven";
 import {
   FOURTEEN,
   NINE,
@@ -26,26 +26,26 @@ import {
   TWENTY_THREE,
   TWENTY_TWO,
 } from "../consts";
-import NewArrivalProductsEight from "./(new-arrival)/new-arrival-product-eight";
-import NewArrivalProductFive from "./(new-arrival)/new-arrival-product-five";
-import NewArrivalProductFourteen from "./(new-arrival)/new-arrival-product-fourteen";
-import NewArrivalProductNine from "./(new-arrival)/new-arrival-product-nine";
-import NewArrivalProductSeventeen from "./(new-arrival)/new-arrival-product-seventeen";
-import NewArrivalProductSix from "./(new-arrival)/new-arrival-product-six";
-import NewArrivalProductTen from "./(new-arrival)/new-arrival-product-ten";
-import NewArrivalProductThirteeen from "./(new-arrival)/new-arrival-product-thirteen";
-import NewArrivalProductTwelve from "./(new-arrival)/new-arrival-product-twelve";
-import NewArrivalProductTwentyTwo from "./(new-arrival)/new-arrival-product-twentytwo";
-import NewArrivalProductTwentyThree from "./(new-arrival)/new-arrival-product-twentythree";
-import NewArrivalProductTwentySeven from "./(new-arrival)/new-arrival-product-twentyseven";
-import NewArrivalProductTwentyNine from "./(new-arrival)/new-arrival-product-twentynine";
-import NewArrivalProductThirtyOne from "./(new-arrival)/new-arrival-product-thirtyone";
-import NewArrivalProductThirtyFour from "./(new-arrival)/new-arrival-product-thirty-four";
-import NewArrivalProductThirtyFive from "./(new-arrival)/new-arrival-product-thirtyfive";
-import NewArrivalProductThirtySix from "./(new-arrival)/new-arrival-product-thirtysix";
-import NewArrivalProductThirtySeven from "./(new-arrival)/new-arrival-product-thirtyseven";
-import NewArrivalProductThirtyEight from "./(new-arrival)/new-arrival-product-thirtyeight";
-import NewArrivalProductThirtyNine from "./(new-arrival)/new-arrival-product-thirtynine";
+import NewArrivalProductsEight from "./new-arrival/new-arrival-product-eight";
+import NewArrivalProductFive from "./new-arrival/new-arrival-product-five";
+import NewArrivalProductFourteen from "./new-arrival/new-arrival-product-fourteen";
+import NewArrivalProductNine from "./new-arrival/new-arrival-product-nine";
+import NewArrivalProductSeventeen from "./new-arrival/new-arrival-product-seventeen";
+import NewArrivalProductSix from "./new-arrival/new-arrival-product-six";
+import NewArrivalProductTen from "./new-arrival/new-arrival-product-ten";
+import NewArrivalProductThirteeen from "./new-arrival/new-arrival-product-thirteen";
+import NewArrivalProductTwelve from "./new-arrival/new-arrival-product-twelve";
+import NewArrivalProductTwentyTwo from "./new-arrival/new-arrival-product-twentytwo";
+import NewArrivalProductTwentyThree from "./new-arrival/new-arrival-product-twentythree";
+import NewArrivalProductTwentySeven from "./new-arrival/new-arrival-product-twentyseven";
+import NewArrivalProductTwentyNine from "./new-arrival/new-arrival-product-twentynine";
+import NewArrivalProductThirtyOne from "./new-arrival/new-arrival-product-thirtyone";
+import NewArrivalProductThirtyFour from "./new-arrival/new-arrival-product-thirty-four";
+import NewArrivalProductThirtyFive from "./new-arrival/new-arrival-product-thirtyfive";
+import NewArrivalProductThirtySix from "./new-arrival/new-arrival-product-thirtysix";
+import NewArrivalProductThirtySeven from "./new-arrival/new-arrival-product-thirtyseven";
+import NewArrivalProductThirtyEight from "./new-arrival/new-arrival-product-thirtyeight";
+import NewArrivalProductThirtyNine from "./new-arrival/new-arrival-product-thirtynine";
 
 const NewArrival = ({ product, theme, design, store_id, category }: any) => {
   return (

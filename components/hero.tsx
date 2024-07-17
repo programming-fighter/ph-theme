@@ -1,40 +1,40 @@
-import HeroDefault from "@/components/(hero)/hero-default";
-import HeroEight from "@/components/(hero)/hero-eight";
-import HeroEighteen from "@/components/(hero)/hero-eighteen";
-import HeroEleven from "@/components/(hero)/hero-eleven";
-import HeroFive from "@/components/(hero)/hero-five";
-import HeroFour from "@/components/(hero)/hero-four";
-import HeroFourteen from "@/components/(hero)/hero-fourteen";
-import HeroNine from "@/components/(hero)/hero-nine";
-import HeroNineteen from "@/components/(hero)/hero-nineteen";
-import HeroOne from "@/components/(hero)/hero-one";
-import HeroSeven from "@/components/(hero)/hero-seven";
-import HeroSeventeen from "@/components/(hero)/hero-seventeen";
-import HeroSix from "@/components/(hero)/hero-six";
-import HeroSixteen from "@/components/(hero)/hero-sixteen";
-import HeroTen from "@/components/(hero)/hero-ten";
-import HeroThirteen from "@/components/(hero)/hero-thirteen";
-import HeroThirtyEight from "@/components/(hero)/hero-thirty-eight";
-import HeroThirtyFive from "@/components/(hero)/hero-thirty-five";
-import HeroThirtyFour from "@/components/(hero)/hero-thirty-four";
-import HeroThirtyNine from "@/components/(hero)/hero-thirty-nine";
-import HeroThirtyOne from "@/components/(hero)/hero-thirty-one";
-import HeroThirtySeven from "@/components/(hero)/hero-thirty-seven";
-import HeroThirtySix from "@/components/(hero)/hero-thirty-six";
-import HeroThirtyThree from "@/components/(hero)/hero-thirty-three";
-import HeroThree from "@/components/(hero)/hero-three";
-import HeroThirty from "@/components/(hero)/hero-thrity";
-import HeroTwentyTwo from "@/components/(hero)/hero-tweent-two";
-import HeroTwentyOne from "@/components/(hero)/hero-tweenty";
-import HeroTwelve from "@/components/(hero)/hero-twelve";
-import HeroTwentyEight from "@/components/(hero)/hero-twenty-eight";
-import HeroTwentyFive from "@/components/(hero)/hero-twenty-five";
-import HeroTwentyFour from "@/components/(hero)/hero-twenty-four";
-import HeroTwentyNine from "@/components/(hero)/hero-twenty-nine";
-import HeroTwentySeven from "@/components/(hero)/hero-twenty-seven";
-import HeroTwentySix from "@/components/(hero)/hero-twenty-six";
-import HeroTwentyThree from "@/components/(hero)/hero-twenty-three";
-import HeroTwo from "@/components/(hero)/hero-two";
+import HeroDefault from "@/components/_homepage/hero/hero-default";
+import HeroEight from "@/components/_homepage/hero/hero-eight";
+import HeroEighteen from "@/components/_homepage/hero/hero-eighteen";
+import HeroEleven from "@/components/_homepage/hero/hero-eleven";
+import HeroFive from "@/components/_homepage/hero/hero-five";
+import HeroFour from "@/components/_homepage/hero/hero-four";
+import HeroFourteen from "@/components/_homepage/hero/hero-fourteen";
+import HeroNine from "@/components/_homepage/hero/hero-nine";
+import HeroNineteen from "@/components/_homepage/hero/hero-nineteen";
+import HeroOne from "@/components/_homepage/hero/hero-one";
+import HeroSeven from "@/components/_homepage/hero/hero-seven";
+import HeroSeventeen from "@/components/_homepage/hero/hero-seventeen";
+import HeroSix from "@/components/_homepage/hero/hero-six";
+import HeroSixteen from "@/components/_homepage/hero/hero-sixteen";
+import HeroTen from "@/components/_homepage/hero/hero-ten";
+import HeroThirteen from "@/components/_homepage/hero/hero-thirteen";
+import HeroThirtyEight from "@/components/_homepage/hero/hero-thirty-eight";
+import HeroThirtyFive from "@/components/_homepage/hero/hero-thirty-five";
+import HeroThirtyFour from "@/components/_homepage/hero/hero-thirty-four";
+import HeroThirtyNine from "@/components/_homepage/hero/hero-thirty-nine";
+import HeroThirtyOne from "@/components/_homepage/hero/hero-thirty-one";
+import HeroThirtySeven from "@/components/_homepage/hero/hero-thirty-seven";
+import HeroThirtySix from "@/components/_homepage/hero/hero-thirty-six";
+import HeroThirtyThree from "@/components/_homepage/hero/hero-thirty-three";
+import HeroThree from "@/components/_homepage/hero/hero-three";
+import HeroThirty from "@/components/_homepage/hero/hero-thrity";
+import HeroTwentyTwo from "@/components/_homepage/hero/hero-tweent-two";
+import HeroTwentyOne from "@/components/_homepage/hero/hero-tweenty";
+import HeroTwelve from "@/components/_homepage/hero/hero-twelve";
+import HeroTwentyEight from "@/components/_homepage/hero/hero-twenty-eight";
+import HeroTwentyFive from "@/components/_homepage/hero/hero-twenty-five";
+import HeroTwentyFour from "@/components/_homepage/hero/hero-twenty-four";
+import HeroTwentyNine from "@/components/_homepage/hero/hero-twenty-nine";
+import HeroTwentySeven from "@/components/_homepage/hero/hero-twenty-seven";
+import HeroTwentySix from "@/components/_homepage/hero/hero-twenty-six";
+import HeroTwentyThree from "@/components/_homepage/hero/hero-twenty-three";
+import HeroTwo from "@/components/_homepage/hero/hero-two";
 import dynamic from "next/dynamic";
 import {
   EIGHT,
@@ -71,14 +71,14 @@ import {
 } from "@/consts";
 
 const DynamicHeroDefault = dynamic(
-  () => import("@/components/(hero)/hero-default"),
+  () => import("@/components/_homepage/hero/hero-default"),
   {
     ssr: false,
     loading: () => <HeroDefault />,
   }
 );
 
-const DynamicHeroOne = dynamic(() => import("@/components/(hero)/hero-one"), {
+const DynamicHeroOne = dynamic(() => import("@/components/_homepage/hero/hero-one"), {
   ssr: false,
 });
 

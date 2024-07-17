@@ -1,11 +1,11 @@
 import React from "react";
-import LoginOne from "./(sign-in)/signin-one";
-import LoginFour from "./(sign-in)/signin-four";
-import LoginSeven from "./(sign-in)/signin-seven";
-import LoginFive from "./(sign-in)/signin-five";
-import LoginEleven from "./(sign-in)/signin-eleven";
-import LoginTwentyOne from "./(sign-in)/signin-twentyone";
-import LoginTwentyNine from "./(sign-in)/signin-twentynine";
+import LoginOne from "./sign-in/signin-one";
+import LoginFour from "./sign-in/signin-four";
+import LoginSeven from "./sign-in/signin-seven";
+import LoginFive from "./sign-in/signin-five";
+import LoginEleven from "./sign-in/signin-eleven";
+import LoginTwentyOne from "./sign-in/signin-twentyone";
+import LoginTwentyNine from "./sign-in/signin-twentynine";
 
 const Signin = ({ theme }: any) => {
   console.log("theme login", theme);

@@ -1,12 +1,12 @@
-import TestimonialFive from "@/components/(testimonial)/testimonial-five";
-import TestimonialThree from "./(testimonial)/default";
-import TestimonialOne from "./(testimonial)/testimonial-one";
-import TestimonialTwo from "./(testimonial)/testimonial-two";
-import TestimonialFour from "./(testimonial)/testimonial-four";
-import TestimonialSeven from "./(testimonial)/testimonial-seven";
-import TestimonialTwelve from "./(testimonial)/testimonial-twelve";
-import TestimonialTwentySeven from "./(testimonial)/testimonial-twentyseven";
-import TestimonialThirtyFive from "./(testimonial)/testimonial-thirtyfive";
+import TestimonialFive from "@/components/_homepage/testimonial/testimonial-five";
+import TestimonialThree from "./_homepage/testimonial/default";
+import TestimonialOne from "./_homepage/testimonial/testimonial-one";
+import TestimonialTwo from "./_homepage/testimonial/testimonial-two";
+import TestimonialFour from "./_homepage/testimonial/testimonial-four";
+import TestimonialSeven from "./_homepage/testimonial/testimonial-seven";
+import TestimonialTwelve from "./_homepage/testimonial/testimonial-twelve";
+import TestimonialTwentySeven from "./_homepage/testimonial/testimonial-twentyseven";
+import TestimonialThirtyFive from "./_homepage/testimonial/testimonial-thirtyfive";
 
 const Testimonial = ({ testimonials, theme, design }: any) => {
   return (

@@ -1,10 +1,10 @@
 import React from "react";
-import VerifyOtpOne from "./(otp)/verify-otp-one";
-import VerifyOtpFour from "./(otp)/verify-otp-four";
-import VerifyOtpFive from "./(otp)/verify-otp-five";
-import VerifyOtpSeven from "./(otp)/verify-otp-seven";
-import VerifyOtpEleven from "./(otp)/verify-otp-eleven";
-import VerifyOtpTwentyOne from "./(otp)/verify-otp-twentyone";
+import VerifyOtpOne from "./otp/verify-otp-one";
+import VerifyOtpFour from "./otp/verify-otp-four";
+import VerifyOtpFive from "./otp/verify-otp-five";
+import VerifyOtpSeven from "./otp/verify-otp-seven";
+import VerifyOtpEleven from "./otp/verify-otp-eleven";
+import VerifyOtpTwentyOne from "./otp/verify-otp-twentyone";
 
 const OTP = ({ theme }: any) => {
   return (

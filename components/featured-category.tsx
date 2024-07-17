@@ -1,15 +1,4 @@
 "use client";
-
-import DefaultFeaturedCategory from "@/components/(featured-category)/featured-default";
-import FeaturedOne from "./(featured-category)/featuredcat-one";
-import FeaturedTwo from "./(featured-category)/featuredcat-two";
-import FeaturedThree from "./(featured-category)/featuredcat-three";
-import FeaturedFour from "./(featured-category)/featuredcat-four";
-import FeaturedSix from "./(featured-category)/featuredcat-six";
-import FeaturedSeven from "./(featured-category)/featuredcat-seven";
-import FeaturedEight from "./(featured-category)/featurecat-eight";
-import FeaturedEleven from "./(featured-category)/featuredcat-eleven";
-import FeaturedTwelve from "./(featured-category)/featuredcat-twelve";
 import {
   EIGHTEEN,
   FORTY,
@@ -31,26 +20,38 @@ import {
   TWENTY_SEVEN,
   TWENTY_THREE,
 } from "../consts";
-import FeaturedSixteen from "./(featured-category)/featuredcat-sixteen";
-import FeaturedSeventeen from "./(featured-category)/featuredcat-seventeen";
-import FeaturedEighteen from "./(featured-category)/featuredcat-eighteen";
-import FeaturedNineteen from "./(featured-category)/featuredcat-nineteen";
-import FeaturedTwenty from "./(featured-category)/featuredcat-twenty";
-import FeaturedTwentyOne from "./(featured-category)/featuredcat-twentyone";
-import FeaturedTwentyThree from "./(featured-category)/featuredcat-twentythree";
-import FeaturedTwentyFive from "./(featured-category)/featuredcat-twentyfive";
-import FeaturedTwentySix from "./(featured-category)/featuredcat-twentysix";
-import FeaturedTwentySeven from "./(featured-category)/featuredcat-twentyseven";
-import FeaturedTwentyEight from "./(featured-category)/featuredcat-twenty-eight";
-import FeaturedThirty from "./(featured-category)/featuredcat-thirty";
-import FeaturedThirtyOne from "./(featured-category)/featured-thirtyone";
-import FeaturedThirtyThree from "./(featured-category)/featuredcat-thirtythree";
-import FeaturedThirtyFive from "./(featured-category)/featuredcat-thirtyfive";
-import FeaturedThirtySix from "./(featured-category)/featuredcat-thirtysix";
-import FeaturedThirtySeven from "./(featured-category)/featuredcat-thirtyseven";
-import FeaturedThirtyEight from "./(featured-category)/featuredcat-thirtyeight";
-import FeaturedThirtyNine from "./(featured-category)/featuredcat-thirtynine";
-import FeaturedForty from "./(featured-category)/featured-forty";
+
+import DefaultFeaturedCategory from "./_homepage/featured-category/featured-default";
+import FeaturedOne from "./_homepage/featured-category/featuredcat-one";
+import FeaturedTwo from "./_homepage/featured-category/featuredcat-two";
+import FeaturedThree from "./_homepage/featured-category/featuredcat-three";
+import FeaturedFour from "./_homepage/featured-category/featuredcat-four";
+import FeaturedSix from "./_homepage/featured-category/featuredcat-six";
+import FeaturedSeven from "./_homepage/featured-category/featuredcat-seven";
+import FeaturedEight from "./_homepage/featured-category/featurecat-eight";
+import FeaturedEleven from "./_homepage/featured-category/featuredcat-eleven";
+import FeaturedTwelve from "./_homepage/featured-category/featuredcat-twelve";
+
+import FeaturedSixteen from "./_homepage/featured-category/featuredcat-sixteen";
+import FeaturedSeventeen from "./_homepage/featured-category/featuredcat-seventeen";
+import FeaturedEighteen from "./_homepage/featured-category/featuredcat-eighteen";
+import FeaturedNineteen from "./_homepage/featured-category/featuredcat-nineteen";
+import FeaturedTwenty from "./_homepage/featured-category/featuredcat-twenty";
+import FeaturedTwentyOne from "./_homepage/featured-category/featuredcat-twentyone";
+import FeaturedTwentyThree from "./_homepage/featured-category/featuredcat-twentythree";
+import FeaturedTwentyFive from "./_homepage/featured-category/featuredcat-twentyfive";
+import FeaturedTwentySix from "./_homepage/featured-category/featuredcat-twentysix";
+import FeaturedTwentySeven from "./_homepage/featured-category/featuredcat-twentyseven";
+import FeaturedTwentyEight from "./_homepage/featured-category/featuredcat-twenty-eight";
+import FeaturedThirty from "./_homepage/featured-category/featuredcat-thirty";
+import FeaturedThirtyOne from "./_homepage/featured-category/featured-thirtyone";
+import FeaturedThirtyThree from "./_homepage/featured-category/featuredcat-thirtythree";
+import FeaturedThirtyFive from "./_homepage/featured-category/featuredcat-thirtyfive";
+import FeaturedThirtySix from "./_homepage/featured-category/featuredcat-thirtysix";
+import FeaturedThirtySeven from "./_homepage/featured-category/featuredcat-thirtyseven";
+import FeaturedThirtyEight from "./_homepage/featured-category/featuredcat-thirtyeight";
+import FeaturedThirtyNine from "./_homepage/featured-category/featuredcat-thirtynine";
+import FeaturedForty from "./_homepage/featured-category/featured-forty";
 
 const FeaturedCategory = ({
   theme,

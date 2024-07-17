@@ -1,52 +1,52 @@
 import React from "react";
 import dynamic from "next/dynamic";
 const DynamicDefaultProduct = dynamic(
-  () => import("@/components/(product)/product-default"),
+  () => import("@/components/_homepage/product/product-default"),
   {
     ssr: false,
     loading: DefaultProduct,
   }
 );
 const DynamicProductEleven = dynamic(
-  () => import("@/components/(product)/product-eleven"),
+  () => import("@/components/_homepage/product/product-eleven"),
   {
     ssr: false,
   }
 );
 const DynamicProductThirtyThree = dynamic(
-  () => import("@/components/(product)/product-thirtythree"),
+  () => import("@/components/_homepage/product/product-thirtythree"),
   {
     ssr: false,
   }
 );
 
-import DefaultProduct from "@/components/(product)/product-default";
-import ProductOne from "./(product)/product-one";
-import ProductTwo from "./(product)/product-two";
-import ProductThree from "./(product)/product-three";
-import ProductFour from "./(product)/product-four";
-import ProductFive from "./(product)/product-five";
-import ProductTwenty from "./(product)/product-twenty";
-import ProductEleven from "./(product)/product-eleven";
-import ProductFourteen from "./(product)/product-fourteen";
+import DefaultProduct from "@/components/_homepage/product/product-default";
+import ProductOne from "./_homepage/product/product-one";
+import ProductTwo from "./_homepage/product/product-two";
+import ProductThree from "./_homepage/product/product-three";
+import ProductFour from "./_homepage/product/product-four";
+import ProductFive from "./_homepage/product/product-five";
+import ProductTwenty from "./_homepage/product/product-twenty";
+import ProductEleven from "./_homepage/product/product-eleven";
+import ProductFourteen from "./_homepage/product/product-fourteen";
 import { NINETEEN, SEVENTEEN, SIXTEEN, THIRTY, TWENTY } from "../consts";
-import ProductSixteen from "./(product)/product-sixteen";
-import ProductSeventeen from "./(product)/product-seventeen";
-import ProductNineteen from "./(product)/product-nineteen";
-import ProductTwentyOne from "./(product)/product-twentyone";
-import ProductTwentyFour from "./(product)/product-twentyfour";
-import ProductTwentySeven from "./(product)/product-twentyseven";
-import ProductTwentyNine from "./(product)/product-twentynine";
-import ProductThirty from "./(product)/product-thirty";
-import ProductTwentySix from "./(product)/product-twentysix";
-import ProductThirtyThree from "./(product)/product-thirtythree";
-import ProductTwentyEight from "./(product)/product-twentyeight";
-import ProductThirtyFour from "./(product)/product-thirtyfour";
-import ProductThirtyFive from "./(product)/product-thirtyfive";
-import ProductThirtySix from "./(product)/product-thirtysix";
-import ProductThirtySeven from "./(product)/product-thirtyseven";
-import ProductThirtyEight from "./(product)/product-thirtyeight";
-import ProductThirtyNine from "./(product)/product-thirtynine";
+import ProductSixteen from "./_homepage/product/product-sixteen";
+import ProductSeventeen from "./_homepage/product/product-seventeen";
+import ProductNineteen from "./_homepage/product/product-nineteen";
+import ProductTwentyOne from "./_homepage/product/product-twentyone";
+import ProductTwentyFour from "./_homepage/product/product-twentyfour";
+import ProductTwentySeven from "./_homepage/product/product-twentyseven";
+import ProductTwentyNine from "./_homepage/product/product-twentynine";
+import ProductThirty from "./_homepage/product/product-thirty";
+import ProductTwentySix from "./_homepage/product/product-twentysix";
+import ProductThirtyThree from "./_homepage/product/product-thirtythree";
+import ProductTwentyEight from "./_homepage/product/product-twentyeight";
+import ProductThirtyFour from "./_homepage/product/product-thirtyfour";
+import ProductThirtyFive from "./_homepage/product/product-thirtyfive";
+import ProductThirtySix from "./_homepage/product/product-thirtysix";
+import ProductThirtySeven from "./_homepage/product/product-thirtyseven";
+import ProductThirtyEight from "./_homepage/product/product-thirtyeight";
+import ProductThirtyNine from "./_homepage/product/product-thirtynine";
 
 const Product = ({
   product,

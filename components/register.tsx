@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import RegisterOne from "./(register)/register-one";
-import RegisterFour from "./(register)/register-four";
-import RegisterFive from "./(register)/register-five";
-import RegisterSeven from "./(register)/register-seven";
-import RegisterEleven from "./(register)/register-eleven";
+import RegisterOne from "./register/register-one";
+import RegisterFour from "./register/register-four";
+import RegisterFive from "./register/register-five";
+import RegisterSeven from "./register/register-seven";
+import RegisterEleven from "./register/register-eleven";
 import useTheme from "@/hooks/use-theme";
 
 const Register = () => {
