@@ -19,10 +19,6 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const url = getUrl();
-
-  const data = await getSubdomainName(url);
-  const { layout, design } = data;
-
-  return <HomePage layoutx={layout} queryDatax={data} design={design} />;
+  // return <p>hello world</p>;
+  return <HomePage />;
 }
