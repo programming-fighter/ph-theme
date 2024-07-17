@@ -39,7 +39,6 @@
     "utils",
     "components",
     "consts",
-    "site-settings",
     "site-settings"
   ],
   "exclude": ["node_modules"]

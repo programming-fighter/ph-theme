@@ -14,7 +14,8 @@ import { BottomCart } from "../card-popup-three";
 import SideMenu from "../header-three/side-menu";
 
 const HeaderSeven = ({ headerSetting, design }: any) => {
-  const dispatch = useDispatch();
+  console.log({ headerSetting, design });
+
   const { user } = useSelector((state: any) => state.auth);
   const { userData } = useTheme();
   const [open, setOpen] = useState(false);
@@ -55,10 +56,10 @@ const HeaderSeven = ({ headerSetting, design }: any) => {
 
   const styleCss = `
      @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
- 
+
      .navbarSeven.openMenu {
         display: block;
-        position: fixed;
+        // position: fixed;
         width: 100%;
         background: ${design?.header_color};
         z-index: 10;
@@ -74,9 +75,9 @@ const HeaderSeven = ({ headerSetting, design }: any) => {
        background: ${design?.header_color};
     }
         .menu-hover:hover {
-        color:  ${design?.header_color};     
+        color:  ${design?.header_color};
     }
-    
+
     .font-seven {
         font-family: 'Open Sans', sans-serif;
     }
@@ -87,7 +88,7 @@ const HeaderSeven = ({ headerSetting, design }: any) => {
 
   return (
     <div>
-      <div className={` ${openMenu && "navbarSeven openMenu"} bg-seven-header`}>
+      <div className={`${openMenu && "navbarSeven openMenu"} bg-seven-header`}>
         <style>{styleCss}</style>
         <div className="flex flex-row justify-between items-center nav-menu sm:container px-5 lg:py-0 py-1">
           {searchInput && (
