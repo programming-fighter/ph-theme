@@ -324,37 +324,8 @@ const useData = () => {
   // main home page api
   const fetchHeader = useCallback(
     async (data: any) => {
-      // get the data from the api
-      // const {
-      //   store,
-      //   store_id,
-      //   menu,
-      //   headersetting,
-      //   category,
-      //   subcategory,
-      //   slider,
-      //   product,
-      //   feature_product,
-      //   best_sell_product,
-      //   banner,
-      //   testimonials,
-      //   design,
-      //   layout,
-      //   page,
-      //   offer,
-      //   campaign,
-      //   brand,
-      //   productByFirstCategory,
-      // } = await axios.post(
-      //   "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
-      //   {
-      //     name: "siam.localhost:3000",
-      //   }
-      // );
-
       const res = await axios.post(
         "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
-        // { name: "siam.localhost:3000" }
         { name: window.location.host }
       );
 
