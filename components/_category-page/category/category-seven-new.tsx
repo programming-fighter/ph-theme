@@ -49,7 +49,6 @@ const fetchData = async (
 
         const { colors, data } = subcategoryResponse;
 
-        console.log(data, "subcategorydata");
         return { colors, data };
       } catch (err) {
         console.error(err);

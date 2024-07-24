@@ -11,7 +11,7 @@ const FilterByColorNew = ({ setActiveColor, colors, activeColor }: any) => {
           }}
           className="h-6 w-6 rounded-full bg-white border-2 border-red-500 relative overflow-hidden "
         >
-          <p className="absolute left-1/2 -translate-x-1/2 top-0 h-full w-[2px] text-center mx-auto bg-red-500 rotate-45"></p>
+          <p className="absolute left-1/2 -translate-x-1/2 top-0 h-full w-[2px] text-center mx-auto bg-red-500 rotate-45 "></p>
         </p>
 
         {colors?.map((item: any, id: any) => (
@@ -25,7 +25,7 @@ const FilterByColorNew = ({ setActiveColor, colors, activeColor }: any) => {
                 activeColor === item?.code
                   ? "ring-2 ring-offset-2 ring-red-500"
                   : ""
-              } h-6 w-6 border border-gray-800 rounded-full`}
+              } h-6 w-6 border border-gray-800 rounded-full hover:cursor-pointer`}
             ></p>
           </>
         ))}
