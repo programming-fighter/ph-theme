@@ -21,6 +21,7 @@ const LoginOne = () => {
   // const navigate = useNavigate();
 
   const { user } = useSelector((state: any) => state.auth);
+  console.log("this is user", user)
 
   // useEffect(() => {
   //   dispatch(clearMessage());

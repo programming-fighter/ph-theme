@@ -6,7 +6,7 @@ const getUrl = () => {
   const forwardedPath = headersList.get("x-forwarded-path") || "";
   const url = `${host}${forwardedPath}`;
 
-  return url;
+  return url; // siam.localhost.com
 };
 
 export default getUrl;

@@ -1,20 +1,25 @@
 import Register from "@/components/register";
-import useTheme from "@/hooks/use-theme";
-import axios from "axios";
+import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
+import { getSubdomainName } from "@/lib";
+import { imgUrl } from "@/site-settings/siteUrl";
+import getUrl from "@/utils/get-url";
+
 import React from "react";
 
-const Signup = async () => {
-  // const res = await axios.post(
-  //   "https://admin.ebitans.com/api/v1/" + "getsubdomain/name",
-  //   // {
-  //   //   name: "siam.localhost:3000",
-  //   // }
-  //   {
-  //     name: window.location.host,
-  //   }
-  // );
-  // const { design } = res.data;
+export async function generateMetadata() {
+  const url = getUrl();
+  const {
+    headersetting: { website_name, favicon },
+  } = await getSubdomainName(url, "headersetting");
+  const websiteName = capitalizeFirstLetter(website_name);
 
+  return {
+    title: `${websiteName} | Register`,
+    icons: { icon: imgUrl + favicon },
+  };
+}
+
+const Signup = async () => {
   return <Register />;
 };
 
