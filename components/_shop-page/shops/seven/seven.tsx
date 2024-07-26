@@ -13,24 +13,71 @@ import {
   PlusIcon,
 } from "@heroicons/react/24/outline";
 import httpReq from "@/utils/http/axios/http.service";
-import Skeleton from "@/components/loader/skeleton";
+import Skeleton from "react-loading-skeleton";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Card12 from "@/components/card/card12";
+import FilterByPriceNew from "@/components/_category-page/category/filter-by-price-new";
+import PaginationComponent from "@/components/_category-page/category/pagination-new";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import FilterByColorNew from "@/components/_category-page/category/filter-by-color-new";
+
+
+
+
+const fetchData = async (page: any, activeColor: any, priceValue: any, sort: any) => {
+
+
+  const encodedColor = encodeURIComponent(activeColor);
+ 
+  const { colors, data, error } = await httpReq.get(
+    `/shoppage/products?name=${window.location.host}&page=${page}&colorFilter=${encodedColor}&priceFilter=${priceValue}&filter=${sort}`
+  );
+return{ data, colors}
+
+};
+
 
 const Seven = ({ data }: any) => {
   const { module, category } = useTheme();
   const paginateModule = module?.find((item: any) => item?.modulus_id === 105);
   const [open, setOpen] = useState(false);
   const [paginate, setPaginate] = useState({});
-  const [products, setProducts] = useState([]);
-  const [sort, setSort] = useState("");
+
+  const [sort, setSort] = useState("za");
   const [val, setVal] = useState(0);
   const [colors, setColors] = useState(null);
-  const [activeColor, setActiveColor] = useState(null);
-  const [page, setPage] = useState(1);
+  const [activeColor, setActiveColor] = useState("");
+
   const [hasMore, setHasMore] = useState(true);
   const shop_load = parseInt(paginateModule?.status);
+
+  const [priceValue, setPriceValue] = useState('')
+  const [lastPage, setLastPage] = useState('')
+  const [dataId, setDataId] = useState(null)
+
+  const [page, setPage] = useState(1);
+  const [products, setProducts] = useState<any>([]);
+
   const pageShop = shop_load === 1 ? data?.page : page;
+
+  
+
+
+
+  console.log(products, 'products')
+
+
+
+  const { data: productsData, status } = useQuery({
+    queryKey: ["shop-products", page, activeColor, priceValue, sort],
+    queryFn: () => fetchData(page, activeColor, priceValue, sort),
+placeholderData:keepPreviousData
+  });
+
+  console.log(status, "from shop")
+
+
+
 
   return (
     <div className="grid grid-cols-5 lg:gap-8 sm:container px-5 bg-white">
@@ -44,7 +91,7 @@ const Seven = ({ data }: any) => {
         </div>
 
         <div className="mt-10 ">
-          <h1 className="mb-10 text-2xl text-gray-700 font-medium">Category</h1>
+          <h1 className="mb-10 text-2xl text-gray-700 font-medium">Category </h1>
 
           {category.map((item: any) => (
             <div key={item.id} className="">
@@ -52,23 +99,21 @@ const Seven = ({ data }: any) => {
             </div>
           ))}
         </div>
-
+        {/* Filter By Color New */}
         <div className="bg-gray-100 border-2 border-gray-200 my-6 p-4">
-          <FilterByColor
-            setActiveColor={setActiveColor}
-            colors={colors}
-            activeColor={activeColor}
-            shop_load={shop_load}
-            setPage={setPage}
-            setHasMore={setHasMore}
-          />
+             <FilterByColorNew
+              colors={productsData?.colors}
+              setActiveColor={setActiveColor}
+              activeColor={activeColor}
+            />
+            
         </div>
+
+        {/* Filter By Price New */}
         <div className="bg-gray-100 border-2 border-gray-200 p-4">
-          <FilterByPrice
-            setVal={setVal}
-            val={val}
-            setPage={setPage}
-            setHasMore={setHasMore}
+          <FilterByPriceNew
+            priceValue={priceValue}
+            setPriceValue={setPriceValue}
           />
         </div>
       </div>
@@ -85,6 +130,7 @@ const Seven = ({ data }: any) => {
               <button className="text-xl">Filter</button>
             </div>
           </div>
+          {/* Filter By Price and name */}
           <div>
             <Filter
               onChange={(e: any) => {
@@ -102,8 +148,10 @@ const Seven = ({ data }: any) => {
           <Product
             page={pageShop}
             sort={sort}
+            status={status}
             open={open}
-            products={products}
+            dataId={dataId}
+            products={productsData?.data?.data}
             setProducts={setProducts}
             setPaginate={setPaginate}
             setColors={setColors}
@@ -113,22 +161,29 @@ const Seven = ({ data }: any) => {
             shop_load={shop_load}
             setHasMore={setHasMore}
             hasMore={hasMore}
+            data={data}
+            setLastPage={setLastPage}
+          />
+
+        </div>
+
+        <div className="md:mt-12 flex justify-center">
+          <PaginationComponent
+            lastPage={productsData?.data.last_page}
+            setPage={setPage}
+            currentPage={productsData?.data.current_page}
+            initialPage={page}
           />
         </div>
-        {shop_load === 1 && (
-          <div className="my-5">
-            <Pagination paginate={paginate} />
-          </div>
-        )}
+
       </div>
 
       {/* tablet and mobile view  */}
 
       <div className="block py-6 lg:hidden">
         <ul
-          className={`lg:hidden bg-white fixed md:w-128 w-96 top-0 overflow-y-auto bottom-0 -ml-32 pb-5 duration-1000 z-10 lg:cursor-pointer ${
-            open ? "left-0" : "left-[-120%]"
-          }`}
+          className={`lg:hidden bg-white fixed md:w-128 w-96 top-0  overflow-y-auto bottom-0 -ml-32 pb-5 duration-1000 z-10 lg:cursor-pointer ${open ? "left-0" : "left-[-120%]"
+            }`}
         >
           <div className="flex py-4  items-center lg:hidden px-10 border-b-2 border-gray-100 pb-8 ml-20">
             <ArrowLeftIcon
@@ -160,6 +215,7 @@ export default Seven;
 
 const Product = ({
   products,
+  status,
   sort,
   open,
   page,
@@ -173,126 +229,28 @@ const Product = ({
   shop_load,
   setHasMore,
   hasMore,
+  paginate,
+  setLastPage,
+  data,
+  dataId
 }: any) => {
-  const [load, setLoad] = useState(false);
+  
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setLoad(true);
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    shop_load === 1 && page,
-    setShops,
-    activeColor,
-    sort,
-    setColors,
-    activeColor,
-    val,
-  ]);
-
-  const fetchData = async () => {
-    console.log(window.location.host, "host");
-    // get the data from the api
-    const { colors, data, error } = await httpReq.get(
-      `/shoppage/products${
-        page ? (shop_load === 1 ? page : `?page=${page}`) : `?page=1`
-      }&name=${window.location.host}&filter=${sort}&priceFilter=${
-        Number(val) !== 0 ? Number(val) : ""
-      }&colorFilter=${activeColor ? encodeURIComponent(activeColor) : ""}`
-    );
-
-    if (error) {
-      setPaginate(null);
-      setProducts([]);
-      setColors(colors);
-      return setError(error);
-    } else if (data?.data?.length > 0) {
-      if (!shop_load) {
-        if (data?.current_page === 1) {
-          setProducts(data?.data);
-        } else {
-          setProducts([...products, ...data?.data]);
-        }
-        setPage(page + 1);
-      } else {
-        setProducts(data?.data);
-      }
-
-      setPaginate(data);
-      setLoad(false);
-      setError(null);
-      setColors(colors);
-    } else if (data?.current_page === 1) {
-      setProducts([]);
-      setHasMore(false);
-      setPaginate(data);
-    } else {
-      setHasMore(false);
-    }
-
-    setLoad(false);
-  };
-
+  console.log(products, "from home")
+ 
   return (
-    <div>
-      {load ? (
-        <div>
-          <Skeleton />
-        </div>
+
+   <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-3 md:gap-3 xl:grid-cols-4 grid-cols-2 gap-2">
+      {status === "pending" ? (
+        Array.from({ length: 8 }).map((_, index) => (
+          <Skeleton key={index} height={"200px"} />
+        ))
+      ) : products.length <= 0 ? (
+        <p>No Products Found</p>
       ) : (
-        <div>
-          {!shop_load ? (
-            <div>
-              <InfiniteScroll
-                style={{ height: "auto", overflow: "hidden" }}
-                dataLength={products?.length}
-                next={fetchData}
-                hasMore={hasMore}
-                loader={
-                  <div className="flex justify-center items-center">
-                    <ThreeDots
-                      height="80"
-                      width="80"
-                      radius="9"
-                      color="#f1593a"
-                      ariaLabel="three-dots-loading"
-                      wrapperStyle={{}}
-                      visible={true}
-                    />
-                  </div>
-                }
-                endMessage={
-                  <p className="text-center mt-5 text-xl font-bold pb-3">
-                    No More Products
-                  </p>
-                }
-              >
-                <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-3 md:gap-3 xl:grid-cols-4 grid-cols-2 gap-2">
-                  {products?.map((product: any) => (
-                    <Card12 key={product.id} item={product} />
-                  ))}
-                  {error && (
-                    <div className="text-center text-4xl font-bold text-gray-400 flex justify-center items-center col-span-4 mt-10">
-                      {error}
-                    </div>
-                  )}
-                </div>
-              </InfiniteScroll>
-            </div>
-          ) : (
-            <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-3 md:gap-3 xl:grid-cols-4 grid-cols-2 gap-2">
-              {products?.map((product: any) => (
-                <Card12 key={product.id} item={product} />
-              ))}
-              {error && (
-                <div className="text-center text-4xl font-bold text-gray-400 flex justify-center items-center col-span-4 mt-10">
-                  {error}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+        products?.map((product: any) => (
+          <Card12 key={product.id} item={product} />
+        ))
       )}
     </div>
   );
@@ -301,7 +259,7 @@ const Product = ({
 const Filter = ({ onChange }: any) => {
   return (
     <div>
-      <div className="md:flex md:flex-row justify-between items-center gap-1">
+      <div className="md:flex md:flex-row border border-gray-400  py-0 px-0 rounded-xl lg:px-3 justify-between items-center gap-1">
         <div className="md:block hidden">
           <p>Sort By:</p>
         </div>
@@ -309,7 +267,7 @@ const Filter = ({ onChange }: any) => {
           {/* Short by  */}
           <div className="">
             <select
-              onChange={onChange}
+             onChange={onChange}
               className="w-48 font-medium lg:cursor-pointer h-12 px-2 p-0 text-md border-gray-200 rounded-md  focus:border-gray-200 focus:ring-transparent outline-none focus:outline-none"
               id="category"
               name="category"
