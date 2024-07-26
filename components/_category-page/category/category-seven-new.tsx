@@ -79,8 +79,6 @@ const CategorySevenNew = () => {
     placeholderData: keepPreviousData,
   });
 
-  console.log(data, "from category");
-
   return (
     <>
       <div className="grid grid-cols-5 lg:gap-8 sm:container px-5 bg-white">
@@ -216,11 +214,11 @@ const Product = ({ products, status, sort, color }: any) => {
 const Filter = ({ onChange }: any) => {
   return (
     <div>
-      <div className="md:flex md:flex-row justify-between items-center gap-1">
+      <div className="md:flex  md:flex-row border border-gray-400 lg:py-1 py-0 px-0 rounded-xl lg:px-1 justify-between items-center gap-1">
         <div className="md:block hidden">
           <p>Sort By:</p>
         </div>
-        <div className="flex items-center gap-3 lg:-ml-28 xl:-ml-0 md:-ml-0 ml-2 justify-center">
+        <div className="flex items-center gap-1 lg:-ml-28 xl:-ml-0 md:-ml-0 ml-2 justify-center">
           {/* Short by  */}
           <div className="">
             <select
