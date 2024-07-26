@@ -79,6 +79,8 @@ const CategorySevenNew = () => {
     placeholderData: keepPreviousData,
   });
 
+  console.log(data, "from category");
+
   return (
     <>
       <div className="grid grid-cols-5 lg:gap-8 sm:container px-5 bg-white">

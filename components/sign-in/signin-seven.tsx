@@ -42,9 +42,9 @@ const LoginSeven = () => {
           window.location.href = "/profile";
           // window.location.reload();
         }
-        // else {
-        //     navigate('/verify-otp')
-        // }
+        else {
+            router.push('/verify-otp')
+        }
       })
       .catch((er: any) => {
         // toast('Credential Doesn"t Match', { type: "error" });
