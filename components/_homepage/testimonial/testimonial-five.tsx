@@ -26,7 +26,7 @@ const TestimonialFive = ({ testimonials }: any) => {
                   return (
                     <SwiperSlide key={single.id}>
                       <div className="p-4 w-full">
-                        <div className="h-full rounded flex items-center gap-6">
+                        <div className="h-full rounded lg:flex items-center gap-6">
                           <img
                             alt="testimonial"
                             src={testimonialImg + single.image}

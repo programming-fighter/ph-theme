@@ -296,6 +296,7 @@ const Filter = ({ onChange }: any) => {
 };
 
 const SingleCat = ({ item }: any) => {
+  
   const [show, setShow] = useState(false);
   return (
     <>
@@ -318,10 +319,11 @@ const SingleCat = ({ item }: any) => {
           </div>
         ) : null}
       </div>
-
+  
       {show && (
         <>
           <div className="ml-8">
+
             {item?.cat?.map((sub: any) => (
               <div className="py-2" key={sub.id}>
                 <Link href={"/category/" + sub?.id}>
