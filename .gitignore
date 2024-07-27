@@ -40,3 +40,4 @@ next-env.d.ts
 #pkg lock
 package-lock.json
 README.md
+pnpm-lock.yaml
