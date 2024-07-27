@@ -5,7 +5,7 @@ import useTheme from "@/hooks/use-theme";
 
 const PaymentGateway = ({ selectPayment, setSelectPayment }: any) => {
   const { design, headerSetting, module, store_id } = useTheme();
-  const advancePay = module.find((item: any) => item?.modulus_id === 106);
+  const advancePay = module?.find((item: any) => item?.modulus_id === 106);
 
   return (
     <>
