@@ -90,7 +90,7 @@ const CheckOutSevenAddress = ({
                   onClick={() => setOpen(true)}
                 >
                   {" "}
-                  + Add
+                  + Add Addresss
                 </span>
               )}
             </div>
@@ -461,7 +461,7 @@ export function SaveAddress({
                   name="name"
                   id="name"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 focus:ring-green-500 focus:border-green-500 block p-2 w-full shadow-sm sm:text-sm border-balck border rounded-md"
                 />
                 {errors.name && (
                   <span className="text-red-500">Name is required</span>
@@ -483,7 +483,7 @@ export function SaveAddress({
                   name="phone"
                   id="phone"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block p-2 w-full shadow-sm sm:text-sm border-black border rounded-md"
                 />
 
                 {errors.phone?.type === "required" && (
@@ -508,7 +508,7 @@ export function SaveAddress({
                   name="address"
                   id="address"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 p-2 block w-full shadow-sm sm:text-sm border-black border rounded-md"
                 />
                 {errors.address && (
                   <span className="text-red-500">Address is required</span>

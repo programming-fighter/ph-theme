@@ -214,7 +214,7 @@ const Product = ({ products, status, sort, color }: any) => {
 const Filter = ({ onChange }: any) => {
   return (
     <div>
-      <div className="md:flex  md:flex-row border border-gray-400 lg:py-1 py-0 px-0 rounded-xl lg:px-1 justify-between items-center gap-1">
+      <div className="md:flex  md:flex-row border border-gray-400 py-0 px-0 rounded-xl lg:px-3            justify-between items-center gap-1">
         <div className="md:block hidden">
           <p>Sort By:</p>
         </div>
