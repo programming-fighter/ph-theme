@@ -1,33 +1,26 @@
-"use client";
-import Signin from "@/components/signin";
-import useTheme from "@/hooks/use-theme";
 import React from "react";
 
-const Login = () => {
-  const { design } = useTheme();
-  return (
-    <div
-      className={`${
-        design?.header === "fourteen"
-          ? "lg:mt-[80px]"
-          : design?.header === "thirtyfive"
-          ? "mt-[80px]"
-          : design?.header === "twentytwo"
-          ? "lg:mt-[80px]"
-          : design?.header === "twentyseven"
-          ? "mt-[80px]"
-          : design?.header === "twentyfive"
-          ? "mt-[80px]"
-          : design?.header === "thirtysix"
-          ? "mt-[80px]"
-          : design?.header === "thirtynine"
-          ? "mt-[80px]"
-          : "lg:mt-[0px]"
-      }`}
-    >
-      {design?.login_page && <Signin theme={design?.login_page} />}
-    </div>
-  );
+import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
+import { getSubdomainName } from "@/lib";
+import { imgUrl } from "@/site-settings/siteUrl";
+import getUrl from "@/utils/get-url";
+import Signin from "@/components/signin";
+
+export async function generateMetadata() {
+  const url = getUrl();
+  const {
+    headersetting: { website_name, favicon },
+  } = await getSubdomainName(url, "headersetting");
+  const websiteName = capitalizeFirstLetter(website_name);
+
+  return {
+    title: `${websiteName} | Login`,
+    icons: { icon: imgUrl + favicon },
+  };
+}
+
+const LoginPage = async () => {
+  return <Signin />;
 };
 
-export default Login;
+export default LoginPage;

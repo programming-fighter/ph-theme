@@ -79,8 +79,6 @@ const CategorySevenNew = () => {
     placeholderData: keepPreviousData,
   });
 
-  console.log(data, 'catgeory')
-
   return (
     <>
       <div className="grid grid-cols-5 lg:gap-8 sm:container px-5 bg-white">
@@ -143,7 +141,7 @@ const CategorySevenNew = () => {
           <Product
             products={data}
             status={status}
-            sort={sort}  
+            sort={sort}
             activeColor={activeColor}
           />
 

@@ -6,10 +6,10 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import CartPopUp from "@/components/cart-popup";
 import ThemeProvider from "@/hooks/theme-provider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import CartPopUp from "@/components/cart-popup";
 const queryClient = new QueryClient();
 
 const AppWrapper = ({ children, design, headerSetting }: any) => {
