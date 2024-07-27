@@ -36,6 +36,8 @@ const CheckOutSevenOrder = ({
   userPhone,
   userAddress,
   formBookData,
+  userPhoneError,
+  setUserPhoneError,
 }: any) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -54,6 +56,8 @@ const CheckOutSevenOrder = ({
     setOrderPlaced,
     bookingData,
   } = useTheme();
+
+  console.log(selectAddress?.phone, "this is user address");
 
   const cartList = useSelector((state: any) => state.cart.cartList);
   const { user } = useSelector((state: any) => state.auth);
@@ -567,12 +571,20 @@ const CheckOutSevenOrder = ({
         </button>
       ) : (
         <button
-          className={`font-semibold tracking-wider my-1 rounded-sm border border-gray-300 w-full py-3 ${btnhover}`}
+          className={`font-semibold tracking-wider my-1 rounded-sm border border-gray-300 w-full py-3 ${btnhover} ${
+            userPhoneError ? "bg-gray-300 cursor-not-allowed" : ""
+          }`}
           style={{
             backgroundColor: design?.header_color,
             color: design?.text_color,
+            opacity: userPhoneError ? 0.5 : 1, // Optional: to visually indicate the disabled state
           }}
-          onClick={() => handleCheckout()}
+          onClick={() => {
+            if (!userPhoneError) {
+              handleCheckout();
+            }
+          }}
+          disabled={!!userPhoneError} // Disables button when there is an error
         >
           {bookingData?.status === 200 ? "Book Now" : "Place Order"}
         </button>

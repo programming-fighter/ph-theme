@@ -26,11 +26,11 @@ const TestimonialFive = ({ testimonials }: any) => {
                   return (
                     <SwiperSlide key={single.id}>
                       <div className="p-4 w-full">
-                        <div className="h-full rounded flex items-center gap-6">
+                        <div className="h-full rounded lg:flex items-center gap-6">
                           <img
                             alt="testimonial"
                             src={testimonialImg + single.image}
-                            className="w-28 h-28 -mr-12 rounded-full z-10 flex-shrink-0 object-cover object-center border-4 border-white"
+                            className="lg:w-28 lg:h-28 md:w-32 md:h-32 lg:ml-0 ml-20 h-40 w-40 -mr-12 rounded-full z-10 flex-shrink-0 object-cover object-center border-4 border-white"
                           />
 
                           <div className="bg-white rounded-md h-full py-8 px-10 w-full mb-5">

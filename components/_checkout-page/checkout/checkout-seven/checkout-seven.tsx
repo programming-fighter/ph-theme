@@ -22,6 +22,7 @@ const CheckOutSeven = () => {
   const [token, setToken] = useState(null);
   const [userName, setUserName] = useState(null);
   const [userPhone, setUserPhone] = useState(null);
+  const [userPhoneError, setUserPhoneError] = useState(null);
   const [userAddress, setUserAddress] = useState(null);
   const [campaign, setCampaign] = useState([]);
   const [formBookData, setFormBookData] = useState({
@@ -120,7 +121,10 @@ const CheckOutSeven = () => {
               token={token}
               setUserAddress={setUserAddress}
               setUserPhone={setUserPhone}
+              userPhone={userPhone}
               setUserName={setUserName}
+              userPhoneError={userPhoneError}
+              setUserPhoneError={setUserPhoneError}
             />
           )}
           <CheckOutSevenDiscount
@@ -150,6 +154,8 @@ const CheckOutSeven = () => {
             userAddress={userAddress}
             userPhone={userPhone}
             userName={userName}
+            userPhoneError={userPhoneError}
+            setUserPhoneError={setUserPhoneError}
           />
         </div>
       </div>
