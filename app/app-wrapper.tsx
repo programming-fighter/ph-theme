@@ -1,14 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
-import { Provider } from "react-redux";
 import store, { persistor } from "@/redux/store";
+import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
-import { ToastContainer } from "react-toastify";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import ThemeProvider from "@/hooks/theme-provider";
-import Header from "@/components/header";
 import Footer from "@/components/footer";
+import ThemeProvider from "@/hooks/theme-provider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ToastContainer } from "react-toastify";
+import Header from "@/components/header";
 import CartPopUp from "@/components/cart-popup";
 const queryClient = new QueryClient();
 

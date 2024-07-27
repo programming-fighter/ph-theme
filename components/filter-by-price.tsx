@@ -10,8 +10,6 @@ const FilterByPrice = ({ setVal, val, id, setPage, setHasMore }: any) => {
 
   const url = id ? categoryUrl : shopUrl;
 
-  //   const navigate = useNavigate();
-
   const handleInputChange = () => {
     setTimeout(() => {
       setVal(inputRef.current.value);
