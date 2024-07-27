@@ -8,6 +8,7 @@ import axios from "axios";
 import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import CheckoutFrom from "@/components/_checkout-page/_components/checkout-from";
 
 const CheckOutSevenAddress = ({
   selectAddress,
@@ -17,6 +18,8 @@ const CheckOutSevenAddress = ({
   setUserAddress,
   setUserPhone,
   setUserName,
+  userPhoneError,
+  setUserPhoneError,
 }: any) => {
   const { store_id, store } = useTheme();
   const [address, setAddress] = useState<any>(null);
@@ -67,6 +70,21 @@ const CheckOutSevenAddress = ({
     }
   }, [store_id, call, setSelectAddress, token, store?.auth_type, user]);
 
+  const phoneRegExp = /^(01\d{9}|8801\d{9}|\+8801\d{9})$/;
+
+  // Function to handle input change and validation
+  const handleChange = (e: any) => {
+    const value = e.target.value;
+    setUserPhone(value);
+
+    // Validate the phone number
+    if (phoneRegExp.test(value)) {
+      setUserPhoneError(""); // Clear error if valid
+    } else {
+      setUserPhoneError("Invalid phone number"); // Set error message if invalid
+    }
+  };
+
   return (
     <>
       <div className="shadow sm:rounded-md sm:overflow-hidden my-5">
@@ -100,20 +118,22 @@ const CheckOutSevenAddress = ({
                   onChange={(e) => setUserName(e.target.value)}
                   type="text"
                   placeholder="Name"
-                  className="border border-gray-400 focus:outline-none focus:border-blue-500 rounded-lg focus:ring-0 p-2 text-lg shadow-sm"
+                  className="border border-gray-400 focus:outline-none focus:border-blue-500 required rounded-lg focus:ring-0 p-2 text-lg shadow-sm"
                 />
 
                 <input
-                  onChange={(e) => setUserPhone(e.target.value)}
+                  onChange={handleChange}
                   type="number"
                   placeholder="Phone"
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
+                  className="border border-gray-400 focus:outline-none focus:border p-2  required: focus:border-gray-400 rounded focus:ring-0"
                 />
+                {/* for easy order if user provide a wrong number or wrong credential then show error  */}
+                <p className="text-sm text-rose-500">{userPhoneError}</p>
                 <textarea
                   rows={6}
                   onChange={(e) => setUserAddress(e.target.value)}
-                  placeholder="Address"
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
+                  placeholder="Address....."
+                  className="border border-gray-400 p-1 focus:outline-none focus:border required focus:border-gray-400 rounded focus:ring-0"
                 />
               </div>
             ) : (
@@ -168,122 +188,16 @@ export default CheckOutSevenAddress;
 
 const AddressView = ({ store, setCall, store_id, setToken }: any) => {
   const { user } = useSelector((state: any) => state.auth);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
-
-  const onSubmit = async (data: any) => {
-    data["store_id"] = store_id;
-
-    if (store?.auth_type === "EasyOrder" && !user) {
-      const response = await axios.post(
-        "https://admin.ebitans.com/api/v1/address/easy-order/save",
-        data
-      );
-      reset();
-      setToken(response?.data?.token);
-      setCall(Math.random() * 100);
-      toast(response?.data?.success, { type: "success" });
-    } else {
-      httpReq
-        .post("address/save", data)
-        .then(({ success, token }) => {
-          reset();
-          setToken(token);
-          setCall(Math.random() * 100);
-          toast(success, { type: "success" });
-        })
-        .catch((err) => console.log(err));
-    }
-  };
 
   return (
     <div>
-      <form className="" onSubmit={handleSubmit(onSubmit)}>
-        <div className="shadow overflow-hidden sm:rounded-md w-full">
-          <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
-            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Name
-              </label>
-              <input
-                {...register("name", { required: true })}
-                type="text"
-                name="name"
-                id="name"
-                autoComplete="address-level1"
-                className="mt-1 focus:ring-0 focus:border-gray-400 block w-full shadow-md sm:text-md border-2 border-gray-300 rounded-lg p-3 text-gray-700"
-              />
-
-              {errors.name && (
-                <span className="text-red-500">Phone name is required</span>
-              )}
-            </div>
-            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-              <label
-                htmlFor="phone"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Phone
-              </label>
-              <input
-                {...register("phone", {
-                  required: true.valueOf(),
-                  minLength: 11,
-                  maxLength: 11,
-                })}
-                type="number"
-                name="phone"
-                id="phone"
-                autoComplete="address-level1"
-                className="mt-1 focus:ring-0 focus:border-gray-400 block w-full shadow-md sm:text-md border-2 border-gray-300 rounded-lg p-3 text-gray-700"
-              />
-
-              {errors.phone?.type === "required" && (
-                <span className="text-red-500">Phone number is required</span>
-              )}
-              {errors.phone?.type === "minLength" && (
-                <span className="text-red-500">
-                  Please enter correct phone number
-                </span>
-              )}
-            </div>
-            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-              <label
-                htmlFor="address"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Address
-              </label>
-              <textarea
-                {...register("address", { required: true })}
-                rows={6}
-                name="address"
-                id="address"
-                autoComplete="address-level1"
-                className="mt-1 focus:ring-0 focus:border-gray-400 block w-full shadow-md sm:text-md border-2 border-gray-300 rounded-lg p-3 text-gray-700"
-              />
-              {errors.address && (
-                <span className="text-red-500">Phone address is required</span>
-              )}
-            </div>
-          </div>
-          <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-            <button
-              type="submit"
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
+      <CheckoutFrom
+        store={store}
+        setCall={setCall}
+        store_id={store_id}
+        setToken={setToken}
+        user={user}
+      />
     </div>
   );
 };
@@ -483,7 +397,7 @@ export function SaveAddress({
                   name="phone"
                   id="phone"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block p-2 w-full shadow-sm sm:text-sm border-black border rounded-md"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  w-full shadow-sm sm:text-sm border-black border rounded-md"
                 />
 
                 {errors.phone?.type === "required" && (
