@@ -314,7 +314,7 @@ const Changeing = ({ setPage, setUser, user }: any) => {
       </div>
       <div className="flex justify-start flex-col items-start mb-6">
         <label
-          for="email"
+          htmlFor="email"
           className="block text-gray-600 font-semibold text-sm leading-none mb-3 lg:cursor-pointer"
         >
           Password

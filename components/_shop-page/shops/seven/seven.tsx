@@ -1,83 +1,54 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { ThreeDots } from "react-loader-spinner";
+import FilterByColorNew from "@/components/_category-page/category/filter-by-color-new";
+import FilterByPriceNew from "@/components/_category-page/category/filter-by-price-new";
+import PaginationComponent from "@/components/_category-page/category/pagination-new";
+import Card12 from "@/components/card/card12";
 import useTheme from "@/hooks/use-theme";
-import Link from "next/link";
-import FilterByColor from "@/components/filter-by-color";
-import FilterByPrice from "@/components/filter-by-price";
-import { HiOutlineAdjustments } from "react-icons/hi";
-import Pagination from "@/components/_category-page/category/pagination";
+import httpReq from "@/utils/http/axios/http.service";
 import {
   ArrowLeftIcon,
   MinusIcon,
   PlusIcon,
 } from "@heroicons/react/24/outline";
-import httpReq from "@/utils/http/axios/http.service";
-import Skeleton from "react-loading-skeleton";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Card12 from "@/components/card/card12";
-import FilterByPriceNew from "@/components/_category-page/category/filter-by-price-new";
-import PaginationComponent from "@/components/_category-page/category/pagination-new";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import FilterByColorNew from "@/components/_category-page/category/filter-by-color-new";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { HiOutlineAdjustments } from "react-icons/hi";
+import Skeleton from "react-loading-skeleton";
+import { useIntersection } from "@mantine/hooks";
+import useScrollDirection from "@/utils/use-scroll-direction";
 
-
-
-
-const fetchData = async (page: any, activeColor: any, priceValue: any, sort: any) => {
-
-
+const fetchData = async (
+  page: any,
+  activeColor: any,
+  priceValue: any,
+  sort: any
+) => {
   const encodedColor = encodeURIComponent(activeColor);
- 
-  const { colors, data, error } = await httpReq.get(
+
+  const { colors, data } = await httpReq.get(
     `/shoppage/products?name=${window.location.host}&page=${page}&colorFilter=${encodedColor}&priceFilter=${priceValue}&filter=${sort}`
   );
-return{ data, colors}
-
+  return { data, colors };
 };
 
-
-const Seven = ({ data }: any) => {
+const Seven = () => {
   const { module, category } = useTheme();
-  const paginateModule = module?.find((item: any) => item?.modulus_id === 105);
   const [open, setOpen] = useState(false);
-  const [paginate, setPaginate] = useState({});
-
   const [sort, setSort] = useState("za");
-  const [val, setVal] = useState(0);
-  const [colors, setColors] = useState(null);
   const [activeColor, setActiveColor] = useState("");
-
-  const [hasMore, setHasMore] = useState(true);
-  const shop_load = parseInt(paginateModule?.status);
-
-  const [priceValue, setPriceValue] = useState('')
-  const [lastPage, setLastPage] = useState('')
-  const [dataId, setDataId] = useState(null)
-
+  const [priceValue, setPriceValue] = useState("");
   const [page, setPage] = useState(1);
-  const [products, setProducts] = useState<any>([]);
 
-  const pageShop = shop_load === 1 ? data?.page : page;
-
-  
-
-
-
-  console.log(products, 'products')
-
-
+  const isInfinityScroll = module?.some((m: any) => Number(m.status) === 0);
 
   const { data: productsData, status } = useQuery({
     queryKey: ["shop-products", page, activeColor, priceValue, sort],
     queryFn: () => fetchData(page, activeColor, priceValue, sort),
-placeholderData:keepPreviousData
+    placeholderData: keepPreviousData,
   });
 
-  console.log(status, "from shop")
-
-
-
+  console.log(page, "page");
 
   return (
     <div className="grid grid-cols-5 lg:gap-8 sm:container px-5 bg-white">
@@ -91,7 +62,9 @@ placeholderData:keepPreviousData
         </div>
 
         <div className="mt-10 ">
-          <h1 className="mb-10 text-2xl text-gray-700 font-medium">Category </h1>
+          <h1 className="mb-10 text-2xl text-gray-700 font-medium">
+            Category{" "}
+          </h1>
 
           {category.map((item: any) => (
             <div key={item.id} className="">
@@ -101,12 +74,11 @@ placeholderData:keepPreviousData
         </div>
         {/* Filter By Color New */}
         <div className="bg-gray-100 border-2 border-gray-200 my-6 p-4">
-             <FilterByColorNew
-              colors={productsData?.colors}
-              setActiveColor={setActiveColor}
-              activeColor={activeColor}
-            />
-            
+          <FilterByColorNew
+            colors={productsData?.colors}
+            setActiveColor={setActiveColor}
+            activeColor={activeColor}
+          />
         </div>
 
         {/* Filter By Price New */}
@@ -136,54 +108,37 @@ placeholderData:keepPreviousData
               onChange={(e: any) => {
                 setSort(e.target.value);
                 setPage(1);
-                setHasMore(true);
               }}
-              paginate={paginate}
-              setOpen={setOpen}
-              open={open}
             />
           </div>
         </div>
         <div>
           <Product
-            page={pageShop}
-            sort={sort}
             status={status}
-            open={open}
-            dataId={dataId}
             products={productsData?.data?.data}
-            setProducts={setProducts}
-            setPaginate={setPaginate}
-            setColors={setColors}
-            activeColor={activeColor}
-            val={val}
             setPage={setPage}
-            shop_load={shop_load}
-            setHasMore={setHasMore}
-            hasMore={hasMore}
-            data={data}
-            setLastPage={setLastPage}
-          />
-
-        </div>
-
-        <div className="md:mt-12 flex justify-center">
-          <PaginationComponent
-            lastPage={productsData?.data.last_page}
-            setPage={setPage}
-            currentPage={productsData?.data.current_page}
-            initialPage={page}
           />
         </div>
 
+        {!isInfinityScroll && (
+          <div className="md:mt-12 flex justify-center">
+            <PaginationComponent
+              lastPage={productsData?.data.last_page}
+              setPage={setPage}
+              currentPage={productsData?.data.current_page}
+              initialPage={page}
+            />
+          </div>
+        )}
       </div>
 
       {/* tablet and mobile view  */}
 
       <div className="block py-6 lg:hidden">
         <ul
-          className={`lg:hidden bg-white fixed md:w-128 w-96 top-0  overflow-y-auto bottom-0 -ml-32 pb-5 duration-1000 z-10 lg:cursor-pointer ${open ? "left-0" : "left-[-120%]"
-            }`}
+          className={`lg:hidden bg-white fixed md:w-128 w-96 top-0  overflow-y-auto bottom-0 -ml-32 pb-5 duration-1000 z-10 lg:cursor-pointer ${
+            open ? "left-0" : "left-[-120%]"
+          }`}
         >
           <div className="flex py-4  items-center lg:hidden px-10 border-b-2 border-gray-100 pb-8 ml-20">
             <ArrowLeftIcon
@@ -213,34 +168,44 @@ placeholderData:keepPreviousData
 
 export default Seven;
 
-const Product = ({
-  products,
-  status,
-  sort,
-  open,
-  page,
-  setProducts,
-  setPaginate,
-  setShops,
-  setColors,
-  activeColor,
-  val,
-  setPage,
-  shop_load,
-  setHasMore,
-  hasMore,
-  paginate,
-  setLastPage,
-  data,
-  dataId
-}: any) => {
-  
-  const [error, setError] = useState(null);
-  console.log(products, "from home")
- 
-  return (
+const Product = ({ products, status, setPage }: any) => {
+  console.log(products, "pd");
+  const [productX, setProductX] = useState<any>([]);
+  const lastItemRef = useRef<HTMLDivElement>(null);
+  const { ref, entry } = useIntersection({
+    root: lastItemRef.current,
+    threshold: 1,
+  });
 
-   <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-3 md:gap-3 xl:grid-cols-4 grid-cols-2 gap-2">
+  const scrollDirection = useScrollDirection();
+
+  useEffect(() => {
+    if (products && products.length > 0) {
+      setProductX((prev: any) => [...prev, ...products]);
+    }
+  }, [products]);
+
+  useEffect(() => {
+    if (scrollDirection === "up") {
+      if (entry?.isIntersecting) {
+        setPage((prev: any) => prev - 1);
+      }
+    }
+
+    if (scrollDirection === "down") {
+      if (entry?.isIntersecting) {
+        setPage((prev: any) => prev + 1);
+      }
+    }
+  }, [scrollDirection, entry]);
+
+  console.log(productX, "prdx");
+
+  return (
+    <div
+      // ref={lastItemRef}
+      className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-3 md:gap-3 xl:grid-cols-4 grid-cols-2 gap-2"
+    >
       {status === "pending" ? (
         Array.from({ length: 8 }).map((_, index) => (
           <Skeleton key={index} height={"200px"} />
@@ -248,9 +213,21 @@ const Product = ({
       ) : products.length <= 0 ? (
         <p>No Products Found</p>
       ) : (
-        products?.map((product: any) => (
-          <Card12 key={product.id} item={product} />
-        ))
+        productX?.map((product: any, index: any) => {
+          if (index === products?.length - 1) {
+            return (
+              <div ref={ref} key={product.id}>
+                <Card12 item={product} />
+              </div>
+            );
+          }
+
+          return (
+            <div key={product.id}>
+              <Card12 item={product} />
+            </div>
+          );
+        })
       )}
     </div>
   );
@@ -267,7 +244,7 @@ const Filter = ({ onChange }: any) => {
           {/* Short by  */}
           <div className="">
             <select
-             onChange={onChange}
+              onChange={onChange}
               className="w-48 font-medium lg:cursor-pointer h-12 px-2 p-0 text-md border-gray-200 rounded-md  focus:border-gray-200 focus:ring-transparent outline-none focus:outline-none"
               id="category"
               name="category"
@@ -296,7 +273,6 @@ const Filter = ({ onChange }: any) => {
 };
 
 const SingleCat = ({ item }: any) => {
-  
   const [show, setShow] = useState(false);
   return (
     <>
@@ -306,7 +282,6 @@ const SingleCat = ({ item }: any) => {
           href={"/category/" + item.id}
           className="flex-1 text-sm text-gray-900 font-medium"
         >
-          {" "}
           <p>{item.name}</p>
         </Link>
         {item?.cat ? (
@@ -319,11 +294,10 @@ const SingleCat = ({ item }: any) => {
           </div>
         ) : null}
       </div>
-  
+
       {show && (
         <>
           <div className="ml-8">
-
             {item?.cat?.map((sub: any) => (
               <div className="py-2" key={sub.id}>
                 <Link href={"/category/" + sub?.id}>

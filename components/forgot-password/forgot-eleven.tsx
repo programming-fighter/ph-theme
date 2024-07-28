@@ -262,7 +262,7 @@ const Changeing = ({ setPage, setUser, user }: any) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     setLoading(true);
     if (data.password === data.confirm_password) {
       httpReq
@@ -271,7 +271,7 @@ const Changeing = ({ setPage, setUser, user }: any) => {
           if (success) {
             toast(success, { type: "success" });
 
-            navigate("/login");
+            router.push("/login");
             setLoading(false);
 
             setPage("find");

@@ -58,7 +58,7 @@ const Finding = ({ setPage, setUser }: any) => {
     formState: { errors },
   } = useForm();
   // console.log(errors);
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     setLoading(true);
     if (data.phone) {
       httpReq
@@ -219,7 +219,7 @@ const Changeing = ({ setPage, setUser, user }: any) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     setLoading(true);
     if (data.password === data.confirm_password) {
       httpReq

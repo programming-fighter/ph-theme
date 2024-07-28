@@ -139,7 +139,7 @@ const Verifying = ({ setPage, setUser, user }: any) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     if (data.otp) {
       setLoading(true);
       data["user_id"] = user?.user_id;
