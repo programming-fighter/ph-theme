@@ -1,8 +1,5 @@
 import React from "react";
-// import useTheme from '../../../hooks/useTheme';
-// import Skeleton from '../../components/Skeleton';
-import ProductCard from "./ProductCard";
-// import useTheme from '../../../hooks/useTheme';
+import ProductCard from "./product-card";
 
 const GetProductByProductId = ({ offerProducts }: any) => {
   return (
@@ -10,7 +7,7 @@ const GetProductByProductId = ({ offerProducts }: any) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
         {offerProducts !== undefined && (
           <>
-            {offerProducts?.map((item, id) => (
+            {offerProducts?.map((item: any, id: any) => (
               <>
                 <ProductCard key={id} item={item} />
               </>

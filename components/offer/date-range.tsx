@@ -1,7 +1,8 @@
 import React from "react";
 import Countdown from "react-countdown";
 import moment from "moment";
-import ProductCard from "./ProductCard";
+import useTheme from "@/hooks/use-theme";
+import ProductCard from "./product-card";
 
 const DateRange = ({ item }: any) => {
   const { design } = useTheme();
@@ -19,29 +20,10 @@ const DateRange = ({ item }: any) => {
   const start_time = item?.start_time;
   const end_time = item?.end_time?.split(":");
 
-  // console.log(start_date, "start_date");
-  // console.log(today, "Date.now()");
-
-  // useEffect(() => {
-  //     if (item?.end_time) {
-  //         const timeString = item?.end_time;
-  //         const now = new Date(); // create a new Date object with the current date and time
-  //         const year = now.getFullYear(); // get the current year from the Date object
-  //         const date = new Date(`${year}-01-01T${timeString}:00`); // create a Date object with the current year and the time string
-  //         const formattedTime = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }); // format the Date object as a string in the desired format
-  //         setEndTime(formattedTime)
-  //     }
-  // }, [item?.end_time])
-
-  // const current_time = new Date().toLocaleTimeString()
-
-  // Renderer callback with condition
-  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  const renderer = ({ days, hours, minutes, seconds, completed }: any) => {
     if (completed) {
-      // Render a completed state
       return <div className="text-3xl font-bold text-center">Time's up!</div>;
     } else {
-      // Render a countdown
       return (
         <div className="flex space-x-2 items-center w-full">
           {days ? (
@@ -109,7 +91,7 @@ const DateRange = ({ item }: any) => {
           </div>
           <div className="sm:shadow-lg py-5 pb-16 sm:my-10 sm:rounded-md ">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-              {item?.campaignProducts?.map((product) => (
+              {item?.campaignProducts?.map((product: any) => (
                 <ProductCard key={product?.id} item={product} />
               ))}
             </div>
@@ -143,7 +125,7 @@ const DateRange = ({ item }: any) => {
 
             <div className="sm:shadow-lg py-5 pb-16 sm:my-10 sm:rounded-md ">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                {item?.campaignProducts?.map((product) => (
+                {item?.campaignProducts?.map((product: any) => (
                   <ProductCard key={product?.id} item={product} />
                 ))}
               </div>

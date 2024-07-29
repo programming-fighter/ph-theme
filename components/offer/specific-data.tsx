@@ -1,7 +1,7 @@
 import React from "react";
 import Countdown from "react-countdown";
 import moment from "moment";
-import ProductCard from "./ProductCard";
+import ProductCard from "./product-card";
 import useTheme from "@/hooks/use-theme";
 
 const SpecificDate = ({ item }: any) => {
@@ -102,7 +102,7 @@ const SpecificDate = ({ item }: any) => {
 
             <div className="sm:shadow-lg py-5 pb-16 sm:my-10 sm:rounded-md ">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                {item?.campaignProducts?.map((product) => (
+                {item?.campaignProducts?.map((product: any) => (
                   <ProductCard key={product?.id} item={product} />
                 ))}
               </div>
@@ -132,7 +132,7 @@ const SpecificDate = ({ item }: any) => {
           </div>
           <div className="sm:shadow-lg py-5 pb-16 sm:my-10 sm:rounded-md ">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-              {item?.campaignProducts?.map((product) => (
+              {item?.campaignProducts?.map((product: any) => (
                 <ProductCard key={product?.id} item={product} />
               ))}
             </div>

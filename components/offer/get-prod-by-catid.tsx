@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
-import httpReq from "@/utils/http/axios/http.service";
+import ProductCard from "./product-card";
 import Skeleton from "../loader/skeleton";
+import httpReq from "@/utils/http/axios/http.service";
 
 const GetProductByCatId = ({ categories }: any) => {
   const [loader, setLoader] = useState(false);
@@ -9,8 +9,8 @@ const GetProductByCatId = ({ categories }: any) => {
 
   useEffect(() => {
     setLoader(true);
-    let temp = [];
-    categories?.map((id) => {
+    let temp: any = [];
+    categories?.map((id: any) => {
       httpReq
         .post("getcatproducts", { id: parseInt(id) })
         .then((res) => {

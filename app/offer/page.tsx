@@ -1,4 +1,4 @@
-import OfferPage from "../../components/offer/offerPage";
+import OfferPage from "@/components/offer/offer-page";
 
 const page = () => {
   return (
