@@ -14,8 +14,6 @@ import { BottomCart } from "../card-popup-three";
 import SideMenu from "../header-three/side-menu";
 
 const HeaderSeven = ({ headerSetting, design }: any) => {
-  console.log({ headerSetting, design });
-
   const { user } = useSelector((state: any) => state.auth);
   const { userData } = useTheme();
   const [open, setOpen] = useState(false);
@@ -29,7 +27,7 @@ const HeaderSeven = ({ headerSetting, design }: any) => {
   const handleClick = () => {
     if (window !== undefined) {
       window.localStorage.removeItem("persist:root");
-      console.log("Item removed from localStorage");
+
       window.location.href = "/";
     }
   };

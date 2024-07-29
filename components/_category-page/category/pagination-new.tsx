@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 const PaginationComponent = ({ lastPage, setPage, initialPage }: any) => {
-  console.log(lastPage, "lastPage");
   const [activePage, setActivePage] = useState(initialPage); // Track the active page
   const pages = Array.from({ length: lastPage }, (_, i) => i + 1);
 

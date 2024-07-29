@@ -16,7 +16,6 @@ import { useEffect, useRef, useState } from "react";
 import { HiOutlineAdjustments } from "react-icons/hi";
 import Skeleton from "react-loading-skeleton";
 import { useIntersection } from "@mantine/hooks";
-import useScrollDirection from "@/utils/use-scroll-direction";
 
 const fetchData = async (
   page: any,
@@ -32,7 +31,7 @@ const fetchData = async (
   return { data, colors };
 };
 
-const Seven = () => {
+const Seven = ({ data }: any) => {
   const { module, category } = useTheme();
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("za");
@@ -40,16 +39,42 @@ const Seven = () => {
   const [priceValue, setPriceValue] = useState("");
   const [page, setPage] = useState(1);
 
+  const [pds, setPds] = useState<any[]>([]);
+
   const isInfinityScroll = module?.some((m: any) => Number(m.status) === 0);
 
-  const { data: productsData, status } = useQuery({
+  const {
+    data: productsData,
+    status,
+    refetch,
+  } = useQuery({
     queryKey: ["shop-products", page, activeColor, priceValue, sort],
     queryFn: () => fetchData(page, activeColor, priceValue, sort),
     placeholderData: keepPreviousData,
   });
 
-  console.log(page, "page");
+  useEffect(() => {
+    if (!isInfinityScroll) {
+      setPds(productsData?.data?.data || []);
+    } else {
+      setPds((prev) =>
+        Array.isArray(prev)
+          ? [...prev, ...(productsData?.data?.data || [])]
+          : productsData?.data?.data || []
+      );
+    }
+  }, [status, productsData, isInfinityScroll]);
 
+  useEffect(() => {
+    refetch();
+    setPds([]);
+    if (status === "success") {
+      setPds(productsData?.data?.data);
+    }
+    setPage(1);
+  }, [activeColor, priceValue, sort]);
+
+  console.log("");
   return (
     <div className="grid grid-cols-5 lg:gap-8 sm:container px-5 bg-white">
       <div className="lg:col-span-1 lg:block hidden">
@@ -115,8 +140,9 @@ const Seven = () => {
         <div>
           <Product
             status={status}
-            products={productsData?.data?.data}
+            products={pds}
             setPage={setPage}
+            isInfinityScroll={isInfinityScroll}
           />
         </div>
 
@@ -168,63 +194,42 @@ const Seven = () => {
 
 export default Seven;
 
-const Product = ({ products, status, setPage }: any) => {
-  console.log(products, "pd");
-  const [productX, setProductX] = useState<any>([]);
-  const lastItemRef = useRef<HTMLDivElement>(null);
+const Product = ({ products, status, setPage, isInfinityScroll }: any) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const { ref, entry } = useIntersection({
-    root: lastItemRef.current,
+    root: containerRef.current,
     threshold: 1,
   });
 
-  const scrollDirection = useScrollDirection();
-
   useEffect(() => {
-    if (products && products.length > 0) {
-      setProductX((prev: any) => [...prev, ...products]);
+    if (entry?.isIntersecting && isInfinityScroll) {
+      setPage((prevPage: any) => prevPage + 1);
     }
-  }, [products]);
-
-  useEffect(() => {
-    if (scrollDirection === "up") {
-      if (entry?.isIntersecting) {
-        setPage((prev: any) => prev - 1);
-      }
-    }
-
-    if (scrollDirection === "down") {
-      if (entry?.isIntersecting) {
-        setPage((prev: any) => prev + 1);
-      }
-    }
-  }, [scrollDirection, entry]);
-
-  console.log(productX, "prdx");
+  }, [entry, isInfinityScroll]);
 
   return (
     <div
-      // ref={lastItemRef}
+      ref={containerRef}
       className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-3 md:gap-3 xl:grid-cols-4 grid-cols-2 gap-2"
     >
       {status === "pending" ? (
         Array.from({ length: 8 }).map((_, index) => (
           <Skeleton key={index} height={"200px"} />
         ))
-      ) : products.length <= 0 ? (
+      ) : products?.length <= 0 ? (
         <p>No Products Found</p>
       ) : (
-        productX?.map((product: any, index: any) => {
-          if (index === products?.length - 1) {
+        products?.map((product: any, index: any) => {
+          if (index === products.length - 1) {
             return (
-              <div ref={ref} key={product.id}>
-                <Card12 item={product} />
+              <div ref={ref} className="last" key={product?.id}>
+                {Object.keys(product).length > 0 && <Card12 item={product} />}
               </div>
             );
           }
-
           return (
-            <div key={product.id}>
-              <Card12 item={product} />
+            <div key={product?.id}>
+              {Object.keys(product).length > 0 && <Card12 item={product} />}
             </div>
           );
         })
