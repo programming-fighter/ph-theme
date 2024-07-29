@@ -55,7 +55,7 @@ const Newsletter = ({ headerSetting, store_id }: any) => {
               <input
                 ref={emailRef}
                 type="email"
-                className="w-full rounded-lg border-gray-200 opacity-100 outline-none focus:outline-none focus:border-none focus:ring-1 focus:ring-black text-black"
+                className="w-full rounded-lg border-gray-200 opacity-100 outline-none focus:outline-none focus:border-none focus:ring-1 focus:ring-black text-black px-2"
                 placeholder="Write your email here"
                 required
               />
