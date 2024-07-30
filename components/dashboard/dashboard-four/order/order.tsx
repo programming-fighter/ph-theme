@@ -3,9 +3,10 @@ import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { confirmAlert } from "react-confirm-alert";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import { cancelAlert } from "../../cancel-alert";
 
 const Order = () => {
   const [call, setCall] = useState(false);
@@ -15,13 +16,8 @@ const Order = () => {
   const { store_id, design } = useTheme();
   const { user } = useSelector((state: any) => state.auth);
 
-  // console.log(user,"user");
-  // console.log(orders, "orders");
-
-  useEffect(() => {
-    // declare the async data fetching function
-    const fetchData = async () => {
-      // get the data from the api
+  const fetchData = async () => {
+    try {
       const data = await httpReq.post("getorder", {
         user_id: user?.details?.id,
         store_id,
@@ -29,46 +25,16 @@ const Order = () => {
 
       setOrder(data);
       setFilter(data);
-    };
-
-    // call the function
-    fetchData()
-      // make sure to catch any error
-      .catch((err) => {
-        // console.log(err);
-      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
   }, [user?.details?.id, store_id, call]);
 
   const cancel_request = (id: any) => {
-    confirmAlert({
-      title: "Confirm to Done",
-      message: "Are you sure to cancel this order.",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => {
-            httpReq
-              .post("order/cancel", { id, user_id: user?.details?.id })
-              .then((res) => {
-                // console.log(res);
-                if (res?.success) {
-                  setCall(!call);
-                  toast(res?.success, {
-                    type: "success",
-                  });
-                }
-              });
-          },
-        },
-        {
-          label: "No",
-          onClick: () =>
-            toast("rejected", {
-              type: "warning",
-            }),
-        },
-      ],
-    });
+    cancelAlert(id, user, setCall);
   };
   const get_filter = (key: any) => {
     setBtn(key);
@@ -199,6 +165,8 @@ export default Order;
 const OrderItem = ({ item, cancel_request }: any) => {
   const date = new Date(item?.created_at);
 
+  console.log(item, "order item");
+
   return (
     <tr
       className={`
@@ -256,7 +224,7 @@ const OrderItem = ({ item, cancel_request }: any) => {
             onClick={() => cancel_request(item?.id)}
             className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            {"Cancel Request"}
+            Cancel Request
           </button>
         ) : null}
       </td>
