@@ -1,7 +1,6 @@
 "use client";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
 import Taka from "@/utils/taka";
 import { addToCartList } from "@/redux/features/product.slice";
 import axios from "axios";
@@ -13,6 +12,7 @@ import QuikView from "../quick-view";
 import { toast } from "react-toastify";
 import useTheme from "@/hooks/use-theme";
 import Details from "../_product-details-page/product-details/eight/details";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 
 const Card44 = ({ item }: any) => {
   const { design, store_id } = useTheme();
@@ -40,7 +40,7 @@ const Card44 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
