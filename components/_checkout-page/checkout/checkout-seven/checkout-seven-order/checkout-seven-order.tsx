@@ -173,7 +173,7 @@ const CheckOutSevenOrder = ({
 
   useEffect(() => {
     if (headerSetting?.tax) {
-      const tax = (parseInt(headerSetting?.tax) / 100) * total;
+      const tax = (parseInt(headerSetting?.tax) / 100) * parseInt(total);
       setTax(tax);
     }
   }, [headerSetting?.tax, total]);
@@ -182,6 +182,7 @@ const CheckOutSevenOrder = ({
 
   const handleCheckout = async () => {
     setLoading(true);
+  
 
     const cart = updatedCartList.map((item: any) => ({
       id: item.id,
@@ -197,6 +198,8 @@ const CheckOutSevenOrder = ({
       volume: item.volume,
       items: item?.items,
     }));
+
+    
 
     const formData = new FormData();
 
@@ -238,12 +241,15 @@ const CheckOutSevenOrder = ({
       address: selectAddress?.address,
       subtotal: total,
       shipping: parseInt(shipping_area),
-      total: total + tax + parseInt(shipping_area) - couponDis,
+      total: parseInt(total) + parseInt(tax) + parseInt(shipping_area) - couponDis,
       discount: couponDis,
       product: cart,
       tax: tax,
       coupon: coupon ? coupon : null,
     };
+
+
+
 
     formData.append("store_id", store_id);
     formData.append(
@@ -272,13 +278,13 @@ const CheckOutSevenOrder = ({
         : selectAddress?.address
     );
     formData.append("subtotal", total);
-    formData.append("shipping", shipping_area);
+    formData.append("shipping",shipping_area);
     formData.append(
       "total",
-      (total + tax + shipping_area - couponDis).toString()
+      (parseInt(total) + parseInt(tax) + parseInt(shipping_area) - couponDis).toString()
     );
     formData.append("discount", couponDis);
-    formData.append("tax", tax);
+    formData.append("tax",tax);
     formData.append("coupon", coupon ? coupon : "");
     formData.append("email", formBookData?.email);
     formData.append("date", formBookData?.specificDate);

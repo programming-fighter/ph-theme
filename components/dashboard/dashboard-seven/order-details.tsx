@@ -27,6 +27,8 @@ const OrderDetails = () => {
 
   const { order_id } = useParams();
 
+  console.log(order, "order data");
+
   useEffect(() => {
     // const fetchData = async () => {
     //   // get the data from the api
