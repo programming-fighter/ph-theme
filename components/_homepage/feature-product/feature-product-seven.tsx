@@ -5,7 +5,6 @@ import ProductCardThreeMultipleCard from "@/components/card/product-card/product
 import ProductCardThreeSecondSinglePage from "@/components/card/product-card/product-card-three-second-single";
 
 const FeatureProductSeven = ({ feature_product, store_id }: any) => {
-  // console.log(product)
   return (
     <div className="container px-5 bg-white py-8">
       <SectionHeadingSeven title={"Featured Products"} subtitle={""} />

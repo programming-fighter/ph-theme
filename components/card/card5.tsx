@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./card.css";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
@@ -11,6 +10,7 @@ import { productImg } from "@/site-settings/siteUrl";
 import Rate from "@/utils/rate";
 import Taka from "@/utils/taka";
 import { toast } from "react-toastify";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 
 const Card5 = ({ item, store_id }: any) => {
   const [open, setOpen] = useState(false);
@@ -31,7 +31,7 @@ const Card5 = ({ item, store_id }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object

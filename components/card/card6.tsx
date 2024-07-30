@@ -9,11 +9,11 @@ import { IoSearchCircleOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import QuikView from "../quick-view";
-import { getCampaign } from "@/utils/http/get-campaign";
 import httpReq from "@/utils/http/axios/http.service";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import Details from "../_product-details-page/product-details/eight/details";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 
 const Card6 = ({ item }: any) => {
   const { design, makeid, store_id } = useTheme();
@@ -54,7 +54,7 @@ const Card6 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
