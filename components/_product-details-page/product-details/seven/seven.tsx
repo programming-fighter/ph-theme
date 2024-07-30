@@ -46,6 +46,8 @@ const Seven = ({ data, updatedData }: Props) => {
     vrcolor: productDetailsData?.vrcolor,
   };
 
+  console.log(reviews, "reviews");
+
   return (
     <div className="container px-5">
       <Details fetchStatus={fetchStatus} data={data} datax={datax}>
@@ -104,7 +106,10 @@ const Seven = ({ data, updatedData }: Props) => {
           text={"Product Details"}
           desc={productDetailsData?.product?.description}
         />
-        <According text={"Customer Reviews"} desc={reviews} />
+        <According
+          text={"Customer Reviews"}
+          desc={reviews?.error ? reviews.error : reviews}
+        />
       </Details>
       {relatedProducts && <Related product={relatedProducts} />}
     </div>
@@ -114,6 +119,7 @@ const Seven = ({ data, updatedData }: Props) => {
 export default Seven;
 
 const According = ({ text, desc }: any) => {
+  console.log(desc, "desc");
   const [show, setShow] = useState(false);
   return (
     <AnimatePresence>
@@ -159,6 +165,7 @@ const According = ({ text, desc }: any) => {
 };
 
 const UserReview = ({ review }: any) => {
+  console.log(review, "review");
   return (
     <div className=" bg-slate-50 p-5">
       <div className="avatar">
