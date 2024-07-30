@@ -1,3 +1,4 @@
+// depricated (not working)
 import axios from "axios";
 
 export const getCampaign = async (item: any, store_id: any) => {
@@ -15,9 +16,9 @@ export const getCampaign = async (item: any, store_id: any) => {
       return response;
     } catch (error) {
       console.error(error);
-      throw error; // rethrow the error to the caller
+      throw error;
     }
   }
 
-  return null; // handle the case where `item` is falsy
+  return null;
 };

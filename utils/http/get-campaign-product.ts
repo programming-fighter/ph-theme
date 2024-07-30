@@ -7,15 +7,14 @@ export const getCampaignProduct = async (product: any, store_id: any) => {
       store_id,
     };
 
-
     try {
       const response = await httpReq.post("get/offer/product", offerData);
       return response;
     } catch (error) {
       console.error(error);
-      throw error; // rethrow the error to the caller
+      throw error;
     }
   }
 
-  return null; // handle the case where `item` is falsy
+  return null;
 };
