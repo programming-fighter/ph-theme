@@ -2,6 +2,7 @@
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Taka from "@/utils/taka";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -33,7 +34,7 @@ const ProductCardThreeMultipleCard = ({ item1, item3, store_id }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item1, store_id);
+        const response: any = await getCampaignProduct(item1, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -48,7 +49,7 @@ const ProductCardThreeMultipleCard = ({ item1, item3, store_id }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item3, store_id);
+        const response: any = await getCampaignProduct(item3, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
