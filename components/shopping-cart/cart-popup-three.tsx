@@ -193,7 +193,7 @@ const SingleCartProduct = ({ product, setOpen }: any) => {
       autoClose: 1000,
     });
   };
-  // console.log(product, 'product');
+  console.log(product, "product");
   return (
     <motion.li
       initial={{ y: 0, opacity: 1 }}
@@ -216,8 +216,7 @@ const SingleCartProduct = ({ product, setOpen }: any) => {
               href={"/product/" + product?.id + "/" + product?.slug}
               className="sm:text-sm text-xs text-gray-900 focus:outline-none"
             >
-              {" "}
-              {product?.name}{" "}
+              {product?.name}
             </Link>
             <div className="flex items-center">
               {product?.color ? (

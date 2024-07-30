@@ -12,7 +12,7 @@ import SliderFive from "@/components/slider/slider-five";
 import Card12 from "@/components/card/card12";
 import { UpdateData } from "@/components/product-details";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getProductDetails, getRelatedProducts, getReviews } from "./apis";
 import SkeletonWrapper from "@/components/skeleton-wrapper";
 
@@ -184,7 +184,7 @@ const Related = ({ product }: any) => {
   const prev = "best_seller_Prev";
   const next = "best_seller_Next";
   return (
-    <div className="shadow-lg py-5 sm:py-10 rounded-md bg-white px-3">
+    <div className="shcow-lg py-5 sm:py-10 rounded-md bg-white px-3">
       <div className="my-5 pt-1 flex justify-between items-center">
         <SectionHeadingSeven title={"Related Products"} />
         <Arrow prevEl={prev} nextEl={next}></Arrow>

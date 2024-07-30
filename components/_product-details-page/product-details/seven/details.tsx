@@ -107,6 +107,7 @@ const Details = ({
       store_id,
     };
 
+    console.log(productDetails, "pd");
     httpReq.post("get/offer/product", productDetails).then((res) => {
       if (!res?.error) {
         if (variant?.length) {
@@ -128,10 +129,7 @@ const Details = ({
               type: "success",
               autoClose: 1000,
             });
-          }
-
-          // size and color also with offer
-          else if (size && filterV) {
+          } else if (size && filterV) {
             dispatch(
               addToCartList({
                 cartId: makeid(100),
@@ -148,10 +146,7 @@ const Details = ({
               type: "success",
               autoClose: 1000,
             });
-          }
-
-          // color with offer
-          else if (color && filterV.length === 0) {
+          } else if (color && filterV.length === 0) {
             dispatch(
               addToCartList({
                 cartId: makeid(100),
@@ -167,10 +162,7 @@ const Details = ({
               type: "success",
               autoClose: 1000,
             });
-          }
-
-          // alert variant add
-          else if (filterV.length === 0) {
+          } else if (filterV.length === 0) {
             toast("Please Select Variant", {
               type: "warning",
               autoClose: 1000,
@@ -219,9 +211,7 @@ const Details = ({
               type: "success",
               autoClose: 1000,
             });
-          }
-          // size with regular price
-          else if (size && filterV) {
+          } else if (size && filterV) {
             dispatch(
               addToCartList({
                 cartId: makeid(100),
@@ -237,9 +227,7 @@ const Details = ({
               type: "success",
               autoClose: 1000,
             });
-          }
-          // color with regular price
-          else if (color && !size && filterV.length === 0) {
+          } else if (color && !size && filterV.length === 0) {
             dispatch(
               addToCartList({
                 cartId: makeid(100),
@@ -255,10 +243,7 @@ const Details = ({
               type: "success",
               autoClose: 1000,
             });
-          }
-
-          // alert for variant
-          else if (filterV.length === 0) {
+          } else if (filterV.length === 0) {
             toast("Please Select Variant", {
               type: "warning",
               autoClose: 1000,

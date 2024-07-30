@@ -28,7 +28,6 @@ const Card11 = ({ item }: any) => {
         const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
-          console.log(response, "offer response");
         } // the API response object
       } catch (error) {
         console.error(error);
