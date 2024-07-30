@@ -1,9 +1,43 @@
+import useTheme from "@/hooks/use-theme";
 import { productImg } from "@/site-settings/siteUrl";
+import { getPrice } from "@/utils/get-price";
+import { getCampaign } from "@/utils/http/get-campaign";
 import Taka from "@/utils/taka";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Card11 = ({ item }: any) => {
+  const { store_id } = useTheme();
+
+  const [camp, setCamp] = useState<any>(null);
+
+  const productGetPrice = getPrice(
+    item.regular_price,
+    item.discount_price,
+    item.discount_type
+  );
+  const discountAmount = camp?.discount_amount
+    ? parseInt(camp.discount_amount)
+    : 0;
+
+  const campPrice = Number(
+    getPrice(productGetPrice, discountAmount, camp?.discount_type)
+  );
+
+  useEffect(() => {
+    async function handleCampaign() {
+      try {
+        const response: any = await getCampaign(item, store_id);
+        if (!response?.error) {
+          setCamp(response);
+        } // the API response object
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    handleCampaign();
+  }, [item, store_id]);
   return (
     <>
       <div className="group rounded-lg">
@@ -33,11 +67,11 @@ const Card11 = ({ item }: any) => {
           <div className="flex flex-wrap items-center gap-y-1 gap-x-4 xl:gap-4 md:gap-4 lg:gap-4">
             <div className="text-base font-semibold">
               <Taka />
-              {/* {camp?.status === "active" ? campPrice : productGetPrice} */}
+              {camp?.status === "active" ? campPrice : productGetPrice}
             </div>
             <div className="line-through text-gray-400 text-sm">
               <h1 className="">
-                {/* {camp?.status !== "active" &&
+                {camp?.status !== "active" &&
                 (item.discount_type === "no_discount" ||
                   item.discount_price === "0.00") ? (
                   " "
@@ -46,7 +80,7 @@ const Card11 = ({ item }: any) => {
                     <Taka />
                     {Math.trunc(item.regular_price)}
                   </p>
-                )} */}
+                )}
               </h1>
             </div>
           </div>
