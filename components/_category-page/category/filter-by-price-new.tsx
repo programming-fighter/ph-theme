@@ -6,6 +6,7 @@ const FilterByPriceNew = ({ priceValue, setPriceValue }: any) => {
 
   const handleInputChange = () => {
     setPriceValue(inputRef.current.value);
+   
   };
   
 

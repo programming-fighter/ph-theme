@@ -14,6 +14,7 @@ import { useParams } from "next/navigation";
 import { RiMenuFill } from "react-icons/ri";
 import FilterByColorNew from "./filter-by-color-new";
 import FilterByPriceNew from "./filter-by-price-new";
+import PaginationComponent from "./pagination-new";
 
 const fetchData = async (
   id: any,
@@ -97,7 +98,7 @@ const CategoryEight = () => {
   const { data, status } = useQuery({
     queryKey: ["category-products-8", id, sort, page, activeColor, priceValue],
     queryFn: () => fetchData(id, sort, page, activeColor, priceValue),
-    placeholderData: keepPreviousData,
+    placeholderData: keepPreviousData
   });
 
   const bgColor = design?.header_color;
@@ -171,12 +172,14 @@ const CategoryEight = () => {
               sort={sort}
               activeColor={activeColor}
             />
-
-            {/* {shop_load === 1 && (
-              <div className="my-5">
-                <Pagination data={data} paginate={paginate} />
-              </div>
-            )} */}
+            <div className="md:mt-12 flex justify-center">
+              <PaginationComponent
+                lastPage={data?.data?.last_page}
+                setPage={setPage}
+                currentPage={data?.data?.current_page}
+                initialPage={page}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -336,7 +339,7 @@ const Product = ({ products, grid, open, shop_load, hasMore }: any) => {
                   transition={{
                     duration: 0.5,
                     ease: "linear",
-                    type: "tween",
+                    type: "tween"
                   }}
                 >
                   <Card6 item={item} />
