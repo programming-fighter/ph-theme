@@ -4,6 +4,7 @@ import CategoryThree from "./_category-page/category/category-three";
 import CategorySevenNew from "./_category-page/category/category-seven-new";
 import getUrl from "@/utils/get-url";
 import { getSubdomainName } from "@/lib";
+import CategoryEight from "./_category-page/category/category-eight";
 
 const SubCategoryComponent = async () => {
   const url = getUrl();
@@ -13,7 +14,7 @@ const SubCategoryComponent = async () => {
   return (
     <>
       {shop_page === "seven" && <CategorySevenNew />}
-      {shop_page === "default" && <CategoryThree />}
+      {shop_page === "eight" && <CategoryEight />}
     </>
   );
 };
