@@ -72,7 +72,6 @@ const CategorySevenNew = () => {
   const [page, setPage] = useState(1);
   const [activeColor, setActiveColor] = useState("");
   const [priceValue, setPriceValue] = useState("");
-
   const { data, status } = useQuery({
     queryKey: ["category-products", id, sort, page, activeColor, priceValue],
     queryFn: () => fetchData(id, sort, page, activeColor, priceValue),
