@@ -93,7 +93,7 @@ const ShoppingCart = ({ setOpen }: any) => {
   return (
     <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
       <div className="flex-1 ">
-        <div className="flex items-start justify-between bg-black py-3 px-3 fixed top-0 right-0 left-0">
+        <div className="flex items-start justify-between bg-black py-3 px-3 ">
           <Dialog.Title className="text-lg font-medium text-white uppercase">
             {" "}
             Your Cart{" "}
@@ -117,7 +117,7 @@ const ShoppingCart = ({ setOpen }: any) => {
         </div>
       </div>
 
-      <div className="flex flex-col border border-t border-gray-100 w-full fixed bottom-0 left-0 right-0">
+      <div className="flex flex-col border border-t border-gray-100 w-full ">
         <div className="grid grid-cols-2 bg-white shadow-lg py-3 px-6">
           <p className="text-sm font-medium text-gray-900 text-right">Total</p>
           <p className="text-sm font-medium text-gray-900 text-right">
