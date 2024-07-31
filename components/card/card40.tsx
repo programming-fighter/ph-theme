@@ -1,4 +1,5 @@
 "use client";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
@@ -8,11 +9,16 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IoSearchCircleOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
 
 const Card40 = ({ item, store_id }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
+
+  const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -40,7 +46,11 @@ const Card40 = ({ item, store_id }: any) => {
     handleCampaign();
   }, [item, store_id]);
 
-  // const price = parseInt(getPrice(item.regular_price, item.discount_price, item.discount_type))
+  const price = getPrice(
+    item.regular_price,
+    item.discount_price,
+    item.discount_type
+  );
 
   const filterOfferProduct = (item: any) => {
     let cartItem = {};
@@ -101,7 +111,7 @@ const Card40 = ({ item, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -186,9 +196,9 @@ const Card40 = ({ item, store_id }: any) => {
           </Link>
         </div>
       </div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

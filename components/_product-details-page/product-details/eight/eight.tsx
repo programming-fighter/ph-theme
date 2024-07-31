@@ -13,7 +13,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import DefaultSlider from "@/components/slider/default-slider";
 import Card21 from "@/components/card/card21";
 
-const Eight = ({ data }: any) => {
+const Eight = ({ data, updatedData }: any) => {
   const { store_id, design } = useTheme();
 
   const [relatedProduct, setRelatedProduct] = useState([]);
@@ -49,6 +49,10 @@ const Eight = ({ data }: any) => {
       text-decoration-color: ${design?.header_color};
     }
     `;
+
+  console.log(updatedData, "updatedData");
+
+  return <p>hello</p>;
 
   return (
     <div className="bg-white mx-auto">
