@@ -1,9 +1,7 @@
 "use client";
 import React, { Fragment, useState } from "react";
-
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
-
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosClose, IoIosSearch } from "react-icons/io";
 import useTheme from "@/hooks/use-theme";
@@ -416,7 +414,7 @@ const SingleMenu = ({ item }: any) => {
   return (
     <div className="py-3 flex ">
       <Link
-        href={item?.url}
+        href={"/" + item?.url}
         className={classNames(
           item.current
             ? "bg-gray-900 text-white"
