@@ -305,8 +305,8 @@ const Product = ({ products, grid, open, shop_load, hasMore }: any) => {
             <p className="h-[1px] w-14 bg-black"></p>
           </div>
           <div className="flex flex-col gap-3 md:w-[40%] w-[90%]">
-            {category?.map((item: any) => (
-              <SingleCat item={item} />
+            {category?.map((item: any, idx: any) => (
+              <SingleCat item={item} key={idx} />
             ))}
           </div>
         </div>
@@ -315,8 +315,9 @@ const Product = ({ products, grid, open, shop_load, hasMore }: any) => {
       <div>
         {grid === "H" && (
           <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 grid-cols-1 gap-2 mt-10">
-            {products?.map((item: any) => (
+            {products?.map((item: any, idx: number) => (
               <motion.div
+                key={idx}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, ease: "linear" }}
@@ -329,8 +330,9 @@ const Product = ({ products, grid, open, shop_load, hasMore }: any) => {
         <AnimatePresence>
           {grid === "V" && (
             <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
-              {products?.map((item: any) => (
+              {products?.map((item: any, idx: number) => (
                 <motion.div
+                  key={idx}
                   className="border-hover"
                   initial={{ translateX: 200 }}
                   animate={{ translateX: 0 }}
@@ -450,8 +452,8 @@ const SingleCat = ({ item }: any) => {
       {show && (
         <>
           <div className="ml-8">
-            {item?.cat?.map((sub: any) => (
-              <div className="py-2 category-page">
+            {item?.cat?.map((sub: any, idx: number) => (
+              <div className="py-2 category-page" key={idx}>
                 <Link href={"/category/" + sub?.id}>
                   <p className={`pb-2 text-sm text-gray-600`}>{sub?.name}</p>
                 </Link>

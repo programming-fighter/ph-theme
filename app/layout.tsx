@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AppWrapper from "./app-wrapper";
 import getUrl from "@/utils/get-url";
 import { getSubdomainName } from "@/lib";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} lg2 `}>
+        <NextTopLoader />
         <AppWrapper headerSetting={headersetting} design={design}>
           {children}
         </AppWrapper>

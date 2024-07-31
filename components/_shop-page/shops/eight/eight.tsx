@@ -19,76 +19,28 @@ import {
 import Link from "next/link";
 import FilterByColorNew from "@/components/_category-page/category/filter-by-color-new";
 import FilterByPriceNew from "@/components/_category-page/category/filter-by-price-new";
-import { useParams } from "next/navigation";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
-
-const fetchData = async (
-  id: any,
-  sort: string,
-  page: number,
-  activeColor: any,
-  priceValue: any
-) => {
-  try {
-    const encodedColor = encodeURIComponent(activeColor);
-    const categoryResponse = await httpReq.post(
-      `getcatproducts?page=${page}&filter=${sort}&colorFilter=${encodedColor}&priceFilter=${priceValue}`,
-      { id }
-    );
-    const { colors, data } = categoryResponse;
-
-    console.log(data, "categorydata");
-
-    if (!data) {
-      try {
-        // Encode activeColor using encodeURIComponent
-        const encodedColor = encodeURIComponent(activeColor);
-
-        const subcategoryResponse = await httpReq.post(
-          `getsubcatproduct?page=${page}&filter=${sort}&colorFilter=${encodedColor}&priceFilter=${priceValue}`,
-          { id }
-        );
-
-        const { colors, data } = subcategoryResponse;
-
-        console.log(data, "subcategorydata");
-
-        return { colors, data };
-      } catch (err) {
-        console.error(err);
-      }
-    }
-
-    return { colors, data };
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const Eight = () => {
-
+const Eight = ({ data }: any) => {
+  console.log(data?.colors, "hello color");
 
   const { category, design, module } = useTheme();
 
   const paginateModule = module?.find((item: any) => item?.modulus_id === 105);
-  const { id } = useParams<{ id: string }>();
 
-  // filtering state
-  const [sort, setSort] = useState("za");
+  const [grid, setGrid] = useState("H");
+  const [paginate, setPaginate] = useState({});
+  const [products, setProducts] = useState([]);
+  const [sort, setSort] = useState("");
+  const [open, setOpen] = useState(false);
+  const [val, setVal] = useState(0);
+  const [colors, setColors] = useState(null);
   const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
   const [activeColor, setActiveColor] = useState("");
   const [priceValue, setPriceValue] = useState("");
-  const [hasMore, setHasMore] = useState("");
-   const[grid, setGrid]=useState("")
-const [open,setOpen]=useState("")
-const [shop_load, setShop_load]=useState("")
 
-  const { data, status } = useQuery({
-    queryKey: ["category-products-8", id, sort, page, activeColor, priceValue],
-    queryFn: () => fetchData(id, sort, page, activeColor, priceValue),
-    placeholderData: keepPreviousData,
-  });
+  const shop_load = parseInt(paginateModule?.status);
+  const pageShop = shop_load === 1 ? data?.page : page;
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
@@ -96,18 +48,15 @@ const [shop_load, setShop_load]=useState("")
   const styleCss = `
     .text-hover:hover {
       color:  ${bgColor};
-    }
-    .filter {
-        color:${textColor};
-        background:${bgColor};
-    }
-    .border-hover:hover {
-        border: 1px solid  ${bgColor};
-    }
- 
-    `;
-
-  console.log(data?.data?.data, "category data");
+  }
+  .filter {
+    color:${textColor};
+    background:${bgColor};
+  }
+  .border-hover:hover {
+    border: 1px solid  ${bgColor};
+  }
+ `;
 
   return (
     <div className="sm:container px-5 sm:py-10 py-5 bg-white">
@@ -124,7 +73,7 @@ const [shop_load, setShop_load]=useState("")
 
           <div className="bg-gray-100 border-2 border-gray-200 my-6 p-4">
             <FilterByColorNew
-              colors={data?.colors}
+              colors={colors}
               setActiveColor={setActiveColor}
               activeColor={activeColor}
             />
@@ -147,7 +96,7 @@ const [shop_load, setShop_load]=useState("")
               onChange={(e: any) => {
                 setSort(e.target.value);
                 setPage(1);
-                // setHasMore(true);
+                setHasMore(true);
               }}
               setGrid={setGrid}
               // paginate={paginate}
@@ -158,18 +107,28 @@ const [shop_load, setShop_load]=useState("")
           {/* All product card  */}
 
           <div className="mt-4 mb-6 mx-4 md:mx-0 ">
-          <Product
-              products={data?.data?.data}
-              grid={grid}
-              status={status}
+            <Product
+              page={pageShop}
               sort={sort}
+              grid={grid}
+              open={open}
+              products={products}
+              setProducts={setProducts}
+              setPaginate={setPaginate}
+              setColors={setColors}
               activeColor={activeColor}
+              val={val}
+              setPage={setPage}
+              shop_load={shop_load}
+              setHasMore={setHasMore}
+              hasMore={hasMore}
             />
-            {/* {shop_load === 1 && (
+
+            {shop_load === 1 && (
               <div className="my-5">
                 <Pagination paginate={paginate} />
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>

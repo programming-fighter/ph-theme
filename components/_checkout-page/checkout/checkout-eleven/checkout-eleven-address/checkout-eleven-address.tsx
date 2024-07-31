@@ -18,8 +18,10 @@ const CheckOutElevenAddress = ({
   userPhone,
   setUserPhone,
   setUserName,
+  userPhoneError,
+  setUserPhoneError,
   isButtonDisabled,
-  setIsButtonDisabled,
+  setIsButtonDisabled
 }: any) => {
   const [address, setAddress] = useState<any>(null);
   const [open, setOpen] = useState(false);
@@ -50,15 +52,15 @@ const CheckOutElevenAddress = ({
     if (store?.auth_type === "EasyOrder" && !user) {
       const postToServer = async () => {
         const store = {
-          store_id: store_id,
+          store_id: store_id
         };
 
         try {
           const response = await axios.post(apiUrl, store, {
             headers: {
               Authorization: `Bearer ${token?.token}`,
-              "Content-Type": "application/json", // Adjust the content type according to your API requirements
-            },
+              "Content-Type": "application/json" // Adjust the content type according to your API requirements
+            }
           });
           setAddress(response?.data?.address);
           setSelectAddress(response?.data?.address[0]);
@@ -112,35 +114,28 @@ const CheckOutElevenAddress = ({
             </div>
             {store?.auth_type === "EasyOrder" && !user ? (
               <div className="flex flex-col gap-3">
-                <input
-                  onChange={(e) => setUserName(e.target.value)}
-                  type="text"
-                  placeholder="Name"
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
-                />
+              <input
+                onChange={(e) => setUserName(e.target.value)}
+                type="text"
+                placeholder="Name"
+                className="border border-gray-400 focus:outline-none focus:border-blue-500 required rounded-lg focus:ring-0 p-2 text-lg shadow-sm"
+              />
 
-                <input
-                  value={userPhone}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="number"
-                  placeholder="Phone"
-                  maxLength={11}
-                  minLength={11}
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
-                />
-
-                {!isPhoneValid && (
-                  <small className="text-rose-500">Need 11 digits</small>
-                )}
-
-                <textarea
-                  rows={6}
-                  onChange={(e) => setUserAddress(e.target.value)}
-                  placeholder="Address"
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
-                />
-              </div>
+              <input
+                onChange={handleChange}
+                type="number"
+                placeholder="Phone"
+                className="border border-gray-400 focus:outline-none focus:border p-2  required: focus:border-gray-400 rounded focus:ring-0"
+              />
+              {/* for easy order if user provide a wrong number or wrong credential then show error  */}
+              <p className="text-sm text-rose-500">{userPhoneError}</p>
+              <textarea
+                rows={6}
+                onChange={(e) => setUserAddress(e.target.value)}
+                placeholder="Address....."
+                className="border border-gray-400 p-1 focus:outline-none focus:border required focus:border-gray-400 rounded focus:ring-0"
+              />
+            </div>
             ) : (
               <div>
                 {(!address || address.length === 0) && (
@@ -202,14 +197,14 @@ const AddressView = ({
   setToken,
   token,
   setIsButtonDisabled,
-  isButtonDisabled,
+  isButtonDisabled
 }: any) => {
   const { user } = useSelector((state: any) => state.auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm();
 
   const onSubmit = async (data: any) => {
@@ -272,7 +267,7 @@ const AddressView = ({
                 {...register("phone", {
                   required: true,
                   minLength: 11,
-                  maxLength: 11,
+                  maxLength: 11
                 })}
                 type="number"
                 name="phone"
@@ -330,7 +325,7 @@ const Single = ({
   selectAddress,
   setSelectAddress,
   setCall,
-  token,
+  token
 }: any) => {
   const [open, setOpen] = useState(false);
   const { design, store } = useTheme();
@@ -342,15 +337,15 @@ const Single = ({
   const delete_address = (id: any) => {
     if (store?.auth_type === "EasyOrder" && !user) {
       const address_id = {
-        id: id,
+        id: id
       };
       const DeleteAddress = async () => {
         try {
           const response = await axios.post(apiDelete, address_id, {
             headers: {
               Authorization: `Bearer ${token?.token}`,
-              "Content-Type": "application/json", // Adjust the content type according to your API requirements
-            },
+              "Content-Type": "application/json" // Adjust the content type according to your API requirements
+            }
           });
           toast(response.data.success, { type: "success" });
           setCall(Math.random() * 100);
@@ -380,7 +375,7 @@ const Single = ({
       style={{
         backgroundColor:
           selectAddress?.id === item?.id ? design?.header_color : "#fff",
-        color: selectAddress?.id === item?.id ? design?.text_color : "#000",
+        color: selectAddress?.id === item?.id ? design?.text_color : "#000"
       }}
       className={`border border-gray-300 p-5 rounded space-y-2 w-full transition-colors duration-300 relative`}
     >
@@ -426,13 +421,13 @@ export function SaveAddress({
   setOpen,
   setCall,
   setToken,
-  store_id,
+  store_id
 }: any) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm();
   const { user } = useSelector((state: any) => state.auth);
 
@@ -457,8 +452,8 @@ export function SaveAddress({
         {
           headers: {
             Authorization: `Bearer ${token?.token}`,
-            "Content-Type": "application/json", // Adjust the content type according to your API requirements
-          },
+            "Content-Type": "application/json" // Adjust the content type according to your API requirements
+          }
         }
       );
       reset();
@@ -535,11 +530,12 @@ export function SaveAddress({
                   {...register("phone", {
                     required: true,
                     minLength: 11,
-                    maxLength: 11,
+                    maxLength: 11
                   })}
                   type="number"
                   name="phone"
                   id="phone"
+                  placeholder="jhagsdfavg a"
                   autoComplete="address-level1"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
@@ -595,7 +591,7 @@ export function UpdateAddress({
   item,
   setCall,
   setSelectAddress,
-  token,
+  token
 }: any) {
   console.log(open, setOpen, "update address");
   const { store, store_id } = useTheme();
@@ -605,11 +601,11 @@ export function UpdateAddress({
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm({
     defaultValues: {
-      ...item,
-    },
+      ...item
+    }
   });
 
   const onSubmit = (data: any) => {
@@ -621,8 +617,8 @@ export function UpdateAddress({
           const response = await axios.post(apiEdit, data, {
             headers: {
               Authorization: `Bearer ${token?.token}`,
-              "Content-Type": "application/json", // Adjust the content type according to your API requirements
-            },
+              "Content-Type": "application/json" // Adjust the content type according to your API requirements
+            }
           });
           setCall(Math.random() * 100);
           toast(response?.data?.success, { type: "success" });
@@ -685,7 +681,7 @@ export function UpdateAddress({
                 {...register("phone", {
                   required: true,
                   minLength: 11,
-                  maxLength: 11,
+                  maxLength: 11
                 })}
                 type="number"
                 name="phone"
