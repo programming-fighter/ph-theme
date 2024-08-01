@@ -271,8 +271,9 @@ const Product = ({
           >
             {grid === "H" && (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 sm:px-0">
-                {products.map((item: any) => (
+                {products.map((item: any, key: number) => (
                   <motion.div
+                    key={key}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
@@ -288,6 +289,7 @@ const Product = ({
                 <div className="grid grid-cols-1 gap-4 px-2 sm:px-0">
                   {products.map((item: any, idx: number) => (
                     <motion.div
+                      key={idx}
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
                       transition={{
@@ -308,8 +310,9 @@ const Product = ({
         <div>
           {grid === "H" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 px-2 sm:px-0">
-              {products.map((item: any) => (
+              {products.map((item: any, key: number) => (
                 <motion.div
+                  key={key}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
@@ -323,8 +326,9 @@ const Product = ({
           <AnimatePresence>
             {grid === "V" && (
               <div className="grid grid-cols-1 gap-4 px-2 sm:px-0">
-                {products.map((item: any) => (
+                {products.map((item: any, key: number) => (
                   <motion.div
+                    key={key}
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
                     transition={{
@@ -428,8 +432,8 @@ const SingleCat = ({ item, setSelect, select, setPage, setHasMore }: any) => {
       {show && (
         <>
           <div className="ml-8">
-            {item?.cat?.map((sub: any) => (
-              <div className="py-2">
+            {item?.cat?.map((sub: any, key: number) => (
+              <div key={key} className="py-2">
                 <Link
                   onClick={() => {
                     setSelect(sub.id);

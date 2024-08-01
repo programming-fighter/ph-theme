@@ -255,8 +255,8 @@ const Product = ({
             }
           >
             <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 gap-2.5">
-              {products.map((item: any) => (
-                <div>
+              {products.map((item: any, key: number) => (
+                <div key={key}>
                   <Card26 item={item} />
                 </div>
               ))}
@@ -266,8 +266,8 @@ const Product = ({
       ) : (
         <div>
           <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 gap-2.5">
-            {products.map((item: any) => (
-              <div>
+            {products.map((item: any, key: number) => (
+              <div key={key}>
                 <Card26 item={item} />
               </div>
             ))}

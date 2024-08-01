@@ -36,6 +36,7 @@ const FilterByColor = ({
         {colors?.map((item: any, id: any) => (
           // <Link key={id} href={`${url}`}>
           <p
+            key={id}
             onClick={() => {
               setActiveColor(item?.code);
               setPage(1);

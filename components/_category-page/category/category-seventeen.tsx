@@ -360,8 +360,8 @@ const SingleCat = ({ item, select, setSelect }: any) => {
       {show && (
         <>
           <div className="ml-8">
-            {item?.cat?.map((sub: any) => (
-              <div className="">
+            {item?.cat?.map((sub: any, key: any) => (
+              <div className="" key={key}>
                 <Link
                   onClick={() => setSelect(sub.id)}
                   href={"/category/" + sub?.id}

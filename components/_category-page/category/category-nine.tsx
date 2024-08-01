@@ -290,7 +290,7 @@ const Product = ({
             <p className="h-[1px] w-14 bg-black"></p>
           </div>
           <div className="flex flex-col gap-3 md:w-[40%] w-[90%]">
-            {category?.map((item: any) => (
+            {category?.map((item: any, key: number) => (
               <SingleCat key={item?.id} item={item} />
             ))}
           </div>
@@ -327,6 +327,7 @@ const Product = ({
               <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-4 md:gap-5 grid-cols-2 gap-2 mt-10">
                 {products.map((item: any) => (
                   <motion.div
+                    key={item.id}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, ease: "linear" }}
@@ -341,6 +342,7 @@ const Product = ({
                 <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
                   {products.map((item: any) => (
                     <motion.div
+                      key={item.id}
                       className="border-hover"
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
@@ -364,6 +366,7 @@ const Product = ({
             <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-4 md:gap-5 grid-cols-2 gap-2 mt-10">
               {products.map((item: any) => (
                 <motion.div
+                  key={item.id}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, ease: "linear" }}
@@ -378,6 +381,7 @@ const Product = ({
               <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
                 {products.map((item: any) => (
                   <motion.div
+                    key={item.id}
                     className="border-hover"
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
@@ -499,7 +503,7 @@ const SingleCat = ({ item }: any) => {
         <>
           <div className="ml-8">
             {item?.cat?.map((sub: any) => (
-              <div className="py-2 category-page">
+              <div key={item.id} className="py-2 category-page">
                 <Link href={"/category/" + sub?.id}>
                   {" "}
                   <p className={`pb-2 text-sm text-gray-500`}>{sub?.name}</p>

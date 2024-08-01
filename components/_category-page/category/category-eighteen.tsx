@@ -79,8 +79,8 @@ const CategoryEighteen = () => {
                 <div className=" px-4 py-3">
                   <div className="h-[1px] bg-gray-200 w-full"></div>
                 </div>
-                {category?.map((item: any) => (
-                  <SingleCat key={item?.id} item={item} />
+                {category?.map((item: any, key: number) => (
+                  <SingleCat item={item} key={key} />
                 ))}
               </div>
               <div className="my-6 p-4">
@@ -169,8 +169,8 @@ const CategoryEighteen = () => {
               <h3 className="font-thin text-[#252525] text-lg px-4">
                 Categories
               </h3>
-              {category?.map((item: any) => (
-                <SingleCat item={item} />
+              {category?.map((item: any, idx: any) => (
+                <SingleCat item={item} key={idx} />
               ))}
             </div>
           </div>
@@ -322,8 +322,9 @@ const Product = ({
           >
             {grid === "H" && (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 sm:px-0">
-                {products?.map((item: any) => (
+                {products?.map((item: any, key: number) => (
                   <motion.div
+                    key={key}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
@@ -337,8 +338,9 @@ const Product = ({
             <AnimatePresence>
               {grid === "V" && (
                 <div className="grid grid-cols-1 gap-4 px-2 sm:px-0">
-                  {products?.map((item: any) => (
+                  {products?.map((item: any, idx: number) => (
                     <motion.div
+                      key={idx}
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
                       transition={{
@@ -359,8 +361,9 @@ const Product = ({
         <div>
           {grid === "H" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 sm:px-0">
-              {products?.map((item: any) => (
+              {products?.map((item: any, idx: number) => (
                 <motion.div
+                  key={idx}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
@@ -374,8 +377,9 @@ const Product = ({
           <AnimatePresence>
             {grid === "V" && (
               <div className="grid grid-cols-1 gap-4 px-2 sm:px-0">
-                {products?.map((item: any) => (
+                {products?.map((item: any, idx: number) => (
                   <motion.div
+                    key={idx}
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
                     transition={{
@@ -499,8 +503,8 @@ const SingleCat = ({ item }: any) => {
       {show && (
         <>
           <div className="ml-8">
-            {item?.cat?.map((sub: any) => (
-              <div className="py-2 category-page">
+            {item?.cat?.map((sub: any, idx: number) => (
+              <div className="py-2 category-page" key={idx}>
                 <Link href={"/category/" + sub?.id}>
                   <p
                     className={`pb-2 text-sm font-thin text-hover text-gray-600`}

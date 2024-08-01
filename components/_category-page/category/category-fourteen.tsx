@@ -156,8 +156,8 @@ const CategoryFourteen = () => {
               <p className="h-[1px] w-full bg-gray-300"></p>
             </div>
             <div>
-              {category?.map((item: any) => (
-                <SingleCat item={item} />
+              {category?.map((item: any, idx: number) => (
+                <SingleCat item={item} key={idx} />
               ))}
             </div>
             <div className="bg-gray-100 border-2 border-gray-200 my-6 p-4">
@@ -326,8 +326,8 @@ const Product = ({
             }
           >
             <div className="">
-              {products.map((item: any) => (
-                <div>
+              {products.map((item: any, key: number) => (
+                <div key={key}>
                   <Card32 item={item} />
                 </div>
               ))}
@@ -337,8 +337,8 @@ const Product = ({
       ) : (
         <div>
           <div className="">
-            {products.map((item: any) => (
-              <div>
+            {products.map((item: any, key: any) => (
+              <div key={key}>
                 <Card32 item={item} />
               </div>
             ))}
@@ -421,8 +421,8 @@ const SingleCat = ({ item }: any) => {
       {show && (
         <>
           <div className="ml-8">
-            {item?.cat?.map((sub: any) => (
-              <div className="py-2 category-page">
+            {item?.cat?.map((sub: any, key: number) => (
+              <div className="py-2 category-page" key={key}>
                 <Link href={"/category/" + sub?.id}>
                   <p className={`pb-2 text-sm text-hover text-gray-500`}>
                     {sub?.name}

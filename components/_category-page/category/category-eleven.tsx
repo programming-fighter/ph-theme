@@ -68,7 +68,7 @@ const CategoryEleven = () => {
         <div className="lg:col-span-2 w-full items-end lg:block hidden">
           <div className="w-full bg-gray-100 border-2 border-gray-200 text-black  my-6 pl-6 pt-7 pb-6 ">
             <h1 className="font-semibold ">FILTER BY</h1>
-            {category?.map((item: any) => (
+            {category?.map((item: any, idx: number) => (
               <SingleCat key={item?.id} item={item} />
             ))}
           </div>
@@ -284,8 +284,8 @@ const Product = ({
             <p className="h-[1px] w-14 bg-black"></p>
           </div>
           <div className="flex flex-col gap-3 md:w-[40%] w-[90%]">
-            {category?.map((item: any) => (
-              <SingleCat item={item} />
+            {category?.map((item: any, idx: any) => (
+              <SingleCat item={item} key={idx} />
             ))}
           </div>
         </div>
@@ -319,8 +319,9 @@ const Product = ({
           >
             {grid === "H" && (
               <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 grid-cols-1 gap-2 mt-10">
-                {products.map((item: any) => (
+                {products.map((item: any, idx: number) => (
                   <motion.div
+                    key={idx}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, ease: "linear" }}
@@ -333,8 +334,9 @@ const Product = ({
             <AnimatePresence>
               {grid === "V" && (
                 <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
-                  {products.map((item: any) => (
+                  {products.map((item: any, idx: any) => (
                     <motion.div
+                      key={idx}
                       className="border-hover"
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
@@ -356,8 +358,9 @@ const Product = ({
         <div>
           {grid === "H" && (
             <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 grid-cols-1 gap-2 mt-10">
-              {products.map((item: any) => (
+              {products.map((item: any, idx: number) => (
                 <motion.div
+                  key={idx}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, ease: "linear" }}
@@ -370,8 +373,9 @@ const Product = ({
           <AnimatePresence>
             {grid === "V" && (
               <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
-                {products.map((item: any) => (
+                {products.map((item: any, idx: any) => (
                   <motion.div
+                    key={idx}
                     className="border-hover"
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
@@ -492,8 +496,8 @@ const SingleCat = ({ item }: any) => {
       {show && (
         <>
           <div className="ml-8">
-            {item?.cat?.map((sub: any) => (
-              <div className="py-2 category-page">
+            {item?.cat?.map((sub: any, idx: any) => (
+              <div className="py-2 category-page" key={idx}>
                 <Link href={"/category/" + sub?.id}>
                   {" "}
                   <p className={`pb-2 text-sm text-gray-600`}>{sub?.name}</p>

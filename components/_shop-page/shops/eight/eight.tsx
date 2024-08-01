@@ -772,8 +772,9 @@ const Product = ({
           >
             {grid === "H" && (
               <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 grid-cols-1 gap-2 mt-10">
-                {products.map((item: any) => (
+                {products.map((item: any, key: number) => (
                   <motion.div
+                    key={key}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, ease: "linear" }}
@@ -786,8 +787,9 @@ const Product = ({
             <AnimatePresence>
               {grid === "V" && (
                 <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
-                  {products.map((item: any) => (
+                  {products.map((item: any, key: any) => (
                     <motion.div
+                      key={key}
                       className="border-hover"
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
@@ -809,8 +811,9 @@ const Product = ({
         <div>
           {grid === "H" && (
             <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 grid-cols-1 gap-2 mt-10">
-              {products.map((item: any) => (
+              {products.map((item: any, key: number) => (
                 <motion.div
+                  key={key}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, ease: "linear" }}
@@ -823,8 +826,9 @@ const Product = ({
           <AnimatePresence>
             {grid === "V" && (
               <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
-                {products.map((item: any) => (
+                {products.map((item: any, key: number) => (
                   <motion.div
+                    key={key}
                     className="border-hover"
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
@@ -936,8 +940,8 @@ const SingleCat = ({ item }: any) => {
       {show && (
         <>
           <div className="ml-8">
-            {item?.cat?.map((sub: any) => (
-              <div className="py-2">
+            {item?.cat?.map((sub: any, key: number) => (
+              <div className="py-2" key={key}>
                 <Link href={"/category/" + sub?.id}>
                   {" "}
                   <p className="pb-2 text-sm text-gray-500">{sub?.name}</p>
