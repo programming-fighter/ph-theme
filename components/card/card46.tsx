@@ -153,7 +153,7 @@ const Card46 = ({ item }: any) => {
                 className="h-full grow flex items-center justify-center  transition-all duration-200 ease-linear"
                 onClick={() => setView(!view)}
               >
-                <p className="px-3 py-1 md:test-sm text-xs sm:text-sm">
+                <p className="px-3 hover:bg-green-500 hover:rounded-lg hover:shadow-xl py-1 md:test-sm text-xs sm:text-sm">
                   quick look
                 </p>
               </div>
@@ -162,14 +162,14 @@ const Card46 = ({ item }: any) => {
         )}
         <div className="p-[10px] bg-white h-[70px] flex justify-between items-center">
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            <h2 className="text-md capitalize lg:text-sm font-bold whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px] px-2">
+            <h2 className="text-md capitalize lg:text-sm hover:text-green-500 font-bold whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px] px-2">
               {item?.name}
             </h2>
           </Link>
           <div className="flex justify-between items-center">
             <div
-              //   onClick={add_cart_item}
-              className="lg:cursor-pointer group-hover:opacity-100 opacity-0 -translate-x-20 group-hover:translate-x-0 duration-700 flex items-start justify-between text-sm"
+                onClick={add_cart_item}
+              className="lg:cursor-pointer hover:touch-pinch-zoom hover:text-green-600 group-hover:opacity-100 opacity-0 -translate-x-20 group-hover:translate-x-0 duration-700 flex items-start justify-between text-sm"
             >
               <p>Add to cart </p> <AiOutlineArrowRight className="ml-2 mt-1" />
             </div>

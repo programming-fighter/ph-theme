@@ -86,11 +86,11 @@ const Card45 = ({ item }: any) => {
     let cartItem = {};
     let productDetails = {
       id: item?.id,
-      store_id,
+      store_id
     };
     toast("Added to Cart", {
       type: "success",
-      autoClose: 1000,
+      autoClose: 1000
     });
 
     axios
@@ -116,7 +116,7 @@ const Card45 = ({ item }: any) => {
               additional_price: null,
               volume: null,
               unit: null,
-              ...item,
+              ...item
             };
           } else {
             cartItem = {
@@ -127,7 +127,7 @@ const Card45 = ({ item }: any) => {
               additional_price: null,
               volume: null,
               unit: null,
-              ...item,
+              ...item
             };
           }
         } else {
@@ -139,7 +139,7 @@ const Card45 = ({ item }: any) => {
             additional_price: null,
             volume: null,
             unit: null,
-            ...item,
+            ...item
           };
         }
         dispatch(addToCartList({ ...cartItem }));
@@ -148,7 +148,7 @@ const Card45 = ({ item }: any) => {
 
   const add_cart_item = () => {
     if (item?.variant.length !== 0) {
-      setView(!view);
+      setView(view);
     } else {
       filterOfferProduct(item);
     }
@@ -166,7 +166,7 @@ const Card45 = ({ item }: any) => {
             </p>
           </div>
         )}
-        <Link href={"/product/" + item?.id + "/" + item?.slug}>
+       
           <div className="relative overflow-hidden">
             <img
               src={productImg + item.image[0]}
@@ -198,7 +198,7 @@ const Card45 = ({ item }: any) => {
               </div>
             )}
           </div>
-        </Link>
+        
 
         <div className="flex flex-col gap-2 px-4 py-3 lg:group-hover:pb-[40px] duration-1000 w-full">
           <div className="flex gap-x-1 pt-2">

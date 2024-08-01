@@ -330,7 +330,7 @@ const AddToCart = ({
               <MinusIcon className="h-2 w-2  stroke-1 " />
             </div>
             <div className="flex flex-1  h-full justify-center items-center">
-              <p className="font-semibold  text-xs ">
+              <p onClick={() => handleCart()}  className="font-semibold  text-xs ">
                 {already?.qty}
                 {"  "} in cart
               </p>

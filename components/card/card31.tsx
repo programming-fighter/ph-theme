@@ -11,6 +11,8 @@ import { productImg } from "@/site-settings/siteUrl";
 import { AiOutlineSearch } from "react-icons/ai";
 import Rate from "@/utils/rate";
 import { toast } from "react-toastify";
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
 const Card31 = ({ item, design, store_id, makeid }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
@@ -212,9 +214,9 @@ const Card31 = ({ item, design, store_id, makeid }: any) => {
           )}
         </div>
       </div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

@@ -55,7 +55,7 @@ const OrderDetails = () => {
     // make sure to catch any error
   }, [order_id, call]);
 
-  console.log({ order_id });
+  console.log( order ,"order" );
 
   return (
     <div className="md:w-full mt-4 md:mt-0">

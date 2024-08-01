@@ -34,6 +34,7 @@ const Nine = ({ data }: any) => {
   const [activeColor, setActiveColor] = useState<any>(null);
   const [page, setPage] = useState<any>(1);
   const [hasMore, setHasMore] = useState<any>(true);
+  const [priceValue, setPriceValue] = useState("");
 
   const shop_load = parseInt(paginateModule?.status);
   const pageShop = shop_load === 1 ? data?.page : page;
@@ -180,7 +181,7 @@ const Product = ({
     const { colors, data, error } = await httpReq.get(
       `shoppage/products${
         page ? (shop_load === 1 ? page : `?page=${page}`) : `?page=1`
-      }&name=${"siam.localhost:3000"}&filter=${sort}&priceFilter=${
+      }&name=${window.location.host}&filter=${sort}&priceFilter=${
         Number(val) !== 0 ? Number(val) : ""
       }&colorFilter=${activeColor ? encodeURIComponent(activeColor) : ""}`
     );

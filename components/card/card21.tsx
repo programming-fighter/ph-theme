@@ -116,6 +116,7 @@ const Card21 = ({ item, design, store_id, makeid }: any) => {
   //   const navigate = useNavigate();
 
   const addBtn = (item: any) => {
+    console.log("products added")
     if (item?.variant.length !== 0) {
       setOpen(!open);
     } else {

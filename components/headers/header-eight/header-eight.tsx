@@ -11,7 +11,7 @@ import { imgUrl } from "@/site-settings/siteUrl";
 import {
   ChevronDownIcon,
   TableCellsIcon,
-  XMarkIcon,
+  XMarkIcon
 } from "@heroicons/react/24/outline";
 import { IoSearchCircleOutline } from "react-icons/io5";
 
@@ -32,6 +32,14 @@ export default function HeaderEight() {
   };
 
   const { user } = useSelector((state: any) => state.auth);
+
+  const handleClick = () => {
+    if (window !== undefined) {
+      window.localStorage.removeItem("persist:root");
+
+      window.location.href = "/";
+    }
+  };
 
   return (
     <>
@@ -163,7 +171,7 @@ export default function HeaderEight() {
                             <div>
                               <Link
                                 href="/login"
-                                // onClick={() => dispatch(logout())}
+                                onClick={() => handleClick()}
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700"
@@ -308,7 +316,7 @@ const Sticky = ({ setSearchInput, searchInput, headerSetting }: any) => {
         transition={{ duration: 0.6, ease: "linear" }}
         className=" bg-gray-800 fixed top-0 left-0 right-0"
         style={{
-          zIndex: 11,
+          zIndex: 11
         }}
       >
         <div className="sm:container px-5">

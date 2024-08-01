@@ -184,7 +184,7 @@ const Card17 = ({ item }: any) => {
         </div>
         <div className="font-twelve duration-5000 cart lg:absolute bottom-3 lg:opacity-0 group-hover:opacity-100 duration-500 flex justify-between items-center w-full px-3 flex-wrap gap-y-2">
           <div
-            // onClick={add_cart_item}
+            onClick={add_cart_item}
             className="flex gap-1 items-center  border-b-2 border-black lg:cursor-pointer"
           >
             <BsPlusLg className="text-xs " />
