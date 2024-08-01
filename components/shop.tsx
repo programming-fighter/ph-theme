@@ -56,11 +56,11 @@ const ShopComponent = async () => {
       {shop_page === "four" && <Four data={{}} />}
       {shop_page === "five" && <Five data={{}} />}
       {shop_page === "six" && <Six data={{}} />}
-      {shop_page === "seven" && <Seven data={{}} />}
-      {shop_page === "eight" && <Eight data={{}} />}
+      {shop_page === "seven" && <Seven />}
+      {shop_page === "eight" && <Eight />}
       {shop_page === "nine" && <Nine data={{}} />}
       {shop_page === "ten" && <Ten data={{}} />}
-      {shop_page === "eleven" && <Eight data={{}} />}
+      {shop_page === "eleven" && <Eight />}
       {shop_page === "twelve" && <Twelve data={{}} />}
       {shop_page === "thirteen" && <Thirteen data={{}} />}
       {shop_page === "fourteen" && <Fourteen data={{}} />}

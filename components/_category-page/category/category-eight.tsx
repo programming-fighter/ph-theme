@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { CgMenuGridO } from "react-icons/cg";
-
 import Card21 from "@/components/card/card21";
 import Card6 from "@/components/card/card6";
 import useTheme from "@/hooks/use-theme";
@@ -98,7 +97,7 @@ const CategoryEight = () => {
   const { data, status } = useQuery({
     queryKey: ["category-products-8", id, sort, page, activeColor, priceValue],
     queryFn: () => fetchData(id, sort, page, activeColor, priceValue),
-    placeholderData: keepPreviousData
+    placeholderData: keepPreviousData,
   });
 
   const bgColor = design?.header_color;
@@ -339,7 +338,7 @@ const Product = ({ products, grid, open, shop_load, hasMore }: any) => {
                   transition={{
                     duration: 0.5,
                     ease: "linear",
-                    type: "tween"
+                    type: "tween",
                   }}
                 >
                   <Card6 item={item} />

@@ -31,7 +31,7 @@ const fetchData = async (
   return { data, colors };
 };
 
-const Seven = ({ data }: any) => {
+const Seven = () => {
   const { module, category } = useTheme();
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("za");
