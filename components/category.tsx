@@ -22,7 +22,6 @@ const SubCategoryComponent = async () => {
     design: { shop_page },
   } = await getSubdomainName(url, "design");
 
-  return <CategoryNineteen />;
   return (
     <>
       {shop_page === "seven" && <CategorySevenNew />}

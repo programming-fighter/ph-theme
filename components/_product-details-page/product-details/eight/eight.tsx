@@ -52,8 +52,6 @@ const Eight = ({ data, updatedData }: any) => {
 
   console.log(updatedData, "updatedData");
 
-  return <p>hello</p>;
-
   return (
     <div className="bg-white mx-auto">
       <style>{styleCss}</style>
