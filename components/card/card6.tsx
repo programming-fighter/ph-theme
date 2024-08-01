@@ -70,11 +70,11 @@ const Card6 = ({ item }: any) => {
     let cartItem = {};
     let productDetails = {
       id: item?.id,
-      store_id,
+      store_id
     };
     toast("Added to Cart", {
       type: "success",
-      autoClose: 1000,
+      autoClose: 1000
     });
 
     httpReq.post("get/offer/product", productDetails).then((res: any) => {
@@ -99,7 +99,7 @@ const Card6 = ({ item }: any) => {
             additional_price: null,
             volume: null,
             unit: null,
-            ...item,
+            ...item
           };
         } else {
           cartItem = {
@@ -110,7 +110,7 @@ const Card6 = ({ item }: any) => {
             additional_price: null,
             volume: null,
             unit: null,
-            ...item,
+            ...item
           };
         }
       } else {
@@ -122,7 +122,7 @@ const Card6 = ({ item }: any) => {
           additional_price: null,
           volume: null,
           unit: null,
-          ...item,
+          ...item
         };
       }
       dispatch(addToCartList({ ...cartItem }));
@@ -130,6 +130,7 @@ const Card6 = ({ item }: any) => {
   };
 
   const add_cart_item = () => {
+    console.log("hello cart");
     if (item?.variant.length !== 0) {
       setView(!view);
     } else {

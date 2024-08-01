@@ -195,7 +195,7 @@ const Card49 = ({ item, design, store_id }: any) => {
         </div>
         <div
           onClick={add_cart_item}
-          className="lg:cursor-pointer border p-2 duration-300 absolute top-2 right-2 bg-white"
+          className="lg:cursor-pointer border hover:border hover:border-gray-500 hover:p-1 hover:rounded-full   p-2 duration-300 absolute top-2 right-2 bg-white"
         >
           <MdAddShoppingCart className="text-2xl" />
         </div>

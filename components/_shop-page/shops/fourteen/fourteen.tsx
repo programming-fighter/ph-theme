@@ -29,6 +29,8 @@ const Fourteen = ({ data }: any) => {
   const [page, setPage] = useState<any>(1);
   const [hasMore, setHasMore] = useState<any>(true);
 
+  console.log(sort, "sort")
+
   const shop_load = parseInt(paginateModule?.status);
   const pageShop = shop_load === 1 ? data?.page : page;
 
@@ -86,7 +88,7 @@ const Fourteen = ({ data }: any) => {
 
               <div className="md:order-last ">
                 <Filter
-                  onChange={(e: any) => setSort(e.target.value)}
+                  onChange={(e: any) =>setSort(e.target.value)}
                   paginate={paginate}
                 />
               </div>
@@ -207,7 +209,7 @@ const Product = ({
     const { colors, data, error } = await httpReq.get(
       `shoppage/products${
         page ? (shop_load === 1 ? page : `?page=${page}`) : `?page=1`
-      }&name=${"siam.localhost:3000"}&filter=${sort}&priceFilter=${
+      }&name=${window.location.host}&filter=${sort}&priceFilter=${
         Number(val) !== 0 ? Number(val) : ""
       }&colorFilter=${activeColor ? encodeURIComponent(activeColor) : ""}`
     );
@@ -311,6 +313,7 @@ const Product = ({
 };
 
 const Filter = ({ onChange }: any) => {
+  
   return (
     <div>
       {/* Short by  */}

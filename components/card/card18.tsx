@@ -137,13 +137,13 @@ const Card18 = ({ item, store_id }: any) => {
           </Link>
           <div className="bg-gray-200 h-[40px] w-full absolute bottom-0 left-0 right-0 translate-y-10 group-hover:translate-y-0 transition-all duration-500 ease-linear flex divide-x-2 divide-white lg:cursor-pointer">
             <div
-              //   onClick={add_cart_item}
+                onClick={add_cart_item}
               className="h-full w-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-200 ease-linear"
             >
               <ShoppingBagIcon className="h-6 w-6" />
             </div>
             <div
-              //   onClick={add_cart_item}
+                onClick={add_cart_item}
               className="h-full grow flex items-center justify-center hover:bg-gray-100  transition-all duration-200 ease-linear"
             >
               <p className="uppercase px-1 text-xs sm:text-sm ">Add To Cart</p>

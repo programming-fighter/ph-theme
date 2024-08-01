@@ -9,6 +9,8 @@ import React, { useEffect, useState } from "react";
 import { IoIosEye } from "react-icons/io";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
 // import Details from '../../layouts/productDetails/fourteen/Details';
 
 const Card38 = ({ item, design, makeid, store_id }: any) => {
@@ -169,7 +171,7 @@ const Card38 = ({ item, design, makeid, store_id }: any) => {
           <div className="text-gray-700 text-base font-bold card-text-color">
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
               {" "}
-              <h1 className="whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px] px-2">
+              <h1 className="whitespace-nowrap hover:text-green-500 overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px] px-2">
                 {item?.name}
               </h1>{" "}
             </Link>
@@ -190,15 +192,15 @@ const Card38 = ({ item, design, makeid, store_id }: any) => {
           </div>
 
           <div onClick={add_cart_item} className="">
-            <p className=" font-medium border px-3 py-1 w-max lg:cursor-pointer border-hover searchHover duration-500">
+            <p className=" font-medium border hover:bg-black hover:text-white px-3 py-1 w-max lg:cursor-pointer border-hover searchHover duration-500">
               {store_id === 1187 ? "অর্ডার করুন" : "Add to Cart"}
             </p>
           </div>
         </div>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };
