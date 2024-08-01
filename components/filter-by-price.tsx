@@ -1,19 +1,19 @@
 import React, { useRef } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Taka from "../utils/taka";
 const FilterByPrice = ({ setVal, val, id, setPage, setHasMore }: any) => {
-  const router = useRouter();
+  // const router = useRouter();
   const inputRef = useRef<any>(null);
 
-  const shopUrl = `/shop=${encodeURIComponent("?page=1")}`;
-  const categoryUrl = `/category/${id}=${encodeURIComponent("?page=1")}`;
+  // const shopUrl = `/shop=${encodeURIComponent("?page=1")}`;
+  // const categoryUrl = `/category/${id}=${encodeURIComponent("?page=1")}`;
 
-  const url = id ? categoryUrl : shopUrl;
+  // const url = id ? categoryUrl : shopUrl;
 
   const handleInputChange = () => {
     setTimeout(() => {
       setVal(inputRef.current.value);
-      router.push(url);
+      // router.push(url);
       setPage(1);
       setHasMore(true);
     }, 1000);
