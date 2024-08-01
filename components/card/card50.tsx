@@ -119,7 +119,7 @@ const Card50 = ({ item }: any) => {
               {(camp?.discount_type || item.discount_type) === "fixed" &&
                 " ৳"}{" "}
               {parseInt(
-                campPrice ? camp?.discount_amount : item?.discount_price
+                campPrice ? parseInt(camp?.discount_amount) : item?.discount_price
               )}{" "}
               {(camp?.discount_type || item.discount_type) === "percent" && "%"}
             </div>
@@ -243,7 +243,7 @@ const AddToCart = ({
           if (item?.variant[0]?.unit && store_id === 2109) {
             cartItem = {
               cartId: uuidv4(),
-              price: campPriceUnit,
+              price: parseInt(campPriceUnit),
               color: null,
               size: null,
               additional_price: null,
@@ -257,7 +257,7 @@ const AddToCart = ({
           } else {
             cartItem = {
               cartId: uuidv4(),
-              price: campPrice,
+              price: parseInt(campPrice),
               color: null,
               size: null,
               additional_price: null,
@@ -270,7 +270,7 @@ const AddToCart = ({
           if (item?.variant[0]?.unit && store_id === 2109) {
             cartItem = {
               cartId: uuidv4(),
-              price: productGetPrice,
+              price: parseInt(productGetPrice),
               color: null,
               size: null,
               additional_price: null,
@@ -284,7 +284,7 @@ const AddToCart = ({
           } else {
             cartItem = {
               cartId: uuidv4(),
-              price: price,
+              price: parseInt(price),
               color: null,
               size: null,
               additional_price: null,

@@ -27,10 +27,11 @@ const Details = ({
   children,
   open,
   setOpen,
-  datax,
-  fetchStatus,
+  variant,
+  vrcolor,
+  product,
+  fetchStatus
 }: any) => {
-  const { product, variant, vrcolor } = datax;
   const { makeid, store_id, headerSetting, bookingData } = useTheme();
   const dispatch = useDispatch();
   const [filterV, setFilterV] = useState<any>([]);
@@ -104,7 +105,7 @@ const Details = ({
   const add_to_cart = () => {
     let productDetails = {
       id: product?.id,
-      store_id,
+      store_id
     };
 
     console.log(productDetails, "pd");
@@ -121,13 +122,13 @@ const Details = ({
                 variant_quantity: unit?.quantity,
                 variantId: unit.id,
                 ...unit,
-                ...product,
+                ...product
               })
             );
 
             toast("Successfully you added to cart", {
               type: "success",
-              autoClose: 1000,
+              autoClose: 1000
             });
           } else if (size && filterV) {
             dispatch(
@@ -138,13 +139,13 @@ const Details = ({
                 variant_quantity: size?.quantity,
                 variantId: size.id,
                 ...size,
-                ...product,
+                ...product
               })
             );
 
             toast("Successfully you added to cart", {
               type: "success",
-              autoClose: 1000,
+              autoClose: 1000
             });
           } else if (color && filterV.length === 0) {
             dispatch(
@@ -155,22 +156,22 @@ const Details = ({
                 variant_quantity: color?.quantity,
                 variantId: color.id,
                 ...color,
-                ...product,
+                ...product
               })
             );
             toast("Successfully you added to cart", {
               type: "success",
-              autoClose: 1000,
+              autoClose: 1000
             });
           } else if (filterV.length === 0) {
             toast("Please Select Variant", {
               type: "warning",
-              autoClose: 1000,
+              autoClose: 1000
             });
           } else if (filterV.length > 0) {
             toast("Please Select Variant", {
               type: "warning",
-              autoClose: 1000,
+              autoClose: 1000
             });
           }
         } else {
@@ -184,12 +185,12 @@ const Details = ({
               additional_price: null,
               volume: null,
               unit: null,
-              ...product,
+              ...product
             })
           );
           toast("Successfully you added to cart", {
             type: "success",
-            autoClose: 1000,
+            autoClose: 1000
           });
         }
       } else {
@@ -204,12 +205,12 @@ const Details = ({
                 variant_quantity: unit?.quantity,
                 variantId: unit.id,
                 ...unit,
-                ...product,
+                ...product
               })
             );
             toast("Successfully you added to cart", {
               type: "success",
-              autoClose: 1000,
+              autoClose: 1000
             });
           } else if (size && filterV) {
             dispatch(
@@ -220,12 +221,12 @@ const Details = ({
                 variant_quantity: size?.quantity,
                 variantId: size.id,
                 ...size,
-                ...product,
+                ...product
               })
             );
             toast("Successfully you added to cart", {
               type: "success",
-              autoClose: 1000,
+              autoClose: 1000
             });
           } else if (color && !size && filterV.length === 0) {
             dispatch(
@@ -236,22 +237,22 @@ const Details = ({
                 variant_quantity: color?.quantity,
                 variantId: color.id,
                 ...color,
-                ...product,
+                ...product
               })
             );
             toast("Successfully you added to cart", {
               type: "success",
-              autoClose: 1000,
+              autoClose: 1000
             });
           } else if (filterV.length === 0) {
             toast("Please Select Variant", {
               type: "warning",
-              autoClose: 1000,
+              autoClose: 1000
             });
           } else if (filterV.length > 0) {
             toast("Please Select Variant", {
               type: "warning",
-              autoClose: 1000,
+              autoClose: 1000
             });
           }
         } else {
@@ -265,12 +266,12 @@ const Details = ({
               additional_price: null,
               volume: null,
               unit: null,
-              ...product,
+              ...product
             })
           );
           toast("Successfully you added to cart", {
             type: "success",
-            autoClose: 1000,
+            autoClose: 1000
           });
         }
       }

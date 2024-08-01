@@ -19,6 +19,7 @@ import {
 import Link from "next/link";
 import httpReq from "@/utils/http/axios/http.service";
 
+
 const TwentyEight = ({ data }: any) => {
   const { category, design, module } = useTheme();
 
@@ -48,6 +49,8 @@ const TwentyEight = ({ data }: any) => {
         border-bottom: 2px solid ${design?.header_color};
     }
  `;
+
+
 
   return (
     <div>
@@ -302,7 +305,7 @@ const Product = ({
                   exit={{ scale: 0 }}
                   transition={{ duration: 0.5, ease: "linear" }}
                 >
-                  <Card58 item={item} />
+                  <Card58  item={item} />
                 </motion.div>
               ))}
             </div>

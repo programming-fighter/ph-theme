@@ -136,7 +136,7 @@ const Product = ({
   setPage,
   shop_load,
   setHasMore,
-  hasMore,
+  hasMore
 }: any) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(null);
@@ -285,7 +285,7 @@ const Filter = ({ onChange }: any) => {
       <div className="flex items-center gap-2 text-sm w-full font-medium">
         <select
           onChange={onChange}
-          className="h-9 border border-gray-200 rounded-full  outline-0 ring-0 focus:ring-0 font-medium text-sm flex-1 bg-white"
+          className="h-9 border px-3 py-1 border-gray-200 rounded-xl  outline-0 ring-0 focus:ring-0 font-medium text-sm flex-1 bg-white"
         >
           <option>Sort Order</option>
           <option value="az">Name, A to Z</option>

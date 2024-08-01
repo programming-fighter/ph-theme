@@ -99,11 +99,11 @@ const Card58 = ({ item, design, store_id }: any) => {
     let cartItem = {};
     let productDetails = {
       id: item?.id,
-      store_id,
+      store_id
     };
     toast("Added to Cart", {
       type: "success",
-      autoClose: 1000,
+      autoClose: 1000
     });
 
     axios
@@ -132,7 +132,7 @@ const Card58 = ({ item, design, store_id }: any) => {
               additional_price: null,
               volume: null,
               unit: null,
-              ...item,
+              ...item
             };
           } else {
             cartItem = {
@@ -143,7 +143,7 @@ const Card58 = ({ item, design, store_id }: any) => {
               additional_price: null,
               volume: null,
               unit: null,
-              ...item,
+              ...item
             };
           }
         } else {
@@ -155,7 +155,7 @@ const Card58 = ({ item, design, store_id }: any) => {
             additional_price: null,
             volume: null,
             unit: null,
-            ...item,
+            ...item
           };
         }
         dispatch(addToCartList({ ...cartItem }));
@@ -163,6 +163,7 @@ const Card58 = ({ item, design, store_id }: any) => {
   };
 
   const add_cart_item = () => {
+    
     if (item?.variant.length !== 0) {
       setView(!view);
     } else {

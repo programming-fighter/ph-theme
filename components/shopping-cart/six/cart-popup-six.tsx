@@ -62,7 +62,7 @@ const CartPopUpSix = () => {
             } font-semibold text-sm  ab absolute -top-[10px] -right-1 rounded-full w-5 h-5 text-center`}
             style={{
               backgroundColor: design?.text_color,
-              color: design?.header_color,
+              color: design?.header_color
             }}
           >
             {cartList.length}
@@ -84,7 +84,9 @@ export default CartPopUpSix;
 const ShoppingCart = ({ setOpen }: any) => {
   const cartList = useSelector((state: any) => state.cart.cartList);
 
-  const priceList = cartList?.map((p: any) => p.qty * p.price);
+  const priceList = cartList?.map(
+    (p: any) => parseInt(p.qty) * parseInt(p.price)
+  );
   const total = priceList.reduce(
     (previousValue: any, currentValue: any) => previousValue + currentValue,
     0
@@ -121,7 +123,7 @@ const ShoppingCart = ({ setOpen }: any) => {
         <div className="grid grid-cols-2 bg-white shadow-lg py-3 px-6">
           <p className="text-sm font-medium text-gray-900 text-right">Total</p>
           <p className="text-sm font-medium text-gray-900 text-right">
-            {total} BDT
+            {parseInt(total)} BDT
           </p>
         </div>
 
@@ -131,7 +133,7 @@ const ShoppingCart = ({ setOpen }: any) => {
           className="w-full flex justify-center items-center py-2"
           style={{
             color: design?.text_color,
-            backgroundColor: design?.header_color,
+            backgroundColor: design?.header_color
           }}
         >
           <p className="text-center text-base font-bold">Checkout</p>
@@ -186,7 +188,7 @@ const SingleCartProduct = ({ product }: any) => {
   const deleteBtn = () => {
     toast("Remove from cart this item", {
       type: "warning",
-      autoClose: 1000,
+      autoClose: 1000
     });
   };
   return (
@@ -249,9 +251,9 @@ const SingleCartProduct = ({ product }: any) => {
         </div>
         <div className="flex flex-1 items-end justify-start text-sm">
           {/* <p className="text-gray-500">Qty {product.qty}</p> */}
-          <p className="text-gray-900 flex text-center text-sm">
-            {parseInt(product?.price)} BDT <XIcon className="mx-1" />{" "}
-            {product?.qty} = {parseInt(product?.price) * product?.qty} BDT
+          <p className="text-gray-900 font-bold flex text-center text-sm">
+            {parseInt(product?.regular_price)} BDT {product?.qty} ={" "}
+            {parseInt(product?.regular_price) * parseFloat(product?.qty)} BDT
           </p>
         </div>
       </div>

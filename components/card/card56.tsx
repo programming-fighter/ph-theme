@@ -254,7 +254,7 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
 
           <div
             onClick={() => setView(!view)}
-            className="absolute left-6 group-hover:bottom-6 -bottom-10 duration-500 lg:cursor-pointer"
+            className="absolute hover:border hover:border-gray-600  hover:rounded-full hover:touch-pinch-zoom  left-6 group-hover:bottom-6 -bottom-10 duration-500 lg:cursor-pointer"
           >
             <BsEye className="text-xl text-center text-hover" />
           </div>
@@ -262,7 +262,7 @@ const Card56 = ({ item, design, makeid, store_id }: any) => {
           {store_id !== 5184 && (
             <div
               onClick={add_cart_item}
-              className="lg:cursor-pointer border p-2 cart-hover-fs duration-300"
+              className="lg:cursor-pointer hover:border hover:border-gray-600 hover:p-1 hover:rounded-full hover:touch-pinch-zoom  border p-2 cart-hover-fs duration-300"
             >
               <MdAddShoppingCart className="text-2xl" />
             </div>

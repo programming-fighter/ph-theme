@@ -44,7 +44,8 @@ const ShopComponent = async () => {
     design: { shop_page }
   } = await getSubdomainName(url, "design");
 
-  return <TwentyFive data={{}} />;
+  return <TwentyEight data={{}} />;
+  
 
   return (
     <>

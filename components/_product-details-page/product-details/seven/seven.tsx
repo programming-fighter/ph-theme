@@ -25,32 +25,32 @@ const Seven = ({ data, updatedData }: Props) => {
   const { data: productDetailsData, fetchStatus } = useQuery({
     queryKey: ["pd-7"],
     queryFn: () => getProductDetails(updatedData),
-    enabled: !!updatedData.slug && !!updatedData.store_id,
+    enabled: !!updatedData.slug && !!updatedData.store_id
   });
 
   const { data: relatedProducts } = useQuery({
     queryKey: ["rp-7"],
     queryFn: () => getRelatedProducts(updatedData?.product_id),
-    enabled: !!updatedData.slug && !!updatedData.store_id,
+    enabled: !!updatedData.slug && !!updatedData.store_id
   });
 
   const { data: reviews } = useQuery({
     queryKey: ["rv-7"],
     queryFn: () => getReviews(updatedData),
-    enabled: !!updatedData.slug && !!updatedData.store_id,
+    enabled: !!updatedData.slug && !!updatedData.store_id
   });
 
-  const datax = {
-    product: productDetailsData?.product,
-    variant: productDetailsData?.variant,
-    vrcolor: productDetailsData?.vrcolor,
-  };
-
-  console.log(reviews, "reviews");
+  const { product, vrcolor, variant } = productDetailsData;
 
   return (
     <div className="container px-5">
-      <Details fetchStatus={fetchStatus} data={data} datax={datax}>
+      <Details
+        fetchStatus={fetchStatus}
+        data={data}
+        product={product}
+        vrcolor={vrcolor}
+        variant={variant}
+      >
         <div className="h-[1px] bg-gray-300 w-full "></div>
         <div className="flex flex-col space-y-3 font-seven">
           <SkeletonWrapper fetchStatus={fetchStatus} width={"200px"}>

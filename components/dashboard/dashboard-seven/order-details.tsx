@@ -35,6 +35,7 @@ const OrderDetails = () => {
     //   const response = await httpReq.post("getorder/details", { id: order_id });
     //   return response;
     // };
+    
 
     // declare the async data fetching function
     const fetchData = async () => {

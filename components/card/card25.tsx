@@ -6,6 +6,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
 
 const Card25 = ({ item, design, store_id }: any) => {
   const bgColor = design?.header_color;
@@ -23,7 +25,7 @@ const Card25 = ({ item, design, store_id }: any) => {
   const campPrice = getPrice(
     productGetPrice,
     parseInt(camp?.discount_amount),
-    camp?.discount_type
+    parseInt(camp?.discount_type)
   );
 
   useEffect(() => {
@@ -100,7 +102,7 @@ const Card25 = ({ item, design, store_id }: any) => {
         } else {
           cartItem = {
             cartId: uuidv4(),
-            price: price,
+            price:price,
             color: null,
             size: null,
             additional_price: null,
@@ -178,9 +180,9 @@ const Card25 = ({ item, design, store_id }: any) => {
           </div>
         </div>
       </div>
-      {/* <QuikView open={view} setOpen={setView}>
+      <QuikView open={view} setOpen={setView}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };
