@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { CgMenuGridO } from "react-icons/cg";
 import { AnimatePresence, motion } from "framer-motion";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";
 import useTheme from "@/hooks/use-theme";
 import { useParams } from "next/navigation";
@@ -9,10 +11,8 @@ import FilterByPrice from "@/components/filter-by-price";
 import Pagination from "./pagination";
 import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "@/components/loader/oval-loader";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Card23 from "@/components/card/card23";
+import Card42 from "@/components/card/card42";
 import Card6 from "@/components/card/card6";
-import { CgMenuGridO } from "react-icons/cg";
 import {
   MinusIcon,
   PlusIcon,
@@ -20,7 +20,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-const CategoryThree = () => {
+const CategoryFive = () => {
   const { id: data }: any = useParams<{ id: string }>();
   const { category, module, design } = useTheme();
 
@@ -31,7 +31,6 @@ const CategoryThree = () => {
   const [products, setProducts] = useState([]);
   const [sort, setSort] = useState("");
   const [open, setOpen] = useState(false);
-  const [select, setSelect] = useState(parseInt(data?.id));
   const [val, setVal] = useState(0);
   const [colors, setColors] = useState(null);
   const [activeColor, setActiveColor] = useState(null);
@@ -62,25 +61,19 @@ const CategoryThree = () => {
     .border-hover:hover {
         border: 1px solid  ${bgColor};
     }
+ 
     `;
 
   return (
-    <div className="sm:py-10 py-5 sm:container px-5">
+    <div className="sm:container px-5 sm:py-10 py-5 bg-white">
       <style>{styleCss}</style>
       <div className="grid grid-cols-9 gap-5">
         {/* filter side design  */}
-        <div className="md:col-span-2 w-full items-end lg:block hidden">
+        <div className="md:col-span-2 w-full items-end md:block hidden">
           <div className="w-full bg-gray-100 border-2 border-gray-200 text-black  my-6 pl-6 pt-7 pb-6 ">
             <h1 className="font-semibold ">FILTER BY</h1>
             {category?.map((item: any) => (
-              <SingleCat
-                key={item?.id}
-                item={item}
-                select={select}
-                setSelect={setSelect}
-                setPage={setPage}
-                setHasMore={setHasMore}
-              />
+              <SingleCat key={item?.id} item={item} />
             ))}
           </div>
 
@@ -107,10 +100,8 @@ const CategoryThree = () => {
         </div>
 
         {/* filter side design finishes  */}
-
-        <div className="relative lg:col-span-7 col-span-9 ">
+        <div className="relative md:col-span-7 col-span-9 ">
           {/* Sort by bar start  */}
-
           <div>
             <Filter
               onChange={(e: any) => {
@@ -126,7 +117,7 @@ const CategoryThree = () => {
           </div>
           {/* All product card  */}
 
-          <div className="mt-4 mb-6 mx-4 md:mx-0 ">
+          <div className="mt-4 mb-6">
             <Product
               id={data}
               dataId={dataId}
@@ -158,7 +149,7 @@ const CategoryThree = () => {
   );
 };
 
-export default CategoryThree;
+export default CategoryFive;
 
 const Product = ({
   products,
@@ -169,9 +160,9 @@ const Product = ({
   setProducts,
   setPaginate,
   dataId,
-  val,
-  activeColor,
   setColors,
+  activeColor,
+  val,
   setPage,
   shop_load,
   setHasMore,
@@ -180,7 +171,7 @@ const Product = ({
 }: any) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(null);
-  const { category, subcategory } = useTheme();
+  const { category } = useTheme();
 
   useEffect(() => {
     setLoad(true);
@@ -188,12 +179,10 @@ const Product = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     shop_load === 1 && page,
-    category,
     dataId,
     setPaginate,
     setProducts,
     sort,
-    subcategory,
     setColors,
     activeColor,
     val,
@@ -311,14 +300,14 @@ const Product = ({
             }
           >
             {grid === "H" && (
-              <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-4 md:gap-5 grid-cols-2 gap-2 mt-10">
+              <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 sm:grid-cols-2 grid-cols-2 gap-2 mt-10">
                 {products.map((item: any) => (
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, ease: "linear" }}
                   >
-                    <Card23 item={item} />
+                    <Card42 item={item} />
                   </motion.div>
                 ))}
               </div>
@@ -328,7 +317,7 @@ const Product = ({
                 <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
                   {products.map((item: any) => (
                     <motion.div
-                      className="border-hover"
+                      className=""
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
                       transition={{
@@ -348,14 +337,14 @@ const Product = ({
       ) : (
         <div>
           {grid === "H" && (
-            <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-4 md:gap-5 grid-cols-2 gap-2 mt-10">
+            <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 sm:grid-cols-2 grid-cols-2 gap-2 mt-10">
               {products.map((item: any) => (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, ease: "linear" }}
                 >
-                  <Card23 item={item} />
+                  <Card42 item={item} />
                 </motion.div>
               ))}
             </div>
@@ -365,7 +354,7 @@ const Product = ({
               <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
                 {products.map((item: any) => (
                   <motion.div
-                    className="border-hover"
+                    className=""
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
                     transition={{
@@ -398,7 +387,7 @@ const Filter = ({ onChange, setGrid, setOpen, open }: any) => {
           <div className="">
             <select
               onChange={onChange}
-              className="xl:w-96 lg:w-80 md:w-52 w-40 lg:cursor-pointer h-8 px-2 p-0 text-sm border-gray-200 focus:border-gray-200 focus:ring-transparent outline-none focus:outline-none flex items-center"
+              className="xl:w-96 lg:w-80 md:w-52 w-32 lg:cursor-pointer h-8 px-2 p-0 text-sm border-gray-200 focus:border-gray-200 focus:ring-transparent outline-none focus:outline-none flex items-center"
               id="category"
               name="category"
             >
@@ -445,23 +434,24 @@ const Filter = ({ onChange, setGrid, setOpen, open }: any) => {
   );
 };
 
-const SingleCat = ({ item, setSelect, select, setPage, setHasMore }: any) => {
+const SingleCat = ({ item }: any) => {
   const [show, setShow] = useState(false);
+
+  const styleCss = `
+    .category-page .active{
+        color:#f1593a;
+        font-weight: 700;
+       }
+    `;
+
   return (
     <>
-      <div className="w-full flex py-3 lg:cursor-pointer">
+      <style>{styleCss}</style>
+      <div className="w-full flex py-3 lg:cursor-pointer category-page">
         <Link
-          onClick={() => {
-            setSelect(item.id);
-            setPage(1);
-            setHasMore(true);
-          }}
-          href={"/category/" + item.id}
-          className={`flex-1 text-sm font-medium ${
-            select === item.id ? "text-red-500" : "text-gray-800"
-          }`}
+          href={"/category/" + item?.id}
+          className={`flex-1 text-sm  font-medium text-gray-900`}
         >
-          {" "}
           <p>{item.name}</p>
         </Link>
         {item?.cat ? (
@@ -485,23 +475,9 @@ const SingleCat = ({ item, setSelect, select, setPage, setHasMore }: any) => {
         <>
           <div className="ml-8">
             {item?.cat?.map((sub: any) => (
-              <div className="py-2">
-                <Link
-                  onClick={() => {
-                    setSelect(sub.id);
-                    setPage(1);
-                    setHasMore(true);
-                  }}
-                  href={"/category/" + sub?.id}
-                >
-                  {" "}
-                  <p
-                    className={`pb-2 text-sm ${
-                      select === sub.id ? "text-red-500" : "text-gray-500"
-                    }`}
-                  >
-                    {sub?.name}
-                  </p>
+              <div className="py-2 category-page">
+                <Link href={"/category/" + sub?.id}>
+                  <p className={`pb-2 text-sm text-gray-500`}>{sub?.name}</p>
                 </Link>
                 <div className="pr-4">
                   <div className="h-[1px] bg-gray-200 w-full"></div>

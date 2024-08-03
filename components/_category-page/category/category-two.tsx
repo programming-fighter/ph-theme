@@ -1,16 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { ThreeDots } from "react-loader-spinner";
-import useTheme from "@/hooks/use-theme";
-import { useParams } from "next/navigation";
 import FilterByColor from "@/components/filter-by-color";
 import FilterByPrice from "@/components/filter-by-price";
+import useTheme from "@/hooks/use-theme";
+import { useParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import Pagination from "./pagination";
-import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "@/components/loader/oval-loader";
+import httpReq from "@/utils/http/axios/http.service";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Card23 from "@/components/card/card23";
+import { ThreeDots } from "react-loader-spinner";
+import { AnimatePresence, motion } from "framer-motion";
+import Card16 from "@/components/card/card16";
 import Card6 from "@/components/card/card6";
 import { CgMenuGridO } from "react-icons/cg";
 import {
@@ -20,7 +20,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-const CategoryThree = () => {
+const CategoryTwo = () => {
   const { id: data }: any = useParams<{ id: string }>();
   const { category, module, design } = useTheme();
 
@@ -54,23 +54,24 @@ const CategoryThree = () => {
   const styleCss = `
     .text-hover:hover {
       color:  ${bgColor};
-    }
-    .filter {
-        color:${textColor};
-        background:${bgColor};
-    }
-    .border-hover:hover {
-        border: 1px solid  ${bgColor};
-    }
+  }
+  .filter {
+    color:${textColor};
+    background:${bgColor};
+  }
+  .border-hover:hover {
+    border: 1px solid  ${bgColor};
+  }
+ 
     `;
 
   return (
-    <div className="sm:py-10 py-5 sm:container px-5">
+    <div className="sm:container px-5 sm:py-10 py-5">
       <style>{styleCss}</style>
       <div className="grid grid-cols-9 gap-5">
         {/* filter side design  */}
-        <div className="md:col-span-2 w-full items-end lg:block hidden">
-          <div className="w-full bg-gray-100 border-2 border-gray-200 text-black  my-6 pl-6 pt-7 pb-6 ">
+        <div className="lg:col-span-2 w-full items-end lg:block hidden">
+          <div className="w-full bg-gray-100 border-2 border-gray-200 text-black my-6 py-6 px-4">
             <h1 className="font-semibold ">FILTER BY</h1>
             {category?.map((item: any) => (
               <SingleCat
@@ -126,7 +127,7 @@ const CategoryThree = () => {
           </div>
           {/* All product card  */}
 
-          <div className="mt-4 mb-6 mx-4 md:mx-0 ">
+          <div className="mt-4 mb-6 ">
             <Product
               id={data}
               dataId={dataId}
@@ -158,7 +159,7 @@ const CategoryThree = () => {
   );
 };
 
-export default CategoryThree;
+export default CategoryTwo;
 
 const Product = ({
   products,
@@ -168,10 +169,11 @@ const Product = ({
   page,
   setProducts,
   setPaginate,
+  setShops,
   dataId,
-  val,
-  activeColor,
   setColors,
+  activeColor,
+  val,
   setPage,
   shop_load,
   setHasMore,
@@ -192,6 +194,7 @@ const Product = ({
     dataId,
     setPaginate,
     setProducts,
+    setShops,
     sort,
     subcategory,
     setColors,
@@ -318,7 +321,7 @@ const Product = ({
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, ease: "linear" }}
                   >
-                    <Card23 item={item} />
+                    <Card16 item={item} />
                   </motion.div>
                 ))}
               </div>
@@ -328,7 +331,7 @@ const Product = ({
                 <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
                   {products.map((item: any) => (
                     <motion.div
-                      className="border-hover"
+                      className=""
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
                       transition={{
@@ -355,7 +358,7 @@ const Product = ({
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, ease: "linear" }}
                 >
-                  <Card23 item={item} />
+                  <Card16 item={item} />
                 </motion.div>
               ))}
             </div>
@@ -365,7 +368,7 @@ const Product = ({
               <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
                 {products.map((item: any) => (
                   <motion.div
-                    className="border-hover"
+                    className=""
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
                     transition={{
@@ -457,7 +460,7 @@ const SingleCat = ({ item, setSelect, select, setPage, setHasMore }: any) => {
             setHasMore(true);
           }}
           href={"/category/" + item.id}
-          className={`flex-1 text-sm font-medium ${
+          className={`flex-1 text-sm text-gray-900 font-medium ${
             select === item.id ? "text-red-500" : "text-gray-800"
           }`}
         >
@@ -494,7 +497,6 @@ const SingleCat = ({ item, setSelect, select, setPage, setHasMore }: any) => {
                   }}
                   href={"/category/" + sub?.id}
                 >
-                  {" "}
                   <p
                     className={`pb-2 text-sm ${
                       select === sub.id ? "text-red-500" : "text-gray-500"

@@ -41,10 +41,8 @@ import { getSubdomainName } from "@/lib";
 const ShopComponent = async () => {
   const url = getUrl();
   const {
-    design: { shop_page }
+    design: { shop_page },
   } = await getSubdomainName(url, "design");
-
-  return <TwentyFive data={{}} />;
 
   return (
     <>
