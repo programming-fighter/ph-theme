@@ -1,6 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
+// import Pagination from '../../shops/one/Pagination';
 import { AnimatePresence, motion } from "framer-motion";
+import { AiOutlineHome } from "react-icons/ai";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";
 import useTheme from "@/hooks/use-theme";
 import { useParams } from "next/navigation";
@@ -9,28 +12,28 @@ import FilterByPrice from "@/components/filter-by-price";
 import Pagination from "./pagination";
 import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "@/components/loader/oval-loader";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Card23 from "@/components/card/card23";
+import Card60 from "@/components/card/card60";
 import Card6 from "@/components/card/card6";
-import { CgMenuGridO } from "react-icons/cg";
+import Link from "next/link";
+import { IoGridSharp } from "react-icons/io5";
 import {
   MinusIcon,
   PlusIcon,
   TableCellsIcon,
 } from "@heroicons/react/24/outline";
-import Link from "next/link";
 
-const CategoryThree = () => {
+const CategoryThirtyFour = () => {
   const { id: data }: any = useParams<{ id: string }>();
   const { category, module, design } = useTheme();
 
   const paginateModule = module?.find((item: any) => item?.modulus_id === 105);
 
   const [grid, setGrid] = useState("H");
+  const [sort, setSort] = useState("");
   const [paginate, setPaginate] = useState({});
   const [products, setProducts] = useState([]);
-  const [sort, setSort] = useState("");
-  const [open, setOpen] = useState(false);
+  const [shops, setShops] = useState({});
+  const [cat, setCat] = useState({});
   const [select, setSelect] = useState(parseInt(data?.id));
   const [val, setVal] = useState(0);
   const [colors, setColors] = useState(null);
@@ -48,104 +51,91 @@ const CategoryThree = () => {
     setDataId(data);
   }, [data]);
 
-  const bgColor = design?.header_color;
-  const textColor = design?.text_color;
-
   const styleCss = `
-    .text-hover:hover {
-      color:  ${bgColor};
+    .grid-active {
+      color:  ${design?.header_color};
+      border: 1px solid ${design?.header_color};
     }
-    .filter {
-        color:${textColor};
-        background:${bgColor};
-    }
-    .border-hover:hover {
-        border: 1px solid  ${bgColor};
-    }
-    `;
+    .sec-twenty-nine{
+      border-bottom: 2px solid ${design?.header_color};
+   }
+ `;
 
   return (
-    <div className="sm:py-10 py-5 sm:container px-5">
-      <style>{styleCss}</style>
-      <div className="grid grid-cols-9 gap-5">
-        {/* filter side design  */}
-        <div className="md:col-span-2 w-full items-end lg:block hidden">
-          <div className="w-full bg-gray-100 border-2 border-gray-200 text-black  my-6 pl-6 pt-7 pb-6 ">
-            <h1 className="font-semibold ">FILTER BY</h1>
-            {category?.map((item: any) => (
-              <SingleCat
-                key={item?.id}
-                item={item}
-                select={select}
-                setSelect={setSelect}
+    <div className="bg-[#F9F8FF]">
+      <Location category={shops} cat={cat} />
+
+      <div className="sm:container px-5 sm:py-10 py-5">
+        <style>{styleCss}</style>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <div className="hidden lg:block col-span-3 ">
+            <div className="w-full relative p-4 border h-max">
+              <h3 className="font-medium text-[#252525] text-xl mb-4 pb-[10px] w-max">
+                Product Categories..
+              </h3>
+              <div className="absolute h-[1px] bg-gray-300 left-0 right-0 mx-4 top-[55px]"></div>
+              {category?.map((item: any) => (
+                <SingleCat
+                  key={item?.id}
+                  item={item}
+                  select={select}
+                  setSelect={setSelect}
+                />
+              ))}
+            </div>
+            <div className="border my-6 p-4">
+              <FilterByColor
+                id={data?.id}
+                setActiveColor={setActiveColor}
+                colors={colors}
+                activeColor={activeColor}
+                shop_load={shop_load}
                 setPage={setPage}
                 setHasMore={setHasMore}
               />
-            ))}
+            </div>
+            <div className="border mb-5 p-4">
+              <FilterByPrice
+                id={data?.id}
+                setVal={setVal}
+                val={val}
+                setPage={setPage}
+                setHasMore={setHasMore}
+              />
+            </div>
           </div>
-
-          <div className="bg-gray-100 border-2 border-gray-200 my-6 p-4">
-            <FilterByColor
-              id={data?.id}
-              setActiveColor={setActiveColor}
-              colors={colors}
-              activeColor={activeColor}
-              shop_load={shop_load}
-              setPage={setPage}
-              setHasMore={setHasMore}
-            />
-          </div>
-          <div className="bg-gray-100 border-2 border-gray-200 p-4">
-            <FilterByPrice
-              id={data?.id}
-              setVal={setVal}
-              val={val}
-              setPage={setPage}
-              setHasMore={setHasMore}
-            />
-          </div>
-        </div>
-
-        {/* filter side design finishes  */}
-
-        <div className="relative lg:col-span-7 col-span-9 ">
-          {/* Sort by bar start  */}
-
-          <div>
+          <div className="col-span-1 md:col-span-9 flex flex-col min-h-[100vh-200px] h-full ">
             <Filter
               onChange={(e: any) => {
                 setSort(e.target.value);
                 setPage(1);
                 setHasMore(true);
               }}
+              grid={grid}
               setGrid={setGrid}
               paginate={paginate}
-              setOpen={setOpen}
-              open={open}
             />
-          </div>
-          {/* All product card  */}
-
-          <div className="mt-4 mb-6 mx-4 md:mx-0 ">
-            <Product
-              id={data}
-              dataId={dataId}
-              page={pageShop}
-              sort={sort}
-              open={open}
-              grid={grid}
-              products={products}
-              setProducts={setProducts}
-              setPaginate={setPaginate}
-              setColors={setColors}
-              activeColor={activeColor}
-              val={val}
-              setPage={setPage}
-              shop_load={shop_load}
-              setHasMore={setHasMore}
-              hasMore={hasMore}
-            />
-
+            <div className="flex-1">
+              <Product
+                id={data}
+                dataId={dataId}
+                page={pageShop}
+                sort={sort}
+                grid={grid}
+                products={products}
+                setShops={setShops}
+                setCat={setCat}
+                setProducts={setProducts}
+                setPaginate={setPaginate}
+                setColors={setColors}
+                activeColor={activeColor}
+                val={val}
+                setPage={setPage}
+                shop_load={shop_load}
+                setHasMore={setHasMore}
+                hasMore={hasMore}
+              />
+            </div>
             {shop_load === 1 && (
               <div className="my-5">
                 <Pagination data={data} paginate={paginate} />
@@ -158,25 +148,26 @@ const CategoryThree = () => {
   );
 };
 
-export default CategoryThree;
+export default CategoryThirtyFour;
 
 const Product = ({
+  id,
   products,
   grid,
-  open,
   sort,
   page,
   setProducts,
   setPaginate,
+  setShops,
   dataId,
-  val,
-  activeColor,
+  setCat,
   setColors,
+  activeColor,
+  val,
   setPage,
   shop_load,
   setHasMore,
   hasMore,
-  id,
 }: any) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(null);
@@ -192,6 +183,7 @@ const Product = ({
     dataId,
     setPaginate,
     setProducts,
+    setShops,
     sort,
     subcategory,
     setColors,
@@ -270,20 +262,6 @@ const Product = ({
   }
   return (
     <>
-      {open && (
-        <div className="py-4 px-10 border-[1px] ">
-          <div className="text-lg font-medium py-3 flex flex-col gap-2">
-            <h1>Categories</h1>
-            <p className="h-[1px] w-14 bg-black"></p>
-          </div>
-          <div className="flex flex-col gap-3 md:w-[40%] w-[90%]">
-            {category?.map((item: any) => (
-              <SingleCat key={item?.id} item={item} />
-            ))}
-          </div>
-        </div>
-      )}
-
       {!shop_load ? (
         <div>
           <InfiniteScroll
@@ -311,24 +289,24 @@ const Product = ({
             }
           >
             {grid === "H" && (
-              <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-4 md:gap-5 grid-cols-2 gap-2 mt-10">
+              <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg2:grid-cols-3 xl:grid-cols-4 gap-4 px-2 sm:px-0">
                 {products.map((item: any) => (
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
                     transition={{ duration: 0.5, ease: "linear" }}
                   >
-                    <Card23 item={item} />
+                    <Card60 item={item} />
                   </motion.div>
                 ))}
               </div>
             )}
             <AnimatePresence>
               {grid === "V" && (
-                <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
+                <div className="grid grid-cols-1 gap-4 px-2 sm:px-0">
                   {products.map((item: any) => (
                     <motion.div
-                      className="border-hover"
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
                       transition={{
@@ -348,24 +326,24 @@ const Product = ({
       ) : (
         <div>
           {grid === "H" && (
-            <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-4 md:gap-5 grid-cols-2 gap-2 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg2:grid-cols-3 xl:grid-cols-4 gap-4 px-2 sm:px-0">
               {products.map((item: any) => (
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
+                  exit={{ scale: 0 }}
                   transition={{ duration: 0.5, ease: "linear" }}
                 >
-                  <Card23 item={item} />
+                  <Card60 item={item} />
                 </motion.div>
               ))}
             </div>
           )}
           <AnimatePresence>
             {grid === "V" && (
-              <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
+              <div className="grid grid-cols-1 gap-4 px-2 sm:px-0">
                 {products.map((item: any) => (
                   <motion.div
-                    className="border-hover"
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
                     transition={{
@@ -386,131 +364,129 @@ const Product = ({
   );
 };
 
-const Filter = ({ onChange, setGrid, setOpen, open }: any) => {
+const Location = ({ category, cat }: any) => {
   return (
-    <div>
-      <div className="md:flex md:flex-row justify-between md:mt-6 items-center ">
-        <div className="md:block hidden">
-          <p>Sort By:</p>
-        </div>
-        <div className="flex items-center gap-3 lg:-ml-28 xl:-ml-0 md:-ml-0 ml-2 justify-center">
-          {/* Short by  */}
-          <div className="">
-            <select
-              onChange={onChange}
-              className="xl:w-96 lg:w-80 md:w-52 w-40 lg:cursor-pointer h-8 px-2 p-0 text-sm border-gray-200 focus:border-gray-200 focus:ring-transparent outline-none focus:outline-none flex items-center"
-              id="category"
-              name="category"
-            >
-              <option className="lg:cursor-pointer">Featured</option>
-              <option className="lg:cursor-pointer" value="az">
-                Name, A to Z
-              </option>
-              <option className="lg:cursor-pointer" value="za">
-                Name, Z to A
-              </option>
-              <option className="lg:cursor-pointer" value="lh">
-                Price, Low to High
-              </option>
-              <option className="lg:cursor-pointer" value="hl">
-                Price, High to Low
-              </option>
-            </select>
-          </div>
-
-          <p
-            onClick={() => setOpen(!open)}
-            className={`px-10 py-1 md:hidden flex  text-sm font-semibold bg-black text-white ${
-              open === true
-                ? "filter border-transparent "
-                : "bg-black border-black"
-            } lg:cursor-pointer`}
-          >
-            FILTER
-          </p>
-        </div>
-
-        <div className="hidden text-gray-300 gap-1 md:flex">
-          <CgMenuGridO
-            onClick={() => setGrid("H")}
-            className="h-6 w-6 text-hover lg:cursor-pointer"
-          />
-          <TableCellsIcon
-            onClick={() => setGrid("V")}
-            className="h-6 w-6 text-hover lg:cursor-pointer"
-          />
+    <div className="w-full bg-white text-[#252525]">
+      <div className="flex flex-col justify-center sm:container px-5 py-2">
+        <div className="flex items-center gap-1 text-sm font-bold">
+          <Link href="/">
+            <AiOutlineHome className="" />
+          </Link>
+          <p>/ {category?.name || cat?.name}</p>
         </div>
       </div>
     </div>
   );
 };
 
-const SingleCat = ({ item, setSelect, select, setPage, setHasMore }: any) => {
-  const [show, setShow] = useState(false);
+const Filter = ({ paginate, onChange, setGrid, grid }: any) => {
+  const { design } = useTheme();
+
   return (
-    <>
-      <div className="w-full flex py-3 lg:cursor-pointer">
-        <Link
-          onClick={() => {
-            setSelect(item.id);
-            setPage(1);
-            setHasMore(true);
-          }}
-          href={"/category/" + item.id}
-          className={`flex-1 text-sm font-medium ${
-            select === item.id ? "text-red-500" : "text-gray-800"
+    <div className="border-t border-b border-[#f1f1f1] py-3 mb-5 flex flex-wrap justify-between items-center px-2">
+      <div className="text-gray-500 font-medium">
+        Showing {paginate?.from}-{paginate?.to} of {paginate?.total} results{" "}
+      </div>
+      <div className="flex items-center gap-1 mb-3 md:mb-0">
+        <div
+          onClick={() => setGrid("H")}
+          className={` rounded-full p-2 ${
+            grid === "H" ? "grid-active" : "border"
           }`}
         >
-          {" "}
-          <p>{item.name}</p>
-        </Link>
-        {item?.cat ? (
-          <div className="px-4 h-full">
-            {show ? (
-              <MinusIcon
-                onClick={() => setShow(!show)}
-                className="h-4 w-4 text-gray-800"
-              />
-            ) : (
-              <PlusIcon
-                onClick={() => setShow(!show)}
-                className="h-4 w-4 text-gray-800"
-              />
-            )}
-          </div>
-        ) : null}
+          <IoGridSharp className="h-4 w-4 " />
+        </div>
+        <div
+          onClick={() => setGrid("V")}
+          className={`rounded-full p-2 ${
+            grid === "V" ? "grid-active" : "border"
+          }`}
+        >
+          <TableCellsIcon className="h-4 w-4" />
+        </div>
       </div>
+      {/* Short by  */}
+      <div className="flex items-center gap-2 text-sm max-w-md w-full">
+        <label className="max-w-fit"> Sort by:</label>
+        <select
+          onChange={onChange}
+          className={`${
+            design?.template_id === "34" ? "bg-thirty-one" : "bg-white"
+          } h-9 border border-gray-200 rounded  outline-0 ring-0 focus:ring-0 font-medium text-sm flex-1`}
+        >
+          <option>Select One</option>
+          <option value="az">Name, A to Z</option>
+          <option value="za">Name, Z to A</option>
+          <option value="lh">Price, Low to High</option>
+          <option value="hl">Price, High to Low</option>
+        </select>
+      </div>
+    </div>
+  );
+};
 
-      {show && (
-        <>
-          <div className="ml-8">
+const SingleCat = ({ item, setSelect, select }: any) => {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="">
+      <div className="w-full mb-2">
+        <div className="flex items-center px-4 py-3">
+          <Link
+            onClick={() => setSelect(item.id)}
+            href={"/category/" + item.id}
+            className={`flex-1 text-lg font-medium ${
+              select === item.id ? "text-red-500" : "text-gray-800"
+            }`}
+          >
+            {" "}
+            <li>
+              <span className="text-gray-600">{item.name}</span>
+            </li>
+          </Link>
+          {item?.cat ? (
+            <div className="px-4 h-full">
+              {show ? (
+                <MinusIcon
+                  onClick={() => setShow(!show)}
+                  className="h-4 w-4 lg:cursor-pointer text-gray-800"
+                />
+              ) : (
+                <PlusIcon
+                  onClick={() => setShow(!show)}
+                  className="h-4 w-4 lg:cursor-pointer text-gray-800"
+                />
+              )}
+            </div>
+          ) : null}
+        </div>
+        <div>
+          <div
+            className={`${
+              show
+                ? "max-h-[1000px] duration-[3000ms]"
+                : "max-h-0 duration-1000"
+            } overflow-hidden`}
+          >
             {item?.cat?.map((sub: any) => (
-              <div className="py-2">
+              <div className="">
                 <Link
-                  onClick={() => {
-                    setSelect(sub.id);
-                    setPage(1);
-                    setHasMore(true);
-                  }}
+                  onClick={() => setSelect(sub.id)}
                   href={"/category/" + sub?.id}
                 >
                   {" "}
-                  <p
-                    className={`pb-2 text-sm ${
+                  <li
+                    className={`py-2 px-8  text-sm ${
                       select === sub.id ? "text-red-500" : "text-gray-500"
                     }`}
                   >
-                    {sub?.name}
-                  </p>
+                    <span className="text-gray-600">{sub?.name}</span>
+                  </li>
                 </Link>
-                <div className="pr-4">
-                  <div className="h-[1px] bg-gray-200 w-full"></div>
-                </div>
               </div>
             ))}
           </div>
-        </>
-      )}
-    </>
+        </div>
+      </div>
+    </div>
   );
 };

@@ -1,26 +1,26 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { CgMenuGridO } from "react-icons/cg";
 import { AnimatePresence, motion } from "framer-motion";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";
-import useTheme from "@/hooks/use-theme";
 import { useParams } from "next/navigation";
+import useTheme from "@/hooks/use-theme";
 import FilterByColor from "@/components/filter-by-color";
 import FilterByPrice from "@/components/filter-by-price";
 import Pagination from "./pagination";
 import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "@/components/loader/oval-loader";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Card23 from "@/components/card/card23";
-import Card6 from "@/components/card/card6";
-import { CgMenuGridO } from "react-icons/cg";
+import Link from "next/link";
 import {
   MinusIcon,
   PlusIcon,
   TableCellsIcon,
 } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import Card7 from "@/components/card/card7";
+import Card6 from "@/components/card/card6";
 
-const CategoryThree = () => {
+const CategorySix = () => {
   const { id: data }: any = useParams<{ id: string }>();
   const { category, module, design } = useTheme();
 
@@ -62,24 +62,23 @@ const CategoryThree = () => {
     .border-hover:hover {
         border: 1px solid  ${bgColor};
     }
+ 
     `;
 
   return (
-    <div className="sm:py-10 py-5 sm:container px-5">
+    <div className="sm:container px-5 sm:py-10 py-5 bg-white">
       <style>{styleCss}</style>
-      <div className="grid grid-cols-9 gap-5">
+      <div className="grid grid-cols-9">
         {/* filter side design  */}
-        <div className="md:col-span-2 w-full items-end lg:block hidden">
-          <div className="w-full bg-gray-100 border-2 border-gray-200 text-black  my-6 pl-6 pt-7 pb-6 ">
+        <div className="md:col-span-2 px-4 w-full items-end md:block hidden">
+          <div className="w-full bg-gray-100 border-2 border-gray-200 text-black py-6 pl-6">
             <h1 className="font-semibold ">FILTER BY</h1>
             {category?.map((item: any) => (
               <SingleCat
                 key={item?.id}
                 item={item}
-                select={select}
                 setSelect={setSelect}
-                setPage={setPage}
-                setHasMore={setHasMore}
+                select={select}
               />
             ))}
           </div>
@@ -108,7 +107,7 @@ const CategoryThree = () => {
 
         {/* filter side design finishes  */}
 
-        <div className="relative lg:col-span-7 col-span-9 ">
+        <div className="relative md:col-span-7 col-span-9 ">
           {/* Sort by bar start  */}
 
           <div>
@@ -128,7 +127,6 @@ const CategoryThree = () => {
 
           <div className="mt-4 mb-6 mx-4 md:mx-0 ">
             <Product
-              id={data}
               dataId={dataId}
               page={pageShop}
               sort={sort}
@@ -144,6 +142,7 @@ const CategoryThree = () => {
               shop_load={shop_load}
               setHasMore={setHasMore}
               hasMore={hasMore}
+              id={data}
             />
 
             {shop_load === 1 && (
@@ -158,9 +157,10 @@ const CategoryThree = () => {
   );
 };
 
-export default CategoryThree;
+export default CategorySix;
 
 const Product = ({
+  id,
   products,
   grid,
   open,
@@ -169,14 +169,13 @@ const Product = ({
   setProducts,
   setPaginate,
   dataId,
-  val,
-  activeColor,
   setColors,
+  activeColor,
+  val,
   setPage,
   shop_load,
   setHasMore,
   hasMore,
-  id,
 }: any) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(null);
@@ -318,7 +317,7 @@ const Product = ({
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, ease: "linear" }}
                   >
-                    <Card23 item={item} />
+                    <Card7 item={item} />
                   </motion.div>
                 ))}
               </div>
@@ -328,7 +327,7 @@ const Product = ({
                 <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
                   {products.map((item: any) => (
                     <motion.div
-                      className="border-hover"
+                      className=""
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
                       transition={{
@@ -355,7 +354,7 @@ const Product = ({
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, ease: "linear" }}
                 >
-                  <Card23 item={item} />
+                  <Card7 item={item} />
                 </motion.div>
               ))}
             </div>
@@ -365,7 +364,7 @@ const Product = ({
               <div className="grid grid-cols-1 lg:gap-5 md:gap-5 gap-2 mt-10">
                 {products.map((item: any) => (
                   <motion.div
-                    className="border-hover"
+                    className=""
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
                     transition={{
@@ -389,7 +388,7 @@ const Product = ({
 const Filter = ({ onChange, setGrid, setOpen, open }: any) => {
   return (
     <div>
-      <div className="md:flex md:flex-row justify-between md:mt-6 items-center ">
+      <div className="md:flex md:flex-row justify-between items-center ">
         <div className="md:block hidden">
           <p>Sort By:</p>
         </div>
@@ -445,23 +444,18 @@ const Filter = ({ onChange, setGrid, setOpen, open }: any) => {
   );
 };
 
-const SingleCat = ({ item, setSelect, select, setPage, setHasMore }: any) => {
+const SingleCat = ({ item, select, setSelect }: any) => {
   const [show, setShow] = useState(false);
   return (
     <>
       <div className="w-full flex py-3 lg:cursor-pointer">
         <Link
-          onClick={() => {
-            setSelect(item.id);
-            setPage(1);
-            setHasMore(true);
-          }}
+          onClick={() => setSelect(item.id)}
           href={"/category/" + item.id}
-          className={`flex-1 text-sm font-medium ${
-            select === item.id ? "text-red-500" : "text-gray-800"
+          className={`flex-1 text-sm text-gray-900 font-medium ${
+            select === item.id ? "text-red-500" : "text-gray-900"
           }`}
         >
-          {" "}
           <p>{item.name}</p>
         </Link>
         {item?.cat ? (
@@ -487,11 +481,7 @@ const SingleCat = ({ item, setSelect, select, setPage, setHasMore }: any) => {
             {item?.cat?.map((sub: any) => (
               <div className="py-2">
                 <Link
-                  onClick={() => {
-                    setSelect(sub.id);
-                    setPage(1);
-                    setHasMore(true);
-                  }}
+                  onClick={() => setSelect(sub.id)}
                   href={"/category/" + sub?.id}
                 >
                   {" "}
