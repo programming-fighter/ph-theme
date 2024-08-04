@@ -29,7 +29,7 @@ const Fourteen = ({ data }: any) => {
   const [page, setPage] = useState<any>(1);
   const [hasMore, setHasMore] = useState<any>(true);
 
-  console.log(sort, "sort")
+  console.log(sort, "sort");
 
   const shop_load = parseInt(paginateModule?.status);
   const pageShop = shop_load === 1 ? data?.page : page;
@@ -88,7 +88,11 @@ const Fourteen = ({ data }: any) => {
 
               <div className="md:order-last ">
                 <Filter
-                  onChange={(e: any) =>setSort(e.target.value)}
+                  onChange={(e: any) => {
+                    setSort(e.target.value);
+                    setPage(1);
+                    setHasMore(true);
+                  }}
                   paginate={paginate}
                 />
               </div>
@@ -185,7 +189,7 @@ const Product = ({
   setPage,
   shop_load,
   setHasMore,
-  hasMore,
+  hasMore
 }: any) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(null);
@@ -193,7 +197,6 @@ const Product = ({
   useEffect(() => {
     setLoad(true);
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     shop_load === 1 && page,
     setShops,
@@ -201,7 +204,7 @@ const Product = ({
     sort,
     setColors,
     activeColor,
-    val,
+    val
   ]);
 
   const fetchData = async () => {
@@ -313,7 +316,6 @@ const Product = ({
 };
 
 const Filter = ({ onChange }: any) => {
-  
   return (
     <div>
       {/* Short by  */}

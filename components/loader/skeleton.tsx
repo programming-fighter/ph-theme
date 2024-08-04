@@ -3,7 +3,7 @@ import React from "react";
 const Skeleton = () => {
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-white ">
         <div className="sm:container px-5 sm:py-10 py-5 mx-auto animate-pulse">
           {/* <performance className="w-48 h-2 mx-auto bg-gray-200 rounded-lg dark:bg-gray-700" /> */}
 

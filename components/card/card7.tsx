@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 // import "./cardCss/Card.css";
 import { getPrice } from "@/utils/get-price";
@@ -44,9 +43,11 @@ const Card7 = ({ item }: any) => {
         const response: any = await getCampaign(item, store_id);
         if (!response?.error) {
           setCamp(response);
-        } // the API response object
+        } else {
+          console.error("API Response Error:", response.error);
+        }
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching campaign:", error);
       }
     }
 
@@ -90,63 +91,68 @@ const Card7 = ({ item }: any) => {
     let cartItem = {};
     let productDetails = {
       id: item?.id,
-      store_id,
+      store_id
     };
     toast("Added to Cart", {
       type: "success",
-      autoClose: 1000,
+      autoClose: 1000
     });
 
-    axios.post("get/offer/product", productDetails).then((res: any) => {
-      if (!res?.error) {
-        let itemRegularPrice = getPrice(
-          item?.regular_price,
-          item?.discount_price,
-          item?.discount_type
-        );
-        let campaignPrice = getPrice(
-          itemRegularPrice,
-          parseInt(res?.discount_amount),
-          res?.discount_type
-        );
+    axios
+      .post("get/offer/product", productDetails)
+      .then((res: any) => {
+        if (!res?.error) {
+          let itemRegularPrice = getPrice(
+            item?.regular_price,
+            item?.discount_price,
+            item?.discount_type
+          );
+          let campaignPrice = getPrice(
+            itemRegularPrice,
+            parseInt(res?.discount_amount),
+            res?.discount_type
+          );
 
-        if (res?.discount_amount === null) {
-          cartItem = {
-            cartId: "makeid(100)",
-            price: itemRegularPrice,
-            color: null,
-            size: null,
-            additional_price: null,
-            volume: null,
-            unit: null,
-            ...item,
-          };
+          if (res?.discount_amount === null) {
+            cartItem = {
+              cartId: "makeid(100)",
+              price: itemRegularPrice,
+              color: null,
+              size: null,
+              additional_price: null,
+              volume: null,
+              unit: null,
+              ...item
+            };
+          } else {
+            cartItem = {
+              cartId: "makeid(100)",
+              price: campaignPrice,
+              color: null,
+              size: null,
+              additional_price: null,
+              volume: null,
+              unit: null,
+              ...item
+            };
+          }
         } else {
           cartItem = {
             cartId: "makeid(100)",
-            price: campaignPrice,
+            price: productGetPrice,
             color: null,
             size: null,
             additional_price: null,
             volume: null,
             unit: null,
-            ...item,
+            ...item
           };
         }
-      } else {
-        cartItem = {
-          cartId: "makeid(100)",
-          price: productGetPrice,
-          color: null,
-          size: null,
-          additional_price: null,
-          volume: null,
-          unit: null,
-          ...item,
-        };
-      }
-      dispatch(addToCartList({ ...cartItem }));
-    });
+        dispatch(addToCartList({ ...cartItem }));
+      })
+      .catch((error) => {
+        console.error("Error fetching offer product:", error);
+      });
   };
 
   let add_cart_item = (item: any) => {
@@ -156,6 +162,7 @@ const Card7 = ({ item }: any) => {
       filterOfferProduct(item);
     }
   };
+
   return (
     <>
       <motion.div
@@ -209,7 +216,7 @@ const Card7 = ({ item }: any) => {
               overflow: "hidden",
               whiteSpace: "nowrap",
               width: "130px",
-              textOverflow: "ellipsis",
+              textOverflow: "ellipsis"
             }}
           >
             {item?.name.charAt(0).toUpperCase() + item?.name.slice(1)}

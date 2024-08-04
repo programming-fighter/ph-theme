@@ -218,7 +218,7 @@ const Card61 = ({ item }: any) => {
                     className="relative lg:cursor-pointer font-bold"
                   >
                     <p className="lg:text-lg text-base relative z-[2] py-3 text-center duration-500 bg-white border border-black text-black">
-                      {store_id === 2272 ? "Buy Now" : "Add To bag"}
+                      {store_id === 2272 ? "Buy Now" : "Add To Cart"}
                     </p>
                     <div className="absolute top-1.5 left-1.5 group-hover:top-0 group-hover:left-0 duration-500 z-[1] h-full w-full cart-thirty-five border border-black"></div>
                   </div>

@@ -13,12 +13,16 @@ import Taka from "@/utils/taka";
 import { BsPlusLg } from "react-icons/bs";
 import Rate from "@/utils/rate";
 import { toast } from "react-toastify";
+import { addToCartList } from "@/redux/features/product.slice";
+import { useDispatch } from "react-redux";
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
 
 const Card16 = ({ item, design, store_id }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
@@ -127,7 +131,7 @@ const Card16 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -209,9 +213,9 @@ const Card16 = ({ item, design, store_id }: any) => {
           </div>
         </div>
       </motion.div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

@@ -43,6 +43,7 @@ const ShopComponent = async () => {
   const {
     design: { shop_page },
   } = await getSubdomainName(url, "design");
+  return <One data={{}} />
 
   return (
     <>

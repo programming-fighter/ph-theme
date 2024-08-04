@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
 
 import "./product-card-two.css";
 import { getPrice } from "@/utils/get-price";
@@ -12,6 +13,9 @@ import Link from "next/link";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { toast } from "react-toastify";
+import QuikView from "@/components/quick-view";
+import Details from "@/components/_product-details-page/product-details/three/details";
+import { addToCartList } from "@/redux/features/product.slice";
 // import CardModal from './CardModal';
 
 const ProductCardTwo = ({ item, design, store_id }: any) => {
@@ -19,12 +23,9 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
 
   const { name, image, variant } = item;
-
-  // const [visible, setVisible] = useState(true)
-  // const [data, setData] = useState()
-  // const cartList = useSelector((state) => state.cart.cartList);
-  // const dispatch = useDispatch();
-  // const result = cartList?.find((c: any) => c.id === item.id);
+  const dispatch = useDispatch(); // Add this line
+  const cartList = useSelector((state) => state.cart.cartList);
+  const result = cartList?.find((c: any) => c.id === item.id);
 
   const price = getPrice(
     item.regular_price,
@@ -118,11 +119,11 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem })); // Add this line
       });
   };
 
-  const add_cart_item = () => {
+  const add_cart_item = (item:any) => {
     if (item?.variant.length !== 0) {
       setOpen(!open);
     } else {
@@ -189,7 +190,7 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
               <BDT price={item.regular_price} />
             </p>
           )}
-          {/*   {result?.qty ? (
+          {result?.qty ? (
             <div
               className="mx-auto px-3 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center"
               style={{ backgroundColor: design?.header_color }}
@@ -200,48 +201,49 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
                 className="text-2xl lg:cursor-pointer"
               />
               <span className="text-xl" style={{ color: design?.text_color }}>
-                {/* {result?.qty} */}
-          {/* </span> */}
-          {/* <AiOutlinePlus */}
-          {/* color={design?.text_color} */}
-          {/* // onClick={() => add_cart_item(item)} */}
-          {/* className="text-2xl lg:cursor-pointer " */}
-          {/* /> */}
-          {/* </div> */}
-
-          {!parseInt(variant) ? (
-            <div
-              // onClick={() => add_cart_item(item)}
-              className="mx-auto px-2 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center lg:cursor-pointer "
-              style={{
-                backgroundColor: design?.header_color,
-                color: design?.text_color,
-              }}
-            >
-              <p className="text-center w-full text-lg tracking-wider">
-                Add to cart
-              </p>
+                {result?.qty}
+              </span>
+              <AiOutlinePlus
+                color={design?.text_color}
+                onClick={() => add_cart_item(item)}
+                className="text-2xl lg:cursor-pointer "
+              />
             </div>
           ) : (
-            <Link
-              href={"/product/" + item?.id + "/" + item?.slug}
-              className="mx-auto px-2 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center lg:cursor-pointer "
-              style={{
-                backgroundColor: design?.header_color,
-                color: design?.text_color,
-              }}
-            >
-              <p className="text-center w-full text-lg tracking-wider">
-                Add to cart
-              </p>
-            </Link>
+            !parseInt(variant) ? (
+              <div
+                onClick={() => add_cart_item(item)}
+                className="mx-auto px-2 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center lg:cursor-pointer "
+                style={{
+                  backgroundColor: design?.header_color,
+                  color: design?.text_color,
+                }}
+              >
+                <p className="text-center w-full text-lg tracking-wider">
+                  Add to cart
+                </p>
+              </div>
+            ) : (
+              <Link
+                href={"/product/" + item?.id + "/" + item?.slug}
+                className="mx-auto px-2 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center lg:cursor-pointer "
+                style={{
+                  backgroundColor: design?.header_color,
+                  color: design?.text_color,
+                }}
+              >
+                <p className="text-center w-full text-lg tracking-wider">
+                  Add to cart
+                </p>
+              </Link>
+            )
           )}
         </div>
       </div>
       {/* <CardModal setModal={setModal} modal={modal} item={item} /> */}
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };

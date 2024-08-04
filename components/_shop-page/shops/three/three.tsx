@@ -22,7 +22,7 @@ import Link from "next/link";
 const Three = ({ data }: any) => {
   const { category, module, design } = useTheme();
 
-  const paginateModule = module.find((item: any) => item?.modulus_id === 105);
+  const paginateModule = module?.find((item: any) => item?.modulus_id === 105);
 
   const [grid, setGrid] = useState("H");
   const [paginate, setPaginate] = useState({});

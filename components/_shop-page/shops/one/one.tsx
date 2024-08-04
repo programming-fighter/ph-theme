@@ -80,7 +80,7 @@ const One = ({ data }: any) => {
 
   return (
     <>
-      <div className="sm:container px-5 sm:py-10 py-5 dark:bg-black">
+      <div className="sm:container px-5 sm:py-10 py-5 ">
         <div className="">
           <div className="text-sm md:mt-6 my-4 ">
             <ul className="flex items-center gap-x-2">
@@ -139,7 +139,7 @@ const One = ({ data }: any) => {
           ) : (
             <div className="col-span-12 lg:col-span-9 w-full">
               <div className="flex items-center justify-start mb-3">
-                <div className="bg-gray-300 dark:bg-black py-1 px-3 rounded-lg">
+                <div className="bg-gray-300 py-1 px-3 rounded-lg">
                   <p className="text-sm text-gray-700">
                     Showing{" "}
                     <span className="font-medium">{paginate?.from}</span> to{" "}

@@ -83,7 +83,7 @@ const Product = ({
   setPage,
   shop_load,
   setHasMore,
-  hasMore,
+  hasMore
 }: any) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(null);
@@ -91,8 +91,8 @@ const Product = ({
   useEffect(() => {
     setLoad(true);
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shop_load === 1 && page, setShops]);
+    
+  }, [shop_load === 1 && page, setShops, sort]);
 
   const fetchData = async () => {
     // get the data from the api

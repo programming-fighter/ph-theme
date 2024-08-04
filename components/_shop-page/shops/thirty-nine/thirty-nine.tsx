@@ -84,7 +84,7 @@ const Product = ({
   setPage,
   shop_load,
   setHasMore,
-  hasMore,
+  hasMore
 }: any) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(null);
@@ -93,14 +93,14 @@ const Product = ({
     setLoad(true);
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [shop_load === 1 && page, setShops]);
+  }, [shop_load === 1 && page, setShops, sort]);
 
   const fetchData = async () => {
     // get the data from the api
     const { data, error } = await httpReq.get(
       `shoppage/products${
         page ? (shop_load === 1 ? page : `?page=${page}`) : `?page=1`
-      }&name=${"siam.localhost:3000"}&filter=${sort}`
+      }&name=${window.location.host}&filter=${sort}`
     );
 
     if (error) {
