@@ -68,7 +68,7 @@ const CategoryThirtyEight = () => {
       </div>
       <div className="py-3 lg:block hidden bg-white">
         <div className="flex flex-wrap items-center gap-3 sm:container px-5 ">
-          {subCat?.map((item: any) => (
+          {subCat?.map((item: any, key: number) => (
             <SubCat key={item?.id} item={item} />
           ))}
         </div>
@@ -299,8 +299,9 @@ const Product = ({
             }
           >
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1 sm:gap-3">
-              {products?.map((item: any) => (
+              {products?.map((item: any, key: number) => (
                 <motion.div
+                  key={key}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
@@ -314,8 +315,9 @@ const Product = ({
         </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1 sm:gap-3">
-          {products?.map((item: any) => (
+          {products?.map((item: any, key: number) => (
             <motion.div
+              key={key}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}

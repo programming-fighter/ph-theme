@@ -75,11 +75,10 @@ const FeaturedEleven = ({ category, design, store_id }: any) => {
             }
             // swiper.params.navigation.prevEl = navigationPrevRef?.current;
             // swiper.params.navigation.nextEl = navigationNextRef.current;
-
             // Re-init navigation
-            swiper.navigation.destroy();
-            swiper.navigation.init();
-            swiper.navigation.update();
+            swiper.navigation?.destroy();
+            swiper.navigation?.init();
+            swiper.navigation?.update();
           });
         }}
         className="hidden sm:block"

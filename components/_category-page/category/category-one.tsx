@@ -299,8 +299,8 @@ const SingleCat = ({ item, select, setSelect, setPage, setHasMore }: any) => {
         {show && (
           <>
             <div className="">
-              {item?.cat?.map((sub: any) => (
-                <div className="border-t">
+              {item?.cat?.map((sub: any, key: number) => (
+                <div className="border-t" key={key}>
                   <Link
                     onClick={() => {
                       setSelect(sub.id);

@@ -20,25 +20,36 @@ const Eight = ({ data, updatedData }: any) => {
   const [reviews, setReview] = useState([]);
   const [productDetails, setProductDetails] = useState<any>([]);
 
+  const [loadingState, setLoadingState] = useState({
+    productDetailsLoaded: false,
+    reviewsLoaded: false,
+    relatedProductsLoaded: false,
+  });
+
   useEffect(() => {
     data["store_id"] = store_id;
 
     httpReq.post("product-details", data).then((res) => {
       if (!res?.error) {
         setProductDetails(res?.product);
+
+        setLoadingState((prev) => ({ ...prev, productDetailsLoaded: true }));
       }
     });
 
     httpReq.post("get/review", data).then((res) => {
       if (!res?.error) {
         setReview(res);
+        setLoadingState((prev) => ({ ...prev, reviewsLoaded: true }));
       } else {
         setReview([]);
+        setLoadingState((prev) => ({ ...prev, reviewsLoaded: true }));
       }
     });
     httpReq.post("related-product", { id: data?.product_id }).then((res) => {
       if (!res?.error) {
         setRelatedProduct(res);
+        setLoadingState((prev) => ({ ...prev, relatedProductsLoaded: true }));
       }
     });
   }, [data, store_id]);
@@ -50,65 +61,77 @@ const Eight = ({ data, updatedData }: any) => {
     }
     `;
 
-  console.log(updatedData, "updatedData");
+  console.log(loadingState, "loadingState");
+
+  // loading status checking
+
+  const isLoadedAll = Object.values(loadingState).every((e) => e);
+
+  // if (!isLoadedAll) {
+  //   return <p>Loading</p>;
+  // }
 
   return (
     <div className="bg-white mx-auto">
       <style>{styleCss}</style>
       <div className="">
         <div className="sm:container px-5 sm:py-10 py-5">
-          <Details data={data} />
+          {isLoadedAll && <Details data={data} />}
         </div>
         {/* ************************ tab component start ***************************** */}
-        <div className="my-10 sm:py-10 py-5 sm:container px-5 lg:flex gap-x-10">
-          <Tab.Group>
-            <Tab.List className="flex flex-col lg:w-[200px] w-full border-r-2 border-gray-200">
-              <Tab
-                className={({ selected }) =>
-                  selected
-                    ? "text-xl focus:outline-none text-left border-r-2 border-blue-400 pb-3 pr-5"
-                    : "text-gray-400 text-xl text-left pb-3"
-                }
-              >
-                Description
-              </Tab>
-              <Tab
-                className={({ selected }) =>
-                  selected
-                    ? "text-xl focus:outline-none text-left border-r-2 border-blue-400 pt-3"
-                    : "text-gray-400 text-xl text-left pt-3"
-                }
-              >
-                Reviews
-              </Tab>
-            </Tab.List>
-            <Tab.Panels className="w-full lg:border-0 border mt-10 lg:mt-0">
-              <Tab.Panel>
-                <div className="rounded-lg p-5">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: productDetails?.description,
-                    }}
-                    className="apiHtml"
-                  ></div>
-                </div>
-              </Tab.Panel>
-              <Tab.Panel>
-                {reviews.length === 0 ? (
-                  <div className="flex flex-1 justify-center items-center">
-                    <h3 className="text-xl font-sans font-bold">
-                      No Found Review
-                    </h3>
+
+        {isLoadedAll && (
+          <div className="my-10 sm:py-10 py-5 sm:container px-5 lg:flex gap-x-10">
+            <Tab.Group>
+              <Tab.List className="flex flex-col lg:w-[200px] w-full border-r-2 border-gray-200">
+                <Tab
+                  className={({ selected }) =>
+                    selected
+                      ? "text-xl focus:outline-none text-left border-r-2 border-blue-400 pb-3 pr-5"
+                      : "text-gray-400 text-xl text-left pb-3"
+                  }
+                >
+                  Description
+                </Tab>
+                <Tab
+                  className={({ selected }) =>
+                    selected
+                      ? "text-xl focus:outline-none text-left border-r-2 border-blue-400 pt-3"
+                      : "text-gray-400 text-xl text-left pt-3"
+                  }
+                >
+                  Reviews
+                </Tab>
+              </Tab.List>
+              <Tab.Panels className="w-full lg:border-0 border mt-10 lg:mt-0">
+                <Tab.Panel>
+                  <div className="rounded-lg p-5">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: productDetails?.description,
+                      }}
+                      className="apiHtml"
+                    ></div>
                   </div>
-                ) : (
-                  reviews?.map((item: any) => (
-                    <UserReview key={item?.id} review={item} />
-                  ))
-                )}
-              </Tab.Panel>
-            </Tab.Panels>
-          </Tab.Group>
-        </div>
+                </Tab.Panel>
+                <Tab.Panel>
+                  {reviews.length === 0 ? (
+                    <div className="flex flex-1 justify-center items-center">
+                      <h3 className="text-xl font-sans font-bold">
+                        No Found Review
+                      </h3>
+                    </div>
+                  ) : (
+                    reviews?.map((item: any) => (
+                      <UserReview key={item?.id} review={item} />
+                    ))
+                  )}
+                </Tab.Panel>
+              </Tab.Panels>
+            </Tab.Group>
+          </div>
+        )}
+
         {/* ************************ tab component end ***************************** */}
         <div className="sm:container px-5 sm:py-10 py-5">
           <Related product={relatedProduct} />

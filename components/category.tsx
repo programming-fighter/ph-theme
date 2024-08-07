@@ -3,7 +3,7 @@ import React from "react";
 import CategorySevenNew from "./_category-page/category/category-seven-new";
 import getUrl from "@/utils/get-url";
 import { getSubdomainName } from "@/lib";
-import CategoryEight from "./_category-page/category/category-eight";
+import CategoryEight from "./_category-page/category/category-eight-old";
 import CategoryNine from "./_category-page/category/category-nine";
 import CategoryTen from "./_category-page/category/category-ten";
 import CategoryEleven from "./_category-page/category/category-eleven";

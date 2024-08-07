@@ -1,18 +1,20 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
-import { CgMenuGridO } from "react-icons/cg";
 import { AnimatePresence, motion } from "framer-motion";
+
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ThreeDots } from "react-loader-spinner";
-import useTheme from "@/hooks/use-theme";
 import { useParams } from "next/navigation";
+import useTheme from "@/hooks/use-theme";
 import FilterByColor from "@/components/filter-by-color";
 import FilterByPrice from "@/components/filter-by-price";
 import Pagination from "./pagination";
 import httpReq from "@/utils/http/axios/http.service";
 import OvalLoader from "@/components/loader/oval-loader";
-import Card42 from "@/components/card/card42";
+import Card21 from "@/components/card/card21";
 import Card6 from "@/components/card/card6";
+import { CgMenuGridO } from "react-icons/cg";
 import {
   MinusIcon,
   PlusIcon,
@@ -20,7 +22,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
-const CategoryFive = () => {
+const CategoryEight = () => {
   const { id: data }: any = useParams<{ id: string }>();
   const { category, module, design } = useTheme();
 
@@ -63,13 +65,12 @@ const CategoryFive = () => {
     }
  
     `;
-
   return (
-    <div className="sm:container px-5 sm:py-10 py-5 bg-white">
+    <div className="sm:container px-5 sm:py-10 py-5">
       <style>{styleCss}</style>
-      <div className="grid grid-cols-9 gap-5">
+      <div className="grid grid-cols-9">
         {/* filter side design  */}
-        <div className="md:col-span-2 w-full items-end md:block hidden">
+        <div className="lg:col-span-2 px-4 w-full items-end lg:block hidden">
           <div className="w-full bg-gray-100 border-2 border-gray-200 text-black  my-6 pl-6 pt-7 pb-6 ">
             <h1 className="font-semibold ">FILTER BY</h1>
             {category?.map((item: any) => (
@@ -100,8 +101,10 @@ const CategoryFive = () => {
         </div>
 
         {/* filter side design finishes  */}
-        <div className="relative md:col-span-7 col-span-9 ">
+
+        <div className="relative lg:col-span-7 col-span-9 ">
           {/* Sort by bar start  */}
+
           <div>
             <Filter
               onChange={(e: any) => {
@@ -117,7 +120,7 @@ const CategoryFive = () => {
           </div>
           {/* All product card  */}
 
-          <div className="mt-4 mb-6">
+          <div className="mt-4 mb-6 mx-4 md:mx-0 ">
             <Product
               id={data}
               dataId={dataId}
@@ -149,7 +152,7 @@ const CategoryFive = () => {
   );
 };
 
-export default CategoryFive;
+export default CategoryEight;
 
 const Product = ({
   products,
@@ -171,7 +174,7 @@ const Product = ({
 }: any) => {
   const [load, setLoad] = useState(false);
   const [error, setError] = useState(null);
-  const { category } = useTheme();
+  const { category, subcategory } = useTheme();
 
   useEffect(() => {
     setLoad(true);
@@ -179,10 +182,12 @@ const Product = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     shop_load === 1 && page,
+    category,
     dataId,
     setPaginate,
     setProducts,
     sort,
+    subcategory,
     setColors,
     activeColor,
     val,
@@ -266,8 +271,8 @@ const Product = ({
             <p className="h-[1px] w-14 bg-black"></p>
           </div>
           <div className="flex flex-col gap-3 md:w-[40%] w-[90%]">
-            {category?.map((item: any) => (
-              <SingleCat key={item?.id} item={item} />
+            {category?.map((item: any, key: number) => (
+              <SingleCat item={item} key={key} />
             ))}
           </div>
         </div>
@@ -300,15 +305,15 @@ const Product = ({
             }
           >
             {grid === "H" && (
-              <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 sm:grid-cols-2 grid-cols-2 gap-2 mt-10">
-                {products.map((item: any, key: any) => (
+              <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 grid-cols-1 gap-2 mt-10">
+                {products.map((item: any, key: number) => (
                   <motion.div
                     key={key}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, ease: "linear" }}
                   >
-                    <Card42 item={item} />
+                    <Card21 item={item} />
                   </motion.div>
                 ))}
               </div>
@@ -319,7 +324,7 @@ const Product = ({
                   {products.map((item: any, key: number) => (
                     <motion.div
                       key={key}
-                      className=""
+                      className="border-hover"
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
                       transition={{
@@ -339,7 +344,7 @@ const Product = ({
       ) : (
         <div>
           {grid === "H" && (
-            <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 sm:grid-cols-2 grid-cols-2 gap-2 mt-10">
+            <div className="grid lg:grid-cols-3 lg:gap-5 md:grid-cols-2 xl:grid-cols-3 md:gap-5 grid-cols-1 gap-2 mt-10">
               {products.map((item: any, key: number) => (
                 <motion.div
                   key={key}
@@ -347,7 +352,7 @@ const Product = ({
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, ease: "linear" }}
                 >
-                  <Card42 item={item} />
+                  <Card21 item={item} />
                 </motion.div>
               ))}
             </div>
@@ -358,7 +363,7 @@ const Product = ({
                 {products.map((item: any, key: number) => (
                   <motion.div
                     key={key}
-                    className=""
+                    className="border-hover"
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
                     transition={{
@@ -391,7 +396,7 @@ const Filter = ({ onChange, setGrid, setOpen, open }: any) => {
           <div className="">
             <select
               onChange={onChange}
-              className="xl:w-96 lg:w-80 md:w-52 w-32 lg:cursor-pointer h-8 px-2 p-0 text-sm border-gray-200 focus:border-gray-200 focus:ring-transparent outline-none focus:outline-none flex items-center"
+              className="xl:w-96 lg:w-80 md:w-52 w-40 lg:cursor-pointer h-8 px-2 p-0 text-sm border-gray-200 focus:border-gray-200 focus:ring-transparent outline-none focus:outline-none flex items-center"
               id="category"
               name="category"
             >
@@ -447,15 +452,15 @@ const SingleCat = ({ item }: any) => {
         font-weight: 700;
        }
     `;
-
   return (
     <>
       <style>{styleCss}</style>
       <div className="w-full flex py-3 lg:cursor-pointer category-page">
         <Link
           href={"/category/" + item?.id}
-          className={`flex-1 text-sm  font-medium text-gray-900`}
+          className={`flex-1 text-sm font-medium text-gray-900`}
         >
+          {" "}
           <p>{item.name}</p>
         </Link>
         {item?.cat ? (
@@ -481,7 +486,7 @@ const SingleCat = ({ item }: any) => {
             {item?.cat?.map((sub: any, key: number) => (
               <div className="py-2 category-page" key={key}>
                 <Link href={"/category/" + sub?.id}>
-                  <p className={`pb-2 text-sm text-gray-500`}>{sub?.name}</p>
+                  <p className={`pb-2 text-sm text-gray-600`}>{sub?.name}</p>
                 </Link>
                 <div className="pr-4">
                   <div className="h-[1px] bg-gray-200 w-full"></div>

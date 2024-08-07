@@ -58,6 +58,7 @@ const Details = ({ data, children }: any) => {
   useEffect(() => {
     setFilterV(variant?.filter((item: any) => item?.color === color));
   }, [color, variant]);
+
   useEffect(() => {
     setLoad(true);
     // declare the async data fetching function
@@ -106,13 +107,13 @@ const Details = ({ data, children }: any) => {
   //     handleCampaign();
   // }, [product, store_id])
 
-  //   if (load) {
-  //     return (
-  //       <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
-  //         <OvalLoader />
-  //       </div>
-  //     );
-  //   }
+  if (load) {
+    return (
+      <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
+        <OvalLoader />
+      </div>
+    );
+  }
 
   const regularPrice =
     parseInt(product?.regular_price) +

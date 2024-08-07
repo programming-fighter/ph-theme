@@ -280,8 +280,9 @@ const Product = ({
           >
             {grid === "H" && (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 sm:px-0">
-                {products.map((item: any) => (
+                {products.map((item: any, key: number) => (
                   <motion.div
+                    key={key}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
@@ -295,8 +296,9 @@ const Product = ({
             <AnimatePresence>
               {grid === "V" && (
                 <div className="grid grid-cols-1 gap-4 px-2 sm:px-0">
-                  {products.map((item: any) => (
+                  {products.map((item: any, key: number) => (
                     <motion.div
+                      key={key}
                       initial={{ translateX: 200 }}
                       animate={{ translateX: 0 }}
                       transition={{
@@ -317,8 +319,9 @@ const Product = ({
         <div>
           {grid === "H" && (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 sm:px-0">
-              {products.map((item: any) => (
+              {products.map((item: any, key: number) => (
                 <motion.div
+                  key={key}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
@@ -332,8 +335,9 @@ const Product = ({
           <AnimatePresence>
             {grid === "V" && (
               <div className="grid grid-cols-1 gap-4 px-2 sm:px-0">
-                {products.map((item: any) => (
+                {products.map((item: any, key: number) => (
                   <motion.div
+                    key={key}
                     initial={{ translateX: 200 }}
                     animate={{ translateX: 0 }}
                     transition={{
@@ -452,8 +456,8 @@ const SingleCat = ({ item, setSelect, select }: any) => {
         {show && (
           <>
             <div className="">
-              {item?.cat?.map((sub: any) => (
-                <div className="border-t">
+              {item?.cat?.map((sub: any, key: number) => (
+                <div className="border-t" key={key}>
                   <Link
                     onClick={() => setSelect(sub.id)}
                     href={"/category/" + sub?.id}

@@ -295,8 +295,9 @@ const Product = ({
             }
           >
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 lg:gap-0">
-              {products?.map((item: any) => (
+              {products?.map((item: any, key: number) => (
                 <motion.div
+                  key={key}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
@@ -310,8 +311,9 @@ const Product = ({
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 lg:gap-0">
-          {products?.map((item: any) => (
+          {products?.map((item: any, key: number) => (
             <motion.div
+              key={key}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
@@ -383,8 +385,8 @@ const SingleCat = ({ item }: any) => {
         </Link>
       </div>
       <div className="ml-4">
-        {item?.cat?.map((sub: any) => (
-          <div className="category-page-two">
+        {item?.cat?.map((sub: any, key: number) => (
+          <div className="category-page-two" key={key}>
             <Link href={"/category/" + sub?.id}>
               <p className={`text-sm text-gray-600`}>{sub?.name}</p>
             </Link>

@@ -268,8 +268,8 @@ const SingleCat = ({ item, select, setSelect }: any) => {
             onMouseLeave={() => setShow(false)}
             className="absolute top-8 left-0 z-[8] bg-white px-5 py-2"
           >
-            {item?.cat?.map((sub: any) => (
-              <div className="">
+            {item?.cat?.map((sub: any, key: number) => (
+              <div className="" key={key}>
                 <Link
                   onClick={() => setSelect(item.id)}
                   href={"/category/" + sub?.id}

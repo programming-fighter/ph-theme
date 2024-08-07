@@ -281,8 +281,9 @@ const Product = ({
             }
           >
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 px-2 sm:px-0">
-              {products.map((item: any) => (
+              {products.map((item: any, key: number) => (
                 <motion.div
+                  key={key}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
@@ -296,8 +297,9 @@ const Product = ({
         </div>
       ) : (
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 px-2 sm:px-0">
-          {products.map((item: any) => (
+          {products.map((item: any, key: number) => (
             <motion.div
+              key={key}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
@@ -395,8 +397,8 @@ const SingleCat = ({ item, setSelect, select }: any) => {
                 : "max-h-0 duration-1000"
             } overflow-hidden`}
           >
-            {item?.cat?.map((sub: any) => (
-              <div className="">
+            {item?.cat?.map((sub: any, key: number) => (
+              <div className="" key={key}>
                 <Link
                   onClick={() => setSelect(sub.id)}
                   href={"/category/" + sub?.id}

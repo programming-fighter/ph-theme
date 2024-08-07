@@ -467,8 +467,8 @@ const SingleCat = ({ item, setSelect, select }: any) => {
                 : "max-h-0 duration-1000"
             } overflow-hidden`}
           >
-            {item?.cat?.map((sub: any) => (
-              <div className="">
+            {item?.cat?.map((sub: any, key: number) => (
+              <div className="" key={key}>
                 <Link
                   onClick={() => setSelect(sub.id)}
                   href={"/category/" + sub?.id}

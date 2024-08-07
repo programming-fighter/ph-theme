@@ -82,7 +82,7 @@ const CategoryTwentySeven = () => {
                   open ? "max-h-[1000px]" : "max-h-0"
                 } ${active ? "overflow-hidden" : ""}`}
               >
-                {category?.map((item: any) => (
+                {category?.map((item: any, key: number) => (
                   <SingleCat
                     key={item?.id}
                     item={item}
@@ -268,8 +268,9 @@ const Product = ({
             }
           >
             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-2 sm:px-0">
-              {products.map((item: any) => (
+              {products.map((item: any, key: number) => (
                 <motion.div
+                  key={key}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   exit={{ scale: 0 }}
@@ -284,8 +285,9 @@ const Product = ({
       ) : (
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-2 sm:px-0">
-            {products.map((item: any) => (
+            {products.map((item: any, key: number) => (
               <motion.div
+                key={key}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0 }}
@@ -370,8 +372,8 @@ const SingleCat = ({ item, setOpen, setSelect, select }: any) => {
         {show && (
           <>
             <div className="">
-              {item?.cat?.map((sub: any) => (
-                <div className="border-t">
+              {item?.cat?.map((sub: any, key: number) => (
+                <div className="border-t" key={key}>
                   <Link
                     onClick={() => setSelect(sub.id)}
                     href={"/category/" + sub?.id}

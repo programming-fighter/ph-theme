@@ -25,19 +25,19 @@ const Seven = ({ data, updatedData }: Props) => {
   const { data: productDetailsData, fetchStatus } = useQuery({
     queryKey: ["pd-7"],
     queryFn: () => getProductDetails(updatedData),
-    enabled: !!updatedData.slug && !!updatedData.store_id
+    enabled: !!updatedData.slug && !!updatedData.store_id,
   });
 
   const { data: relatedProducts } = useQuery({
     queryKey: ["rp-7"],
     queryFn: () => getRelatedProducts(updatedData?.product_id),
-    enabled: !!updatedData.slug && !!updatedData.store_id
+    enabled: !!updatedData.slug && !!updatedData.store_id,
   });
 
   const { data: reviews } = useQuery({
     queryKey: ["rv-7"],
     queryFn: () => getReviews(updatedData),
-    enabled: !!updatedData.slug && !!updatedData.store_id
+    enabled: !!updatedData.slug && !!updatedData.store_id,
   });
 
   const { product, vrcolor, variant } = productDetailsData;

@@ -24,7 +24,7 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
 
   const { name, image, variant } = item;
   const dispatch = useDispatch(); // Add this line
-  const cartList = useSelector((state) => state.cart.cartList);
+  const cartList = useSelector((state: any) => state.cart.cartList);
   const result = cartList?.find((c: any) => c.id === item.id);
 
   const price = getPrice(
@@ -123,7 +123,7 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
       });
   };
 
-  const add_cart_item = (item:any) => {
+  const add_cart_item = (item: any) => {
     if (item?.variant.length !== 0) {
       setOpen(!open);
     } else {
@@ -209,34 +209,32 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
                 className="text-2xl lg:cursor-pointer "
               />
             </div>
+          ) : !parseInt(variant) ? (
+            <div
+              onClick={() => add_cart_item(item)}
+              className="mx-auto px-2 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center lg:cursor-pointer "
+              style={{
+                backgroundColor: design?.header_color,
+                color: design?.text_color,
+              }}
+            >
+              <p className="text-center w-full text-lg tracking-wider">
+                Add to cart
+              </p>
+            </div>
           ) : (
-            !parseInt(variant) ? (
-              <div
-                onClick={() => add_cart_item(item)}
-                className="mx-auto px-2 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center lg:cursor-pointer "
-                style={{
-                  backgroundColor: design?.header_color,
-                  color: design?.text_color,
-                }}
-              >
-                <p className="text-center w-full text-lg tracking-wider">
-                  Add to cart
-                </p>
-              </div>
-            ) : (
-              <Link
-                href={"/product/" + item?.id + "/" + item?.slug}
-                className="mx-auto px-2 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center lg:cursor-pointer "
-                style={{
-                  backgroundColor: design?.header_color,
-                  color: design?.text_color,
-                }}
-              >
-                <p className="text-center w-full text-lg tracking-wider">
-                  Add to cart
-                </p>
-              </Link>
-            )
+            <Link
+              href={"/product/" + item?.id + "/" + item?.slug}
+              className="mx-auto px-2 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center lg:cursor-pointer "
+              style={{
+                backgroundColor: design?.header_color,
+                color: design?.text_color,
+              }}
+            >
+              <p className="text-center w-full text-lg tracking-wider">
+                Add to cart
+              </p>
+            </Link>
           )}
         </div>
       </div>
