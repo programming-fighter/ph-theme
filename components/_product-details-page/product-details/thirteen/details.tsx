@@ -1,38 +1,42 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import "./five.css";
-import { toast } from "react-toastify";
+import OvalLoader from "@/components/loader/oval-loader";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ShoppingBagIcon,
+} from "@heroicons/react/24/outline";
 import parse from "html-react-parser";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   FacebookIcon,
   FacebookShareButton,
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import useTheme from "@/hooks/use-theme";
-import OvalLoader from "@/components/loader/oval-loader";
-import { addToCartList } from "@/redux/features/product.slice";
+import { toast } from "react-toastify";
+import "./five.css";
 import { HSlider } from "./slider";
-import BDT from "@/utils/bdt";
-import CallForPrice from "@/utils/call-for-price";
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  ShoppingBagIcon,
-} from "@heroicons/react/24/outline";
-import httpReq from "@/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import { getPrice } from "@/utils/get-price";
 
-const Details = ({ data }: any) => {
+const Details = ({
+  data,
+  product,
+  variant,
+  vrcolor,
+  fetchStatus,
+  children,
+}: any) => {
   const { makeid, design, headerSetting, store_id } = useTheme();
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState<any>({});
-  const [variant, setVariant] = useState<any>([]);
   const [filterV, setFilterV] = useState<any>([]);
-  const [vrcolor, setVrcolor] = useState<any>([]);
   const [load, setLoad] = useState<any>(false);
 
   // select variant state
@@ -67,10 +71,6 @@ const Details = ({ data }: any) => {
         setCamp(null);
       }
 
-      // set state with the result
-      setProduct(product);
-      setVariant(variant);
-      setVrcolor(vrcolor);
       setColor(null);
       setUnit(null);
       setSize(null);
@@ -326,6 +326,14 @@ const Details = ({ data }: any) => {
 
   const buttonThirteen =
     "h-full px-2 grow flex items-center justify-center hover:bg-gray-100 bg-gray-200 w-60 py-2 transition-all duration-200 ease-linear";
+
+  if (fetchStatus === "fetching") {
+    return (
+      <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
+        <OvalLoader />
+      </div>
+    );
+  }
 
   return (
     <div className="">

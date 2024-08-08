@@ -14,19 +14,19 @@ import "./twelve.css";
 
 const Twelve = ({ data, updatedData }: any) => {
   const { data: productDetailsData, fetchStatus } = useQuery({
-    queryKey: ["pd-10"],
+    queryKey: ["pd-12"],
     queryFn: () => getProductDetails(updatedData),
     enabled: !!updatedData.slug && !!updatedData.store_id,
   });
 
   const { data: relatedProducts } = useQuery({
-    queryKey: ["rp-10"],
+    queryKey: ["rp-12"],
     queryFn: () => getRelatedProducts(updatedData?.product_id),
     enabled: !!updatedData.slug && !!updatedData.store_id,
   });
 
   const { data: reviews } = useQuery({
-    queryKey: ["rv-10"],
+    queryKey: ["rv-12"],
     queryFn: () => getReviews(updatedData),
     enabled: !!updatedData.slug && !!updatedData.store_id,
   });

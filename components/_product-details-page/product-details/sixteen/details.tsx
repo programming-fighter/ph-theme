@@ -1,31 +1,35 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import OvalLoader from "@/components/loader/oval-loader";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
+import parse from "html-react-parser";
+import { useEffect, useState } from "react";
+import { HiMinus, HiPlus } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "./five.css";
-import useTheme from "@/hooks/use-theme";
-import httpReq from "@/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import OvalLoader from "@/components/loader/oval-loader";
-import { getPrice } from "@/utils/get-price";
-import { addToCartList } from "@/redux/features/product.slice";
 import { HSlider } from "./slider";
-import BDT from "@/utils/bdt";
-import Rate from "@/utils/rate";
-import parse from "html-react-parser";
-import CallForPrice from "@/utils/call-for-price";
-import { HiMinus, HiPlus } from "react-icons/hi";
 
-const Details = ({ data }: any) => {
+const Details = ({
+  data,
+  product,
+  variant,
+  vrcolor,
+  fetchStatus,
+  children,
+}: any) => {
   const { makeid, design, store_id, headerSetting } = useTheme();
 
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState<any>({});
-  const [variant, setVariant] = useState<any>([]);
   const [filterV, setFilterV] = useState<any>([]);
-  const [vrcolor, setVrcolor] = useState<any>([]);
   const [load, setLoad] = useState<any>(false);
 
   // select variant state
@@ -60,10 +64,6 @@ const Details = ({ data }: any) => {
         setCamp(null);
       }
 
-      // set state with the result
-      setProduct(product);
-      setVariant(variant);
-      setVrcolor(vrcolor);
       setColor(null);
       setUnit(null);
       setSize(null);
@@ -75,14 +75,6 @@ const Details = ({ data }: any) => {
       // make sure to catch any error
       .catch(console.error);
   }, [data, store_id]);
-
-  //   if (load) {
-  //     return (
-  //       <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
-  //         <OvalLoader />
-  //       </div>
-  //     );
-  //   }
 
   const regularPrice =
     parseInt(product?.regular_price) +
@@ -331,6 +323,14 @@ const Details = ({ data }: any) => {
   const buttonSixteen =
     "custom-all text-white font-bold py-[11px] px-10 w-max rounded-full";
 
+  if (fetchStatus === "fetching") {
+    return (
+      <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
+        <OvalLoader />
+      </div>
+    );
+  }
+
   return (
     <div className="">
       <div className=" grid grid-cols-1 lg:grid-cols-9 lg:gap-6 gap-8 bg-white ">
@@ -372,7 +372,7 @@ const Details = ({ data }: any) => {
           </p>
 
           <div
-            className={`${product.category === "" ? "hidden" : "block"} pb-5`}
+            className={`${product?.category === "" ? "hidden" : "block"} pb-5`}
           >
             <p className="text-base font-medium uppercase pt-5 pb-2 ">
               Categories

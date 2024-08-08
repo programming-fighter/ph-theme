@@ -1,28 +1,32 @@
 "use client";
-import useTheme from "@/hooks/use-theme";
-import httpReq from "@/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import OvalLoader from "@/components/loader/oval-loader";
-import { getPrice } from "@/utils/get-price";
+import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
-import { toast } from "react-toastify";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
-import Rate from "@/utils/rate";
 import CallForPrice from "@/utils/call-for-price";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
 import parse from "html-react-parser";
+import { useEffect, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
-const Details = ({ data, children }: any) => {
+const Details = ({
+  data,
+  product,
+  variant,
+  vrcolor,
+  fetchStatus,
+  children,
+}: any) => {
   const { makeid, design, store_id, headerSetting } = useTheme();
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState<any>({});
-  const [variant, setVariant] = useState<any>([]);
   const [filterV, setFilterV] = useState<any>([]);
-  const [vrcolor, setVrcolor] = useState<any>([]);
   const [load, setLoad] = useState<any>(false);
 
   // select variant state
@@ -57,10 +61,6 @@ const Details = ({ data, children }: any) => {
         setCamp(null);
       }
 
-      // set state with the result
-      setProduct(product);
-      setVariant(variant);
-      setVrcolor(vrcolor);
       setColor(null);
       setSize(null);
       setUnit(null);
@@ -317,6 +317,14 @@ const Details = ({ data, children }: any) => {
   const buttonFourteen =
     "bg-black btn-hover text-white text-xs font-bold sm:py-[16px] py-3 text-center w-60";
 
+  if (fetchStatus === "fetching") {
+    return (
+      <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
+        <OvalLoader />
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white h-full mt-5">
       <style>{styleCss}</style>
@@ -341,8 +349,8 @@ const Details = ({ data, children }: any) => {
             <BDT />
             {camp?.status === "active" ? campPrice : price}{" "}
             {camp?.status !== "active" &&
-            (product.discount_type === "no_discount" ||
-              product.discount_price === "0.00") ? (
+            (product?.discount_type === "no_discount" ||
+              product?.discount_price === "0.00") ? (
               " "
             ) : (
               <span className="text-gray-500 font-thin line-through text-xl font-seven">
@@ -359,7 +367,7 @@ const Details = ({ data, children }: any) => {
           </p>
 
           {/* unit  */}
-          {!vrcolor && variant?.length !== 0 && variant[0]?.unit && (
+          {variant && !vrcolor && variant?.length > 0 && variant[0]?.unit && (
             <Units unit={unit} setUnit={setUnit} variant={variant} />
           )}
           {/* color and size  */}
@@ -374,7 +382,7 @@ const Details = ({ data, children }: any) => {
               />
             </>
           )}
-          {filterV[0]?.size && vrcolor && (
+          {filterV && filterV[0]?.size && vrcolor && (
             <Sizes size={size} setSize={setSize} variant={filterV} />
           )}
           {/* color only  */}
