@@ -2,7 +2,6 @@
 import Card42 from "@/components/card/card42";
 import SectionHeadingFive from "@/components/section-heading/section-heading-five";
 import DefaultSlider from "@/components/slider/default-slider";
-import useTheme from "@/hooks/use-theme";
 import { profileImg } from "@/site-settings/siteUrl";
 import Arrow from "@/utils/arrow";
 import Rate from "@/utils/rate";
@@ -14,35 +13,6 @@ import Details from "./details";
 import "./five.css";
 
 const Ten = ({ data, updatedData }: any) => {
-  const { store_id } = useTheme();
-
-  // const [relatedProduct, setRelatedProduct] = useState([]);
-  // const [reviews, setReview] = useState([]);
-  // const [productDetails, setProductDetails] = useState<any>([]);
-
-  // useEffect(() => {
-  //   data["store_id"] = store_id;
-
-  //   httpReq.post("product-details", data).then((res) => {
-  //     if (!res?.error) {
-  //       setProductDetails(res?.product);
-  //     }
-  //   });
-
-  //   httpReq.post("get/review", data).then((res) => {
-  //     if (!res?.error) {
-  //       setReview(res);
-  //     } else {
-  //       setReview([]);
-  //     }
-  //   });
-  //   httpReq.post("related-product", { id: data?.product_id }).then((res) => {
-  //     if (!res?.error) {
-  //       setRelatedProduct(res);
-  //     }
-  //   });
-  // }, [data, store_id]);
-
   const { data: productDetailsData, fetchStatus } = useQuery({
     queryKey: ["pd-10"],
     queryFn: () => getProductDetails(updatedData),
@@ -62,9 +32,6 @@ const Ten = ({ data, updatedData }: any) => {
   });
 
   const { product, vrcolor, variant } = productDetailsData || {};
-
-  // console.log(productDetailsData, "pd");
-  // return <p>hello</p>;
 
   console.log(reviews, "revw");
 
@@ -118,17 +85,6 @@ const Ten = ({ data, updatedData }: any) => {
                 : reviews?.map((item: any) => (
                     <UserReview key={item?.id} review={item} />
                   ))}
-              {/* {reviews?.length === 0 ? (
-                <div className="flex flex-1 justify-center items-center py-3">
-                  <h3 className="text-xl font-sans font-bold">
-                    No Found Review
-                  </h3>
-                </div>
-              ) : (
-                reviews?.map((item: any) => (
-                  <UserReview key={item?.id} review={item} />
-                ))
-              )} */}
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
