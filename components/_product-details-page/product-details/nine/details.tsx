@@ -1,30 +1,30 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { VscCreditCard } from "react-icons/vsc";
 import { useDispatch } from "react-redux";
 // import ImageSection from './ImageSection';
 // import Zoom from '../Zoom';
-import { toast } from "react-toastify";
+import OvalLoader from "@/components/loader/oval-loader";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 import parse from "html-react-parser";
+import Link from "next/link";
 import {
   FacebookIcon,
   FacebookShareButton,
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import useTheme from "@/hooks/use-theme";
-import httpReq from "@/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import OvalLoader from "@/components/loader/oval-loader";
-import { getPrice } from "@/utils/get-price";
-import { addToCartList } from "@/redux/features/product.slice";
-import { productImg } from "@/site-settings/siteUrl";
+import { toast } from "react-toastify";
 import ImageZoom from "../image-zoom";
-import Link from "next/link";
-import Rate from "@/utils/rate";
-import BDT from "@/utils/bdt";
-import CallForPrice from "@/utils/call-for-price";
-import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const Details = ({ data, children }: any) => {
   const { makeid, design, store_id, headerSetting } = useTheme();
@@ -44,9 +44,21 @@ const Details = ({ data, children }: any) => {
   const [unit, setUnit] = useState<any>(null);
   const [qty, setQty] = useState<any>(1);
 
+  const [loading, setLoading] = useState(true);
+
   const sizeV = variant?.find((item: any) => item.size !== null);
 
   // console.log(filterV, "VA");
+
+  useEffect(() => {
+    // Set a timer to stop the loading state after 2 seconds
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+
+    // Clean up the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     setFilterV(variant?.filter((item: any) => item?.color === color));
@@ -92,7 +104,7 @@ const Details = ({ data, children }: any) => {
       .catch(console.error);
   }, [data, store_id]);
 
-  if (load) {
+  if (loading) {
     return (
       <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
         <OvalLoader />

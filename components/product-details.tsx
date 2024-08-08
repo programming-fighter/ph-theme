@@ -1,7 +1,7 @@
 "use client";
-import { useParams } from "next/navigation";
-import React, { useEffect, useState, Suspense, lazy } from "react";
 import useTheme from "@/hooks/use-theme";
+import { useParams } from "next/navigation";
+import { lazy, useEffect, useState } from "react";
 
 export interface UpdateData {
   product_id: string;
@@ -223,7 +223,9 @@ const ProductDetails = () => {
     setUpdatedData({ product_id, store_id, slug });
   }, [product_id, store_id, slug]);
 
-  const RenderComponent = componentsMap[design?.single_product_page] || null;
+  const RenderComponent = componentsMap["eleven"] || null;
+
+  // const RenderComponent = componentsMap[design?.single_product_page] || null;
 
   return (
     <>

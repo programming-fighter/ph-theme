@@ -1,25 +1,25 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import OvalLoader from "@/components/loader/oval-loader";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
+import parse from "html-react-parser";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { HiMinus, HiPlus } from "react-icons/hi";
-import { toast } from "react-toastify";
-import { HSlider } from "./slider";
+import { useDispatch } from "react-redux";
 import {
   FacebookIcon,
   FacebookShareButton,
-  WhatsappShareButton,
   WhatsappIcon,
+  WhatsappShareButton,
 } from "react-share";
-import parse from "html-react-parser";
-import useTheme from "@/hooks/use-theme";
-import httpReq from "@/utils/http/axios/http.service";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import OvalLoader from "@/components/loader/oval-loader";
-import { getPrice } from "@/utils/get-price";
-import { addToCartList } from "@/redux/features/product.slice";
-import BDT from "@/utils/bdt";
-import Rate from "@/utils/rate";
-import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { HSlider } from "./slider";
 
 const Details = ({ data, children }: any) => {
   const { makeid, design, store_id, headerSetting } = useTheme();
@@ -37,6 +37,10 @@ const Details = ({ data, children }: any) => {
   const [qty, setQty] = useState<any>(1);
   const [load, setLoad] = useState<any>(false);
   const [camp, setCamp] = useState<any>(null);
+
+  //
+
+  const [loading, setLoading] = useState(true);
 
   const sizeV = variant?.find((item: any) => item.size !== null);
 
@@ -107,13 +111,13 @@ const Details = ({ data, children }: any) => {
   //     handleCampaign();
   // }, [product, store_id])
 
-  if (load) {
-    return (
-      <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
-        <OvalLoader />
-      </div>
-    );
-  }
+  //   if (load) {
+  //     return (
+  //       <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
+  //         <OvalLoader />
+  //       </div>
+  //     );
+  //   }
 
   const regularPrice =
     parseInt(product?.regular_price) +
@@ -364,6 +368,24 @@ const Details = ({ data, children }: any) => {
   
   }
   `;
+
+  useEffect(() => {
+    // Set a timer to stop the loading state after 2 seconds
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+
+    // Clean up the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
+        <OvalLoader />
+      </div>
+    );
+  }
 
   return (
     <div className=" bg-white h-full ">

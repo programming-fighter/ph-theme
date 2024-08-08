@@ -1,11 +1,10 @@
 import type { Metadata, ResolvingMetadata } from "next";
 
 import ProductDetails from "@/components/product-details";
-import React, { cache } from "react";
-import getUrl from "@/utils/get-url";
-import { getProductDetails, getSubdomainName } from "@/lib";
 import capitalizeFirstLetter from "@/helper/capitalize-first-letter";
+import { getProductDetails, getSubdomainName } from "@/lib";
 import { imgUrl } from "@/site-settings/siteUrl";
+import getUrl from "@/utils/get-url";
 
 type Props = {
   params: { productID: string; slug: string };

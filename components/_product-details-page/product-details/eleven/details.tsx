@@ -1,37 +1,44 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import imgCall from "@/assets/img/call.png";
+import OvalLoader from "@/components/loader/oval-loader";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import BDT from "@/utils/bdt";
+import CallForPrice from "@/utils/call-for-price";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
+import parse from "html-react-parser";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { IoCall } from "react-icons/io5";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import {
   FacebookIcon,
   FacebookShareButton,
-  WhatsappShareButton,
   WhatsappIcon,
+  WhatsappShareButton,
 } from "react-share";
-import parse from "html-react-parser";
-import { useRouter } from "next/navigation";
-import useTheme from "@/hooks/use-theme";
 import { toast } from "react-toastify";
-import httpReq from "@/utils/http/axios/http.service";
-import OvalLoader from "@/components/loader/oval-loader";
-import { useDispatch } from "react-redux";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import { addToCartList } from "@/redux/features/product.slice";
 import { HSlider } from "./slider";
-import BDT from "@/utils/bdt";
-import Rate from "@/utils/rate";
-import CallForPrice from "@/utils/call-for-price";
-import { IoCall } from "react-icons/io5";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { getPrice } from "@/utils/get-price";
-import imgCall from "@/assets/img/call.png";
 
-const Details = ({ data, children }: any) => {
+const Details = ({
+  data,
+  children,
+  product,
+  variant,
+  vrcolor,
+  fetchStatus,
+}: any) => {
   const { makeid, design, store_id, headerSetting } = useTheme();
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState<any>({});
-  const [variant, setVariant] = useState<any>([]);
+  // const [product, setProduct] = useState<any>({});
+  // const [variant, setVariant] = useState<any>([]);
   const [filterV, setFilterV] = useState<any>([]);
-  const [vrcolor, setVrcolor] = useState<any>([]);
+  // const [vrcolor, setVrcolor] = useState<any>([]);
   const [load, setLoad] = useState(false);
 
   // select variant state
@@ -85,9 +92,9 @@ const Details = ({ data, children }: any) => {
       }
 
       // set state with the result
-      setProduct(product);
-      setVariant(variant);
-      setVrcolor(vrcolor);
+      // setProduct(product);
+      // setVariant(variant);
+      // setVrcolor(vrcolor);
       setColor(null);
       setUnit(null);
       setSize(null);
@@ -344,6 +351,14 @@ const Details = ({ data, children }: any) => {
   `;
   const callForPrice =
     "bg-black btn-hover text-white text-xs font-bold sm:py-[16px] py-3 sm:px-16 px-2";
+
+  if (fetchStatus === "fetching") {
+    return (
+      <div className="text-center text-4xl font-bold text-gray-400 h-screen flex justify-center items-center">
+        <OvalLoader />
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white h-full ">

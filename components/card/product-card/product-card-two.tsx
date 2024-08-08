@@ -1,21 +1,21 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { IoEyeSharp } from "react-icons/io5";
+import { useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { IoEyeSharp } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
 
-import "./product-card-two.css";
+import Details from "@/components/_product-details-page/product-details/three/details";
+import QuikView from "@/components/quick-view";
+import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
-import { productImg } from "@/site-settings/siteUrl";
-import BDT from "@/utils/bdt";
 import { toast } from "react-toastify";
-import QuikView from "@/components/quick-view";
-import Details from "@/components/_product-details-page/product-details/three/details";
-import { addToCartList } from "@/redux/features/product.slice";
+import { v4 as uuidv4 } from "uuid";
+import "./product-card-two.css";
 // import CardModal from './CardModal';
 
 const ProductCardTwo = ({ item, design, store_id }: any) => {

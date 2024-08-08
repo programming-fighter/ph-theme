@@ -499,26 +499,26 @@
 
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { CgMenuGridO } from "react-icons/cg";
-import { AnimatePresence, color, motion } from "framer-motion";
 
-import { ThreeDots } from "react-loader-spinner";
-import InfiniteScroll from "react-infinite-scroll-component";
-import useTheme from "@/hooks/use-theme";
-import FilterByColor from "@/components/filter-by-color";
-import FilterByPrice from "@/components/filter-by-price";
-import Pagination from "../one/pagination";
-import httpReq from "@/utils/http/axios/http.service";
-import OvalLoader from "@/components/loader/oval-loader";
 import Card21 from "@/components/card/card21";
 import Card6 from "@/components/card/card6";
+import FilterByColor from "@/components/filter-by-color";
+import FilterByPrice from "@/components/filter-by-price";
+import OvalLoader from "@/components/loader/oval-loader";
+import useTheme from "@/hooks/use-theme";
+import httpReq from "@/utils/http/axios/http.service";
 import { PlusIcon, TableCellsIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { ThreeDots } from "react-loader-spinner";
+import Pagination from "../one/pagination";
 
 const Eight = ({ data }: any) => {
   const { category, design, module } = useTheme();
-  const paginateModule = module.find((item: any) => item?.modulus_id === 105);
+  const paginateModule = module?.find((item: any) => item?.modulus_id === 105);
   const [grid, setGrid] = useState("H");
   const [paginate, setPaginate] = useState({});
   const [products, setProducts] = useState([]);
