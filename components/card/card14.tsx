@@ -112,6 +112,7 @@ const Card14 = ({ item }: any) => {
   };
 
   const add_cart_item = () => {
+    console.log(item, "hello items")
     if (item?.variant.length !== 0) {
       setOpen(!open);
     } else {

@@ -8,12 +8,15 @@ import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/three/details";
+import { addToCartList } from "@/redux/features/product.slice";
+import httpReq from "@/utils/http/axios/http.service";
+import { useDispatch } from "react-redux";
 
 const Card25 = ({ item, design, store_id }: any) => {
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
 
-  //   const dispatch = useDispatch();
+    const dispatch = useDispatch();
   const [view, setView] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
@@ -74,7 +77,7 @@ const Card25 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    axios
+    httpReq
       .post(process.env.API_URL + "get/offer/product", productDetails)
       .then((res: any) => {
         if (!res?.error) {
@@ -111,7 +114,7 @@ const Card25 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 

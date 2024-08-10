@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCartList } from "@/redux/features/product.slice";
 import QuikView from "../quick-view";
 import Details from "@/components/_product-details-page/product-details/three/details";
+import httpReq from "@/utils/http/axios/http.service";
 
 const Card23 = ({ item, design, store_id }: any) => {
   const dispatch = useDispatch();
@@ -27,7 +28,6 @@ const Card23 = ({ item, design, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
 
   const cartList = useSelector((state: any) => state.cart.cartList);
-  //   const dispatch = useDispatch();
   const card7CustomStyle = `      
 
 .card7SearchIcon{
@@ -66,11 +66,13 @@ const Card23 = ({ item, design, store_id }: any) => {
     item.discount_price,
     item.discount_type
   );
+
   const campPrice = getPrice(
     price,
-    parseInt(camp?.discount_amount),
+    isNaN(parseInt(camp?.discount_amount)) ? 0 : parseInt(camp?.discount_amount),
     camp?.discount_type
   );
+
 
   useEffect(() => {
     async function handleCampaign() {
@@ -96,11 +98,8 @@ const Card23 = ({ item, design, store_id }: any) => {
     toast("Added to Cart", {
       type: "success",
     });
-    axios
-      .post(
-        process.env.NEXT_PUBLIC_REACT_APP_BASE_URL + "get/offer/product",
-        productDetails
-      )
+    httpReq
+    .post(process.env.API_URL + "get/offer/product", productDetails)
       .then((res: any) => {
         if (!res?.error) {
           if (item?.variant[0]?.unit && store_id === 2109) {
@@ -230,7 +229,7 @@ const Card23 = ({ item, design, store_id }: any) => {
         <Link href={"/product/" + item?.id + "/" + item?.slug} className="p-5">
           <div className="flex justify-center px-2">
             <p className="mb-3 menu-hover font-six font-base text-gray-500 dark:text-gray-300 whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px] px-2">
-              {item?.name}
+              {item?.name} awevawsdv
             </p>
           </div>
           <div className="flex justify-center">

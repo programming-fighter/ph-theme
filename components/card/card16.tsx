@@ -17,6 +17,7 @@ import { addToCartList } from "@/redux/features/product.slice";
 import { useDispatch } from "react-redux";
 import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/three/details";
+import httpReq from "@/utils/http/axios/http.service";
 
 const Card16 = ({ item, design, store_id }: any) => {
   const [open, setOpen] = useState(false);
@@ -81,8 +82,7 @@ const Card16 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    axios
-      .post(process.env.API_URL + "get/offer/product", productDetails)
+    httpReq.post("get/offer/product", productDetails)
       .then((res: any) => {
         if (!res?.error) {
           let itemRegularPrice = getPrice(

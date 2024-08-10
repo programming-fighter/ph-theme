@@ -150,7 +150,7 @@ const Card42 = ({ item }: any) => {
           </div>
           <div className="py-6 px-3 space-y-2 relative">
             <p className="sm:text-sm text-xs font-semibold uppercase antialiased mb-2 text-gray-600">
-              {item?.category}
+              {item?.category} 
             </p>
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
               <h3 className="sm:text-lg text-sm text-hover text-gray-800 font-bold antialiased capitalize whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]">

@@ -231,7 +231,7 @@ const Card40 = ({ item }: any) => {
     item.discount_price,
     item.discount_type
   );
-  const campPrice = parseInt(
+  const campPrice = Number(
     getPrice(
       productGetPrice,
       parseInt(camp?.discount_amount),
@@ -264,14 +264,14 @@ const Card40 = ({ item }: any) => {
     };
     httpReq.post("get/offer/product", productDetails).then((res) => {
       if (!res?.error) {
-        let itemRegularPrice = parseInt(
+        let itemRegularPrice = Number(
           getPrice(
             item?.regular_price,
             item?.discount_price,
             item?.discount_type
           )
         );
-        let campaignPrice = parseInt(
+        let campaignPrice = Number(
           getPrice(
             itemRegularPrice,
             parseInt(res?.discount_amount),

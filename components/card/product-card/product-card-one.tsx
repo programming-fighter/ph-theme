@@ -14,10 +14,15 @@ import { productImg } from "@/site-settings/siteUrl";
 import { EyeIcon } from "@heroicons/react/24/outline";
 import Taka from "@/utils/taka";
 import { toast } from "react-toastify";
+import { addToCartList } from "@/redux/features/product.slice";
+import { useDispatch } from "react-redux";
+import QuikView from "@/components/quick-view";
+import Details from "@/components/_product-details-page/product-details/three/details";
+import httpReq from "@/utils/http/axios/http.service";
 
 const ProductCardOne = ({ item, store_id }: any) => {
   const router = useRouter();
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const [open, setOpen] = useState(false);
   const [result, setResult] = useState<any>({});
   const [camp, setCamp] = useState<any>(null);
@@ -69,7 +74,7 @@ const ProductCardOne = ({ item, store_id }: any) => {
       type: "success",
       autoClose: 1000,
     });
-    axios
+   httpReq
       .post(
         "https://admin.ebitans.com/api/v1/" + "get/offer/product",
         productDetails
@@ -122,11 +127,12 @@ const ProductCardOne = ({ item, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }))
+        dispatch(addToCartList({ ...cartItem }))
       });
   };
 
   const add_to_cart = (item: any) => {
+   
     if (item?.variant.length !== 0) {
       setOpen(!open);
     } else {
@@ -254,12 +260,12 @@ const ProductCardOne = ({ item, store_id }: any) => {
           )}
         </div>
       </div>
-      {/* 
+      
             <QuikView open={open} setOpen={setOpen} >
                 <div className="p-5">
                     <Details data={{ product_id: item?.id }} />
                 </div>
-            </QuikView> */}
+            </QuikView>
     </div>
   );
 };

@@ -81,7 +81,7 @@ const HeaderTwo = () => {
           {menu?.map((item: any) => (
             <div key={item.id} className="header-menu">
               <Link
-                href={item.url}
+                href={item.url || '/'}
                 className="menu-hover uppercase sm:text-base text-sm text-gray-500 font-medium"
               >
                 {item.name}

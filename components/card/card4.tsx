@@ -1,19 +1,26 @@
 "use client";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Rate from "@/utils/rate";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
+import { useRouter } from "next/navigation";
 
 const Card4 = ({ item, design, store_id, makeid }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const router = useRouter()
 
   const styleCss = `
   .text-hover:hover {
@@ -67,7 +74,7 @@ const Card4 = ({ item, design, store_id, makeid }: any) => {
       autoClose: 1000,
     });
 
-    axios
+   httpReq
       .post(
         "https://admin.ebitans.com/api/v1/" + "get/offer/product",
         productDetails
@@ -107,7 +114,7 @@ const Card4 = ({ item, design, store_id, makeid }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -119,7 +126,7 @@ const Card4 = ({ item, design, store_id, makeid }: any) => {
     } else {
       filterOfferProduct(item);
       if (store_id === 2680) {
-        // navigate("/checkout");
+        router.push("/checkout");
       }
     }
   };
@@ -203,9 +210,9 @@ const Card4 = ({ item, design, store_id, makeid }: any) => {
           </div>
         </div>
       </div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };

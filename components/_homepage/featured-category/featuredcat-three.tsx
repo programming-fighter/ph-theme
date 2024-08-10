@@ -59,7 +59,7 @@ const FeaturedThree = ({ product, category, design, store_id }: any) => {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="font-bold text-lg footerFiveBorderCustom">
-                      {latestCategory[0]?.name}
+                      {latestCategory[0]?.name} 
                     </div>
                     <div className="">
                       <Arrow prevEl={prev1} nextEl={next1}></Arrow>
