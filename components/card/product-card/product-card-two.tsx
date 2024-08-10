@@ -130,7 +130,7 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
       filterOfferProduct(item);
     }
   };
-
+// this
   return (
     <>
       <div
