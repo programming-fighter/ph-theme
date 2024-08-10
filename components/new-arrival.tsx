@@ -34,18 +34,18 @@ import NewArrivalProductSeventeen from "./new-arrival/new-arrival-product-sevent
 import NewArrivalProductSix from "./new-arrival/new-arrival-product-six";
 import NewArrivalProductTen from "./new-arrival/new-arrival-product-ten";
 import NewArrivalProductThirteeen from "./new-arrival/new-arrival-product-thirteen";
-import NewArrivalProductTwelve from "./new-arrival/new-arrival-product-twelve";
-import NewArrivalProductTwentyTwo from "./new-arrival/new-arrival-product-twentytwo";
-import NewArrivalProductTwentyThree from "./new-arrival/new-arrival-product-twentythree";
-import NewArrivalProductTwentySeven from "./new-arrival/new-arrival-product-twentyseven";
-import NewArrivalProductTwentyNine from "./new-arrival/new-arrival-product-twentynine";
-import NewArrivalProductThirtyOne from "./new-arrival/new-arrival-product-thirtyone";
 import NewArrivalProductThirtyFour from "./new-arrival/new-arrival-product-thirty-four";
-import NewArrivalProductThirtyFive from "./new-arrival/new-arrival-product-thirtyfive";
-import NewArrivalProductThirtySix from "./new-arrival/new-arrival-product-thirtysix";
-import NewArrivalProductThirtySeven from "./new-arrival/new-arrival-product-thirtyseven";
 import NewArrivalProductThirtyEight from "./new-arrival/new-arrival-product-thirtyeight";
+import NewArrivalProductThirtyFive from "./new-arrival/new-arrival-product-thirtyfive";
 import NewArrivalProductThirtyNine from "./new-arrival/new-arrival-product-thirtynine";
+import NewArrivalProductThirtyOne from "./new-arrival/new-arrival-product-thirtyone";
+import NewArrivalProductThirtySeven from "./new-arrival/new-arrival-product-thirtyseven";
+import NewArrivalProductThirtySix from "./new-arrival/new-arrival-product-thirtysix";
+import NewArrivalProductTwelve from "./new-arrival/new-arrival-product-twelve";
+import NewArrivalProductTwentyNine from "./new-arrival/new-arrival-product-twentynine";
+import NewArrivalProductTwentySeven from "./new-arrival/new-arrival-product-twentyseven";
+import NewArrivalProductTwentyThree from "./new-arrival/new-arrival-product-twentythree";
+import NewArrivalProductTwentyTwo from "./new-arrival/new-arrival-product-twentytwo";
 
 const NewArrival = ({ product, theme, design, store_id, category }: any) => {
   return (

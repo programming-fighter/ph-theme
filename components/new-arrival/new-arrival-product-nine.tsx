@@ -1,26 +1,27 @@
 "use client";
-import React, { useState } from "react";
-import { SwiperSlide } from "swiper/react";
+import { useState } from "react";
 import {
-  Navigation,
   A11y,
-  EffectFade,
   Autoplay,
   Controller,
+  EffectFade,
+  Navigation,
 } from "swiper/modules";
-import { Swiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
+import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/effect-fade";
 
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import SectionHeadingNine from "../section-heading/section-heading-nine";
-import Link from "next/link";
 import { productImg } from "@/site-settings/siteUrl";
-import Taka from "@/utils/taka";
 import { getPrice } from "@/utils/get-price";
+import Taka from "@/utils/taka";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import Details from "../_product-details-page/product-details/three/details";
+import QuikView from "../quick-view";
+import SectionHeadingNine from "../section-heading/section-heading-nine";
 
 const NewArrivalProductNine = ({ product, design }: any) => {
   const prevEl = "new-product-prev";
@@ -146,9 +147,9 @@ const Card = ({ item }: any) => {
           </div>
         </div>
       </Link>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };

@@ -4,7 +4,6 @@ import CartPopUpThree from "./shopping-cart/cart-popup-three";
 import CartPopUpSix from "./shopping-cart/six/cart-popup-six";
 
 const PopUpCart = ({ theme }: any) => {
-  return <CartPopUpSix />;
   return (
     <>
       {/* 1. square middle  */}
