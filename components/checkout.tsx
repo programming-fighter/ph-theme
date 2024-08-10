@@ -1,12 +1,14 @@
-import React from "react";
-import CheckOutFour from "./_checkout-page/checkout/checkout-four/checkout-four";
-import CheckOutSeven from "./_checkout-page/checkout/checkout-seven/checkout-seven";
-import CheckOutsFive from "./_checkout-page/checkout/checkout-five/checkout-five";
 import CheckOutEleven from "./_checkout-page/checkout/checkout-eleven/checkout-eleven";
-import CheckOutTwentyOne from "./_checkout-page/checkout/checkout-twentyone/checkout-twentyone";
+import CheckOutsFive from "./_checkout-page/checkout/checkout-five/checkout-five";
+import CheckOutFour from "./_checkout-page/checkout/checkout-four/checkout-four";
 import CheckOutForty from "./_checkout-page/checkout/checkout-fourty/checkout-forty";
+import CheckOutSeven from "./_checkout-page/checkout/checkout-seven/checkout-seven";
+import CheckOutTwentyOne from "./_checkout-page/checkout/checkout-twentyone/checkout-twentyone";
 
 const Checkout = ({ theme }: any) => {
+  console.log(theme, "theme");
+
+  return <CheckOutTwentyOne />;
   return (
     <div>
       {theme === "one" && <CheckOutFour />}

@@ -1,10 +1,10 @@
-import React from "react";
-import CartPopUpThree from "./shopping-cart/cart-popup-three";
-import CartPopUpFour from "./shopping-cart/cart-popup-four";
 import CartPopUpFive from "./shopping-cart/cart-popup-five";
+import CartPopUpFour from "./shopping-cart/cart-popup-four";
+import CartPopUpThree from "./shopping-cart/cart-popup-three";
 import CartPopUpSix from "./shopping-cart/six/cart-popup-six";
 
 const PopUpCart = ({ theme }: any) => {
+  return <CartPopUpSix />;
   return (
     <>
       {/* 1. square middle  */}

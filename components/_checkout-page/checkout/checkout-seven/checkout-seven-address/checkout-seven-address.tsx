@@ -1,14 +1,14 @@
 "use client";
-import { Fragment, useRef, useEffect, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import axios from "axios";
+import CheckoutFrom from "@/components/_checkout-page/_components/checkout-from";
 import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
+import { Dialog, Transition } from "@headlessui/react";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
-import CheckoutFrom from "@/components/_checkout-page/_components/checkout-from";
+import axios from "axios";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const CheckOutSevenAddress = ({
   selectAddress,
@@ -118,14 +118,14 @@ const CheckOutSevenAddress = ({
                   onChange={(e) => setUserName(e.target.value)}
                   type="text"
                   placeholder="Name"
-                  className="border border-gray-400 focus:outline-none focus:border-blue-500 required rounded-lg focus:ring-0 p-2 text-lg shadow-sm"
+                  className="border p-2 border-gray-400 focus:outline-none focus:border-blue-500 required rounded-lg focus:ring-0 p-2 text-lg "
                 />
 
                 <input
                   onChange={handleChange}
                   type="number"
                   placeholder="Phone"
-                  className="border border-gray-400 focus:outline-none focus:border p-2  required: focus:border-gray-400 rounded focus:ring-0"
+                  className="p-2 border border-gray-400 focus:outline-none focus:border p-2  required: focus:border-gray-400 rounded focus:ring-0"
                 />
                 {/* for easy order if user provide a wrong number or wrong credential then show error  */}
                 <p className="text-sm text-rose-500">{userPhoneError}</p>
@@ -133,7 +133,7 @@ const CheckOutSevenAddress = ({
                   rows={6}
                   onChange={(e) => setUserAddress(e.target.value)}
                   placeholder="Address....."
-                  className="border border-gray-400 p-1 focus:outline-none focus:border required focus:border-gray-400 rounded focus:ring-0"
+                  className="border p-2 border-gray-400 p-1 focus:outline-none focus:border required focus:border-gray-400 rounded focus:ring-0"
                 />
               </div>
             ) : (
@@ -375,7 +375,7 @@ export function SaveAddress({
                   name="name"
                   id="name"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-green-500 focus:border-green-500 block p-2 w-full shadow-sm sm:text-sm border-balck border rounded-md"
+                  className="mt-1 border p-2 focus:ring-green-500 focus:border-green-500 block p-2 w-full  sm:text-sm border-balck border rounded-md"
                 />
                 {errors.name && (
                   <span className="text-red-500">Name is required</span>
@@ -397,7 +397,7 @@ export function SaveAddress({
                   name="phone"
                   id="phone"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  w-full shadow-sm sm:text-sm border-black border rounded-md"
+                  className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block  w-full  sm:text-sm border-black border rounded-md"
                 />
 
                 {errors.phone?.type === "required" && (
@@ -422,7 +422,7 @@ export function SaveAddress({
                   name="address"
                   id="address"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 p-2 block w-full shadow-sm sm:text-sm border-black border rounded-md"
+                  className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 p-2 block w-full  sm:text-sm border-black border rounded-md"
                 />
                 {errors.address && (
                   <span className="text-red-500">Address is required</span>
@@ -432,7 +432,7 @@ export function SaveAddress({
             <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
               <button
                 type="submit"
-                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex justify-center py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Save
               </button>
@@ -527,7 +527,7 @@ export function UpdateAddress({
                 name="name"
                 id="name"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full  sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -546,7 +546,7 @@ export function UpdateAddress({
                 name="phone"
                 id="phone"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full  sm:text-sm border-gray-300 rounded-md"
               />
               {errors.phone && (
                 <span className="text-red-500">Phone number is required</span>
@@ -565,14 +565,14 @@ export function UpdateAddress({
                 name="address"
                 id="address"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 p-2 border focus:ring-indigo-500 focus:border-indigo-500 block w-full  sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button
               type="submit"
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex justify-center py-2 px-4 border border-transparent  text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Save
             </button>

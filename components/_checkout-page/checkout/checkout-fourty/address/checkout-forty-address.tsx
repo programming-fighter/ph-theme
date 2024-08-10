@@ -1,14 +1,14 @@
 "use client";
-import { Fragment, useRef, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import axios from "axios";
 import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const CheckOutFortyAddress = ({
   selectAddress,
@@ -112,7 +112,7 @@ const CheckOutFortyAddress = ({
                   onChange={(e) => setUserName(e.target.value)}
                   type="text"
                   placeholder="Name"
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
+                  className="border p-2 border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
                 />
                 <input
                   value={userPhone}
@@ -122,7 +122,7 @@ const CheckOutFortyAddress = ({
                   placeholder="Phone"
                   maxLength={11}
                   minLength={11}
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
+                  className="border p-2 border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
                 />
 
                 {!isPhoneValid && (
@@ -133,7 +133,7 @@ const CheckOutFortyAddress = ({
                   rows={6}
                   onChange={(e) => setUserAddress(e.target.value)}
                   placeholder="Address"
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
+                  className="border p-2 border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
                 />
               </div>
             ) : (
@@ -331,7 +331,7 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 name="name"
                 id="name"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               {errors.name && (
                 <span className="text-red-500">Phone name is required</span>
@@ -354,7 +354,7 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 name="phone"
                 id="phone"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
 
               {errors.phone?.type === "required" && (
@@ -379,7 +379,7 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 name="address"
                 id="address"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               {errors.address && (
                 <span className="text-red-500">Phone address is required</span>
@@ -479,7 +479,7 @@ export function SaveAddress({
                   name="name"
                   id="name"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
                 {errors.name && (
                   <span className="text-red-500">Name is required</span>
@@ -502,7 +502,7 @@ export function SaveAddress({
                   name="phone"
                   id="phone"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
 
                 {errors.phone?.type === "required" && (
@@ -527,7 +527,7 @@ export function SaveAddress({
                   name="address"
                   id="address"
                   autoComplete="address-level1"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
                 {errors.address && (
                   <span className="text-red-500">Address is required</span>
@@ -632,7 +632,7 @@ export function UpdateAddress({
                 name="name"
                 id="name"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -652,7 +652,7 @@ export function UpdateAddress({
                 name="phone"
                 id="phone"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               {errors.phone && (
                 <span className="text-red-500">Phone number is required</span>
@@ -671,7 +671,7 @@ export function UpdateAddress({
                 name="address"
                 id="address"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>

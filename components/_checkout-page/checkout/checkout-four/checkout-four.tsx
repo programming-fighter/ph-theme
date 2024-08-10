@@ -1,13 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import OvalLoader from "@/components/loader/oval-loader";
+import useTheme from "@/hooks/use-theme";
+import httpReq from "@/utils/http/axios/http.service";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Address from "./address/address";
 import Discount from "./discount";
 import PaymentGateway from "./payment-gateway/payment-gateway";
 import YourOrders from "./your-orders/your-orders";
-import useTheme from "@/hooks/use-theme";
-import httpReq from "@/utils/http/axios/http.service";
-import OvalLoader from "@/components/loader/oval-loader";
-import Address from "./address/address";
 
 const CheckOutFour = () => {
   const { store_id } = useTheme();

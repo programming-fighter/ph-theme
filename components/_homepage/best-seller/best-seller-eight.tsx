@@ -1,15 +1,14 @@
 "use client";
-import React from "react";
 
 import { SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import Arrowbetween from "@/utils/arrow-between";
+import Card40 from "@/components/card/card40";
 import SectionHeadingSeven from "@/components/section-heading/section-heading-seven";
 import DefaultSlider from "@/components/slider/default-slider";
-import Card40 from "@/components/card/card40";
+import Arrowbetween from "@/utils/arrow-between";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const BestSellerEight = ({ product, store_id }: any) => {
   const prev = "best_seller_Prev";

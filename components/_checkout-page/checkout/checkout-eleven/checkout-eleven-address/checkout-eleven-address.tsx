@@ -1,13 +1,13 @@
 "use client";
-import { Fragment, useRef, useEffect, useState } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import httpReq from "@/utils/http/axios/http.service";
 import useTheme from "@/hooks/use-theme";
+import httpReq from "@/utils/http/axios/http.service";
+import { Dialog, Transition } from "@headlessui/react";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const CheckOutElevenAddress = ({
   selectAddress,
@@ -21,7 +21,7 @@ const CheckOutElevenAddress = ({
   userPhoneError,
   setUserPhoneError,
   isButtonDisabled,
-  setIsButtonDisabled
+  setIsButtonDisabled,
 }: any) => {
   const [address, setAddress] = useState<any>(null);
   const [open, setOpen] = useState(false);
@@ -52,15 +52,15 @@ const CheckOutElevenAddress = ({
     if (store?.auth_type === "EasyOrder" && !user) {
       const postToServer = async () => {
         const store = {
-          store_id: store_id
+          store_id: store_id,
         };
 
         try {
           const response = await axios.post(apiUrl, store, {
             headers: {
               Authorization: `Bearer ${token?.token}`,
-              "Content-Type": "application/json" // Adjust the content type according to your API requirements
-            }
+              "Content-Type": "application/json", // Adjust the content type according to your API requirements
+            },
           });
           setAddress(response?.data?.address);
           setSelectAddress(response?.data?.address[0]);
@@ -114,28 +114,28 @@ const CheckOutElevenAddress = ({
             </div>
             {store?.auth_type === "EasyOrder" && !user ? (
               <div className="flex flex-col gap-3">
-              <input
-                onChange={(e) => setUserName(e.target.value)}
-                type="text"
-                placeholder="Name"
-                className="border border-gray-400 focus:outline-none focus:border-blue-500 required rounded-lg focus:ring-0 p-2 text-lg shadow-sm"
-              />
+                <input
+                  onChange={(e) => setUserName(e.target.value)}
+                  type="text"
+                  placeholder="Name"
+                  className="border p-2 border-gray-400 focus:outline-none focus:border-blue-500 required rounded-lg focus:ring-0 p-2 text-lg shadow-sm"
+                />
 
-              <input
-                onChange={handleChange}
-                type="number"
-                placeholder="Phone"
-                className="border border-gray-400 focus:outline-none focus:border p-2  required: focus:border-gray-400 rounded focus:ring-0"
-              />
-              {/* for easy order if user provide a wrong number or wrong credential then show error  */}
-              <p className="text-sm text-rose-500">{userPhoneError}</p>
-              <textarea
-                rows={6}
-                onChange={(e) => setUserAddress(e.target.value)}
-                placeholder="Address....."
-                className="border border-gray-400 p-1 focus:outline-none focus:border required focus:border-gray-400 rounded focus:ring-0"
-              />
-            </div>
+                <input
+                  onChange={handleChange}
+                  type="number"
+                  placeholder="Phone"
+                  className="border p-2 border-gray-400 focus:outline-none focus:border p-2  required: focus:border-gray-400 rounded focus:ring-0"
+                />
+                {/* for easy order if user provide a wrong number or wrong credential then show error  */}
+                <p className="text-sm text-rose-500">{userPhoneError}</p>
+                <textarea
+                  rows={6}
+                  onChange={(e) => setUserAddress(e.target.value)}
+                  placeholder="Address....."
+                  className="border p-2 border-gray-400 p-1 focus:outline-none focus:border required focus:border-gray-400 rounded focus:ring-0"
+                />
+              </div>
             ) : (
               <div>
                 {(!address || address.length === 0) && (
@@ -197,14 +197,14 @@ const AddressView = ({
   setToken,
   token,
   setIsButtonDisabled,
-  isButtonDisabled
+  isButtonDisabled,
 }: any) => {
   const { user } = useSelector((state: any) => state.auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
   const onSubmit = async (data: any) => {
@@ -250,7 +250,7 @@ const AddressView = ({
                 name="name"
                 id="name"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 p-2 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               {errors.name && (
                 <span className="text-red-500">Phone name is required</span>
@@ -267,13 +267,13 @@ const AddressView = ({
                 {...register("phone", {
                   required: true,
                   minLength: 11,
-                  maxLength: 11
+                  maxLength: 11,
                 })}
                 type="number"
                 name="phone"
                 id="phone"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 p-2 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
 
               {errors.phone?.type === "required" && (
@@ -298,7 +298,7 @@ const AddressView = ({
                 name="address"
                 id="address"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 p-2 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               {errors.address && (
                 <span className="text-red-500">Phone address is required</span>
@@ -325,7 +325,7 @@ const Single = ({
   selectAddress,
   setSelectAddress,
   setCall,
-  token
+  token,
 }: any) => {
   const [open, setOpen] = useState(false);
   const { design, store } = useTheme();
@@ -337,15 +337,15 @@ const Single = ({
   const delete_address = (id: any) => {
     if (store?.auth_type === "EasyOrder" && !user) {
       const address_id = {
-        id: id
+        id: id,
       };
       const DeleteAddress = async () => {
         try {
           const response = await axios.post(apiDelete, address_id, {
             headers: {
               Authorization: `Bearer ${token?.token}`,
-              "Content-Type": "application/json" // Adjust the content type according to your API requirements
-            }
+              "Content-Type": "application/json", // Adjust the content type according to your API requirements
+            },
           });
           toast(response.data.success, { type: "success" });
           setCall(Math.random() * 100);
@@ -375,7 +375,7 @@ const Single = ({
       style={{
         backgroundColor:
           selectAddress?.id === item?.id ? design?.header_color : "#fff",
-        color: selectAddress?.id === item?.id ? design?.text_color : "#000"
+        color: selectAddress?.id === item?.id ? design?.text_color : "#000",
       }}
       className={`border border-gray-300 p-5 rounded space-y-2 w-full transition-colors duration-300 relative`}
     >
@@ -421,13 +421,13 @@ export function SaveAddress({
   setOpen,
   setCall,
   setToken,
-  store_id
+  store_id,
 }: any) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
   const { user } = useSelector((state: any) => state.auth);
 
@@ -452,8 +452,8 @@ export function SaveAddress({
         {
           headers: {
             Authorization: `Bearer ${token?.token}`,
-            "Content-Type": "application/json" // Adjust the content type according to your API requirements
-          }
+            "Content-Type": "application/json", // Adjust the content type according to your API requirements
+          },
         }
       );
       reset();
@@ -530,7 +530,7 @@ export function SaveAddress({
                   {...register("phone", {
                     required: true,
                     minLength: 11,
-                    maxLength: 11
+                    maxLength: 11,
                   })}
                   type="number"
                   name="phone"
@@ -591,7 +591,7 @@ export function UpdateAddress({
   item,
   setCall,
   setSelectAddress,
-  token
+  token,
 }: any) {
   console.log(open, setOpen, "update address");
   const { store, store_id } = useTheme();
@@ -601,11 +601,11 @@ export function UpdateAddress({
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm({
     defaultValues: {
-      ...item
-    }
+      ...item,
+    },
   });
 
   const onSubmit = (data: any) => {
@@ -617,8 +617,8 @@ export function UpdateAddress({
           const response = await axios.post(apiEdit, data, {
             headers: {
               Authorization: `Bearer ${token?.token}`,
-              "Content-Type": "application/json" // Adjust the content type according to your API requirements
-            }
+              "Content-Type": "application/json", // Adjust the content type according to your API requirements
+            },
           });
           setCall(Math.random() * 100);
           toast(response?.data?.success, { type: "success" });
@@ -667,7 +667,7 @@ export function UpdateAddress({
                 name="name"
                 id="name"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -681,13 +681,13 @@ export function UpdateAddress({
                 {...register("phone", {
                   required: true,
                   minLength: 11,
-                  maxLength: 11
+                  maxLength: 11,
                 })}
                 type="number"
                 name="phone"
                 id="phone"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               {errors.phone && (
                 <span className="text-red-500">Phone number is required</span>
@@ -706,7 +706,7 @@ export function UpdateAddress({
                 name="address"
                 id="address"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>

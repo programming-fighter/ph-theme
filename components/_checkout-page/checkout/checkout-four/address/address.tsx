@@ -1,15 +1,15 @@
 "use client";
-import { Fragment, useRef, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { toast } from "react-toastify";
-import { RotatingLines } from "react-loader-spinner";
-import axios from "axios";
-import { useSelector } from "react-redux";
 import useTheme from "@/hooks/use-theme";
 import httpReq from "@/utils/http/axios/http.service";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
+import { RotatingLines } from "react-loader-spinner";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const Address = ({
   selectAddress,
@@ -115,7 +115,7 @@ const Address = ({
                   onChange={(e) => setUserName(e.target.value)}
                   type="text"
                   placeholder="Name"
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
+                  className="border border-gray-400 p-2 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
                 />
 
                 <input
@@ -124,7 +124,7 @@ const Address = ({
                   onBlur={handleBlur}
                   type="number"
                   placeholder="Phone "
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
+                  className="border border-gray-400 p-2 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
                 />
 
                 {!isPhoneValid && (
@@ -134,7 +134,7 @@ const Address = ({
                 <textarea
                   onChange={(e) => setUserAddress(e.target.value)}
                   placeholder="Address"
-                  className="border border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
+                  className="border p-2 border-gray-400 focus:outline-none focus:border focus:border-gray-400 rounded focus:ring-0"
                 />
               </div>
             ) : (
@@ -345,7 +345,7 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 name="name"
                 id="name"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               {errors.name && (
                 <span className="text-red-500">Phone name is required</span>
@@ -368,7 +368,7 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 name="phone"
                 id="phone"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
 
               {errors.phone?.type === "required" && (
@@ -393,7 +393,7 @@ const AddressView = ({ store, setCall, store_id, setToken }: any) => {
                 name="address"
                 id="address"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 border p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               {errors.address && (
                 <span className="text-red-500">Phone address is required</span>
@@ -553,7 +553,7 @@ export function SaveAddress({
                 type="submit"
                 className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Save
+                Savex
               </button>
             </div>
           </div>
@@ -646,7 +646,7 @@ export function UpdateAddress({
                 name="name"
                 id="name"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 p-2 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
@@ -666,7 +666,7 @@ export function UpdateAddress({
                 name="phone"
                 id="phone"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 p-2 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
               {errors.phone && (
                 <span className="text-red-500">Phone number is required</span>
@@ -685,7 +685,7 @@ export function UpdateAddress({
                 name="address"
                 id="address"
                 autoComplete="address-level1"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 p-2 border focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>

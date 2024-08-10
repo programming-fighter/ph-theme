@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import useTheme from "@/hooks/use-theme";
 import PopUpCart from "./popup-cart";
 
