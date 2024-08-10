@@ -1,20 +1,25 @@
-"use client";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
+import shape from "@/assets/img/shape.png"
 import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
 import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
+import Rate from "@/utils/rate";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import shape from "@/assets/img/shape.png";
-import Image from "next/image";
-import Rate from "@/utils/rate";
-import BDT from "@/utils/bdt";
-import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-const Card54 = ({ item, design, store_id }: any) => {
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+
+const Card54 = ({ item }: any) => {
+  const { design, makeid, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // const [id, setId] = useState(0)
 
@@ -28,37 +33,22 @@ const Card54 = ({ item, design, store_id }: any) => {
   // const [id, setId] = useState(0)
   const [view, setView] = useState(false);
 
-  const unitAddPrice =
-    parseInt(item.regular_price) +
-    (item?.variant[0]?.unit && item?.variant[0]?.additional_price
-      ? parseInt(item?.variant[0]?.additional_price)
-      : 0);
-  const productGetPrice = getPrice(
-    unitAddPrice,
-    item.discount_price,
-    item.discount_type
-  );
-  const campPriceUnit = getPrice(
-    productGetPrice,
-    parseInt(camp?.discount_amount),
-    camp?.discount_type
-  );
+  const unitAddPrice = (item.regular_price) + ((item?.variant[0]?.unit && item?.variant[0]?.additional_price) ? parseInt(item?.variant[0]?.additional_price) : 0)
+  const productGetPrice = getPrice(unitAddPrice, item.discount_price, item.discount_type)
+  const campPriceUnit =getPrice(productGetPrice, parseInt(camp?.discount_amount), camp?.discount_type)
 
-  const price = getPrice(
-    item.regular_price,
-    item.discount_price,
-    item.discount_type
-  );
-  const campPrice = getPrice(
-    price,
-    parseInt(camp?.discount_amount),
-    camp?.discount_type
-  );
+  const price = getPrice(item.regular_price, item.discount_price, item.discount_type)
+  const campPrice:any = getPrice(price, parseInt(camp?.discount_amount), camp?.discount_type)
+
+
+  console.log(camp, 'camp')
+
+  console.log({ unitAddPrice, productGetPrice, campPriceUnit, campPrice, price })
 
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -118,6 +108,7 @@ const Card54 = ({ item, design, store_id }: any) => {
 
   `;
 
+
   const filterOfferProduct = (item: any) => {
     let cartItem = {};
     let productDetails = {
@@ -129,84 +120,82 @@ const Card54 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    axios
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campPriceUnit,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
+    httpReq.post("get/offer/product", productDetails).then((res) => {
+      if (!res?.error) {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: campPriceUnit,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item
+
           }
         } else {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: productGetPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: price,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
+          cartItem = {
+            cartId: makeid(100),
+            price: campPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item
+
           }
         }
-        // dispatch(addToCartList({ ...cartItem }));a
-      });
+
+
+      } else {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: productGetPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item
+
+          }
+        } else {
+          cartItem = {
+            cartId: makeid(100),
+            price: price,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item
+
+          }
+        }
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
-  // const add_cart_item = () => {
-  //   if (
-  //     item?.variant.length !== 0 &&
-  //     !item?.variant[0]?.unit &&
-  //     store_id === 2109
-  //   ) {
-  //     setView(!view);
-  //   } else if (item?.variant.length !== 0 && store_id !== 2109) {
-  //     setView(!view);
-  //   } else {
-  //     filterOfferProduct(item);
-  //   }
-  // };
+  const add_cart_item = () => {
+    if (item?.variant.length !== 0 && !item?.variant[0]?.unit && store_id === 2109) {
+      setView(!view)
+    } else if (item?.variant.length !== 0 && store_id !== 2109) {
+      setView(!view)
+    }
+    else {
+      filterOfferProduct(item)
+    }
+  };
 
   return (
     <div className="group overlay-group relative px-2">
@@ -232,7 +221,7 @@ const Card54 = ({ item, design, store_id }: any) => {
               />
             </Link>
             {item.discount_price === "0.00" ||
-            item.discount_type === "no_discount" ? (
+              item.discount_type === "no_discount" ? (
               ""
             ) : (
               <div className="h-10 absolute top-2 right-2 z-[2]">
@@ -248,7 +237,7 @@ const Card54 = ({ item, design, store_id }: any) => {
               <div className="lg:absolute card-overlay-thirty lg:z-[1] lg:group-hover:w-full w-1/2 h-full left-0 bottom-0 duration-700"></div>
             </Link>
             <div
-              // onClick={add_cart_item}
+              onClick={add_cart_item}
               className="lg:absolute lg:group-hover:bottom-0 lg:-bottom-5 duration-700 lg:opacity-0 w-full z-[2] lg:group-hover:opacity-100 bg-black text-white searchHover flex px-2 py-2 justify-center gap-1 items-center lg:cursor-pointer"
             >
               <p className="lg:scale-0 lg:group-hover:scale-100 duration-700 ">
@@ -280,7 +269,7 @@ const Card54 = ({ item, design, store_id }: any) => {
               </div>
             </div>
 
-            {item?.variant[0]?.unit && store_id === 2109 && (
+            {(item?.variant[0]?.unit && store_id === 2109) && (
               <div>
                 <p>
                   <b>Unit:</b> {item?.variant[0]?.volume}{" "}
@@ -292,8 +281,8 @@ const Card54 = ({ item, design, store_id }: any) => {
               <div className=" font-semibold flex justify-between items-center gap-2 w-full ">
                 <div className="flex items-center flex-wrap gap-2">
                   {camp?.status !== "active" &&
-                  (item.discount_type === "no_discount" ||
-                    item.discount_price === "0.00") ? (
+                    (item.discount_type === "no_discount" ||
+                      item.discount_price === "0.00") ? (
                     ""
                   ) : (
                     <p className="line-through text-xs text-color-thirty">
@@ -316,13 +305,12 @@ const Card54 = ({ item, design, store_id }: any) => {
                   <div className="flex items-center gap-1">
                     <p className="text-color text-sm font-bold">
                       <BDT />
-                      {campPrice ? campPrice : productGetPrice || 0 + smallest}
+                      {(campPrice ? campPrice : productGetPrice) + smallest}
                     </p>
                     {largest > smallest && (
                       <p className="text-color text-sm font-bold">
                         {" "}
-                        - <BDT />{" "}
-                        {campPrice ? campPrice : productGetPrice || 0 + largest}
+                        - <BDT /> {(campPrice ? campPrice : productGetPrice) + largest}
                       </p>
                     )}
                   </div>
@@ -331,14 +319,10 @@ const Card54 = ({ item, design, store_id }: any) => {
                   <div className="flex justify-start items-center gap-x-4">
                     <div className="text-color text-sm font-bold flex justify-start items-center gap-4">
                       <BDT />
-                      {camp?.status === "active"
-                        ? campPrice
-                        : store_id === 2109
-                        ? productGetPrice
-                        : price}{" "}
+                      {camp?.status === "active" ? campPrice : store_id === 2109 ? productGetPrice : price}{" "}
                       {camp?.status !== "active" &&
-                      (item.discount_type === "no_discount" ||
-                        item.discount_price === "0.00") ? (
+                        (item.discount_type === "no_discount" ||
+                          item.discount_price === "0.00") ? (
                         " "
                       ) : (
                         <span className="text-gray-500 font-thin line-through text-sm font-seven">
@@ -356,9 +340,9 @@ const Card54 = ({ item, design, store_id }: any) => {
       </div>
 
       {/* for modal open  */}
-      {/* <QuikView open={view} setOpen={setView} design={design}>
+      <QuikView open={view} setOpen={setView} design={design}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };
