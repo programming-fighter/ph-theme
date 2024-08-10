@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
 
-import { SwiperSlide } from "swiper/react";
-import SectionHeadingSeven from "@/components/section-heading/section-heading-seven";
-import Arrowbetween from "@/utils/arrow-between";
-import DefaultSlider from "@/components/slider/default-slider";
 import Card23 from "@/components/card/card23";
+import SectionHeadingSeven from "@/components/section-heading/section-heading-seven";
+import DefaultSlider from "@/components/slider/default-slider";
+import Arrowbetween from "@/utils/arrow-between";
+import { SwiperSlide } from "swiper/react";
 
 const prev = "valobashi_best_seller_Prev";
 const next = "valobashi_best_seller_Next";

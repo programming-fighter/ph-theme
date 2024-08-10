@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Card14 from "@/components/card/card14";
 
 const DefaultProduct = ({ product }: any) => {

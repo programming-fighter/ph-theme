@@ -56,6 +56,7 @@ const Product = ({
   headerSetting,
 }: any) => {
   console.log(theme, "theme");
+  return <ProductThree store_id={store_id} design={design} product={product} />;
   return (
     <>
       {theme === "default" && <DynamicDefaultProduct product={product} />}

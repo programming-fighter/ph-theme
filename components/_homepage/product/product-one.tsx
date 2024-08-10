@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 
-import { motion } from "framer-motion";
-import "@/components/card/product-card/product-card-one.css";
 import ProductCardOne from "@/components/card/product-card/product-card-one";
+import "@/components/card/product-card/product-card-one.css";
+import { motion } from "framer-motion";
 const btn = [{ text: "Featured" }, { text: "Popular" }, { text: "New Added" }];
 const ProductOne = ({
   product,

@@ -1,53 +1,58 @@
-"use client";
-import React, { useEffect, useState } from "react";
-
 import { motion } from "framer-motion";
-import "./product-card-one.css";
+import { useEffect, useState } from "react";
 import { BsBagPlus } from "react-icons/bs";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { productImg } from "@/site-settings/siteUrl";
-import { EyeIcon } from "@heroicons/react/24/outline";
-import Taka from "@/utils/taka";
-import { toast } from "react-toastify";
-import { addToCartList } from "@/redux/features/product.slice";
-import { useDispatch } from "react-redux";
-import QuikView from "@/components/quick-view";
+import "./product-card-one.css";
+// import Badge from '../utils/Badge';
 import Details from "@/components/_product-details-page/product-details/three/details";
+import QuikView from "@/components/quick-view";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList, incrementQty } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
+import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Taka from "@/utils/taka";
+import { EyeIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
-const ProductCardOne = ({ item, store_id }: any) => {
+const ProductCardOne = ({ item }: any) => {
+  const { makeid, store_id } = useTheme();
   const router = useRouter();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
   const [open, setOpen] = useState(false);
   const [result, setResult] = useState<any>({});
   const [camp, setCamp] = useState<any>(null);
+
   const price = getPrice(
     item?.regular_price,
     item?.discount_price,
     item?.discount_type
   );
   const secondImg = item?.image[1] ? item?.image[1] : item?.image[0];
-  // const cartList = useSelector((state) => state.cart.cartList)
+
+  const cartList = useSelector((state: any) => state.cart.cartList);
+
   let productGetPrice = getPrice(
     item.regular_price,
     item.discount_price,
     item.discount_type
   );
-  const campPrice = getPrice(
-    productGetPrice,
-    camp?.discount_amount,
-    camp?.discount_type
+  const campPrice = Number(
+    getPrice(
+      productGetPrice,
+      parseInt(camp?.discount_amount),
+      camp?.discount_type
+    )
   );
 
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -59,10 +64,9 @@ const ProductCardOne = ({ item, store_id }: any) => {
     handleCampaign();
   }, [item, store_id]);
 
-  // useEffect(() => {
-  //     setResult(cartList?.find(c => c.id === item.id))
-
-  // }, [cartList, item.id])
+  useEffect(() => {
+    setResult(cartList?.find((c: any) => c.id === item.id));
+  }, [cartList, item.id]);
 
   const filterOfferProduct = (item: any) => {
     let cartItem = {};
@@ -74,51 +78,34 @@ const ProductCardOne = ({ item, store_id }: any) => {
       type: "success",
       autoClose: 1000,
     });
-   httpReq
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          );
-          let campaignPrice = getPrice(
-            itemRegularPrice,
-            res?.discount_amount,
-            res?.discount_type
-          );
+    httpReq.post("get/offer/product", productDetails).then((res) => {
+      if (!res?.error) {
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
+        );
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
+        );
 
-          if (res?.discount_amount === null) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: itemRegularPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campaignPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+        if (res?.discount_amount === null) {
+          cartItem = {
+            cartId: makeid(100),
+            price: itemRegularPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         } else {
           cartItem = {
-            cartId: uuidv4(),
-            price: price,
+            cartId: makeid(100),
+            price: campaignPrice,
             color: null,
             size: null,
             additional_price: null,
@@ -127,12 +114,23 @@ const ProductCardOne = ({ item, store_id }: any) => {
             ...item,
           };
         }
-        dispatch(addToCartList({ ...cartItem }))
-      });
+      } else {
+        cartItem = {
+          cartId: makeid(100),
+          price: price,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_to_cart = (item: any) => {
-   
     if (item?.variant.length !== 0) {
       setOpen(!open);
     } else {
@@ -195,6 +193,22 @@ const ProductCardOne = ({ item, store_id }: any) => {
               </HoverIcon>
             </div>
           </div>
+          {camp?.status !== "active" &&
+          (item.discount_type === "no_discount" ||
+            item.discount_price === "0.00") ? (
+            ""
+          ) : (
+            <div className="absolute z-[3] top-2 right-2 bg-[#ff576d] px-[5px] py-[2px] h-[22px] rounded-md text-white flex justify-center items-center text-xs font-semibold">
+              {" "}
+              Save
+              {(camp?.discount_type || item.discount_type) === "fixed" &&
+                " ৳"}{" "}
+              {parseInt(
+                campPrice ? camp?.discount_amount : item?.discount_price
+              )}{" "}
+              {(camp?.discount_type || item.discount_type) === "percent" && "%"}
+            </div>
+          )}
         </figure>
         <div className="card-body p-4 bg-white">
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
@@ -232,7 +246,7 @@ const ProductCardOne = ({ item, store_id }: any) => {
 
           {result?.qty ? (
             <div
-              // onClick={() => dispatch(incrementQty(result?.cartId))}
+              onClick={() => dispatch(incrementQty(result?.cartId))}
               className="absolute bottom-6 right-2"
             >
               <HoverIcon text={"Add to Cart"}>
@@ -260,12 +274,12 @@ const ProductCardOne = ({ item, store_id }: any) => {
           )}
         </div>
       </div>
-      
-            <QuikView open={open} setOpen={setOpen} >
-                <div className="p-5">
-                    <Details data={{ product_id: item?.id }} />
-                </div>
-            </QuikView>
+
+      <QuikView open={open} setOpen={setOpen}>
+        <div className="p-5">
+          <Details data={{ product_id: item?.id }} />
+        </div>
+      </QuikView>
     </div>
   );
 };
