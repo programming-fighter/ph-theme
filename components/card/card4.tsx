@@ -14,8 +14,10 @@ import { toast } from "react-toastify";
 import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/three/details";
 import { useRouter } from "next/navigation";
+import useTheme from "@/hooks/use-theme";
 
-const Card4 = ({ item, design, store_id, makeid }: any) => {
+const Card4 = ({ item, design, store_id }: any) => {
+  const {makeid}= useTheme()
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
@@ -76,7 +78,7 @@ const Card4 = ({ item, design, store_id, makeid }: any) => {
 
    httpReq
       .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
+     "get/offer/product",
         productDetails
       )
       .then((res: any) => {

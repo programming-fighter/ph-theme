@@ -11,11 +11,16 @@ import Rate from "@/utils/rate";
 import Taka from "@/utils/taka";
 import { toast } from "react-toastify";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
+import { addToCartList } from "@/redux/features/product.slice";
+import { useDispatch } from "react-redux";
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
 
 const Card5 = ({ item, store_id }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -54,8 +59,8 @@ const Card5 = ({ item, store_id }: any) => {
       autoClose: 1000,
     });
 
-    axios
-      .post(process.env.API_URL + "get/offer/product", productDetails)
+    httpReq
+      .post( "get/offer/product", productDetails)
       .then((res: any) => {
         if (!res?.error) {
           let itemRegularPrice = getPrice(
@@ -91,7 +96,7 @@ const Card5 = ({ item, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -167,9 +172,9 @@ const Card5 = ({ item, store_id }: any) => {
           </div>
         </div>
       </div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

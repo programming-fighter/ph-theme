@@ -11,13 +11,20 @@ import BDT from "@/utils/bdt";
 import Rate from "@/utils/rate";
 import { productImg } from "@/site-settings/siteUrl";
 import { toast } from "react-toastify";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { useDispatch } from "react-redux";
+import useTheme from "@/hooks/use-theme";
+import httpReq from "@/utils/http/axios/http.service";
+import { addToCartList } from "@/redux/features/product.slice";
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
 const Card21 = ({ item, design, store_id, makeid }: any) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-  //   const {} = useTheme();
-  //   const dispatch = useDispatch();
+  
+    const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -33,7 +40,7 @@ const Card21 = ({ item, design, store_id, makeid }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -56,9 +63,9 @@ const Card21 = ({ item, design, store_id, makeid }: any) => {
       autoClose: 1000,
     });
 
-    axios
+    httpReq
       .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
+        "get/offer/product",
         productDetails
       )
       .then((res: any) => {
@@ -109,7 +116,7 @@ const Card21 = ({ item, design, store_id, makeid }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
@@ -161,7 +168,7 @@ const Card21 = ({ item, design, store_id, makeid }: any) => {
             />
           </Link>
           <div
-            className="absolute top-1/2 -translate-y-1/2 rounded-xl hidden group-hover:flex h-[60px] px-3 left-1/2 -translate-x-1/2  justify-start items-center bg-white"
+            className="absolute top-1/2 -translate-y-1/2 rounded-xl hidden group-hover:flex h-[60px] px-3 left-1/2 -translate-x-1/2  justify-start items-center hover:border hover:border-green-700 hover:rounded-full "
             onClick={() => setOpen(!open)}
           >
             <AiOutlineEye
@@ -232,7 +239,7 @@ const Card21 = ({ item, design, store_id, makeid }: any) => {
                   }}
                 >
                   <AiOutlineShoppingCart className="mt-1 ml-2 xl:ml-0  text-base" />{" "}
-                  {store_id === 3144 ? "Order Now" : "Add"}{" "}
+                  {store_id === 3144  ? "Order Now" : "Add"}{" "}
                 </button>
               </div>
             </div>
@@ -244,9 +251,9 @@ const Card21 = ({ item, design, store_id, makeid }: any) => {
         </span>
       </div>
 
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };

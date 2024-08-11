@@ -49,8 +49,14 @@ import NewArrivalProductTwentyTwo from "./new-arrival/new-arrival-product-twenty
 
 const NewArrival = ({ product, theme, design, store_id, category }: any) => {
 
-  return <NewArrivalProductNineDynamic product={product} design={design} />
+  return   <NewArrivalProductThirtySeven
+  product={product}
+  store_id={store_id}
+  design={design}
+/>
 
+
+ 
   return (
     <>
       {theme === "default" && <NewArrivalProductFive product={product} />}

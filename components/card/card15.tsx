@@ -18,6 +18,8 @@ import QuikView from "../quick-view";
 import { useDispatch } from "react-redux";
 import { addToCartList } from "@/redux/features/product.slice";
 import Details from "../_product-details-page/product-details/eight/details";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
 
 const Card15 = ({ item }: any) => {
   const { design, store_id } = useTheme();
@@ -53,7 +55,7 @@ const Card15 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -75,7 +77,7 @@ const Card15 = ({ item }: any) => {
       type: "success",
       autoClose: 1000,
     });
-    axios
+    httpReq
       .post(
         "https://admin.ebitans.com/api/v1/" + "get/offer/product",
         productDetails

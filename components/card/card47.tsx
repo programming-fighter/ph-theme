@@ -14,6 +14,8 @@ import { useDispatch } from "react-redux";
 import { addToCartList } from "@/redux/features/product.slice";
 import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/eight/details";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 
 const Card47 = ({ item, stopAutoplay }: any) => {
   const { design, store_id } = useTheme();
@@ -30,22 +32,19 @@ const Card47 = ({ item, stopAutoplay }: any) => {
   const secondImg = item?.image[1] ? item?.image[1] : item?.image[0];
 
   useEffect(() => {
-    const offerData = {
-      id: item?.id,
-      store_id,
-    };
+    async function handleCampaign() {
+      try {
+        const response: any = await getCampaignProduct(item, store_id);
+        if (!response?.error) {
+          setCamp(response);
+        } // the API response object
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-    axios
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        offerData
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          setCamp(res);
-        }
-      });
-  }, [item?.id, store_id]);
+    handleCampaign();
+  }, [item, store_id]);
 
   let productGetPrice = getPrice(
     item.regular_price,
@@ -113,7 +112,7 @@ const Card47 = ({ item, stopAutoplay }: any) => {
       autoClose: 1000,
     });
 
-    axios
+    httpReq
       .post(
         " https://admin.ebitans.com/api/v1/" + "get/offer/product",
         productDetails
