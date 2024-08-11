@@ -15,8 +15,6 @@ import Details from "@/components/_product-details-page/product-details/three/de
 import { addToCartList } from "@/redux/features/product.slice";
 import { useDispatch } from "react-redux";
 import useTheme from "@/hooks/use-theme";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import httpReq from "@/utils/http/axios/http.service";
 
 const Card22 = ({ item }: any) => {
   const [camp, setCamp] = useState<any>(null);
@@ -59,7 +57,7 @@ const Card22 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaignProduct(item, store_id);
+        const response: any = await getCampaign(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -88,9 +86,9 @@ const Card22 = ({ item }: any) => {
       type: "success",
     });
 
-    httpReq
+    axios
       .post(
-       "get/offer/product",
+        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
         productDetails
       )
       .then((res: any) => {

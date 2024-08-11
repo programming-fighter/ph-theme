@@ -63,7 +63,7 @@ const Card46 = ({ item }: any) => {
 
     httpReq
       .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
+         "get/offer/product",
         productDetails
       )
       .then((res: any) => {

@@ -40,7 +40,7 @@ const Address = ({
 
   const handleBlur = () => {
     // Check if the length of userPhone is exactly 11 characters
-    setIsPhoneValid(userPhone.length === 11);
+    setIsPhoneValid(userPhone?.length === 11);
   };
 
   const apiUrl = "https://admin.ebitans.com/api/v1/address";
