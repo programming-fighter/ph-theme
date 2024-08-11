@@ -1,22 +1,22 @@
 "use client";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import {
-  Navigation,
   A11y,
-  EffectFade,
   Autoplay,
   Controller,
+  EffectFade,
+  Navigation,
 } from "swiper/modules";
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
+import Card47 from "@/components/card/card47";
 import SectionHeadingTwentyThree from "@/components/section-heading/section-heading-twentythree";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import Card47 from "@/components/card/card47";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const BestSellerTwentyThree = ({
   best_sell_product,

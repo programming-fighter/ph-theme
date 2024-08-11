@@ -1,4 +1,3 @@
-import React from "react";
 import Card65 from "@/components/card/card65";
 
 const BestSellerThirtyEight = ({

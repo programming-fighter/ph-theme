@@ -56,14 +56,6 @@ const Product = ({
   headerSetting,
 }: any) => {
   return (
-    <ProductThirtyNine
-      category={category}
-      design={design}
-      store_id={store_id}
-    />
-  );
-
-  return (
     <>
       {theme === "default" && <DynamicDefaultProduct product={product} />}
       {theme === "one" && (

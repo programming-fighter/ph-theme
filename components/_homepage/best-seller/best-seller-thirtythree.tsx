@@ -1,9 +1,8 @@
-import React from "react";
-import { SwiperSlide } from "swiper/react";
-import SectionHeadingThirtyThree from "@/components/section-heading/section-heading-thirtythree";
-import Link from "next/link";
-import DefaultSlider from "@/components/slider/default-slider";
 import Card59 from "@/components/card/card59";
+import SectionHeadingThirtyThree from "@/components/section-heading/section-heading-thirtythree";
+import DefaultSlider from "@/components/slider/default-slider";
+import Link from "next/link";
+import { SwiperSlide } from "swiper/react";
 
 const BestSellerThirtyThree = ({
   best_sell_product,

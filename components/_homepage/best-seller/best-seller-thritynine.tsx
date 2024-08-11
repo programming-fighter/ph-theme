@@ -1,10 +1,10 @@
 "use client";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import React, { useState } from "react";
+import { useState } from "react";
 
+import Card67 from "@/components/card/card67";
 import DefaultSlider from "@/components/slider/default-slider";
 import { SwiperSlide } from "swiper/react";
-import Card67 from "@/components/card/card67";
 
 const BestSellerThirtyNine = ({ best_sell_product, design, store_id }: any) => {
   const [animate, setAnimate] = useState(false);

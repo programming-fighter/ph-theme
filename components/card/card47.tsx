@@ -2,18 +2,19 @@
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
-import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import { BsEye } from "react-icons/bs";
-import { toast } from "react-toastify";
 import useTheme from "@/hooks/use-theme";
-import { useDispatch } from "react-redux";
 import { addToCartList } from "@/redux/features/product.slice";
-import QuikView from "../quick-view";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { BsEye } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import Details from "../_product-details-page/product-details/eight/details";
+import QuikView from "../quick-view";
 
 const Card47 = ({ item, stopAutoplay }: any) => {
   const { design, store_id } = useTheme();
@@ -30,22 +31,19 @@ const Card47 = ({ item, stopAutoplay }: any) => {
   const secondImg = item?.image[1] ? item?.image[1] : item?.image[0];
 
   useEffect(() => {
-    const offerData = {
-      id: item?.id,
-      store_id,
-    };
+    async function handleCampaign() {
+      try {
+        const response: any = await getCampaignProduct(item, store_id);
+        if (!response?.error) {
+          setCamp(response);
+        } // the API response object
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-    axios
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        offerData
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          setCamp(res);
-        }
-      });
-  }, [item?.id, store_id]);
+    handleCampaign();
+  }, [item, store_id]);
 
   let productGetPrice = getPrice(
     item.regular_price,
@@ -113,50 +111,33 @@ const Card47 = ({ item, stopAutoplay }: any) => {
       autoClose: 1000,
     });
 
-    axios
-      .post(
-        " https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          );
-          let campaignPrice = getPrice(
-            itemRegularPrice,
-            parseInt(res?.discount_amount),
-            res?.discount_type
-          );
-          if (res?.discount_amount === null) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: itemRegularPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campaignPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+    httpReq.post("get/offer/product", productDetails).then((res: any) => {
+      if (!res?.error) {
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
+        );
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
+        );
+        if (res?.discount_amount === null) {
+          cartItem = {
+            cartId: uuidv4(),
+            price: itemRegularPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         } else {
           cartItem = {
             cartId: uuidv4(),
-            price: price,
+            price: campaignPrice,
             color: null,
             size: null,
             additional_price: null,
@@ -165,8 +146,20 @@ const Card47 = ({ item, stopAutoplay }: any) => {
             ...item,
           };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        cartItem = {
+          cartId: uuidv4(),
+          price: price,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_cart_item = () => {

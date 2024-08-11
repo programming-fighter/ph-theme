@@ -1,9 +1,8 @@
 "use client";
-import React from "react";
-import { SwiperSlide } from "swiper/react";
+import Card51 from "@/components/card/card51";
 import SectionHeadingTwentySeven from "@/components/section-heading/section-heading-twenty-seven";
 import DefaultSlider from "@/components/slider/default-slider";
-import Card51 from "@/components/card/card51";
+import { SwiperSlide } from "swiper/react";
 
 const BestSellerTwentySeven = ({
   best_sell_product,

@@ -1,6 +1,5 @@
-import React from "react";
-import SectionHeadingThirtyFour from "@/components/section-heading/section-heading-thirtyfour";
 import Card60 from "@/components/card/card60";
+import SectionHeadingThirtyFour from "@/components/section-heading/section-heading-thirtyfour";
 
 const BestSellerThirtyFour = ({ best_sell_product, design, store_id }: any) => {
   const styleCss = `

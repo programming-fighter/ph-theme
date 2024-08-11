@@ -1,9 +1,8 @@
 "use client";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import React from "react";
-import { SwiperSlide } from "swiper/react";
-import DefaultSlider from "@/components/slider/default-slider";
 import Card63 from "@/components/card/card63";
+import DefaultSlider from "@/components/slider/default-slider";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { SwiperSlide } from "swiper/react";
 
 const BestSellerThirtySix = ({ best_sell_product, design, store_id }: any) => {
   const prevEl = "best-product-prev";

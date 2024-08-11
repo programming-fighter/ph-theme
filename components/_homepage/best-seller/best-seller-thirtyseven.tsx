@@ -1,4 +1,3 @@
-import React from "react";
 import img from "@/assets/bg-image/thirtySeven/MARGIN.png";
 import Card64 from "@/components/card/card64";
 
