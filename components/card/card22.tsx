@@ -4,16 +4,15 @@ import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Taka from "@/utils/taka";
-import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsPlusLg } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
 import QuikView from "../quick-view";
 
 const Card22 = ({ item }: any) => {
@@ -57,7 +56,7 @@ const Card22 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -86,69 +85,64 @@ const Card22 = ({ item }: any) => {
       type: "success",
     });
 
-    axios
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campPriceUnit,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+    httpReq.post("get/offer/product", productDetails).then((res: any) => {
+      if (!res?.error) {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: campPriceUnit,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item,
+          };
         } else {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: productGetPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: price,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+          cartItem = {
+            cartId: makeid(100),
+            price: campPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: productGetPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item,
+          };
+        } else {
+          cartItem = {
+            cartId: makeid(100),
+            price: price,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
+        }
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_cart_item = () => {

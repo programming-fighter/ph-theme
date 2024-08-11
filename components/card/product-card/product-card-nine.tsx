@@ -2,7 +2,6 @@ import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import Taka from "@/utils/taka";
 import Link from "next/link";
-import React from "react";
 
 const ProductCardNine = ({ item }: any) => {
   const overlyImage = `

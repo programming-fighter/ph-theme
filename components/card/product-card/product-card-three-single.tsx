@@ -1,11 +1,10 @@
 "use client";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Taka from "@/utils/taka";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProductCardThreeSingleCard = ({ item, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);

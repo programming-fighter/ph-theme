@@ -4,7 +4,7 @@ import { getPrice } from "@/utils/get-price";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Taka from "@/utils/taka";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProductCardThreeMultipleCard = ({ item1, item3, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
