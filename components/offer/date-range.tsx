@@ -1,7 +1,6 @@
-import React from "react";
-import Countdown from "react-countdown";
-import moment from "moment";
 import useTheme from "@/hooks/use-theme";
+import moment from "moment";
+import Countdown from "react-countdown";
 import ProductCard from "./product-card";
 
 const DateRange = ({ item }: any) => {

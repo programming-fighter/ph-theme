@@ -1,4 +1,5 @@
 "use client";
+import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
@@ -10,11 +11,11 @@ import { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
 import Details from "../_product-details-page/product-details/three/details";
 import QuikView from "../quick-view";
 
 const Card29 = ({ item, design, store_id }: any) => {
+  const { makeid } = useTheme();
   const [camp, setCamp] = useState<any>(null);
   const [id, setId] = useState(0);
   const [view, setView] = useState(false);
@@ -103,7 +104,7 @@ const Card29 = ({ item, design, store_id }: any) => {
 
         if (res?.discount_amount === null) {
           cartItem = {
-            cartId: uuidv4(),
+            cartId: makeid(100),
             price: itemRegularPrice,
             color: null,
             size: null,
@@ -114,7 +115,7 @@ const Card29 = ({ item, design, store_id }: any) => {
           };
         } else {
           cartItem = {
-            cartId: uuidv4(),
+            cartId: makeid(100),
             price: campaignPrice,
             color: null,
             size: null,
@@ -126,7 +127,7 @@ const Card29 = ({ item, design, store_id }: any) => {
         }
       } else {
         cartItem = {
-          cartId: uuidv4(),
+          cartId: makeid(100),
           price: productGetPrice,
           color: null,
           size: null,

@@ -1,19 +1,18 @@
 import useTheme from "@/hooks/use-theme";
-import React from "react";
-import ProductCardOne from "../card/product-card/product-card-one";
-import Card16 from "../card/card16";
-import Card23 from "../card/card23";
-import ProductCardTwo from "../card/product-card/product-card-two";
-import Card7 from "../card/card7";
 import Card12 from "../card/card12";
 import Card14 from "../card/card14";
-import Card22 from "../card/card22";
 import Card15 from "../card/card15";
+import Card16 from "../card/card16";
 import Card21 from "../card/card21";
+import Card22 from "../card/card22";
+import Card23 from "../card/card23";
 import Card29 from "../card/card29";
 import Card46 from "../card/card46";
 import Card47 from "../card/card47";
 import Card54 from "../card/card54";
+import Card7 from "../card/card7";
+import ProductCardOne from "../card/product-card/product-card-one";
+import ProductCardTwo from "../card/product-card/product-card-two";
 
 const ProductCard = ({ item }: any) => {
   const { design } = useTheme();

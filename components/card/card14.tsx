@@ -1,20 +1,20 @@
 "use client";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Taka from "@/utils/taka";
 import { LinkIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { IoSearchCircleOutline } from "react-icons/io5";
-import QuikView from "../quick-view";
-import Details from "../_product-details-page/product-details/three/details";
-import useTheme from "@/hooks/use-theme";
-import { useDispatch } from "react-redux";
-import { getPrice } from "@/utils/get-price";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { useEffect, useState } from "react";
+import { IoSearchCircleOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import httpReq from "@/utils/http/axios/http.service";
-import { addToCartList } from "@/redux/features/product.slice";
+import Details from "../_product-details-page/product-details/three/details";
+import QuikView from "../quick-view";
 
 const Card14 = ({ item }: any) => {
   const [open, setOpen] = useState<any>(false);
@@ -112,7 +112,7 @@ const Card14 = ({ item }: any) => {
   };
 
   const add_cart_item = () => {
-    console.log(item, "hello items")
+    console.log(item, "hello items");
     if (item?.variant.length !== 0) {
       setOpen(!open);
     } else {

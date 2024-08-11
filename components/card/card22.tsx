@@ -1,20 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { BsPlusLg } from "react-icons/bs";
-import { AiOutlineSearch } from "react-icons/ai";
+import Details from "@/components/_product-details-page/product-details/three/details";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import { getCampaign } from "@/utils/http/get-campaign";
+import Taka from "@/utils/taka";
 import axios from "axios";
 import Link from "next/link";
-import { productImg } from "@/site-settings/siteUrl";
-import Taka from "@/utils/taka";
-import { toast } from "react-toastify";
-import QuikView from "../quick-view";
-import Details from "@/components/_product-details-page/product-details/three/details";
-import { addToCartList } from "@/redux/features/product.slice";
+import { useEffect, useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
+import { BsPlusLg } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import useTheme from "@/hooks/use-theme";
+import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
+import QuikView from "../quick-view";
 
 const Card22 = ({ item }: any) => {
   const [camp, setCamp] = useState<any>(null);

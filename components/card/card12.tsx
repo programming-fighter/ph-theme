@@ -1,13 +1,15 @@
 "use client";
+import useTheme from "@/hooks/use-theme";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Taka from "@/utils/taka";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const Card12 = ({ item, store_id }: any) => {
+const Card12 = ({ item }: any) => {
+  const { store_id } = useTheme();
+
   const [camp, setCamp] = useState<any>(null);
 
   const productGetPrice = getPrice(
@@ -24,7 +26,7 @@ const Card12 = ({ item, store_id }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaignProduct(item, store_id);
+        const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -38,7 +40,7 @@ const Card12 = ({ item, store_id }: any) => {
 
   return (
     <>
-      <div className="max-w-sm bg-white rounded hover:rounded-xl hover:shadow-md  dark:border-gray-700 hover:-translate-y-2 transition-all duration-300 ease-linear">
+      <div className="max-w-sm bg-white rounded hover:rounded-xl hover:shadow-md hover:-translate-y-2 transition-all duration-300 ease-linear border">
         <div>
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
             <img
@@ -63,6 +65,7 @@ const Card12 = ({ item, store_id }: any) => {
             >
               {item?.name.charAt(0).toUpperCase() + item?.name.slice(1)}
             </h6>
+            {/* <p className='text-sm capitalize text-gray-500' style={{ height: '30px', overflow: 'hidden', whiteSpace: 'nowrap', width: '130px', textOverflow: 'ellipsis' }}>{item?.category .charAt(0).toUpperCase() + item?.category .slice(1)}</p> */}
             <div className="flex flex-wrap items-center gap-y-1 gap-x-4">
               <div className="text-base font-semibold">
                 <Taka />{" "}

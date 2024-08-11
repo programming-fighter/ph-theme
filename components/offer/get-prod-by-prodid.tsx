@@ -1,4 +1,3 @@
-import React from "react";
 import ProductCard from "./product-card";
 
 const GetProductByProductId = ({ offerProducts }: any) => {

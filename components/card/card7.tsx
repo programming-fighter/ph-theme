@@ -1,24 +1,22 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from "react";
 // import "./cardCss/Card.css";
+import Details from "@/components/_product-details-page/product-details/three/details";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Taka from "@/utils/taka";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { productImg } from "@/site-settings/siteUrl";
 import { IoSearchCircleOutline } from "react-icons/io5";
-import Taka from "@/utils/taka";
-import BDT from "@/utils/bdt";
-import { toast } from "react-toastify";
-import useTheme from "@/hooks/use-theme";
 import { useDispatch } from "react-redux";
-import { addToCartList } from "@/redux/features/product.slice";
+import { toast } from "react-toastify";
 import QuikView from "../quick-view";
-import Details from "@/components/_product-details-page/product-details/three/details";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import httpReq from "@/utils/http/axios/http.service";
 
 const Card7 = ({ item }: any) => {
   const [open, setOpen] = useState(false);
@@ -93,11 +91,11 @@ const Card7 = ({ item }: any) => {
     let cartItem = {};
     let productDetails = {
       id: item?.id,
-      store_id
+      store_id,
     };
     toast("Added to Cart", {
       type: "success",
-      autoClose: 1000
+      autoClose: 1000,
     });
 
     httpReq
@@ -117,37 +115,37 @@ const Card7 = ({ item }: any) => {
 
           if (res?.discount_amount === null) {
             cartItem = {
-              cartId: "makeid(100)",
+              cartId: makeid(100),
               price: itemRegularPrice,
               color: null,
               size: null,
               additional_price: null,
               volume: null,
               unit: null,
-              ...item
+              ...item,
             };
           } else {
             cartItem = {
-              cartId: "makeid(100)",
+              cartId: makeid(100),
               price: campaignPrice,
               color: null,
               size: null,
               additional_price: null,
               volume: null,
               unit: null,
-              ...item
+              ...item,
             };
           }
         } else {
           cartItem = {
-            cartId: "makeid(100)",
+            cartId: makeid(100),
             price: productGetPrice,
             color: null,
             size: null,
             additional_price: null,
             volume: null,
             unit: null,
-            ...item
+            ...item,
           };
         }
         dispatch(addToCartList({ ...cartItem }));
@@ -218,7 +216,7 @@ const Card7 = ({ item }: any) => {
               overflow: "hidden",
               whiteSpace: "nowrap",
               width: "130px",
-              textOverflow: "ellipsis"
+              textOverflow: "ellipsis",
             }}
           >
             {item?.name.charAt(0).toUpperCase() + item?.name.slice(1)}

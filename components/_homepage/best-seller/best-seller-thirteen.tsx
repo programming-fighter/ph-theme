@@ -1,10 +1,9 @@
 "use client";
 // created by iazadur
-import React from "react";
-import { SwiperSlide } from "swiper/react";
+import Card20 from "@/components/card/card20";
 import SectionHeadingThirteen from "@/components/section-heading/section-heading-thirteen";
 import GridSliderThirteen from "@/components/slider/grid-slider/grid-slider-thirteen";
-import Card20 from "@/components/card/card20";
+import { SwiperSlide } from "swiper/react";
 
 const BestSellerThirteen = ({ best_sell_product, store_id }: any) => {
   const prev = "bestseller_productThirteen_prev";

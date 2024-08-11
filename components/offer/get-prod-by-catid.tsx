@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import ProductCard from "./product-card";
-import Skeleton from "../loader/skeleton";
 import httpReq from "@/utils/http/axios/http.service";
+import { useEffect, useState } from "react";
+import Skeleton from "../loader/skeleton";
+import ProductCard from "./product-card";
 
 const GetProductByCatId = ({ categories }: any) => {
   const [loader, setLoader] = useState(false);

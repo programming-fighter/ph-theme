@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Countdown from "react-countdown";
-import DateRange from "./date-range";
-import SpecificDate from "./specific-data";
-import httpReq from "@/utils/http/axios/http.service";
-import Skeleton from "../loader/skeleton";
 import useTheme from "@/hooks/use-theme";
+import httpReq from "@/utils/http/axios/http.service";
+import { useEffect, useState } from "react";
+import Countdown from "react-countdown";
+import Skeleton from "../loader/skeleton";
+import DateRange from "./date-range";
 import GetProductByProductId from "./get-prod-by-prodid";
+import SpecificDate from "./specific-data";
 
 const OfferPage = () => {
   const {
@@ -95,6 +95,8 @@ const OfferPage = () => {
 
   const sDate: any = campaign?.map((item: any) => item?.start_date);
   const eDate: any = campaign?.map((item: any) => item?.end_date);
+
+  console.log(campaign, "campaign");
 
   // Renderer callback with condition
   const renderer = ({ days, hours, minutes, seconds, completed }: any) => {

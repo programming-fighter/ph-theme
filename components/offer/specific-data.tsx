@@ -1,8 +1,7 @@
-import React from "react";
-import Countdown from "react-countdown";
-import moment from "moment";
-import ProductCard from "./product-card";
 import useTheme from "@/hooks/use-theme";
+import moment from "moment";
+import Countdown from "react-countdown";
+import ProductCard from "./product-card";
 
 const SpecificDate = ({ item }: any) => {
   const { design } = useTheme();
