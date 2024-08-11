@@ -1,24 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css/effect-creative";
-import "swiper/css/effect-fade";
+import useTheme from "@/hooks/use-theme";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Link from "next/link";
 import {
   MdKeyboardArrowLeft,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
-import useTheme from "@/hooks/use-theme";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-creative";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Navigation } from "swiper/modules";
-import Link from "next/link";
-import { productImg } from "@/site-settings/siteUrl";
-import BDT from "@/utils/bdt";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const Card69 = ({ item }: any) => {
   const { design, store_id } = useTheme();

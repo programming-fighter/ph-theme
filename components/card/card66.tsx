@@ -1,20 +1,19 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import parse from "html-react-parser";
-import { HiShoppingCart } from "react-icons/hi";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
 import useTheme from "@/hooks/use-theme";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import httpReq from "@/utils/http/axios/http.service";
 import { addToCartList } from "@/redux/features/product.slice";
-import Link from "next/link";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
-import QuikView from "../quick-view";
-import Details from "../_product-details-page/product-details/eighteen/details";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import parse from "html-react-parser";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { HiShoppingCart } from "react-icons/hi";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import Details from "../_product-details-page/product-details/eighteen/details";
+import QuikView from "../quick-view";
 
 const Card66 = ({ item }: any) => {
   const { design, makeid, store_id } = useTheme();

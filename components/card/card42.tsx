@@ -1,19 +1,18 @@
 "use client";
+import Details from "@/components/_product-details-page/product-details/three/details";
 import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Rate from "@/utils/rate";
-import { addToCartList } from "@/redux/features/product.slice";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import QuikView from "../quick-view";
-import Details from "@/components/_product-details-page/product-details/three/details";
-import { getCampaign } from "@/utils/http/get-campaign";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 
 const Card42 = ({ item }: any) => {
   const [open, setOpen] = useState<any>(false);
@@ -151,7 +150,7 @@ const Card42 = ({ item }: any) => {
           </div>
           <div className="py-6 px-3 space-y-2 relative">
             <p className="sm:text-sm text-xs font-semibold uppercase antialiased mb-2 text-gray-600">
-              {item?.category} 
+              {item?.category}
             </p>
             <Link href={"/product/" + item?.id + "/" + item?.slug}>
               <h3 className="sm:text-lg text-sm text-hover text-gray-800 font-bold antialiased capitalize whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]">

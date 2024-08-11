@@ -1,22 +1,20 @@
 "use client";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
 // created by iazadur
-import { PlusIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
-import Rate from "@/utils/rate";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { addToCartList } from "@/redux/features/product.slice";
-import QuikView from "../quick-view";
-import Details from "../_product-details-page/product-details/eight/details";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
+import { PlusIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
+import Details from "../_product-details-page/product-details/eight/details";
+import QuikView from "../quick-view";
 
 const Card18 = ({ item, store_id }: any) => {
   const dispatch = useDispatch();
@@ -139,13 +137,13 @@ const Card18 = ({ item, store_id }: any) => {
           </Link>
           <div className="bg-gray-200 h-[40px] w-full absolute bottom-0 left-0 right-0 translate-y-10 group-hover:translate-y-0 transition-all duration-500 ease-linear flex divide-x-2 divide-white lg:cursor-pointer">
             <div
-                onClick={add_cart_item}
+              onClick={add_cart_item}
               className="h-full w-12 flex items-center justify-center hover:bg-red-500 hover:text-white transition-all duration-200 ease-linear"
             >
               <ShoppingBagIcon className="h-6 w-6" />
             </div>
             <div
-                onClick={add_cart_item}
+              onClick={add_cart_item}
               className="h-full grow flex items-center justify-center hover:bg-gray-100  transition-all duration-200 ease-linear"
             >
               <p className="uppercase px-1 text-xs sm:text-sm ">Add To Cart</p>

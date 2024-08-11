@@ -1,13 +1,12 @@
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Rate from "@/utils/rate";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import QuikView from "../quick-view";
+import { useEffect, useState } from "react";
 import Details from "../_product-details-page/product-details/three/details";
+import QuikView from "../quick-view";
 
 const Card52 = ({ item, design, store_id }: any) => {
   const bgColor = design?.header_color;

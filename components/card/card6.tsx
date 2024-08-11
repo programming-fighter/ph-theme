@@ -1,19 +1,19 @@
 "use client";
 import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Rate from "@/utils/rate";
 import Taka from "@/utils/taka";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSearchCircleOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import QuikView from "../quick-view";
-import httpReq from "@/utils/http/axios/http.service";
-import { addToCartList } from "@/redux/features/product.slice";
-import { productImg } from "@/site-settings/siteUrl";
 import Details from "../_product-details-page/product-details/eight/details";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import QuikView from "../quick-view";
 
 const Card6 = ({ item }: any) => {
   const { design, makeid, store_id } = useTheme();
@@ -70,11 +70,11 @@ const Card6 = ({ item }: any) => {
     let cartItem = {};
     let productDetails = {
       id: item?.id,
-      store_id
+      store_id,
     };
     toast("Added to Cart", {
       type: "success",
-      autoClose: 1000
+      autoClose: 1000,
     });
 
     httpReq.post("get/offer/product", productDetails).then((res: any) => {
@@ -99,7 +99,7 @@ const Card6 = ({ item }: any) => {
             additional_price: null,
             volume: null,
             unit: null,
-            ...item
+            ...item,
           };
         } else {
           cartItem = {
@@ -110,7 +110,7 @@ const Card6 = ({ item }: any) => {
             additional_price: null,
             volume: null,
             unit: null,
-            ...item
+            ...item,
           };
         }
       } else {
@@ -122,7 +122,7 @@ const Card6 = ({ item }: any) => {
           additional_price: null,
           volume: null,
           unit: null,
-          ...item
+          ...item,
         };
       }
       dispatch(addToCartList({ ...cartItem }));

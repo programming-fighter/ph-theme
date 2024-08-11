@@ -1,9 +1,8 @@
 import Arrow from "@/utils/arrow";
-import React from "react";
 
-import { SwiperSlide } from "swiper/react";
-import SliderEleven from "@/components/slider/slider-eleven";
 import Card24 from "@/components/card/card24";
+import SliderEleven from "@/components/slider/slider-eleven";
+import { SwiperSlide } from "swiper/react";
 
 const FeaturedThree = ({ product, category, design, store_id }: any) => {
   const prev1 = "category_Prev1";
@@ -59,7 +58,7 @@ const FeaturedThree = ({ product, category, design, store_id }: any) => {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="font-bold text-lg footerFiveBorderCustom">
-                      {latestCategory[0]?.name} 
+                      {latestCategory[0]?.name}
                     </div>
                     <div className="">
                       <Arrow prevEl={prev1} nextEl={next1}></Arrow>

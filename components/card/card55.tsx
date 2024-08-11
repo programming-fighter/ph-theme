@@ -1,20 +1,19 @@
 "use client";
+import shape from "@/assets/img/shape.png";
 import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
-import { getCampaign } from "@/utils/http/get-campaign";
-import { addToCartList } from "@/redux/features/product.slice";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import shape from "@/assets/img/shape.png";
-import Rate from "@/utils/rate";
-import BDT from "@/utils/bdt";
-import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/eight/details";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import QuikView from "../quick-view";
 
 const Card55 = ({ item }: any) => {
   const { design, makeid, store_id } = useTheme();

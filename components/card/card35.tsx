@@ -3,25 +3,23 @@ import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
-import { getCampaign } from "@/utils/http/get-campaign";
 import Rate from "@/utils/rate";
-import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
-import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/three/details";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import QuikView from "../quick-view";
 
 const Card35 = ({ item, design, store_id }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -105,13 +103,13 @@ const Card35 = ({ item, design, store_id }: any) => {
       });
   };
 
-    const add_cart_item = () => {
-      if (item?.variant.length !== 0) {
-        setOpen(!open);
-      } else {
-        filterOfferProduct(item);
-      }
-    };
+  const add_cart_item = () => {
+    if (item?.variant.length !== 0) {
+      setOpen(!open);
+    } else {
+      filterOfferProduct(item);
+    }
+  };
 
   const styleCss = `
     .search-bg{
@@ -205,7 +203,7 @@ const Card35 = ({ item, design, store_id }: any) => {
           <div className="flex justify-center pt-2 ">
             <button
               className="border py-2 px-4 rounded-lg search-bg hover:bg-blue-300 duration-300"
-                onClick={add_cart_item}
+              onClick={add_cart_item}
             >
               Add to Cart
             </button>
