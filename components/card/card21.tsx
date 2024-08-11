@@ -1,4 +1,5 @@
 "use client";
+import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
@@ -15,11 +16,14 @@ import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 import Details from "../_product-details-page/product-details/three/details";
 import QuikView from "../quick-view";
-const Card21 = ({ item, design, store_id, makeid }: any) => {
+const Card21 = ({ item, design, store_id }: any) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+
+  const { makeid } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
+  //   const {} = useTheme();
   const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
@@ -110,8 +114,6 @@ const Card21 = ({ item, design, store_id, makeid }: any) => {
       dispatch(addToCartList({ ...cartItem }));
     });
   };
-
-  //   const navigate = useNavigate();
 
   const addBtn = (item: any) => {
     console.log("products added");

@@ -1,23 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
-import { motion } from "framer-motion";
-import { BsPlusLg } from "react-icons/bs";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
-import Link from "next/link";
-import { productImg } from "@/site-settings/siteUrl";
-import BDT from "@/utils/bdt";
-import Rate from "@/utils/rate";
-import { toast } from "react-toastify";
 import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import QuikView from "../quick-view";
+import { useEffect, useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
+import { BsPlusLg } from "react-icons/bs";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 import Details from "../_product-details-page/product-details/eight/details";
+import QuikView from "../quick-view";
 
 const Card17 = ({ item }: any) => {
   const router = useRouter();
@@ -54,7 +54,7 @@ const Card17 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -77,7 +77,7 @@ const Card17 = ({ item }: any) => {
       autoClose: 1000,
     });
 
-    axios.post("get/offer/product", productDetails).then((res: any) => {
+    httpReq.post("get/offer/product", productDetails).then((res: any) => {
       if (!res?.error) {
         let itemRegularPrice = getPrice(
           item?.regular_price,

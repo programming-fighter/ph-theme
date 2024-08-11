@@ -295,7 +295,7 @@ const Card63 = ({ item }: any) => {
                     </div>
                   </div>
                   <p className="lg:absolute lg:z-[2] top-[60%] -translate-x-1/2 left-1/2">
-                    in bag
+                    in Cart
                   </p>
                   <p className="lg:absolute lg:z-[2] top-[20%] -translate-x-1/2 left-1/2">
                     <BDT

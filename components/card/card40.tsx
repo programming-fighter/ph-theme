@@ -264,14 +264,14 @@ const Card40 = ({ item }: any) => {
     };
     httpReq.post("get/offer/product", productDetails).then((res) => {
       if (!res?.error) {
-        let itemRegularPrice = Number(
+        let itemRegularPrice = (
           getPrice(
             item?.regular_price,
             item?.discount_price,
             item?.discount_type
           )
         );
-        let campaignPrice = Number(
+        let campaignPrice = (
           getPrice(
             itemRegularPrice,
             parseInt(res?.discount_amount),

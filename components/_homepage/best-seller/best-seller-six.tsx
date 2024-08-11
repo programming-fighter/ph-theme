@@ -12,9 +12,14 @@ import ArrowSquare from "@/utils/arrow-square";
 import GridSliderFive from "@/components/slider/grid-slider/grid-slider-five";
 import Card7 from "@/components/card/card7";
 import { toast } from "react-toastify";
+import httpReq from "@/utils/http/axios/http.service";
+import { addToCartList } from "@/redux/features/product.slice";
+import { useDispatch } from "react-redux";
+import useTheme from "@/hooks/use-theme";
 const BestSellerSix = ({ product, design, store_id }: any) => {
+  const {makeid}=useTheme()
   const [open, setOpen] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const prev = "feature_product_prev";
   const next = "feature_product_next";
@@ -36,9 +41,9 @@ const BestSellerSix = ({ product, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    axios
+    httpReq
       .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
+        "get/offer/product",
         productDetails
       )
       .then((res: any) => {
@@ -89,7 +94,7 @@ const BestSellerSix = ({ product, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 

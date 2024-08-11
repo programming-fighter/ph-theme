@@ -1,6 +1,8 @@
 "use client";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
 import { getCampaign } from "@/utils/http/get-campaign";
 import Rate from "@/utils/rate";
 import axios from "axios";
@@ -8,14 +10,18 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 import { AiOutlineSearch } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import QuikView from "../quick-view";
+import Details from "../_product-details-page/product-details/three/details";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 
 const Card35 = ({ item, design, store_id }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
-  //   const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -31,7 +37,7 @@ const Card35 = ({ item, design, store_id }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -55,7 +61,7 @@ const Card35 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    axios
+    httpReq
       .post(
         "https://admin.ebitans.com/api/v1/" + "get/offer/product",
         productDetails
@@ -95,17 +101,17 @@ const Card35 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        // dispatch(addToCartList({ ...cartItem }));
+        dispatch(addToCartList({ ...cartItem }));
       });
   };
 
-  //   const add_cart_item = () => {
-  //     if (item?.variant.length !== 0) {
-  //       setOpen(!open);
-  //     } else {
-  //       filterOfferProduct(item);
-  //     }
-  //   };
+    const add_cart_item = () => {
+      if (item?.variant.length !== 0) {
+        setOpen(!open);
+      } else {
+        filterOfferProduct(item);
+      }
+    };
 
   const styleCss = `
     .search-bg{
@@ -199,16 +205,16 @@ const Card35 = ({ item, design, store_id }: any) => {
           <div className="flex justify-center pt-2 ">
             <button
               className="border py-2 px-4 rounded-lg search-bg hover:bg-blue-300 duration-300"
-              //   onClick={add_cart_item}
+                onClick={add_cart_item}
             >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };
