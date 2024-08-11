@@ -8,6 +8,7 @@ const HomePage = async () => {
 
   const data = await getSubdomainName(url);
   const { layout, design } = data;
+
   return (
     <>
       <div

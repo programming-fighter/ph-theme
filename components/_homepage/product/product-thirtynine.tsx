@@ -1,10 +1,7 @@
 "use client";
-import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import ScrollTrigger from "react-scroll-trigger";
 import Card67 from "@/components/card/card67";
+import httpReq from "@/utils/http/axios/http.service";
+import { useEffect, useState } from "react";
 
 const ProductThirtyNine = ({ category, design, store_id }: any) => {
   const [active, setActive] = useState(0);
@@ -15,14 +12,11 @@ const ProductThirtyNine = ({ category, design, store_id }: any) => {
   useEffect(() => {
     async function handleCategory() {
       try {
-        const response: any = await axios.post(
-          "https://admin.ebitans.com/api/v1/" + `getcatproducts`,
-          {
-            id: category[id].id,
-          }
-        );
+        const response = await httpReq.post(`getcatproducts`, {
+          id: category[id].id,
+        });
         if (!response?.error) {
-          setProducts(response?.data?.data?.data);
+          setProducts(response?.data?.data);
         } // the API response object
         else {
           setProducts([]);

@@ -1,22 +1,26 @@
 "use client";
-import { productImg } from "@/site-settings/siteUrl";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
 import shape from "@/assets/img/shape.png";
-import Image from "next/image";
-import Rate from "@/utils/rate";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
-import { v4 as uuidv4 } from "uuid";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import Details from "../_product-details-page/product-details/three/details";
+import QuikView from "../quick-view";
 const Card54 = ({ item, design, store_id }: any) => {
+  const { makeid } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const [id, setId] = useState(0)
+  const [id, setId] = useState(0);
 
   const vPrice = item?.variant?.map((item: any) => item?.additional_price);
   const smallest = Math.min(...vPrice);
@@ -58,7 +62,7 @@ const Card54 = ({ item, design, store_id }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -129,84 +133,79 @@ const Card54 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    axios
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campPriceUnit,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+    httpReq.post("get/offer/product", productDetails).then((res: any) => {
+      if (!res?.error) {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: campPriceUnit,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item,
+          };
         } else {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: productGetPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: price,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+          cartItem = {
+            cartId: makeid(100),
+            price: campPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         }
-        // dispatch(addToCartList({ ...cartItem }));a
-      });
+      } else {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: productGetPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item,
+          };
+        } else {
+          cartItem = {
+            cartId: makeid(100),
+            price: price,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
+        }
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
-  // const add_cart_item = () => {
-  //   if (
-  //     item?.variant.length !== 0 &&
-  //     !item?.variant[0]?.unit &&
-  //     store_id === 2109
-  //   ) {
-  //     setView(!view);
-  //   } else if (item?.variant.length !== 0 && store_id !== 2109) {
-  //     setView(!view);
-  //   } else {
-  //     filterOfferProduct(item);
-  //   }
-  // };
+  const add_cart_item = () => {
+    if (
+      item?.variant.length !== 0 &&
+      !item?.variant[0]?.unit &&
+      store_id === 2109
+    ) {
+      setView(!view);
+    } else if (item?.variant.length !== 0 && store_id !== 2109) {
+      setView(!view);
+    } else {
+      filterOfferProduct(item);
+    }
+  };
 
   return (
     <div className="group overlay-group relative px-2">
@@ -248,7 +247,7 @@ const Card54 = ({ item, design, store_id }: any) => {
               <div className="lg:absolute card-overlay-thirty lg:z-[1] lg:group-hover:w-full w-1/2 h-full left-0 bottom-0 duration-700"></div>
             </Link>
             <div
-              // onClick={add_cart_item}
+              onClick={add_cart_item}
               className="lg:absolute lg:group-hover:bottom-0 lg:-bottom-5 duration-700 lg:opacity-0 w-full z-[2] lg:group-hover:opacity-100 bg-black text-white searchHover flex px-2 py-2 justify-center gap-1 items-center lg:cursor-pointer"
             >
               <p className="lg:scale-0 lg:group-hover:scale-100 duration-700 ">
@@ -356,9 +355,9 @@ const Card54 = ({ item, design, store_id }: any) => {
       </div>
 
       {/* for modal open  */}
-      {/* <QuikView open={view} setOpen={setView} design={design}>
+      <QuikView open={view} setOpen={setView} design={design}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </div>
   );
 };

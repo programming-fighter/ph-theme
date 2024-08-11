@@ -1,6 +1,5 @@
-import React from "react";
-import SectionHeadingThirtyFour from "@/components/section-heading/section-heading-thirtyfour";
 import Card60 from "@/components/card/card60";
+import SectionHeadingThirtyFour from "@/components/section-heading/section-heading-thirtyfour";
 
 const ProductThirtyFour = ({ product, design, store_id }: any) => {
   const styleCss = `

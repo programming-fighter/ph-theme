@@ -1,27 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
-
-// import Details from '../../layouts/productDetails/fourteen/Details';
-
-import { TbLiveView } from "react-icons/tb";
-import { FaCartPlus } from "react-icons/fa";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
-import { productImg } from "@/site-settings/siteUrl";
-import Link from "next/link";
-import BDT from "@/utils/bdt";
-import Rate from "@/utils/rate";
-import { v4 as uuidv4 } from "uuid";
-import { toast } from "react-toastify";
 import useTheme from "@/hooks/use-theme";
-import { useDispatch } from "react-redux";
 import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Rate from "@/utils/rate";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { FaCartPlus } from "react-icons/fa";
+import { TbLiveView } from "react-icons/tb";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import Details from "../_product-details-page/product-details/three/details";
 import QuikView from "../quick-view";
-import Details from "../_product-details-page/product-details/eight/details";
 
 const Card51 = ({ item }: any) => {
-  const { design, store_id } = useTheme();
+  const { design, makeid, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
   const [id, setId] = useState(0);
   const [view, setView] = useState(false);
@@ -30,6 +26,8 @@ const Card51 = ({ item }: any) => {
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
+
+  // const [id, setId] = useState(0)
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -45,7 +43,7 @@ const Card51 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -67,7 +65,7 @@ const Card51 = ({ item }: any) => {
         border: 2px solid ${design?.header_color};
     }
     .text-hover:hover {
-        color: ${design?.header_color};
+        color: ${design.header_color};
       }
     .bg-color {
         color:  ${textColor};
@@ -109,50 +107,33 @@ const Card51 = ({ item }: any) => {
       autoClose: 1000,
     });
 
-    axios
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          );
-          let campaignPrice = getPrice(
-            itemRegularPrice,
-            parseInt(res?.discount_amount),
-            res?.discount_type
-          );
-          if (res?.discount_amount === null) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: itemRegularPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campaignPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+    httpReq.post("get/offer/product", productDetails).then((res) => {
+      if (!res?.error) {
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
+        );
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
+        );
+        if (res?.discount_amount === null) {
+          cartItem = {
+            cartId: makeid(100),
+            price: itemRegularPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         } else {
           cartItem = {
-            cartId: uuidv4(),
-            price: productGetPrice,
+            cartId: makeid(100),
+            price: campaignPrice,
             color: null,
             size: null,
             additional_price: null,
@@ -161,8 +142,20 @@ const Card51 = ({ item }: any) => {
             ...item,
           };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        cartItem = {
+          cartId: makeid(100),
+          price: productGetPrice,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_cart_item = () => {
@@ -207,7 +200,7 @@ const Card51 = ({ item }: any) => {
 
         <div className="flex flex-col gap-2 px-4 py-3">
           <div className="flex flex-wrap gap-x-3">
-            {item?.image?.map((data: any, index: number) => (
+            {item?.image?.map((data: any, index: any) => (
               <div key={index}>
                 {item.image.length > 1 ? (
                   <button

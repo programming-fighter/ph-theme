@@ -56,7 +56,11 @@ const Product = ({
   headerSetting,
 }: any) => {
   return (
-    <ProductTwentySix design={design} store_id={store_id} category={category} />
+    <ProductThirtyNine
+      category={category}
+      design={design}
+      store_id={store_id}
+    />
   );
 
   return (
