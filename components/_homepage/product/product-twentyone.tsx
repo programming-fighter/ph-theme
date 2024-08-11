@@ -1,17 +1,10 @@
 "use client";
-import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import SectionHeadingTwentyOne from "@/components/section-heading/section-heading-twentyone";
 import Card45 from "@/components/card/card45";
+import SectionHeadingTwentyOne from "@/components/section-heading/section-heading-twentyone";
+import httpReq from "@/utils/http/axios/http.service";
+import { useEffect, useState } from "react";
 
-const ProductTwentyOne = ({
-  category,
-  design,
-  store_id,
-  headerSetting,
-}: any) => {
+const ProductTwentyOne = ({ design, category }: any) => {
   const [active, setActive] = useState(0);
   const [products, setProducts] = useState([]);
   const [id, setId] = useState(0);
@@ -19,15 +12,11 @@ const ProductTwentyOne = ({
   useEffect(() => {
     async function handleCategory() {
       try {
-        const response: any = await axios.post(
-          "https://admin.ebitans.com/api/v1/" + `getcatproducts`,
-          {
-            id: category[id].id,
-          }
-        );
-
+        const response = await httpReq.post(`getcatproducts`, {
+          id: category[id].id,
+        });
         if (!response?.error) {
-          setProducts(response?.data?.data?.data);
+          setProducts(response?.data?.data);
         } // the API response object
         else {
           setProducts([]);
@@ -46,6 +35,8 @@ const ProductTwentyOne = ({
         background: ${design?.header_color};
     }
  `;
+
+  console.log(products, "prdts");
 
   return (
     <div className="sm:container px-5 sm:py-10 py-5 w-full">
@@ -77,12 +68,7 @@ const ProductTwentyOne = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {products?.slice(0, 8).map((productData: any) => (
             <div key={productData.id} className="">
-              <Card45
-                item={productData}
-                design={design}
-                store_id={store_id}
-                headerSetting={headerSetting}
-              />
+              <Card45 item={productData} />
             </div>
           ))}
         </div>

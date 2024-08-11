@@ -1,20 +1,20 @@
 "use client";
+
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Rate from "@/utils/rate";
-import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/three/details";
 import { useRouter } from "next/navigation";
 import useTheme from "@/hooks/use-theme";
+import QuikView from "../quick-view";
 
 const Card4 = ({ item, design, store_id }: any) => {
   const {makeid}= useTheme()
@@ -22,7 +22,7 @@ const Card4 = ({ item, design, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
 
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
 
   const styleCss = `
   .text-hover:hover {
@@ -94,30 +94,30 @@ const Card4 = ({ item, design, store_id }: any) => {
             res?.discount_type
           );
 
-          cartItem = {
-            cartId: makeid(100),
-            price: campaignPrice,
-            color: null,
-            size: null,
-            additional_price: null,
-            volume: null,
-            unit: null,
-            ...item,
-          };
-        } else {
-          cartItem = {
-            cartId: makeid(100),
-            price: productGetPrice,
-            color: null,
-            size: null,
-            additional_price: null,
-            volume: null,
-            unit: null,
-            ...item,
-          };
-        }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+        cartItem = {
+          cartId: makeid(100),
+          price: campaignPrice,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      } else {
+        cartItem = {
+          cartId: makeid(100),
+          price: productGetPrice,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   // const navigate = useNavigate();
@@ -212,7 +212,7 @@ const Card4 = ({ item, design, store_id }: any) => {
           </div>
         </div>
       </div>
-      <QuikView open={open} setOpen={setOpen}>
+      <QuikView  open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
       </QuikView>
     </>

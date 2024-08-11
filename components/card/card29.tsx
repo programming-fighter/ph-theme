@@ -4,24 +4,22 @@ import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
-import { getCampaign } from "@/utils/http/get-campaign";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
-import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
-import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/three/details";
+import QuikView from "../quick-view";
 
 const Card29 = ({ item, design, store_id }: any) => {
   const [camp, setCamp] = useState<any>(null);
   const [id, setId] = useState(0);
   const [view, setView] = useState(false);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
@@ -90,51 +88,34 @@ const Card29 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    httpReq
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          );
-          let campaignPrice = getPrice(
-            itemRegularPrice,
-            parseInt(res?.discount_amount),
-            res?.discount_type
-          );
+    httpReq.post("get/offer/product", productDetails).then((res: any) => {
+      if (!res?.error) {
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
+        );
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
+        );
 
-          if (res?.discount_amount === null) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: itemRegularPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campaignPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+        if (res?.discount_amount === null) {
+          cartItem = {
+            cartId: uuidv4(),
+            price: itemRegularPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         } else {
           cartItem = {
             cartId: uuidv4(),
-            price: productGetPrice,
+            price: campaignPrice,
             color: null,
             size: null,
             additional_price: null,
@@ -143,17 +124,29 @@ const Card29 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        cartItem = {
+          cartId: uuidv4(),
+          price: productGetPrice,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
-    const add_cart_item = () => {
-      if (item?.variant.length !== 0) {
-        setView(!view);
-      } else {
-        filterOfferProduct(item);
-      }
-    };
+  const add_cart_item = () => {
+    if (item?.variant.length !== 0) {
+      setView(!view);
+    } else {
+      filterOfferProduct(item);
+    }
+  };
 
   return (
     <div>
@@ -242,7 +235,7 @@ const Card29 = ({ item, design, store_id }: any) => {
         </div>
 
         <div
-            onClick={add_cart_item}
+          onClick={add_cart_item}
           className="px-2 lg:cursor-pointer text-xs gap-1 w-full absolute group-hover:bottom-4 -bottom-12 duration-500 bg-white z-[1]"
         >
           <p className=" font-medium border-b-2 px-2 py-1 w-max cart-color">

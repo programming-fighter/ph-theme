@@ -1,6 +1,5 @@
-import React from "react";
-import SectionHeadingTwentyFive from "@/components/section-heading/section-heading-twenty-five";
 import Card50 from "@/components/card/card50";
+import SectionHeadingTwentyFive from "@/components/section-heading/section-heading-twenty-five";
 
 const BestSellerTwentyFive = ({ best_sell_product, store_id, design }: any) => {
   return (

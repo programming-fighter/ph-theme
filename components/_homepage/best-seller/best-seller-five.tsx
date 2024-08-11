@@ -1,10 +1,9 @@
 "use client";
-import React from "react";
-import { SwiperSlide } from "swiper/react";
-import SectionHeadingFive from "@/components/section-heading/section-heading-five";
-import Arrow from "@/utils/arrow";
-import DefaultSlider from "@/components/slider/default-slider";
 import Card4 from "@/components/card/card4";
+import SectionHeadingFive from "@/components/section-heading/section-heading-five";
+import DefaultSlider from "@/components/slider/default-slider";
+import Arrow from "@/utils/arrow";
+import { SwiperSlide } from "swiper/react";
 
 const BestSellerFive = ({ best_sell_product, design, store_id }: any) => {
   const prev1 = "best_seller_Prev1";

@@ -2,12 +2,11 @@
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import QuikView from "../quick-view";
+import { useEffect, useState } from "react";
 import Details from "../_product-details-page/product-details/three/details";
+import QuikView from "../quick-view";
 
 const Card67 = ({ item, design, store_id }: any) => {
   // const { design, store_id } = useTheme();
@@ -93,7 +92,11 @@ const Card67 = ({ item, design, store_id }: any) => {
               {item?.name}
             </h1>
           </Link>
-          <Link href={'/category/' + item?.category} ><h1 className='text-sm sm:text-[15px] capitalize truncate'>{item?.category}</h1>  </Link>
+          <Link href={"/category/" + item?.category}>
+            <h1 className="text-sm sm:text-[15px] capitalize truncate">
+              {item?.category}
+            </h1>{" "}
+          </Link>
         </div>
 
         <div className="font-semibold flex items-center gap-2 w-full">

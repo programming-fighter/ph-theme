@@ -1,4 +1,3 @@
-import React from "react";
 import Card48 from "@/components/card/card48";
 
 const BestSellerTwentyTwo = ({ product, store_id }: any) => {

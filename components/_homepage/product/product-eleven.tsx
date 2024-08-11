@@ -1,11 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import Details from "@/components/_product-details-page/product-details/three/details";
+import QuikView from "@/components/quick-view";
 import SectionHeadingSeven from "@/components/section-heading/section-heading-seven";
-import { getPrice } from "@/utils/get-price";
-import Link from "next/link";
 import { productImg } from "@/site-settings/siteUrl";
+import { getPrice } from "@/utils/get-price";
 import Rate from "@/utils/rate";
 import Taka from "@/utils/taka";
+import Link from "next/link";
+import { useState } from "react";
 
 const ProductEleven = ({
   product,
@@ -130,9 +132,9 @@ const Card = ({ item }: any) => {
           </div>
         </div>
       </Link>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };

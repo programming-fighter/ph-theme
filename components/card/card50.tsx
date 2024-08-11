@@ -1,29 +1,26 @@
 "use client";
-import { productImg } from "@/site-settings/siteUrl";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import Taka from "@/utils/taka";
-import axios from "axios";
-import Link from "next/link";
-import { v4 as uuidv4 } from "uuid";
-import React, { useEffect, useState } from "react";
-import {
-  MinusIcon,
-  PlusIcon,
-  ShoppingBagIcon,
-} from "@heroicons/react/24/outline";
-import { toast } from "react-toastify";
 import useTheme from "@/hooks/use-theme";
-import QuikView from "../quick-view";
-import Details from "../_product-details-page/product-details/eight/details";
-import { useDispatch, useSelector } from "react-redux";
 import {
   addToCartList,
   decrementQty,
   incrementQty,
 } from "@/redux/features/product.slice";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { productImg } from "@/site-settings/siteUrl";
+import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Taka from "@/utils/taka";
+import {
+  MinusIcon,
+  PlusIcon,
+  ShoppingBagIcon,
+} from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import Details from "../_product-details-page/product-details/eight/details";
+import QuikView from "../quick-view";
 
 const Card50 = ({ item }: any) => {
   const { store_id, design } = useTheme();
@@ -121,7 +118,9 @@ const Card50 = ({ item }: any) => {
               {(camp?.discount_type || item.discount_type) === "fixed" &&
                 " ৳"}{" "}
               {parseInt(
-                campPrice ? parseInt(camp?.discount_amount) : item?.discount_price
+                campPrice
+                  ? parseInt(camp?.discount_amount)
+                  : item?.discount_price
               )}{" "}
               {(camp?.discount_type || item.discount_type) === "percent" && "%"}
             </div>
@@ -212,7 +211,6 @@ const AddToCart = ({
 }: any) => {
   const { cartList } = useSelector((state: any) => state.cart);
   const { makeid } = useTheme();
-  // const navigate = useNavigate()
   const dispatch = useDispatch();
   const [already, setalready] = useState<any>(null);
 
@@ -235,69 +233,64 @@ const AddToCart = ({
       autoClose: 1000,
     });
 
-    httpReq
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: parseInt(campPriceUnit),
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: parseInt(campPrice),
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+    httpReq.post("get/offer/product", productDetails).then((res: any) => {
+      if (!res?.error) {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: parseInt(campPriceUnit),
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item,
+          };
         } else {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: parseInt(productGetPrice),
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: parseInt(price),
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+          cartItem = {
+            cartId: makeid(100),
+            price: parseInt(campPrice),
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: parseInt(productGetPrice),
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item,
+          };
+        } else {
+          cartItem = {
+            cartId: makeid(100),
+            price: parseInt(price),
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
+        }
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const handleCart = () => {
@@ -332,7 +325,10 @@ const AddToCart = ({
               <MinusIcon className="h-2 w-2  stroke-1 " />
             </div>
             <div className="flex flex-1  h-full justify-center items-center">
-              <p onClick={() => handleCart()}  className="font-semibold  text-xs ">
+              <p
+                onClick={() => handleCart()}
+                className="font-semibold  text-xs "
+              >
                 {already?.qty}
                 {"  "} in cart
               </p>

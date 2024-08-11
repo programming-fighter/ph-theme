@@ -1,14 +1,13 @@
 "use client";
-import React from "react";
-import { SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { SwiperSlide } from "swiper/react";
 
-import { BsPlay } from "react-icons/bs";
+import Card25 from "@/components/card/card25";
 import SectionHeadingSixteen from "@/components/section-heading/section-heading-sixteen";
 import DefaultSlider from "@/components/slider/default-slider";
-import Card25 from "@/components/card/card25";
+import { BsPlay } from "react-icons/bs";
 
 const ProductSixteen = ({ product, design, store_id }: any) => {
   const prevEl = "product-sixteen-prev";

@@ -1,7 +1,5 @@
-import React from "react";
-
-import img from "./bg-img/37/MARGIN.png";
 import Card64 from "@/components/card/card64";
+import img from "./bg-img/37/MARGIN.png";
 
 const ProductThirtySeven = ({ product, design, store_id }: any) => {
   if (product.length === 0) {

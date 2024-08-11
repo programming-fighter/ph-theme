@@ -1,30 +1,27 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { AiFillThunderbolt } from "react-icons/ai";
-import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
-import Link from "next/link";
-import { productImg } from "@/site-settings/siteUrl";
-import BDT from "@/utils/bdt";
-import { v4 as uuidv4 } from "uuid";
-import { toast } from "react-toastify";
 import useTheme from "@/hooks/use-theme";
-import { useDispatch, useSelector } from "react-redux";
 import {
   addToCartList,
   decrementQty,
   incrementQty,
 } from "@/redux/features/product.slice";
-import QuikView from "../quick-view";
-import Details from "../_product-details-page/product-details/five/details";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import { AiFillThunderbolt } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import Details from "../_product-details-page/product-details/five/details";
+import QuikView from "../quick-view";
 
 const Card63 = ({ item }: any) => {
-  const { design, store_id } = useTheme();
+  const { design, store_id, makeid } = useTheme();
   const [camp, setCamp] = useState<any>(null);
   const { cartList } = useSelector((state: any) => state.cart);
   const dispatch = useDispatch();
@@ -145,69 +142,64 @@ const Card63 = ({ item }: any) => {
       autoClose: 1000,
     });
 
-    httpReq
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campPriceUnit,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+    httpReq.post("get/offer/product", productDetails).then((res: any) => {
+      if (!res?.error) {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: campPriceUnit,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item,
+          };
         } else {
-          if (item?.variant[0]?.unit && store_id === 2109) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: productGetPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              variant_quantity: item?.variant[0]?.quantity,
-              variantId: item?.variant[0]?.id,
-              ...item?.variant[0],
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: price,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+          cartItem = {
+            cartId: makeid(100),
+            price: campPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        if (item?.variant[0]?.unit && store_id === 2109) {
+          cartItem = {
+            cartId: makeid(100),
+            price: productGetPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            variant_quantity: item?.variant[0]?.quantity,
+            variantId: item?.variant[0]?.id,
+            ...item?.variant[0],
+            ...item,
+          };
+        } else {
+          cartItem = {
+            cartId: makeid(100),
+            price: price,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
+        }
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_cart_item = () => {

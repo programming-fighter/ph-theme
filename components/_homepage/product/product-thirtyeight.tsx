@@ -1,9 +1,7 @@
 "use client";
-import axios from "axios";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
 import Card65 from "@/components/card/card65";
+import httpReq from "@/utils/http/axios/http.service";
+import { useEffect, useState } from "react";
 
 const ProductThirtyEight = ({ category, design, store_id }: any) => {
   const [active, setActive] = useState(0);
@@ -13,14 +11,11 @@ const ProductThirtyEight = ({ category, design, store_id }: any) => {
   useEffect(() => {
     async function handleCategory() {
       try {
-        const response: any = await axios.post(
-          "https://admin.ebitans.com/api/v1/" + `getcatproducts`,
-          {
-            id: category[id].id,
-          }
-        );
+        const response = await httpReq.post(`getcatproducts`, {
+          id: category[id].id,
+        });
         if (!response?.error) {
-          setProducts(response?.data?.data?.data);
+          setProducts(response?.data?.data);
         } // the API response object
         else {
           setProducts([]);
@@ -32,7 +27,6 @@ const ProductThirtyEight = ({ category, design, store_id }: any) => {
 
     handleCategory();
   }, [category, id]);
-
   const styleCss = `
     .active-cat-twenty-four {
         color:  ${design?.header_color};

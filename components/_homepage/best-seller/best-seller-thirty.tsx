@@ -1,10 +1,9 @@
 "use client";
-import React from "react";
 
-import { SwiperSlide } from "swiper/react";
+import Card54 from "@/components/card/card54";
 import SectionHeadingThirty from "@/components/section-heading/section-heading-thirty";
 import DefaultSlider from "@/components/slider/default-slider";
-import Card54 from "@/components/card/card54";
+import { SwiperSlide } from "swiper/react";
 
 const BestSellerThirty = ({ best_sell_product, design, store_id }: any) => {
   const prevEl = "best-product-prev";

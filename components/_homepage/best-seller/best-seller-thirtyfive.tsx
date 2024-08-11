@@ -1,12 +1,11 @@
 "use client";
 import { bannerImg } from "@/site-settings/siteUrl";
-import React from "react";
 
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import SliderThirtyFive from "@/components/slider/slider-thirty-five";
-import { SwiperSlide } from "swiper/react";
-import Card61 from "@/components/card/card61";
 import img from "@/assets/img/thirtyfive/02.webp";
+import Card61 from "@/components/card/card61";
+import SliderThirtyFive from "@/components/slider/slider-thirty-five";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { SwiperSlide } from "swiper/react";
 
 const BestSellerThirtyFive = ({
   best_sell_product,

@@ -1,21 +1,19 @@
 "use client";
 import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
 import httpReq from "@/utils/http/axios/http.service";
-import { getCampaign } from "@/utils/http/get-campaign";
-import { addToCartList } from "@/redux/features/product.slice";
-import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import { useRouter } from "next/navigation";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 
 const Card60 = ({ item }: any) => {
   const router = useRouter();
@@ -170,8 +168,6 @@ const Card60 = ({ item }: any) => {
     });
   };
 
-  //   const navigate = useNavigate();
-
   const add_cart_item = () => {
     if (item?.variant.length !== 0) {
       setView(!view);
@@ -184,7 +180,6 @@ const Card60 = ({ item }: any) => {
       setView(!view);
     } else {
       filterOfferProduct(item);
-      // navigate("/checkout");
       router.push("/checkout");
     }
   };

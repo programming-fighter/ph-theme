@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
-import { SwiperSlide } from "swiper/react";
-import DefaultSlider from "@/components/slider/default-slider";
 import Card63 from "@/components/card/card63";
+import DefaultSlider from "@/components/slider/default-slider";
+import { SwiperSlide } from "swiper/react";
 
 const ProductThirtySix = ({ product, design, store_id }: any) => {
   const styleCss = `

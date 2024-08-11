@@ -1,5 +1,4 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import React from "react";
 
 const ArrowSeventeen = ({ nextEl, prevEl, design }: any) => {
   const customDesign = `
@@ -14,7 +13,7 @@ const ArrowSeventeen = ({ nextEl, prevEl, design }: any) => {
     color:${design?.text_color};
     border:1px solid ${design?.text_color};
 }
-        }`;
+}`;
 
   return (
     <div className="flex justify-end gap-8  ">

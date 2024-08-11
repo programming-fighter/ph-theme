@@ -1,3 +1,5 @@
+"use client";
+import Details from "@/components/_product-details-page/product-details/three/details";
 import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
@@ -7,15 +9,13 @@ import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Rate from "@/utils/rate";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import QuikView from "../quick-view";
-import Details from "../_product-details-page/product-details/three/details";
 
-
-const Card45 = ({ item }:any) => {
+const Card45 = ({ item }: any) => {
   const { design, makeid, store_id, headerSetting } = useTheme();
   const [camp, setCamp] = useState<any>(null);
   const [view, setView] = useState(false);
@@ -34,12 +34,10 @@ const Card45 = ({ item }:any) => {
     item.discount_price,
     item.discount_type
   );
-  const campPrice = (
-    getPrice(
-      productGetPrice,
-      parseInt(camp?.discount_amount),
-      camp?.discount_type
-    )
+  const campPrice = getPrice(
+    productGetPrice,
+    parseInt(camp?.discount_amount),
+    camp?.discount_type
   );
 
   useEffect(() => {
@@ -83,7 +81,7 @@ const Card45 = ({ item }:any) => {
     }
   `;
 
-  const filterOfferProduct = (item:any) => {
+  const filterOfferProduct = (item: any) => {
     let cartItem = {};
     let productDetails = {
       id: item?.id,
@@ -96,19 +94,15 @@ const Card45 = ({ item }:any) => {
 
     httpReq.post("get/offer/product", productDetails).then((res) => {
       if (!res?.error) {
-        let itemRegularPrice = (
-          getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          )
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
         );
-        let campaignPrice = (
-          getPrice(
-            itemRegularPrice,
-            parseInt(res?.discount_amount),
-            res?.discount_type
-          )
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
         );
         if (res?.discount_amount === null) {
           cartItem = {
@@ -148,7 +142,6 @@ const Card45 = ({ item }:any) => {
       dispatch(addToCartList({ ...cartItem }));
     });
   };
-
   const add_cart_item = () => {
     if (item?.variant.length !== 0) {
       setView(!view);

@@ -1,6 +1,5 @@
-import React from "react";
-import SectionHeadingTwentyFour from "@/components/section-heading/section-heading-twenty-four";
 import Card49 from "@/components/card/card49";
+import SectionHeadingTwentyFour from "@/components/section-heading/section-heading-twenty-four";
 import Link from "next/link";
 
 const BestSellerTwentyFour = ({ best_sell_product, design, store_id }: any) => {

@@ -1,11 +1,9 @@
 "use client";
 import axios from "axios";
-import React from "react";
 
-import { useEffect } from "react";
-import { useState } from "react";
-import SectionHeadingTwentyFour from "@/components/section-heading/section-heading-twenty-four";
 import Card44 from "@/components/card/card44";
+import SectionHeadingTwentyFour from "@/components/section-heading/section-heading-twenty-four";
+import { useEffect, useState } from "react";
 
 const ProductTwenty = ({ category, design }: any) => {
   const [active, setActive] = useState(0);
