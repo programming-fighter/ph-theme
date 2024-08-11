@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+"use client"
 import { SwiperSlide } from "swiper/react";
 import { Swiper } from 'swiper/react';
 // Import Swiper styles
@@ -16,11 +16,11 @@ import { productImg } from '@/site-settings/siteUrl';
 import Taka from '@/utils/taka';
 import QuikView from '@/components/quick-view';
 import Details from '@/components/_product-details-page/product-details/three/details';
+import { useState } from "react";
 
 
-const FeatureProductNine = () => {
+const FeatureProductNine = ({ feature_product, design }: any) => {
 
-    const { feature_product, design } = useTheme()
 
     const prevEl:any = 'feature-product-prev'
     const nextEl:any = 'feature-product-next'
@@ -82,8 +82,7 @@ const FeatureProductNine = () => {
                         nextEl: `.${nextEl}`,
                     }}
                     className="mySwiper"
-                    // prevEl={prevEl}
-                    // nextEl={nextEl}
+                  
                 >
                     {
                         feature_product?.slice(0, 10).map((productData:any) =>

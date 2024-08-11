@@ -1,4 +1,3 @@
-"use client";
 /* eslint-disable no-cond-assign */
 /* eslint-disable jsx-a11y/no-redundant-roles */
 
@@ -7,17 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Dialog, Transition } from "@headlessui/react";
 import { toast } from "react-toastify";
 import useTheme from "@/hooks/use-theme";
-import { ShoppingBagIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { XIcon } from "react-share";
+import { ShoppingBagIcon, TrashIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import {motion} from "framer-motion"
 import { productImg } from "@/site-settings/siteUrl";
-import { motion } from "framer-motion";
 import { removeToCartList } from "@/redux/features/product.slice";
 
 const CartPopUpFive = () => {
   const { design } = useTheme();
   const [open, setOpen] = useState(false);
-  const cartList = useSelector((state: any) => state.cart.cartList);
+  const cartList = useSelector((state:any) => state.cart.cartList);
 
   return (
     <>
@@ -67,12 +65,12 @@ const CartPopUpFive = () => {
 
 export default CartPopUpFive;
 
-const ShoppingCart = ({ setOpen }: any) => {
-  const cartList = useSelector((state: any) => state.cart.cartList);
+const ShoppingCart = ({ setOpen }:any) => {
+  const cartList = useSelector((state:any) => state.cart.cartList);
 
-  const priceList = cartList?.map((p: any) => p.qty * p.price);
+  const priceList = cartList?.map((p:any) => p.qty * p.price);
   const total = priceList.reduce(
-    (previousValue: any, currentValue: any) => previousValue + currentValue,
+    (previousValue:any, currentValue:any) => previousValue + currentValue,
     0
   );
 
@@ -80,10 +78,28 @@ const ShoppingCart = ({ setOpen }: any) => {
 
   const handleNavLink = () => {
     setOpen(false);
+
+    const mapped = cartList.map((cart:any) => {
+      return {
+        item_id: cart.pid,
+        item_name: cart.name,
+        item_category: cart.category,
+        item_subcategory: cart.subcategory,
+        discount_type: cart.discount_type,
+        discount_amount: cart.discount_price,
+        price: cart.regular_price,
+        quantity: cart.qty,
+      };
+    });
+
     // TagManager.dataLayer({
     //   dataLayer: {
     //     event: "begin_checkout",
-    //     ecommerce: null,
+    //     ecommerce: {
+    //       currency: "BDT",
+    //       value: total,
+    //       items: mapped,
+    //     },
     //   },
     // });
   };
@@ -97,8 +113,9 @@ const ShoppingCart = ({ setOpen }: any) => {
             {" "}
             Your Cart{" "}
           </Dialog.Title>
-          <XIcon
+          <XMarkIcon
             onClick={() => setOpen(false)}
+            width={20}
             color={"white"}
             className="h-6 w-6"
             aria-hidden="true"
@@ -108,7 +125,7 @@ const ShoppingCart = ({ setOpen }: any) => {
         <div className="my-20 mb-24 px-6">
           <div className="flow-root">
             <ul role="list" className="-my-6 divide-y divide-gray-200">
-              {cartList?.map((product: any, id: any) => (
+              {cartList?.map((product:any, id:any) => (
                 <SingleCartProduct key={id} product={product} />
               ))}
             </ul>
@@ -140,7 +157,7 @@ const ShoppingCart = ({ setOpen }: any) => {
   );
 };
 
-export const Drawer = ({ open, setOpen, children }: any) => {
+export const Drawer = ({ open, setOpen, children }:any) => {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-30" onClose={setOpen}>
@@ -180,7 +197,7 @@ export const Drawer = ({ open, setOpen, children }: any) => {
   );
 };
 
-const SingleCartProduct = ({ product }: any) => {
+const SingleCartProduct = ({ product }:any) => {
   const dispatch = useDispatch();
   const deleteBtn = () => {
     toast("Remove from cart this item", {
@@ -249,7 +266,7 @@ const SingleCartProduct = ({ product }: any) => {
         <div className="flex flex-1 items-end justify-start text-sm">
           {/* <p className="text-gray-500">Qty {product.qty}</p> */}
           <p className="text-gray-900 flex text-center font-semibold text-base">
-            {parseInt(product?.price)} BDT <XIcon className="mx-1" />{" "}
+            {parseInt(product?.price)} BDT <XMarkIcon width={15} className="mx-1" />{" "}
             {product?.qty} = {parseInt(product?.price) * product?.qty} BDT
           </p>
         </div>

@@ -14,6 +14,7 @@ import useTheme from "@/hooks/use-theme";
 import Details from "../_product-details-page/product-details/eight/details";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import httpReq from "@/utils/http/axios/http.service";
+import { useRouter } from "next/navigation";
 
 const Card44 = ({ item }: any) => {
   const { design, store_id, makeid } = useTheme();
@@ -23,6 +24,7 @@ const Card44 = ({ item }: any) => {
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
+  const router = useRouter()
 
   const [view, setView] = useState(false);
 
@@ -151,7 +153,7 @@ const Card44 = ({ item }: any) => {
     } else {
       filterOfferProduct(item);
       if (store_id === 3144) {
-        // navigate("/checkout");
+        router.push("/checkout");
       }
     }
   };

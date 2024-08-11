@@ -22,6 +22,8 @@ import {
   decrementQty,
   incrementQty,
 } from "@/redux/features/product.slice";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
 
 const Card50 = ({ item }: any) => {
   const { store_id, design } = useTheme();
@@ -81,7 +83,7 @@ const Card50 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -233,7 +235,7 @@ const AddToCart = ({
       autoClose: 1000,
     });
 
-    axios
+    httpReq
       .post(
         "https://admin.ebitans.com/api/v1/" + "get/offer/product",
         productDetails

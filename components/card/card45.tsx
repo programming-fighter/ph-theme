@@ -1,32 +1,31 @@
-"use client";
 import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Rate from "@/utils/rate";
-import { addToCartList } from "@/redux/features/product.slice";
-import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
 import QuikView from "../quick-view";
-import Details from "@/components/_product-details-page/product-details/three/details";
+import Details from "../_product-details-page/product-details/three/details";
 
-const Card45 = ({ item }: any) => {
-  const { design, store_id, headerSetting } = useTheme();
+
+const Card45 = ({ item }:any) => {
+  const { design, makeid, store_id, headerSetting } = useTheme();
   const [camp, setCamp] = useState<any>(null);
-  const [view, setView] = useState<any>(false);
+  const [view, setView] = useState(false);
 
   const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
 
-  const [id, setId] = useState(0);
+  // const [id, setId] = useState(0)
 
   const secondImg = item?.image[1] ? item?.image[1] : item?.image[0];
 
@@ -35,16 +34,18 @@ const Card45 = ({ item }: any) => {
     item.discount_price,
     item.discount_type
   );
-  const campPrice = getPrice(
-    productGetPrice,
-    parseInt(camp?.discount_amount),
-    camp?.discount_type
+  const campPrice = (
+    getPrice(
+      productGetPrice,
+      parseInt(camp?.discount_amount),
+      camp?.discount_type
+    )
   );
 
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -82,77 +83,87 @@ const Card45 = ({ item }: any) => {
     }
   `;
 
-  const filterOfferProduct = (item: any) => {
+  const filterOfferProduct = (item:any) => {
     let cartItem = {};
     let productDetails = {
       id: item?.id,
-      store_id
+      store_id,
     };
     toast("Added to Cart", {
       type: "success",
-      autoClose: 1000
+      autoClose: 1000,
     });
 
-    axios
-      .post(process.env.API_URL + "get/offer/product", productDetails)
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
+    httpReq.post("get/offer/product", productDetails).then((res) => {
+      if (!res?.error) {
+        let itemRegularPrice = (
+          getPrice(
             item?.regular_price,
             item?.discount_price,
             item?.discount_type
-          );
-          let campaignPrice = getPrice(
+          )
+        );
+        let campaignPrice = (
+          getPrice(
             itemRegularPrice,
             parseInt(res?.discount_amount),
             res?.discount_type
-          );
-          if (res?.discount_amount === null) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: itemRegularPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campaignPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item
-            };
-          }
-        } else {
+          )
+        );
+        if (res?.discount_amount === null) {
           cartItem = {
-            cartId: uuidv4(),
-            price: productGetPrice,
+            cartId: makeid(100),
+            price: itemRegularPrice,
             color: null,
             size: null,
             additional_price: null,
             volume: null,
             unit: null,
-            ...item
+            ...item,
+          };
+        } else {
+          cartItem = {
+            cartId: makeid(100),
+            price: campaignPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
           };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        cartItem = {
+          cartId: makeid(100),
+          price: productGetPrice,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_cart_item = () => {
     if (item?.variant.length !== 0) {
-      setView(view);
+      setView(!view);
     } else {
       filterOfferProduct(item);
     }
   };
+
+  // check discount
+
+  let discountPrefix = item.discount_type === "fixed" ? "TK" : "";
+
+  if (store_id === 6227) {
+    discountPrefix = "";
+  }
 
   return (
     <div className="group">
@@ -166,7 +177,7 @@ const Card45 = ({ item }: any) => {
             </p>
           </div>
         )}
-       
+        <Link href={"/product/" + item?.id + "/" + item?.slug}>
           <div className="relative overflow-hidden">
             <img
               src={productImg + item.image[0]}
@@ -189,16 +200,18 @@ const Card45 = ({ item }: any) => {
             item.discount_price === "0.00" ? (
               ""
             ) : (
-              <div className="absolute text-center text-xs h-12 w-12 rounded-full flex flex-wrap justify-center items-center bg-color text-white top-2 right-2 ">
-                <p className="">
-                  Dis.{Math.trunc(item.discount_price)}{" "}
-                  {item.discount_type === "fixed" ? "TK" : ""}{" "}
-                  {item.discount_type === "percent" ? "%" : ""}
-                </p>
-              </div>
+              <>
+                <div className="absolute text-center text-xs h-12 w-12 rounded-full flex flex-wrap justify-center items-center bg-color text-white top-2 right-2 ">
+                  <p className="">
+                    Dis.{Math.trunc(item.discount_price)}
+                    {discountPrefix}
+                    {item.discount_type === "percent" ? "%" : ""}
+                  </p>
+                </div>
+              </>
             )}
           </div>
-        
+        </Link>
 
         <div className="flex flex-col gap-2 px-4 py-3 lg:group-hover:pb-[40px] duration-1000 w-full">
           <div className="flex gap-x-1 pt-2">

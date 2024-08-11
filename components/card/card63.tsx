@@ -20,6 +20,8 @@ import {
 } from "@/redux/features/product.slice";
 import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/five/details";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
 
 const Card63 = ({ item }: any) => {
   const { design, store_id } = useTheme();
@@ -71,7 +73,7 @@ const Card63 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -143,7 +145,7 @@ const Card63 = ({ item }: any) => {
       autoClose: 1000,
     });
 
-    axios
+    httpReq
       .post(
         "https://admin.ebitans.com/api/v1/" + "get/offer/product",
         productDetails
@@ -318,7 +320,7 @@ const Card63 = ({ item }: any) => {
                   onClick={add_cart_item}
                   className="flex justify-center items-center lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 text-white h-max text-2xl px-10 text-center lg:cursor-pointer"
                 >
-                  Add to Shopping Bag
+                  Add to Shopping Cart
                 </p>
               )}
             </div>
@@ -347,7 +349,7 @@ const Card63 = ({ item }: any) => {
               className="w-full mt-2 bg-white text-color-thirty text-sm md:text-base border font-bold flex px-2 h-10 justify-center gap-1 items-center lg:cursor-pointer"
             >
               <AiFillThunderbolt />
-              <p className="">Add to bag</p>
+              <p className="">Add to Cart</p>
             </div>
           )}
         </div>

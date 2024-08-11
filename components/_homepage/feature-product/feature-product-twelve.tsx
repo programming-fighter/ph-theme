@@ -11,6 +11,8 @@ import { getPrice } from "@/utils/get-price";
 import Link from "next/link";
 import { productImg } from "@/site-settings/siteUrl";
 import Taka from "@/utils/taka";
+import QuikView from "@/components/quick-view";
+import Details from "@/components/_product-details-page/product-details/three/details";
 
 const FeatureProductTwelve = ({ feature_product, design }: any) => {
   const prevEl = "feature-product-prev";
@@ -90,7 +92,7 @@ const Card = ({ item }: any) => {
           </div>
 
           <div className=" flex flex-col justify-center font-twelve gap-2 ">
-            <h6 className="text-sm capitalize font-twelve text-gray-500">
+            <h6 className="text-sm hover:text-green-600 capitalize font-twelve text-gray-500">
               {" "}
               {item.name.slice(0, 18)}
               {item.name.length > 18 && "..."}
@@ -99,9 +101,9 @@ const Card = ({ item }: any) => {
           </div>
         </div>
       </Link>
-      {/* <QuikView open={open} setOpen={setOpen}>
+      <QuikView open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
-      </QuikView> */}
+      </QuikView>
     </>
   );
 };
