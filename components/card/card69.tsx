@@ -18,6 +18,7 @@ import { Navigation } from "swiper/modules";
 import Link from "next/link";
 import { productImg } from "@/site-settings/siteUrl";
 import BDT from "@/utils/bdt";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 
 const Card69 = ({ item }: any) => {
   const { design, store_id } = useTheme();
@@ -40,7 +41,7 @@ const Card69 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -85,7 +86,7 @@ const Card69 = ({ item }: any) => {
     <div className="bg-white relative group">
       <div className="">
         <style>{styleCss}</style>
-        {/* <Link href={"/product/" + item?.id + "/" + item?.slug}>
+        <Link href={"/product/" + item?.id + "/" + item?.slug}>
           <div className="relative overflow-hidden">
             <img
               src={productImg + item.image[0]}
@@ -93,7 +94,7 @@ const Card69 = ({ item }: any) => {
               className="h-auto min-w-full object-center object-cover"
             />
           </div>
-        </Link> */}
+        </Link>
         <Swiper
           loop={item?.image?.length > 1 ? true : false}
           navigation={{

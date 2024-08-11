@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import QuikView from "../quick-view";
 import Details from "@/components/_product-details-page/product-details/three/details";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 
 const Card26 = ({ item }: any) => {
   const { design, makeid, store_id } = useTheme();
@@ -37,7 +38,7 @@ const Card26 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object

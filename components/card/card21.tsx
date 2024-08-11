@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
 import Details from "../_product-details-page/product-details/three/details";
 import QuikView from "../quick-view";
 const Card21 = ({ item, design, store_id }: any) => {
@@ -23,8 +22,8 @@ const Card21 = ({ item, design, store_id }: any) => {
   const { makeid } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
-  //   const {} = useTheme();
-  const dispatch = useDispatch();
+  
+    const dispatch = useDispatch();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -63,22 +62,27 @@ const Card21 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    httpReq.post("get/offer/product", productDetails).then((res: any) => {
-      if (!res?.error) {
-        let itemRegularPrice = getPrice(
-          item?.regular_price,
-          item?.discount_price,
-          item?.discount_type
-        );
-        let campaignPrice = getPrice(
-          itemRegularPrice,
-          parseInt(res?.discount_amount),
-          res?.discount_type
-        );
+    httpReq
+      .post(
+        "get/offer/product",
+        productDetails
+      )
+      .then((res: any) => {
+        if (!res?.error) {
+          let itemRegularPrice = getPrice(
+            item?.regular_price,
+            item?.discount_price,
+            item?.discount_type
+          );
+          let campaignPrice = getPrice(
+            itemRegularPrice,
+            parseInt(res?.discount_amount),
+            res?.discount_type
+          );
 
         if (res?.discount_amount === null) {
           cartItem = {
-            cartId: uuidv4(),
+            cartId: makeid(100),
             price: itemRegularPrice,
             color: null,
             size: null,
@@ -89,7 +93,7 @@ const Card21 = ({ item, design, store_id }: any) => {
           };
         } else {
           cartItem = {
-            cartId: uuidv4(),
+            cartId: makeid(100),
             price: campaignPrice,
             color: null,
             size: null,
@@ -99,20 +103,8 @@ const Card21 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-      } else {
-        cartItem = {
-          cartId: uuidv4(),
-          price: productGetPrice,
-          color: null,
-          size: null,
-          additional_price: null,
-          volume: null,
-          unit: null,
-          ...item,
-        };
-      }
-      dispatch(addToCartList({ ...cartItem }));
-    });
+        dispatch(addToCartList({ ...cartItem }));
+      });
   };
 
   const addBtn = (item: any) => {
@@ -161,7 +153,7 @@ const Card21 = ({ item, design, store_id }: any) => {
             />
           </Link>
           <div
-            className="absolute top-1/2 -translate-y-1/2 rounded-xl hidden group-hover:flex h-[60px] px-3 left-1/2 -translate-x-1/2  justify-start items-center bg-white"
+            className="absolute top-1/2 -translate-y-1/2 rounded-xl hidden group-hover:flex h-[60px] px-3 left-1/2 -translate-x-1/2  justify-start items-center hover:border hover:border-green-700 hover:rounded-full "
             onClick={() => setOpen(!open)}
           >
             <AiOutlineEye
@@ -232,7 +224,7 @@ const Card21 = ({ item, design, store_id }: any) => {
                   }}
                 >
                   <AiOutlineShoppingCart className="mt-1 ml-2 xl:ml-0  text-base" />{" "}
-                  {store_id === 3144 ? "Order Now" : "Add"}{" "}
+                  {store_id === 3144  ? "Order Now" : "Add"}{" "}
                 </button>
               </div>
             </div>

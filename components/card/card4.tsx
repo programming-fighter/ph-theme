@@ -1,5 +1,5 @@
 "use client";
-import useTheme from "@/hooks/use-theme";
+
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
@@ -7,16 +7,17 @@ import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Rate from "@/utils/rate";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Details from "../_product-details-page/product-details/three/details";
+import { useRouter } from "next/navigation";
+import useTheme from "@/hooks/use-theme";
 import QuikView from "../quick-view";
 
 const Card4 = ({ item, design, store_id }: any) => {
-  const { makeid } = useTheme();
+  const {makeid}= useTheme()
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
@@ -75,18 +76,23 @@ const Card4 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    httpReq.post("get/offer/product", productDetails).then((res: any) => {
-      if (!res?.error) {
-        let itemRegularPrice = getPrice(
-          item?.regular_price,
-          item?.discount_price,
-          item?.discount_type
-        );
-        let campaignPrice = getPrice(
-          itemRegularPrice,
-          parseInt(res?.discount_amount),
-          res?.discount_type
-        );
+   httpReq
+      .post(
+     "get/offer/product",
+        productDetails
+      )
+      .then((res: any) => {
+        if (!res?.error) {
+          let itemRegularPrice = getPrice(
+            item?.regular_price,
+            item?.discount_price,
+            item?.discount_type
+          );
+          let campaignPrice = getPrice(
+            itemRegularPrice,
+            parseInt(res?.discount_amount),
+            res?.discount_type
+          );
 
         cartItem = {
           cartId: makeid(100),
@@ -206,7 +212,7 @@ const Card4 = ({ item, design, store_id }: any) => {
           </div>
         </div>
       </div>
-      <QuikView open={open} setOpen={setOpen}>
+      <QuikView  open={open} setOpen={setOpen}>
         <Details data={{ product_id: item?.id }} />
       </QuikView>
     </>
