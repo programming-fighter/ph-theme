@@ -15,6 +15,8 @@ import { useDispatch } from "react-redux";
 import { addToCartList } from "@/redux/features/product.slice";
 import QuikView from "../quick-view";
 import Details from "../_product-details-page/product-details/eight/details";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
 
 const Card18 = ({ item, store_id }: any) => {
   const dispatch = useDispatch();
@@ -35,7 +37,7 @@ const Card18 = ({ item, store_id }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -58,7 +60,7 @@ const Card18 = ({ item, store_id }: any) => {
       autoClose: 1000,
     });
 
-    axios.post("get/offer/product", productDetails).then((res: any) => {
+    httpReq.post("get/offer/product", productDetails).then((res: any) => {
       if (!res?.error) {
         let itemRegularPrice = getPrice(
           item?.regular_price,
@@ -165,7 +167,7 @@ const Card18 = ({ item, store_id }: any) => {
       <Link href={"/product/" + item?.id + "/" + item?.slug}>
         {" "}
         <div className="p-[10px] bg-[#f1f1f1] h-[90px] w-full">
-          <h2 className="text-md capitalize lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]">
+          <h2 className="text-md hover:text-green-600 capitalize lg:text-lg whitespace-nowrap overflow-hidden text-ellipsis sm:max-w-[170px] max-w-[150px]">
             {item?.name}
           </h2>
           <div className="flex justify-between items-center flex-wrap">

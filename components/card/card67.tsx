@@ -69,7 +69,7 @@ const Card67 = ({ item, design, store_id }: any) => {
   `;
 
   return (
-    <div className="bg-white relative group">
+    <div className="bg-white h-[700px] relative group">
       <div className="">
         <style>{styleCss}</style>
         <Link href={"/product/" + item?.id + "/" + item?.slug}>
@@ -92,7 +92,11 @@ const Card67 = ({ item, design, store_id }: any) => {
               {item?.name}
             </h1>
           </Link>
-          {/* <Link to={'/category/' + item?.category} ><h1 className='text-sm sm:text-[15px] capitalize truncate'>{item?.category}</h1>  </Link> */}
+          <Link href={"/category/" + item?.category}>
+            <h1 className="text-sm sm:text-[15px] capitalize truncate">
+              {item?.category}
+            </h1>{" "}
+          </Link>
         </div>
 
         <div className="font-semibold flex items-center gap-2 w-full">

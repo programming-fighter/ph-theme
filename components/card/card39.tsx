@@ -17,12 +17,12 @@ import QuikView from "../quick-view";
 const Card39 = ({ item }: any) => {
   const { makeid, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
+  const router = useRouter();
 
   const [open, setOpen] = useState(false);
-  // const [view, setView] = useState(false)
+  const [view, setView] = useState(false);
 
   const dispatch = useDispatch();
-  const router = useRouter();
 
   const productGetPrice = getPrice(
     item.regular_price,

@@ -16,16 +16,16 @@ import { toast } from "react-toastify";
 import QuikView from "../quick-view";
 
 const Card45 = ({ item }: any) => {
-  const { design, store_id, headerSetting, makeid } = useTheme();
+  const { design, makeid, store_id, headerSetting } = useTheme();
   const [camp, setCamp] = useState<any>(null);
-  const [view, setView] = useState<any>(false);
+  const [view, setView] = useState(false);
 
   const dispatch = useDispatch();
 
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
 
-  const [id, setId] = useState(0);
+  // const [id, setId] = useState(0)
 
   const secondImg = item?.image[1] ? item?.image[1] : item?.image[0];
 
@@ -43,7 +43,7 @@ const Card45 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaignProduct(item, store_id);
+        const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -144,11 +144,19 @@ const Card45 = ({ item }: any) => {
   };
   const add_cart_item = () => {
     if (item?.variant.length !== 0) {
-      setView(view);
+      setView(!view);
     } else {
       filterOfferProduct(item);
     }
   };
+
+  // check discount
+
+  let discountPrefix = item.discount_type === "fixed" ? "TK" : "";
+
+  if (store_id === 6227) {
+    discountPrefix = "";
+  }
 
   return (
     <div className="group">
@@ -162,38 +170,41 @@ const Card45 = ({ item }: any) => {
             </p>
           </div>
         )}
+        <Link href={"/product/" + item?.id + "/" + item?.slug}>
+          <div className="relative overflow-hidden">
+            <img
+              src={productImg + item.image[0]}
+              alt=""
+              className="h-auto min-w-full object-center object-cover group-hover:hidden block hover:scale-105 transform transition duration-700 ease-in-out"
+            />
+            <img
+              src={productImg + secondImg}
+              alt=""
+              className="h-auto min-w-full object-center object-cover group-hover:block hidden hover:scale-105 transform transition duration-500"
+            />
 
-        <div className="relative overflow-hidden">
-          <img
-            src={productImg + item.image[0]}
-            alt=""
-            className="h-auto min-w-full object-center object-cover group-hover:hidden block hover:scale-105 transform transition duration-700 ease-in-out"
-          />
-          <img
-            src={productImg + secondImg}
-            alt=""
-            className="h-auto min-w-full object-center object-cover group-hover:block hidden hover:scale-105 transform transition duration-500"
-          />
-
-          <div
-            onClick={() => setView(!view)}
-            className="w-10 h-10 rounded-full lg:cursor-pointer bg-white searchHover flex justify-center items-center absolute group-hover:opacity-100 opacity-0 scale-50 group-hover:scale-100 duration-500 left-[45%] top-[45%]"
-          >
-            <BiSearch className="text-xl text-center" />
-          </div>
-          {item?.discount_type === "no_discount" ||
-          item.discount_price === "0.00" ? (
-            ""
-          ) : (
-            <div className="absolute text-center text-xs h-12 w-12 rounded-full flex flex-wrap justify-center items-center bg-color text-white top-2 right-2 ">
-              <p className="">
-                Dis.{Math.trunc(item.discount_price)}{" "}
-                {item.discount_type === "fixed" ? "TK" : ""}{" "}
-                {item.discount_type === "percent" ? "%" : ""}
-              </p>
+            <div
+              onClick={() => setView(!view)}
+              className="w-10 h-10 rounded-full lg:cursor-pointer bg-white searchHover flex justify-center items-center absolute group-hover:opacity-100 opacity-0 scale-50 group-hover:scale-100 duration-500 left-[45%] top-[45%]"
+            >
+              <BiSearch className="text-xl text-center" />
             </div>
-          )}
-        </div>
+            {item?.discount_type === "no_discount" ||
+            item.discount_price === "0.00" ? (
+              ""
+            ) : (
+              <>
+                <div className="absolute text-center text-xs h-12 w-12 rounded-full flex flex-wrap justify-center items-center bg-color text-white top-2 right-2 ">
+                  <p className="">
+                    Dis.{Math.trunc(item.discount_price)}
+                    {discountPrefix}
+                    {item.discount_type === "percent" ? "%" : ""}
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
+        </Link>
 
         <div className="flex flex-col gap-2 px-4 py-3 lg:group-hover:pb-[40px] duration-1000 w-full">
           <div className="flex gap-x-1 pt-2">

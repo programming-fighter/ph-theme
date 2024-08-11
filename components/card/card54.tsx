@@ -1,4 +1,3 @@
-"use client";
 import shape from "@/assets/img/shape.png";
 import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
@@ -14,8 +13,9 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Details from "../_product-details-page/product-details/three/details";
 import QuikView from "../quick-view";
-const Card54 = ({ item, design, store_id }: any) => {
-  const { makeid } = useTheme();
+
+const Card54 = ({ item }: any) => {
+  const { design, makeid, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const Card54 = ({ item, design, store_id }: any) => {
   const [view, setView] = useState(false);
 
   const unitAddPrice =
-    parseInt(item.regular_price) +
+    item.regular_price +
     (item?.variant[0]?.unit && item?.variant[0]?.additional_price
       ? parseInt(item?.variant[0]?.additional_price)
       : 0);
@@ -53,11 +53,21 @@ const Card54 = ({ item, design, store_id }: any) => {
     item.discount_price,
     item.discount_type
   );
-  const campPrice = getPrice(
+  const campPrice: any = getPrice(
     price,
     parseInt(camp?.discount_amount),
     camp?.discount_type
   );
+
+  console.log(camp, "camp");
+
+  console.log({
+    unitAddPrice,
+    productGetPrice,
+    campPriceUnit,
+    campPrice,
+    price,
+  });
 
   useEffect(() => {
     async function handleCampaign() {
@@ -133,7 +143,7 @@ const Card54 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    httpReq.post("get/offer/product", productDetails).then((res: any) => {
+    httpReq.post("get/offer/product", productDetails).then((res) => {
       if (!res?.error) {
         if (item?.variant[0]?.unit && store_id === 2109) {
           cartItem = {
@@ -315,13 +325,13 @@ const Card54 = ({ item, design, store_id }: any) => {
                   <div className="flex items-center gap-1">
                     <p className="text-color text-sm font-bold">
                       <BDT />
-                      {campPrice ? campPrice : productGetPrice || 0 + smallest}
+                      {(campPrice ? campPrice : productGetPrice) + smallest}
                     </p>
                     {largest > smallest && (
                       <p className="text-color text-sm font-bold">
                         {" "}
                         - <BDT />{" "}
-                        {campPrice ? campPrice : productGetPrice || 0 + largest}
+                        {(campPrice ? campPrice : productGetPrice) + largest}
                       </p>
                     )}
                   </div>

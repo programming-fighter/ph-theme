@@ -59,6 +59,9 @@ const RenderSection = memo(({ component, data }: RenderSectionProps) => {
     brand,
   } = data;
 
+
+ 
+
   switch (component) {
     case "hero_slider":
       return (
@@ -105,6 +108,7 @@ const RenderSection = memo(({ component, data }: RenderSectionProps) => {
         />
       );
     case "new_arrival":
+
       return (
         <NewArrival
           product={product}

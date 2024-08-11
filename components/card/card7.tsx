@@ -17,6 +17,8 @@ import { useDispatch } from "react-redux";
 import { addToCartList } from "@/redux/features/product.slice";
 import QuikView from "../quick-view";
 import Details from "@/components/_product-details-page/product-details/three/details";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import httpReq from "@/utils/http/axios/http.service";
 
 const Card7 = ({ item }: any) => {
   const [open, setOpen] = useState(false);
@@ -40,7 +42,7 @@ const Card7 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response: any = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } else {
@@ -98,7 +100,7 @@ const Card7 = ({ item }: any) => {
       autoClose: 1000
     });
 
-    axios
+    httpReq
       .post("get/offer/product", productDetails)
       .then((res: any) => {
         if (!res?.error) {

@@ -312,7 +312,7 @@ const Card63 = ({ item }: any) => {
                   onClick={add_cart_item}
                   className="flex justify-center items-center lg:absolute lg:z-[2] top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 text-white h-max text-2xl px-10 text-center lg:cursor-pointer"
                 >
-                  Add to Shopping Bag
+                  Add to Shopping Cart
                 </p>
               )}
             </div>
@@ -341,7 +341,7 @@ const Card63 = ({ item }: any) => {
               className="w-full mt-2 bg-white text-color-thirty text-sm md:text-base border font-bold flex px-2 h-10 justify-center gap-1 items-center lg:cursor-pointer"
             >
               <AiFillThunderbolt />
-              <p className="">Add to bag</p>
+              <p className="">Add to Cart</p>
             </div>
           )}
         </div>
