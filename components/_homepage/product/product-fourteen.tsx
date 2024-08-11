@@ -1,32 +1,20 @@
 "use client";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import SectionHeadingSixteen from "@/components/section-heading/section-heading-sixteen";
 import Card29 from "@/components/card/card29";
+import SectionHeadingSixteen from "@/components/section-heading/section-heading-sixteen";
+import httpReq from "@/utils/http/axios/http.service";
+import { useEffect, useState } from "react";
 
 const ProductFourteen = ({ category, design, store_id }: any) => {
   const [active, setActive] = useState(0);
   const [products, setProducts] = useState([]);
   const [id, setId] = useState(0);
 
-  // useEffect(() => {
-
-  //     const result = product.filter((product) => {
-  //         return category[id].id === Number(product?.category_id)
-  //     })
-  //     setProducts(result)
-
-  // }, [id, product, category])
-
   useEffect(() => {
     async function handleCategory() {
       try {
-        const response: any = await axios.post(
-          process.env.API_URL + `getcatproducts`,
-          {
-            id: category[id].id,
-          }
-        );
+        const response = await httpReq.post(`getcatproducts`, {
+          id: category[id].id,
+        });
         if (!response?.error) {
           setProducts(response?.data?.data);
         } // the API response object
@@ -50,13 +38,15 @@ const ProductFourteen = ({ category, design, store_id }: any) => {
 
     `;
 
+  console.log(category[id], "cat");
+
   return (
     <div className="bg-white sm:container px-5 sm:py-10 py-5 mx-auto">
       <style>{styleCss}</style>
       <div className="bg-white">
         <SectionHeadingSixteen title={"Products"} subtitle={""} />
         <div className="flex sm:gap-x-5 gap-x-2 justify-center pb-8 lg:cursor-pointer uppercase">
-          {category?.slice(0, 3).map((item: any, index: any) => (
+          {category?.slice(0, 4).map((item: any, index: any) => (
             <div key={item.id}>
               <h1
                 className={`${

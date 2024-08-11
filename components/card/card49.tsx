@@ -1,20 +1,22 @@
 "use client";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { MdAddShoppingCart } from "react-icons/md";
-import Link from "next/link";
-import BDT from "@/utils/bdt";
-import { productImg } from "@/site-settings/siteUrl";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { MdAddShoppingCart } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import Details from "../_product-details-page/product-details/three/details";
 import QuikView from "../quick-view";
-import Details from "../_product-details-page/product-details/eight/details";
 
-const Card49 = ({ item, design, store_id }: any) => {
+const Card49 = ({ item }: any) => {
+  const { design, makeid, store_id } = useTheme();
+
   const [view, setView] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
@@ -34,7 +36,7 @@ const Card49 = ({ item, design, store_id }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -55,7 +57,7 @@ const Card49 = ({ item, design, store_id }: any) => {
       }
     .bg-color {
         color:  ${design?.text_color};
-        background: ${design?.header_color};
+        background: ${design.header_color};
     }
   `;
 
@@ -71,56 +73,38 @@ const Card49 = ({ item, design, store_id }: any) => {
       id: item?.id,
       store_id,
     };
-
-    toast("Added href Cart", {
+    toast("Added to Cart", {
       type: "success",
       autoClose: 1000,
     });
 
-    axios
-      .post(
-        "https://admin.ebitans.com/api/v1/" + "get/offer/product",
-        productDetails
-      )
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          );
-          let campaignPrice = getPrice(
-            itemRegularPrice,
-            parseInt(res?.discount_amount),
-            res?.discount_type
-          );
-          if (res?.discount_amount === null) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: itemRegularPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campaignPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+    httpReq.post("get/offer/product", productDetails).then((res) => {
+      if (!res?.error) {
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
+        );
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
+        );
+        if (res?.discount_amount === null) {
+          cartItem = {
+            cartId: makeid(100),
+            price: itemRegularPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         } else {
           cartItem = {
-            cartId: uuidv4(),
-            price: price,
+            cartId: makeid(100),
+            price: campaignPrice,
             color: null,
             size: null,
             additional_price: null,
@@ -129,8 +113,20 @@ const Card49 = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        cartItem = {
+          cartId: makeid(100),
+          price: price,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_cart_item = () => {
@@ -195,7 +191,7 @@ const Card49 = ({ item, design, store_id }: any) => {
         </div>
         <div
           onClick={add_cart_item}
-          className="lg:cursor-pointer border hover:border hover:border-gray-500 hover:p-1 hover:rounded-full   p-2 duration-300 absolute top-2 right-2 bg-white"
+          className="lg:cursor-pointer border p-2 duration-300 absolute top-2 right-2 bg-white"
         >
           <MdAddShoppingCart className="text-2xl" />
         </div>

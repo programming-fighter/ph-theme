@@ -1,8 +1,3 @@
-"use client";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-
 import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
@@ -12,8 +7,11 @@ import httpReq from "@/utils/http/axios/http.service";
 import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import Rate from "@/utils/rate";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { IoSearchCircleOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import Details from "../_product-details-page/product-details/three/details";
 import QuikView from "../quick-view";
@@ -231,7 +229,7 @@ const Card23 = ({ item }: any) => {
           <div className="flex justify-center items-center ">
             <div className="flex gap-x-2 px-2">
               <div className="text-base font-semibold">
-                <BDT />{" "}
+                <BDT />
                 {camp?.status === "active"
                   ? campPrice
                   : store_id === 2109

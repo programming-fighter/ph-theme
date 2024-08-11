@@ -1,13 +1,12 @@
 "use client";
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import "./product-twentyfour.css";
-import axios from "axios";
-import SectionHeadingTwentyFour from "@/components/section-heading/section-heading-twenty-four";
-import Card49 from "@/components/card/card49";
+import { useEffect, useState } from "react";
 
-const ProductTwentyFour = ({ category, design, store_id }: any) => {
+import Card49 from "@/components/card/card49";
+import SectionHeadingTwentyFour from "@/components/section-heading/section-heading-twenty-four";
+import httpReq from "@/utils/http/axios/http.service";
+import "./product-twentyfour.css";
+
+const ProductTwentyFour = ({ product, store_id, design, category }: any) => {
   const [active, setActive] = useState(0);
   const [products, setProducts] = useState([]);
   const [id, setId] = useState(0);
@@ -15,12 +14,11 @@ const ProductTwentyFour = ({ category, design, store_id }: any) => {
   useEffect(() => {
     async function handleCategory() {
       try {
-        const response: any = await axios.post(
-          "https://admin.ebitans.com/api/v1/" + `getcatproducts`,
-          { id: category[id].id }
-        );
+        const response = await httpReq.post(`getcatproducts`, {
+          id: category[id].id,
+        });
         if (!response?.error) {
-          setProducts(response?.data?.datat);
+          setProducts(response?.data?.data);
         } // the API response object
         else {
           setProducts([]);
@@ -40,6 +38,8 @@ const ProductTwentyFour = ({ category, design, store_id }: any) => {
         
     }
  `;
+
+  console.log(products, "prd");
 
   return (
     <div className="sm:container px-5 sm:py-10 py-5 w-full">
@@ -76,7 +76,7 @@ const ProductTwentyFour = ({ category, design, store_id }: any) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {products?.slice(0, 8).map((productData: any) => (
             <div key={productData.id}>
-              <Card49 item={productData} design={design} store_id={store_id} />
+              <Card49 item={productData} />
             </div>
           ))}
         </div>

@@ -1,22 +1,23 @@
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
-import QuikView from "../quick-view";
-import Details from "../_product-details-page/product-details/three/details";
-import { addToCartList } from "@/redux/features/product.slice";
 import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import Details from "../_product-details-page/product-details/three/details";
+import QuikView from "../quick-view";
 
-const Card25 = ({ item, design, store_id }: any) => {
+const Card25 = ({ item }: any) => {
+  const { design, makeid, store_id } = useTheme();
+
   const bgColor = design?.header_color;
   const textColor = design?.text_color;
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [view, setView] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
@@ -28,13 +29,13 @@ const Card25 = ({ item, design, store_id }: any) => {
   const campPrice = getPrice(
     productGetPrice,
     parseInt(camp?.discount_amount),
-    parseInt(camp?.discount_type)
+    camp?.discount_type
   );
 
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -77,45 +78,43 @@ const Card25 = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    httpReq
-      .post(process.env.API_URL + "get/offer/product", productDetails)
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          );
-          let campaignPrice = getPrice(
-            itemRegularPrice,
-            parseInt(res?.discount_amount),
-            res?.discount_type
-          );
+    httpReq.post("get/offer/product", productDetails).then((res) => {
+      if (!res?.error) {
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
+        );
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
+        );
 
-          cartItem = {
-            cartId: uuidv4(),
-            price: campaignPrice,
-            color: null,
-            size: null,
-            additional_price: null,
-            volume: null,
-            unit: null,
-            ...item,
-          };
-        } else {
-          cartItem = {
-            cartId: uuidv4(),
-            price:price,
-            color: null,
-            size: null,
-            additional_price: null,
-            volume: null,
-            unit: null,
-            ...item,
-          };
-        }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+        cartItem = {
+          cartId: makeid(100),
+          price: campaignPrice,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      } else {
+        cartItem = {
+          cartId: makeid(100),
+          price: price,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_cart_item = () => {

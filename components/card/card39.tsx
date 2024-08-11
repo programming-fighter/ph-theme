@@ -1,31 +1,28 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
-import Link from "next/link";
-import { productImg } from "@/site-settings/siteUrl";
-import BDT from "@/utils/bdt";
-import Bdt from "@/utils/bdt";
-import { toast } from "react-toastify";
-import QuikView from "../quick-view";
-import Details from "@/components/_product-details-page/product-details/three/details";
 import useTheme from "@/hooks/use-theme";
 import { addToCartList } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import Details from "../_product-details-page/product-details/three/details";
+import QuikView from "../quick-view";
 
 const Card39 = ({ item }: any) => {
-  const { store_id } = useTheme();
-  const router = useRouter();
+  const { makeid, store_id } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
   const [open, setOpen] = useState(false);
-  const [view, setView] = useState(false);
+  // const [view, setView] = useState(false)
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const router = useRouter();
 
   const productGetPrice = getPrice(
     item.regular_price,
@@ -41,7 +38,7 @@ const Card39 = ({ item }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -64,47 +61,33 @@ const Card39 = ({ item }: any) => {
       autoClose: 1000,
     });
 
-    axios
-      .post(process.env.API_URL + "get/offer/product", productDetails)
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          );
-          let campaignPrice = getPrice(
-            itemRegularPrice,
-            parseInt(res?.discount_amount),
-            res?.discount_type
-          );
-          if (res?.discount_amount === null) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: itemRegularPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campaignPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+    httpReq.post("get/offer/product", productDetails).then((res) => {
+      if (!res?.error) {
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
+        );
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
+        );
+        if (res?.discount_amount === null) {
+          cartItem = {
+            cartId: makeid(100),
+            price: itemRegularPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         } else {
           cartItem = {
-            cartId: uuidv4(),
-            price: productGetPrice,
+            cartId: makeid(100),
+            price: campaignPrice,
             color: null,
             size: null,
             additional_price: null,
@@ -113,8 +96,20 @@ const Card39 = ({ item }: any) => {
             ...item,
           };
         }
-        dispatch(addToCartList({ ...cartItem }));
-      });
+      } else {
+        cartItem = {
+          cartId: makeid(100),
+          price: productGetPrice,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_cart_item = () => {
@@ -182,7 +177,7 @@ const Card39 = ({ item }: any) => {
               ) : (
                 <p>
                   {" "}
-                  <Bdt price={Math.trunc(item.regular_price)} />
+                  <BDT price={Math.trunc(item.regular_price)} />
                 </p>
               )}
             </div>

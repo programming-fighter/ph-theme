@@ -2,31 +2,35 @@
 import { useEffect, useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { IoEyeSharp } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux"; // Import useDispatch and useSelector
+import { useDispatch, useSelector } from "react-redux";
 
-import Details from "@/components/_product-details-page/product-details/three/details";
-import QuikView from "@/components/quick-view";
-import { addToCartList } from "@/redux/features/product.slice";
-import { productImg } from "@/site-settings/siteUrl";
-import BDT from "@/utils/bdt";
-import { getPrice } from "@/utils/get-price";
-import { getCampaign } from "@/utils/http/get-campaign";
-import axios from "axios";
-import Link from "next/link";
-import { toast } from "react-toastify";
-import { v4 as uuidv4 } from "uuid";
 import "./product-card-two.css";
 // import CardModal from './CardModal';
 
-const ProductCardTwo = ({ item, design, store_id }: any) => {
+import Details from "@/components/_product-details-page/product-details/three/details";
+import QuikView from "@/components/quick-view";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList, decrementQty } from "@/redux/features/product.slice";
+import { productImg } from "@/site-settings/siteUrl";
+import BDT from "@/utils/bdt";
+import { getPrice } from "@/utils/get-price";
+import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Link from "next/link";
+import { toast } from "react-toastify";
+
+const ProductCardTwo = ({ item }: any) => {
   const [open, setOpen] = useState(false);
   const [camp, setCamp] = useState<any>(null);
 
+  const { design, makeid, store_id } = useTheme();
   const { name, image, variant } = item;
-  const dispatch = useDispatch(); // Add this line
+  // const [visible, setVisible] = useState(true)
+  // const [data, setData] = useState()
   const cartList = useSelector((state: any) => state.cart.cartList);
-  const result = cartList?.find((c: any) => c.id === item.id);
+  const dispatch = useDispatch();
 
+  const result = cartList?.find((c: any) => c.id === item.id);
   const price = getPrice(
     item.regular_price,
     item.discount_price,
@@ -46,7 +50,7 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
   useEffect(() => {
     async function handleCampaign() {
       try {
-        const response: any = await getCampaign(item, store_id);
+        const response = await getCampaignProduct(item, store_id);
         if (!response?.error) {
           setCamp(response);
         } // the API response object
@@ -69,48 +73,34 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
       autoClose: 1000,
     });
 
-    axios
-      .post(process.env.API_URL + "get/offer/product", productDetails)
-      .then((res: any) => {
-        if (!res?.error) {
-          let itemRegularPrice = getPrice(
-            item?.regular_price,
-            item?.discount_price,
-            item?.discount_type
-          );
-          let campaignPrice = getPrice(
-            itemRegularPrice,
-            parseInt(res?.discount_amount),
-            res?.discount_type
-          );
+    httpReq.post("get/offer/product", productDetails).then((res) => {
+      if (!res?.error) {
+        let itemRegularPrice = getPrice(
+          item?.regular_price,
+          item?.discount_price,
+          item?.discount_type
+        );
+        let campaignPrice = getPrice(
+          itemRegularPrice,
+          parseInt(res?.discount_amount),
+          res?.discount_type
+        );
 
-          if (res?.discount_amount === null) {
-            cartItem = {
-              cartId: uuidv4(),
-              price: itemRegularPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          } else {
-            cartItem = {
-              cartId: uuidv4(),
-              price: campaignPrice,
-              color: null,
-              size: null,
-              additional_price: null,
-              volume: null,
-              unit: null,
-              ...item,
-            };
-          }
+        if (res?.discount_amount === null) {
+          cartItem = {
+            cartId: makeid(100),
+            price: itemRegularPrice,
+            color: null,
+            size: null,
+            additional_price: null,
+            volume: null,
+            unit: null,
+            ...item,
+          };
         } else {
           cartItem = {
-            cartId: uuidv4(),
-            price: price,
+            cartId: makeid(100),
+            price: campaignPrice,
             color: null,
             size: null,
             additional_price: null,
@@ -119,8 +109,20 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
             ...item,
           };
         }
-        dispatch(addToCartList({ ...cartItem })); // Add this line
-      });
+      } else {
+        cartItem = {
+          cartId: makeid(100),
+          price: price,
+          color: null,
+          size: null,
+          additional_price: null,
+          volume: null,
+          unit: null,
+          ...item,
+        };
+      }
+      dispatch(addToCartList({ ...cartItem }));
+    });
   };
 
   const add_cart_item = (item: any) => {
@@ -149,7 +151,6 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
         )}
         <div className="block relative rounded overflow-hidden">
           <Link href={"/product/" + item?.id + "/" + item?.slug}>
-            {/* eslint-disable-next-line */}
             <img
               alt="ecommerce"
               className="w-full rounded-xl hover:rounded-sm hover:scale-105 transition-all duration-500 ease-linear object-cover p-5"
@@ -177,6 +178,7 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
               {name.length > 25 ? name.slice(0, 20) + "..." : name}
             </Link>
           </h3>
+
           <p className=" text-center text-lg font-semibold text-black">
             &#2547; {camp?.status === "active" ? campPrice : productGetPrice}
           </p>
@@ -190,6 +192,7 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
               <BDT price={item.regular_price} />
             </p>
           )}
+
           {result?.qty ? (
             <div
               className="mx-auto px-3 py-1 rounded-md shadow-sm flex justify-between text-black w-40 items-center"
@@ -197,7 +200,7 @@ const ProductCardTwo = ({ item, design, store_id }: any) => {
             >
               <AiOutlineMinus
                 color={design?.text_color}
-                // onClick={() => dispatch(decrementQty(result?.cartId))}
+                onClick={() => dispatch(decrementQty(result?.cartId))}
                 className="text-2xl lg:cursor-pointer"
               />
               <span className="text-xl" style={{ color: design?.text_color }}>

@@ -1,17 +1,6 @@
 "use client";
-import FooterDefault from "./footers/footer-default";
+import useTheme from "@/hooks/use-theme";
 import dynamic from "next/dynamic";
-import FooterOne from "./footers/footer-one";
-import FooterTwo from "./footers/footer-two";
-import FooterThree from "./footers/footer-three";
-import FooterFour from "./footers/footer-four";
-import FooterFive from "./footers/footer-five";
-import FooterSix from "./footers/footer-six";
-import FooterSeven from "./footers/footer-seven";
-import FooterEight from "./footers/footer-eight";
-import FooterNine from "./footers/footer-nine";
-import FooterEleven from "./footers/footer-eleven";
-import FooterTwelve from "./footers/footer-twelve";
 import {
   EIGHTEEN,
   FOURTEEN,
@@ -39,29 +28,33 @@ import {
   TWENTY_THREE,
   TWENTY_TWO,
 } from "../consts";
-import FooterThirteen from "./footers/footer-thirteen";
-import FooterFourteen from "./footers/footer-fourteen";
-import FooterSixteen from "./footers/footer-sixteen";
-import FooterSeventeen from "./footers/footer-seventeen";
+import FooterEight from "./footers/footer-eight";
 import FooterEighteen from "./footers/footer-eighteen";
+import FooterEleven from "./footers/footer-eleven";
+import FooterFour from "./footers/footer-four";
+import FooterFourteen from "./footers/footer-fourteen";
 import FooterNineteen from "./footers/footer-nineteen";
-import FooterTwenty from "./footers/footer-twenty";
-import FooterTwentyOne from "./footers/footer-twentyone";
-import FooterTwentyTwo from "./footers/footer-twentytwo";
-import FooterTwentyThree from "./footers/footer-twentythree";
-import FooterTwentyFour from "./footers/footer-twentyfour";
-import FooterTwentyFive from "./footers/footer-twentyfive";
-import FooterTwentySix from "./footers/footer-twentysix";
-import FooterTwentySeven from "./footers/footer-twentyseven";
-import FooterTwentyNine from "./footers/footer-twentynine";
+import FooterOne from "./footers/footer-one";
+import FooterSeven from "./footers/footer-seven";
+import FooterSeventeen from "./footers/footer-seventeen";
+import FooterSix from "./footers/footer-six";
+import FooterSixteen from "./footers/footer-sixteen";
+import FooterThirteen from "./footers/footer-thirteen";
 import FooterThirty from "./footers/footer-thirty";
-import FooterThirtyFour from "./footers/footer-thirtyfour";
 import FooterThirtyFive from "./footers/footer-thirtyfive";
-import FooterThirtySix from "./footers/footer-thirtysix";
+import FooterThirtyFour from "./footers/footer-thirtyfour";
 import FooterThirtySeven from "./footers/footer-thirtyseven";
-import FooterForty from "./footers/footer-forty";
-import useTheme from "@/hooks/use-theme";
-import axios from "axios";
+import FooterThirtySix from "./footers/footer-thirtysix";
+import FooterThree from "./footers/footer-three";
+import FooterTwenty from "./footers/footer-twenty";
+import FooterTwentyFive from "./footers/footer-twentyfive";
+import FooterTwentyNine from "./footers/footer-twentynine";
+import FooterTwentyOne from "./footers/footer-twentyone";
+import FooterTwentySeven from "./footers/footer-twentyseven";
+import FooterTwentySix from "./footers/footer-twentysix";
+import FooterTwentyThree from "./footers/footer-twentythree";
+import FooterTwentyTwo from "./footers/footer-twentytwo";
+import FooterTwo from "./footers/footer-two";
 const DynamicFooterDefault = dynamic(
   () => import("@/components/footers/footer-default"),
   {

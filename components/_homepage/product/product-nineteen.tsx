@@ -1,6 +1,5 @@
-import React from "react";
-import SectionHeadingNineteen from "@/components/section-heading/section-heading-nineteen";
 import Card39 from "@/components/card/card39";
+import SectionHeadingNineteen from "@/components/section-heading/section-heading-nineteen";
 
 const ProductNineteen = ({ product, store_id }: any) => {
   return (

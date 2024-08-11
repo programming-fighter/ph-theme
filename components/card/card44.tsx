@@ -1,21 +1,21 @@
 "use client";
+import useTheme from "@/hooks/use-theme";
+import { addToCartList } from "@/redux/features/product.slice";
 import { productImg } from "@/site-settings/siteUrl";
 import { getPrice } from "@/utils/get-price";
-import Taka from "@/utils/taka";
-import { addToCartList } from "@/redux/features/product.slice";
-import axios from "axios";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
-import QuikView from "../quick-view";
-import { toast } from "react-toastify";
-import useTheme from "@/hooks/use-theme";
-import Details from "../_product-details-page/product-details/eight/details";
-import { getCampaignProduct } from "@/utils/http/get-campaign-product";
 import httpReq from "@/utils/http/axios/http.service";
+import { getCampaignProduct } from "@/utils/http/get-campaign-product";
+import Taka from "@/utils/taka";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import Details from "../_product-details-page/product-details/eight/details";
+import QuikView from "../quick-view";
 
 const Card44 = ({ item }: any) => {
+  const router = useRouter();
   const { design, store_id, makeid } = useTheme();
   const [camp, setCamp] = useState<any>(null);
 
@@ -151,7 +151,7 @@ const Card44 = ({ item }: any) => {
     } else {
       filterOfferProduct(item);
       if (store_id === 3144) {
-        // navigate("/checkout");
+        router.push("/checkout");
       }
     }
   };

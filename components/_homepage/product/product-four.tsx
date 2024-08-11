@@ -1,6 +1,5 @@
-import React from "react";
-import SectionHeading from "@/components/section-heading/section-heading";
 import ProductCardTwo from "@/components/card/product-card/product-card-two";
+import SectionHeading from "@/components/section-heading/section-heading";
 
 const ProductFour = ({ product, design, store_id }: any) => {
   if (product.length === 0) {

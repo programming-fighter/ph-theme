@@ -1,31 +1,27 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import "./product-seventeen.css";
-
-import image from "./bg-img/17/show_divider_3_92x48.webp";
-import img1 from "./bg-img/17/offer_bg.webp";
-import img2 from "./bg-img/17/pink.png";
-import img3 from "./bg-img/17/brown.png";
-import img4 from "./bg-img/17/green.png";
-import img5 from "./bg-img/17/purple.png";
-
-import { SwiperSlide } from "swiper/react";
-
+import { useEffect, useState } from "react";
 import {
   ParallaxBanner,
   ParallaxBannerLayer,
   ParallaxProvider,
 } from "react-scroll-parallax";
+import { SwiperSlide } from "swiper/react";
 
-import axios from "axios";
+import Card33 from "@/components/card/card33";
 import SectionHeadingSeventeen from "@/components/section-heading/section-heading-seventeen";
+import SliderSeventeenSingleSlide from "@/components/slider/slider-seventeen-single";
 import { iconImg } from "@/site-settings/siteUrl";
 import ArrowSeventeen from "@/utils/arrow-seventeen";
-import SliderSeventeenSingleSlide from "@/components/slider/slider-seventeen-single";
-import Card33 from "@/components/card/card33";
-import Image from "next/image";
+import httpReq from "@/utils/http/axios/http.service";
+import img3 from "./bg-img/17/brown.png";
+import img4 from "./bg-img/17/green.png";
+import img1 from "./bg-img/17/offer_bg.webp";
+import img2 from "./bg-img/17/pink.png";
+import img5 from "./bg-img/17/purple.png";
+import image from "./bg-img/17/show_divider_3_92x48.webp";
+import "./product-seventeen.css";
 
-const ProductSeventeen = ({ category, design, store_id }: any) => {
+const ProductSeventeen = ({ category, product, design, store_id }: any) => {
   const [active, setActive] = useState(0);
   const [products, setProducts] = useState([]);
   const [id, setId] = useState(0);
@@ -33,14 +29,11 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
   useEffect(() => {
     async function handleCategory() {
       try {
-        const response: any = await axios.post(
-          "https://admin.ebitans.com/api/v1/" + `getcatproducts`,
-          {
-            id: category[id].id,
-          }
-        );
+        const response = await httpReq.post(`getcatproducts`, {
+          id: category[id].id,
+        });
         if (!response?.error) {
-          setProducts(response?.data?.data?.data);
+          setProducts(response?.data?.data);
         } // the API response object
         else {
           setProducts([]);
@@ -78,7 +71,7 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
           <SectionHeadingSeventeen text={"Layer cakes"} />
         </div>
         <div className="flex justify-center pt-2 pb-10">
-          <Image src={image.src} alt="" />
+          <img src={image.src} alt="" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 ">
@@ -88,9 +81,9 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
                 {active === index && (
                   <div className="h-4 w-4 bg-white lg:block hidden border-t-2 border-r-2 border-[#78D6F0] rotate-45 absolute top-1/2 -translate-y-1/2 -right-[9px]"></div>
                 )}
-                <div className={`lg:w-max lg:h-full `}>
+                <div className={`lg:w-max lg:h-full`}>
                   <div
-                    className={`relative lg:cursor-pointer p-2 rounded-full h-full ${
+                    className={`relative lg:cursor-pointer p-2 rounded-full ${
                       active === index ? "bg-[#78D6F0]" : ""
                     }`}
                     onClick={() => {
@@ -99,21 +92,38 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
                     }}
                   >
                     {index === 0 && (
-                      <Image
-                        src={img2}
+                      <img
+                        src={img2.src}
                         alt=""
-                        className="w-full h-full rounded-full"
+                        className="max-h-[100px] w-auto"
                       />
                     )}
-                    {index === 1 && <Image src={img3} alt="" className="" />}
-                    {index === 2 && <Image src={img4} alt="" className="" />}
-                    {index === 3 && <Image src={img5} alt="" className="" />}
-                    {/* <Image
+                    {index === 1 && (
+                      <img
+                        src={img3.src}
+                        alt=""
+                        className="max-h-[100px] w-auto"
+                      />
+                    )}
+                    {index === 2 && (
+                      <img
+                        src={img4.src}
+                        alt=""
+                        className="max-h-[100px] w-auto"
+                      />
+                    )}
+                    {index === 3 && (
+                      <img
+                        src={img5.src}
+                        alt=""
+                        className="max-h-[100px] w-auto"
+                      />
+                    )}
+                    <img
                       src={iconImg + data.icon}
                       alt=""
-                      width={10}
                       className="max-h-[50px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
-                    /> */}
+                    />
                   </div>
                   {/* <img src={iconImg + data?.icon} className='h-[60px] w-[60px] ' alt='' /> */}
                 </div>
@@ -129,12 +139,7 @@ const ProductSeventeen = ({ category, design, store_id }: any) => {
               <SliderSeventeenSingleSlide prevEl={prev} nextEl={next}>
                 {products?.slice(0, 12).map((productData: any) => (
                   <SwiperSlide key={productData.id}>
-                    {" "}
-                    <Card33
-                      item={productData}
-                      design={design}
-                      store_id={store_id}
-                    />
+                    <Card33 item={productData} />
                   </SwiperSlide>
                 ))}
               </SliderSeventeenSingleSlide>
