@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 
+
 const headers: any = {
   default: dynamic(() => import("@/components/headers/header-default")),
   one: dynamic(() => import("@/components/headers/header-one/header-one")),
@@ -108,9 +109,9 @@ const headers: any = {
 };
 
 const AllHeaders = ({ design, headerSetting }: any) => {
-  const HeaderComponent = headers[design?.header];
+  // const HeaderComponent = headers[design?.header];
 
-  // const HeaderComponent = headers["seven"];
+  const HeaderComponent = headers["twentyeight"];
 
   return (
     <>
